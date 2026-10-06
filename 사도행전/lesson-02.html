@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 02 — 교회의 탄생</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 02 전용 스타일 ── */
+
+    /* Page 1: PREV→CURRENT 연결 */
+    .prev-current {
+      margin-top: auto;
+      border-top: 1px solid var(--rule);
+      padding-top: var(--sp-3);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--sp-2);
+      align-items: stretch;
+    }
+    .pc-node {
+      padding: var(--sp-2) var(--sp-2);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .pc-node.current {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+    }
+    .pc-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--ink-faint);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5mm;
+    }
+    .pc-node.current .pc-label { color: var(--accent); }
+    .pc-title {
+      font-size: var(--fs-small);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.5mm;
+    }
+    .pc-node.current .pc-title { color: var(--accent); }
+    .pc-desc {
+      font-size: var(--fs-caption);
+      color: var(--ink-faint);
+      line-height: 1.5;
+    }
+    .pc-flow {
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      line-height: 1.8;
+      margin-top: 1.5mm;
+    }
+    .pc-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14pt;
+      color: var(--accent);
+      padding: 0 1mm;
+    }
+
+    /* Page 2: 절기 타임라인 */
+    .festival-timeline {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: var(--sp-2) 0;
+    }
+    .festival-node {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5mm;
+      text-align: center;
+    }
+    .festival-dot {
+      width: 9mm;
+      height: 9mm;
+      border-radius: 50%;
+      border: 2px solid var(--rule-mid);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6pt;
+      font-weight: 700;
+      color: var(--ink-faint);
+    }
+    .festival-node.highlight .festival-dot {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+      box-shadow: 0 0 0 2.5px var(--accent-soft);
+    }
+    .festival-name {
+      font-size: var(--fs-small);
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+    .festival-node.highlight .festival-name { color: var(--accent); }
+    .festival-desc {
+      font-size: var(--fs-caption);
+      color: var(--ink-faint);
+      line-height: 1.4;
+    }
+    .festival-connector {
+      flex: 0 0 12mm;
+      height: 1.5px;
+      background: var(--rule);
+      margin-bottom: 10mm;
+      position: relative;
+    }
+    .festival-connector .fc-label {
+      position: absolute;
+      top: 2mm;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 6pt;
+      color: var(--ink-faint);
+      white-space: nowrap;
+    }
+
+    /* Page 2: 예루살렘 모임 다이어그램 */
+    .gathering-wrap {
+      margin: var(--sp-2) 0;
+    }
+    .gathering-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 2mm 3mm;
+      align-items: center;
+      justify-items: center;
+    }
+    .gg-top { grid-column: 1/-1; display: flex; flex-direction: column; align-items: center; gap: 1mm; }
+    .gg-bottom { grid-column: 1/-1; display: flex; flex-direction: column; align-items: center; gap: 1mm; }
+    .gg-west { display: flex; align-items: center; gap: 2mm; justify-content: flex-end; width: 100%; }
+    .gg-east { display: flex; align-items: center; gap: 2mm; justify-content: flex-start; width: 100%; }
+    .gg-region {
+      padding: 2mm 3mm;
+      background: #f0eeeb;
+      border-radius: 3px;
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      line-height: 1.5;
+      text-align: center;
+    }
+    .gg-center {
+      width: 22mm;
+      height: 22mm;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.3;
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    .gg-arrow-v { font-size: 10pt; color: var(--rule-mid); line-height: 1; }
+    .gg-arrow-h { font-size: 10pt; color: var(--rule-mid); line-height: 1; flex-shrink: 0; }
+
+    /* Page 2: Key Point 박스 */
+    .key-point-box {
+      margin: var(--sp-2) 0;
+      padding: var(--sp-2) var(--sp-3);
+      border: 1.5px solid var(--accent);
+      border-radius: 4px;
+      background: var(--accent-pale);
+    }
+    .key-point-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5mm;
+    }
+    .key-point-body {
+      font-size: var(--fs-small);
+      color: var(--ink);
+      line-height: var(--lh-body);
+      font-weight: 700;
+    }
+    .key-point-note {
+      font-size: var(--fs-caption);
+      color: var(--ink-faint);
+      margin-top: 1.5mm;
+      font-weight: 400;
+    }
+
+    /* Page 4: 세 가지 현상 */
+    .phenomenon-trio {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--sp-2);
+      margin: var(--sp-2) 0;
+    }
+    .pheno-card {
+      padding: var(--sp-2);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+    }
+    .pheno-sense {
+      font-size: 8pt;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+    .pheno-title {
+      font-size: var(--fs-h3);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: var(--lh-heading);
+    }
+    .pheno-desc {
+      font-size: var(--fs-small);
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .pheno-quote {
+      font-size: var(--fs-caption);
+      color: var(--ink-faint);
+      font-style: italic;
+      border-top: 1px solid var(--rule);
+      padding-top: 1.5mm;
+      margin-top: auto;
+    }
+
+    /* Page 5: 설교 논리 구조 */
+    .sermon-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .sermon-step {
+      display: flex;
+      gap: 4mm;
+      align-items: flex-start;
+    }
+    .sermon-num-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 8mm;
+    }
+    .sermon-num {
+      width: 7mm;
+      height: 7mm;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7.5pt;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .sermon-line {
+      flex: 1;
+      width: 1.5px;
+      background: var(--rule);
+      margin: 1mm 0;
+      min-height: 5mm;
+    }
+    .sermon-step:last-child .sermon-line { display: none; }
+    .sermon-content {
+      flex: 1;
+      padding-bottom: var(--sp-2);
+    }
+    .sermon-step-title {
+      font-size: var(--fs-body);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: var(--lh-tight);
+      margin-bottom: 1.5mm;
+    }
+    .sermon-step-body {
+      font-size: var(--fs-small);
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .sermon-ref-tag {
+      display: inline-block;
+      padding: 0.5mm 2mm;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 6.5pt;
+      font-weight: 700;
+      border-radius: 2px;
+      margin-left: 2mm;
+    }
+    .sermon-conclusion {
+      margin-top: var(--sp-2);
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--accent);
+      border-radius: 4px;
+    }
+    .sermon-conclusion-label {
+      font-size: var(--fs-caption);
+      color: rgba(255,255,255,0.7);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 2mm;
+    }
+    .sermon-conclusion-text {
+      font-size: var(--fs-body);
+      color: var(--white);
+      line-height: var(--lh-body);
+      font-family: var(--ff-hand);
+    }
+    .sermon-conclusion-ref {
+      font-size: var(--fs-caption);
+      color: rgba(255,255,255,0.6);
+      margin-top: 1.5mm;
+      text-align: right;
+    }
+
+    /* Page 6: 숫자 대비 */
+    .number-transition {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-3);
+      margin: var(--sp-3) 0;
+      padding: var(--sp-3);
+      background: var(--accent-pale);
+      border-radius: 4px;
+    }
+    .nt-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2mm;
+      text-align: center;
+    }
+    .nt-number {
+      font-size: 28pt;
+      font-weight: 700;
+      color: var(--ink-faint);
+      line-height: 1;
+    }
+    .nt-number.highlight { color: var(--accent); }
+    .nt-label {
+      font-size: var(--fs-small);
+      color: var(--ink-faint);
+      line-height: 1.4;
+    }
+    .nt-arrow {
+      font-size: 20pt;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .nt-plus {
+      font-size: 18pt;
+      font-weight: 700;
+      color: var(--accent-mid);
+    }
+
+    /* Page 7: 공동체 허브 */
+    .community-hub {
+      margin: var(--sp-3) 0;
+    }
+    .community-hub-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 3mm;
+      align-items: center;
+      justify-items: center;
+    }
+    .hub-top    { grid-column: 1/-1; }
+    .hub-bottom { grid-column: 1/-1; }
+    .hub-left   { justify-self: end; }
+    .hub-right  { justify-self: start; }
+    .hub-center-cell {
+      grid-row: 2;
+      grid-column: 2;
+    }
+    .hub-card {
+      padding: 2.5mm 3.5mm;
+      border: 1.5px solid var(--rule);
+      border-radius: 4px;
+      font-size: var(--fs-small);
+      text-align: center;
+      max-width: 40mm;
+    }
+    .hub-card-num {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 1mm;
+    }
+    .hub-card-title {
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 1mm;
+    }
+    .hub-card-desc {
+      font-size: var(--fs-caption);
+      color: var(--ink-faint);
+      line-height: 1.4;
+    }
+    .hub-center-box {
+      width: 26mm;
+      height: 26mm;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.3;
+      box-shadow: 0 0 0 3.5px var(--accent-soft);
+    }
+    .hub-connector-v {
+      display: flex;
+      justify-content: center;
+      font-size: 11pt;
+      color: var(--rule-mid);
+      line-height: 1;
+    }
+    .hub-connector-h {
+      font-size: 11pt;
+      color: var(--rule-mid);
+      line-height: 1;
+    }
+
+    /* Page 8: Acts 브릿지 */
+    .acts-bridge {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 0;
+      align-items: start;
+      margin: var(--sp-3) 0;
+    }
+    .bridge-col {
+      padding: var(--sp-2);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+    }
+    .bridge-col.current {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+    }
+    .bridge-col.next {
+      border-color: var(--rule-mid);
+      background: #f7f6f4;
+    }
+    .bridge-lesson-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--ink-faint);
+      letter-spacing: 0.08em;
+    }
+    .bridge-col.current .bridge-lesson-label { color: var(--accent); }
+    .bridge-title {
+      font-size: var(--fs-small);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .bridge-col.current .bridge-title { color: var(--accent); }
+    .bridge-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1mm;
+    }
+    .bridge-item {
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      line-height: 1.5;
+      padding-left: 3mm;
+      border-left: 2px solid var(--rule);
+    }
+    .bridge-col.current .bridge-item { border-left-color: var(--accent-mid); }
+    .bridge-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2mm;
+      font-size: 14pt;
+      color: var(--accent);
+      padding-top: 12mm;
+    }
+    .bridge-key-verse {
+      margin-top: 1.5mm;
+      padding: 1.5mm 2mm;
+      background: rgba(180,85,45,0.08);
+      border-radius: 3px;
+      font-size: var(--fs-caption);
+      color: var(--accent);
+      font-family: var(--ff-hand);
+      line-height: 1.5;
+    }
+
+    /* 오순절 구절 장식선 */
+    .verse-banner {
+      text-align: center;
+      padding: var(--sp-2) var(--sp-3);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin: var(--sp-3) 0;
+    }
+    .verse-banner-text {
+      font-size: var(--fs-body);
+      font-family: var(--ff-hand);
+      color: var(--ink);
+      line-height: var(--lh-body);
+    }
+    .verse-banner-ref {
+      font-size: var(--fs-caption);
+      color: var(--accent);
+      font-weight: 700;
+      margin-top: 1.5mm;
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 1: LESSON OPENING
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">02</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 1 — 교회의 시작</div>
+      <h1 class="opening-title">교회의 탄생</h1>
+      <div class="opening-scripture">사도행전 2:1–47</div>
+    </div>
+  </div>
+
+  <div class="lesson-summary-line">
+    오순절에 성령이 제자들에게 임하고, 베드로의 복음 선포를 통해 약 3천 명이 세례를 받으면서 예루살렘에 새로운 신앙 공동체가 탄생한다.
+  </div>
+
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">베드로, 사도들, 예루살렘에 모인 사람들</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">예루살렘</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">핵심 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2mm;margin-top:1.5mm;">
+        <span style="padding:1mm 2.5mm;background:var(--accent-soft);color:var(--accent);font-size:var(--fs-caption);font-weight:700;border-radius:2px;">오순절</span>
+        <span style="padding:1mm 2.5mm;background:var(--accent-soft);color:var(--accent);font-size:var(--fs-caption);font-weight:700;border-radius:2px;">성령</span>
+        <span style="padding:1mm 2.5mm;background:var(--accent-soft);color:var(--accent);font-size:var(--fs-caption);font-weight:700;border-radius:2px;">방언</span>
+        <span style="padding:1mm 2.5mm;background:var(--accent-soft);color:var(--accent);font-size:var(--fs-caption);font-weight:700;border-radius:2px;">베드로의 설교</span>
+        <span style="padding:1mm 2.5mm;background:var(--accent-soft);color:var(--accent);font-size:var(--fs-caption);font-weight:700;border-radius:2px;">회개</span>
+        <span style="padding:1mm 2.5mm;background:var(--accent-soft);color:var(--accent);font-size:var(--fs-caption);font-weight:700;border-radius:2px;">세례</span>
+        <span style="padding:1mm 2.5mm;background:var(--accent-soft);color:var(--accent);font-size:var(--fs-caption);font-weight:700;border-radius:2px;">공동체</span>
+      </div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">사도행전 현재 위치</div>
+      <div class="lesson-meta-value" style="color:var(--accent);font-weight:700;">예루살렘 — PART 1</div>
+    </div>
+  </div>
+
+  <!-- PREV → CURRENT 연결 -->
+  <div class="prev-current">
+    <div class="pc-node">
+      <div class="pc-label">LESSON 01</div>
+      <div class="pc-title">예수님의 약속</div>
+      <div class="pc-desc" style="font-family:var(--ff-hand);font-size:var(--fs-caption);color:var(--ink-soft);">"성령이 너희에게 임하시면 권능을 받고… 땅끝까지 내 증인이 되리라"</div>
+      <div class="pc-flow">→ 제자들은 예루살렘에서 기다린다</div>
+    </div>
+    <div class="pc-arrow">→</div>
+    <div class="pc-node current">
+      <div class="pc-label">LESSON 02</div>
+      <div class="pc-title">그 약속이 이루어진다</div>
+      <div class="pc-flow">
+        성령강림<br>
+        ↓ 베드로의 설교<br>
+        ↓ 약 3천 명 회심<br>
+        ↓ 교회의 탄생
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 02 · 1</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 2: 배경 — 오순절, 그날 예루살렘에서는
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 02</span>
+    <span class="page-header-title">배경: 왜 예루살렘에 세계 각지의 사람들이 있었는가</span>
+  </div>
+
+  <h2 class="section-heading">오순절이란 무엇인가?</h2>
+
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);line-height:var(--lh-body);margin-bottom:var(--sp-3);">
+    성령강림 사건을 이해하려면 먼저 <strong>왜 그날 예루살렘에 여러 지역 사람들이 모여 있었는지</strong>를 알아야 한다. 오순절은 유대인의 중요한 절기였다.
+  </p>
+
+  <!-- 절기 타임라인 -->
+  <div class="festival-timeline">
+    <div class="festival-node">
+      <div class="festival-dot"></div>
+      <div class="festival-name">유월절</div>
+      <div class="festival-desc">이스라엘의 출애굽을 기억하는 절기. 예수님의 십자가는 유월절에 일어났다.</div>
+    </div>
+    <div class="festival-connector">
+      <span class="fc-label">50일 후</span>
+    </div>
+    <div class="festival-node highlight">
+      <div class="festival-dot">★</div>
+      <div class="festival-name">오순절 (칠칠절)</div>
+      <div class="festival-desc">유월절로부터 50일째 날. 그리스어로 "pentēkostē(50번째)"에서 유래. 히브리어로는 샤부오트(Shavuot, 칠칠절). 성령강림이 이 날에 일어난다.</div>
+    </div>
+    <div class="festival-connector"></div>
+    <div class="festival-node">
+      <div class="festival-dot"></div>
+      <div class="festival-name">초막절</div>
+      <div class="festival-desc">광야 생활을 기억하는 절기. 유대인의 세 순례 절기 중 하나.</div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-bottom:var(--sp-3);">
+    <div class="background-box-title">유대인의 세 순례 절기</div>
+    <div class="background-box-body">유월절, 오순절(칠칠절), 초막절은 유대인이 예루살렘 성전을 방문해야 하는 세 순례 절기였다. 이 때문에 여러 지역에 흩어져 살던 유대인들과 유대교로 개종한 사람들이 예루살렘을 방문했다.</div>
+  </div>
+
+  <h2 class="section-heading">세계 각지에서 예루살렘으로</h2>
+
+  <!-- 예루살렘 집결 다이어그램 -->
+  <div class="gathering-wrap">
+    <div class="gathering-grid">
+      <div class="gg-top">
+        <div class="gg-region">갑바도기아 · 본도 · 아시아 · 브루기아 · 밤빌리아</div>
+        <div class="gg-arrow-v">↓</div>
+      </div>
+
+      <div class="gg-west">
+        <div class="gg-region">로마 · 그레데</div>
+        <div class="gg-arrow-h">→</div>
+      </div>
+      <div class="gg-center">예루살렘<br>오순절</div>
+      <div class="gg-east">
+        <div class="gg-arrow-h">←</div>
+        <div class="gg-region">바대 · 메대 · 엘람<br>메소보다미아 · 아라비아</div>
+      </div>
+
+      <div class="gg-bottom">
+        <div class="gg-arrow-v">↑</div>
+        <div class="gg-region">애굽 · 리비야</div>
+      </div>
+    </div>
+    <p style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:var(--sp-1);text-align:center;">사도행전 2:9–11에 등장하는 지역들</p>
+  </div>
+
+  <div class="key-point-box">
+    <div class="key-point-label">KEY POINT</div>
+    <div class="key-point-body">성령강림은 여러 지역에서 온 사람들이 예루살렘에 모여 있는 바로 그 시점에 일어났다.</div>
+    <div class="key-point-note">이 사실이 이후 복음 확산의 흐름을 이해하는 중요한 배경이 된다. 다만 본문은 이 방문객들이 이후 어떻게 했는지 직접 기록하지 않는다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 02 · 2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 3: STORY FLOW
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 02</span>
+    <span class="page-header-title">교회의 탄생</span>
+  </div>
+
+  <h2 class="section-heading">사건 흐름</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-faint);line-height:1.6;margin-bottom:var(--sp-3);">사도행전 2장 전체를 한 흐름으로 파악한다. 이 사건들은 독립적으로 일어난 것이 아니라 하나의 연쇄적 인과관계로 이어진다.</p>
+
+  <div class="story-flow">
+
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">① 성령강림</div>
+        <div class="flow-step-desc">오순절 날 강한 바람 같은 소리, 불의 혀 같은 것, 다른 언어로 말함. 제자들이 성령으로 충만해진다.</div>
+      </div>
+      <div class="flow-step-ref">2:1–4</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">② 사람들이 놀라다</div>
+        <div class="flow-step-desc">여러 지역에서 온 사람들이 자신의 언어로 하나님의 큰 일을 듣는다. 일부는 의아해하고, 일부는 술에 취했다고 조롱한다.</div>
+      </div>
+      <div class="flow-step-ref">2:5–13</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">③ 베드로가 설명하다</div>
+        <div class="flow-step-desc">베드로가 열한 사도와 함께 서서 이 사건이 요엘의 예언의 성취임을 설명하고, 예수님의 죽음과 부활, 그리고 성령강림의 의미를 선포한다.</div>
+      </div>
+      <div class="flow-step-ref">2:14–36</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">④ 사람들이 반응하다</div>
+        <div class="flow-step-desc">마음에 찔린 사람들이 "우리가 어찌할꼬?"라고 묻는다. 베드로는 회개하고 세례를 받으라고 대답한다. 그날 약 3천 명이 세례를 받고 더해진다.</div>
+      </div>
+      <div class="flow-step-ref">2:37–41</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑤ 새로운 공동체가 형성되다</div>
+        <div class="flow-step-desc">사도들의 가르침, 교제, 떡을 뗌, 기도를 중심으로 새로운 공동체가 살아간다. 주께서 구원받는 사람을 날마다 더하게 하신다.</div>
+      </div>
+      <div class="flow-step-ref">2:42–47</div>
+    </div>
+
+    <div class="flow-result">
+      성령강림은 하나의 현상으로 끝나지 않았다 — 복음 선포, 회심, 공동체 형성으로 이어졌다
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 02 · 3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 4: SCENE 01 — 성령이 임하다 (2:1-13)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 02</span>
+    <span class="page-header-title">교회의 탄생</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">성령이 임하다</span>
+      <span class="scene-ref">행 2:1–13</span>
+    </div>
+
+    <div class="scene-body">
+      <p>오순절 날이 되자, 제자들이 한자리에 모여 있을 때 세 가지 일이 일어났다.</p>
+    </div>
+
+    <!-- 세 가지 현상 -->
+    <div class="phenomenon-trio">
+      <div class="pheno-card">
+        <div class="pheno-sense">들렸다</div>
+        <div class="pheno-title">강한 바람 같은 소리</div>
+        <div class="pheno-desc">하늘에서 급하고 강한 바람 같은 소리가 나더니 그들이 앉아 있는 온 집에 가득했다.</div>
+        <div class="pheno-quote">본문: "바람 같은 소리" — 실제 바람이라고 단정하지 않는다</div>
+      </div>
+      <div class="pheno-card">
+        <div class="pheno-sense">보였다</div>
+        <div class="pheno-title">불의 혀 같은 것</div>
+        <div class="pheno-desc">불의 혀처럼 갈라지는 것들이 나타나 각 사람 위에 하나씩 임했다.</div>
+        <div class="pheno-quote">본문: "불의 혀 같이 갈라지는 것" — 실제 불꽃이라고 단정하지 않는다</div>
+      </div>
+      <div class="pheno-card">
+        <div class="pheno-sense">말하기 시작했다</div>
+        <div class="pheno-title">다른 언어들</div>
+        <div class="pheno-desc">그들이 다 성령의 충만함을 받고, 성령이 말하게 하심을 따라 다른 언어들로 말하기 시작했다.</div>
+        <div class="pheno-quote">본문 2:8: 청중이 "우리 각 사람이 난 곳 방언으로 듣게 되는 것"이라 말함</div>
+      </div>
+    </div>
+
+    <div class="scene-body" style="margin-top:var(--sp-2);">
+      <p>예루살렘에 있던 사람들이 이 소리를 듣고 몰려들었다. 여러 지역에서 온 사람들이 자신들의 언어로 하나님의 큰 일을 말하는 것을 듣고 당황하고 놀랐다(2:7–12). 그러나 일부는 "그들이 새 술에 취했다"고 조롱했다(2:13).</p>
+    </div>
+
+    <div class="background-box">
+      <div class="background-box-title">이 본문에서 말하는 '방언'</div>
+      <div class="background-box-body">사도행전 2장에서 청중은 "우리 각 사람이 난 곳 방언으로 듣는다"고 명시한다. 최소한 이 사건에서는 청중이 알아들을 수 있는 여러 언어가 사용된 것으로 기록된다. 고린도전서 등에 등장하는 방언 현상과의 관계는 신학적으로 다양한 논의가 있으므로, 이 교재에서는 사도행전 2장 본문이 직접 전하는 내용에 집중한다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 02 · 4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 5: SCENE 02 — 베드로의 설교 논리 (2:14-36)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 02</span>
+    <span class="page-header-title">교회의 탄생</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 2</span>
+      <span class="scene-title">베드로는 이 사건을 어떻게 설명했을까?</span>
+      <span class="scene-ref">행 2:14–36</span>
+    </div>
+
+    <div class="scene-body">
+      <p>베드로가 열한 사도와 함께 일어나 군중 앞에서 말했다. 이 설교는 단순한 해명이 아니라 하나의 논리적인 주장이다.</p>
+    </div>
+
+    <div class="sermon-flow" style="margin-top:var(--sp-2);">
+
+      <div class="sermon-step">
+        <div class="sermon-num-col">
+          <div class="sermon-num">1</div>
+          <div class="sermon-line"></div>
+        </div>
+        <div class="sermon-content">
+          <div class="sermon-step-title">술에 취한 것이 아니다 <span class="sermon-ref-tag">2:15</span></div>
+          <div class="sermon-step-body">지금은 오전 9시(제삼시)이므로 술에 취할 수 없다. 오히려 이것은 선지자 요엘을 통해 말씀하신 것이다.</div>
+        </div>
+      </div>
+
+      <div class="sermon-step">
+        <div class="sermon-num-col">
+          <div class="sermon-num">2</div>
+          <div class="sermon-line"></div>
+        </div>
+        <div class="sermon-content">
+          <div class="sermon-step-title">요엘의 예언이 이루어졌다 <span class="sermon-ref-tag">2:16–21</span></div>
+          <div class="sermon-step-body">요엘 2:28–32을 인용: "마지막 날에 하나님이 자신의 영을 모든 사람에게 부어 주겠다"는 예언. 지금 일어나는 일이 그 성취다.</div>
+        </div>
+      </div>
+
+      <div class="sermon-step">
+        <div class="sermon-num-col">
+          <div class="sermon-num">3</div>
+          <div class="sermon-line"></div>
+        </div>
+        <div class="sermon-content">
+          <div class="sermon-step-title">나사렛 예수는 누구인가? <span class="sermon-ref-tag">2:22–24</span></div>
+          <div class="sermon-step-body">
+            ① 하나님께서 능력·기사·표적으로 증거하신 분<br>
+            ② 하나님의 뜻대로 내어준 바 되어 십자가에서 죽으셨다<br>
+            ③ 하나님께서 사망의 고통에서 풀어 살리셨다
+          </div>
+        </div>
+      </div>
+
+      <div class="sermon-step">
+        <div class="sermon-num-col">
+          <div class="sermon-num">4</div>
+          <div class="sermon-line"></div>
+        </div>
+        <div class="sermon-content">
+          <div class="sermon-step-title">다윗의 시편도 부활을 예언했다 <span class="sermon-ref-tag">2:25–32</span></div>
+          <div class="sermon-step-body">시편 16:8–11 인용. 다윗은 죽고 묻혔으므로 이 시편은 다윗 자신에 관한 것이 아니다. 다윗은 예언자로서 메시아의 부활을 미리 보았다. "우리가 다 이 일의 증인이다"(2:32).</div>
+        </div>
+      </div>
+
+      <div class="sermon-step">
+        <div class="sermon-num-col">
+          <div class="sermon-num">5</div>
+          <div class="sermon-line"></div>
+        </div>
+        <div class="sermon-content">
+          <div class="sermon-step-title">예수님이 성령을 부어 주셨다 <span class="sermon-ref-tag">2:33–35</span></div>
+          <div class="sermon-step-body">예수님이 부활하여 하나님의 우편에 높이 올리신 바 되어, 약속하신 성령을 부어 주셨다. 지금 여러분이 보고 듣는 이것이 그 증거다(시편 110:1 인용).</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sermon-conclusion">
+      <div class="sermon-conclusion-label">결론 — 2:36</div>
+      <div class="sermon-conclusion-text">너희가 십자가에 못 박은 이 예수를 하나님이 주와 그리스도가 되게 하셨느니라</div>
+      <div class="sermon-conclusion-ref">사도행전 2:36</div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 02 · 5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 6: SCENE 03 — "우리가 어찌할꼬?" (2:37-41)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 02</span>
+    <span class="page-header-title">교회의 탄생</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">"우리가 어찌할꼬?"</span>
+      <span class="scene-ref">행 2:37–41</span>
+    </div>
+
+    <div class="scene-body">
+      <p>베드로의 설교를 들은 사람들의 반응이 이어진다.</p>
+    </div>
+
+    <div class="story-flow" style="margin:var(--sp-2) 0;">
+      <div class="flow-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">말씀을 들음</div>
+          <div class="flow-step-desc">베드로의 설교를 들은 사람들</div>
+        </div>
+        <div class="flow-step-ref">2:37</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">마음에 찔림</div>
+          <div class="flow-step-desc">"그들이 이 말을 듣고 마음에 찔려"</div>
+        </div>
+        <div class="flow-step-ref">2:37</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step key-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">"형제들아, 우리가 어찌할꼬?"</div>
+        </div>
+        <div class="flow-step-ref">2:37</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">베드로의 대답</div>
+          <div class="flow-step-desc">① 회개하라 &nbsp; ② 예수 그리스도의 이름으로 세례를 받으라 &nbsp; ③ 그리하면 성령의 선물을 받으리니</div>
+        </div>
+        <div class="flow-step-ref">2:38</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">약 3천 명이 세례를 받고 더해짐</div>
+        </div>
+        <div class="flow-step-ref">2:41</div>
+      </div>
+    </div>
+
+    <h2 class="section-heading" style="margin-top:var(--sp-3);">숫자로 보는 변화</h2>
+
+    <div class="number-transition">
+      <div class="nt-block">
+        <div class="nt-number">120</div>
+        <div class="nt-label">오순절 이전<br>다락방에 모인 신자들<br><span style="font-size:var(--fs-caption);color:var(--ink-faint);">행 1:15</span></div>
+      </div>
+      <div class="nt-block">
+        <div class="nt-arrow">+</div>
+      </div>
+      <div class="nt-block">
+        <div class="nt-number highlight">약 3,000</div>
+        <div class="nt-label">오순절 날<br>세례를 받고 더해진 사람들<br><span style="font-size:var(--fs-caption);color:var(--ink-faint);">행 2:41</span></div>
+      </div>
+    </div>
+
+    <div class="background-box">
+      <div class="background-box-title">주의</div>
+      <div class="background-box-body">이 숫자들은 전체 교회 인원을 정확하게 계산하기 위한 정보가 아니다. 본문이 강조하는 것은 공동체의 규모가 단기간에 매우 빠르게 커졌다는 사실이다.</div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 02 · 6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 7: SCENE 04 — 처음 교회 (2:42-47)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 02</span>
+    <span class="page-header-title">교회의 탄생</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">처음 교회는 어떻게 살았을까?</span>
+      <span class="scene-ref">행 2:42–47</span>
+    </div>
+
+    <div class="scene-body">
+      <p>사도행전 2:42는 새 공동체의 삶을 네 가지로 요약한다.</p>
+    </div>
+
+    <!-- 공동체 허브 다이어그램 -->
+    <div class="community-hub">
+      <div class="community-hub-grid">
+
+        <div class="hub-top">
+          <div class="hub-card">
+            <span class="hub-card-num">① </span>
+            <span class="hub-card-title">사도들의 가르침</span>
+            <div class="hub-card-desc">예수님의 사역과 부활을 직접 목격한 사도들의 가르침을 지속적으로 받았다.</div>
+          </div>
+          <div class="hub-connector-v">↕</div>
+        </div>
+
+        <div class="hub-left">
+          <div class="hub-card">
+            <span class="hub-card-num">④ </span>
+            <span class="hub-card-title">기도</span>
+            <div class="hub-card-desc">공동체가 함께 기도했다.</div>
+          </div>
+        </div>
+        <div class="hub-connector-h">↔</div>
+        <div class="hub-center-cell">
+          <div class="hub-center-box">새로운<br>공동체<br><span style="font-size:6.5pt;opacity:0.8;">행 2:42</span></div>
+        </div>
+        <div class="hub-connector-h">↔</div>
+        <div class="hub-right">
+          <div class="hub-card">
+            <span class="hub-card-num">② </span>
+            <span class="hub-card-title">교제</span>
+            <div class="hub-card-desc">신자들이 서로 관계를 맺고 공동체를 이루었다.</div>
+          </div>
+        </div>
+
+        <div class="hub-bottom">
+          <div class="hub-connector-v">↕</div>
+          <div class="hub-card">
+            <span class="hub-card-num">③ </span>
+            <span class="hub-card-title">떡을 뗌</span>
+            <div class="hub-card-desc">함께 식사하고 떡을 떼었다. 공동 식사와 주님의 만찬을 포함하여 이해하는 견해가 있다.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="scene-body" style="margin-top:var(--sp-2);">
+      <p>2:43–47은 이 공동체의 삶을 더 구체적으로 묘사한다. 사도들을 통해 기사와 표적이 일어났고, 신자들은 필요에 따라 물건을 나누었으며, 성전에서 함께 모이고 집에서 떡을 떼었다. 이들은 하나님을 찬미하며 백성에게 칭송을 받았다.</p>
+    </div>
+
+    <div class="scripture-block">
+      <div class="scripture-text">주께서 구원 받는 사람을 날마다 더하게 하시니라</div>
+      <div class="scripture-ref">사도행전 2:47</div>
+    </div>
+
+    <div class="background-box">
+      <div class="background-box-title">주의</div>
+      <div class="background-box-body">2:44–45의 물건을 나누는 장면을 현대의 특정 경제 체제나 정치 체제와 연결하여 설명하지 않는다. 본문의 초점은 초기 예루살렘 신자들이 서로의 필요를 돌보며 공동체적 삶을 살았다는 사실에 있다.</div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 02 · 7</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 8: VISUAL EXPLAINER — 약속이 현실이 되다
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 02</span>
+    <span class="page-header-title">교회의 탄생</span>
+  </div>
+
+  <h2 class="section-heading">약속이 현실이 되다</h2>
+
+  <p style="font-size:var(--fs-small);color:var(--ink-faint);line-height:1.6;margin-bottom:var(--sp-3);">
+    Lesson 01과 Lesson 02는 독립된 두 이야기가 아니다. 01에서 주신 약속이 02에서 성취되고, 그 성취가 이후 이야기 전체로 이어진다.
+  </p>
+
+  <div class="acts-bridge">
+
+    <div class="bridge-col">
+      <div class="bridge-lesson-label">LESSON 01 · 행 1장</div>
+      <div class="bridge-title">예수님의 약속과 기다림</div>
+      <div class="bridge-items">
+        <div class="bridge-item">부활하신 예수님의 40일 가르침</div>
+        <div class="bridge-item">"성령이 임하시면 권능을 받고 땅끝까지 증인이 되리라"</div>
+        <div class="bridge-item">예수님 승천</div>
+        <div class="bridge-item">두 천사: "그대로 다시 오시리라"</div>
+        <div class="bridge-item">다락방에 모여 기도 (약 120명)</div>
+        <div class="bridge-item">맛디아 선출 — 열두 사도 완성</div>
+      </div>
+      <div class="bridge-key-verse">"예루살렘을 떠나지 말고 기다리라"</div>
+    </div>
+
+    <div class="bridge-arrow">→</div>
+
+    <div class="bridge-col current">
+      <div class="bridge-lesson-label">LESSON 02 · 행 2장</div>
+      <div class="bridge-title">약속의 성취 — 교회의 탄생</div>
+      <div class="bridge-items">
+        <div class="bridge-item">오순절 날 성령강림</div>
+        <div class="bridge-item">다른 언어로 말함 → 사람들이 들음</div>
+        <div class="bridge-item">베드로의 설교 (요엘 예언 + 예수님의 부활)</div>
+        <div class="bridge-item">"우리가 어찌할꼬?"</div>
+        <div class="bridge-item">회개 · 세례 · 약 3천 명 더해짐</div>
+        <div class="bridge-item">사도들의 가르침 · 교제 · 떡 · 기도</div>
+      </div>
+      <div class="bridge-key-verse">"주께서 구원 받는 사람을 날마다 더하게 하시니라"</div>
+    </div>
+
+    <div class="bridge-arrow">→</div>
+
+    <div class="bridge-col next">
+      <div class="bridge-lesson-label">LESSON 03 · 행 3–4장</div>
+      <div class="bridge-title">복음이 공개적으로 선포되다</div>
+      <div class="bridge-items">
+        <div class="bridge-item">성전 미문에서의 치유 기적</div>
+        <div class="bridge-item">베드로의 설교 (두 번째)</div>
+        <div class="bridge-item">사도들의 체포와 공회 심문</div>
+        <div class="bridge-item">처음으로 공식적인 박해에 직면</div>
+      </div>
+      <div class="bridge-key-verse">교회는 성장하고 동시에 첫 위협에 놓인다</div>
+    </div>
+
+  </div>
+
+  <div class="verse-banner">
+    <div class="verse-banner-text">오직 성령이 너희에게 임하시면 너희가 권능을 받고<br>예루살렘과 온 유대와 사마리아와 땅끝까지 이르러 내 증인이 되리라</div>
+    <div class="verse-banner-ref">사도행전 1:8 — Lesson 01의 약속이 Lesson 02에서 시작된다</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 02 · 8</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 9: LESSON SUMMARY
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 02</span>
+    <span class="page-header-title">교회의 탄생</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);margin-bottom:var(--sp-3);">
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);">한눈에 보는 LESSON 02</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">사도행전 2:1–47</div>
+  </div>
+
+  <div class="summary-grid">
+
+    <div class="summary-block">
+      <div class="summary-block-label">사건</div>
+      <div class="summary-block-content">
+        오순절 성령강림 → 여러 언어로 말함 → 사람들의 놀람과 의문 → 베드로의 설교 → 마음에 찔림 → 회개·세례 → 약 3천 명 더해짐 → 공동체 형성
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">인물</div>
+      <div class="summary-block-content">
+        <strong>베드로</strong> — 열한 사도와 함께 서서 성령강림을 설명하고 복음을 선포<br>
+        <strong>사도들</strong> — 성령을 받고 다른 언어로 말함<br>
+        <strong>예루살렘의 사람들</strong> — 놀람, 의문, 회개로 각각 다른 반응
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">장소</div>
+      <div class="summary-block-content">
+        <strong>예루살렘</strong> — 사도행전에서 복음이 본격적으로 시작되는 장소
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">핵심 키워드</div>
+      <div class="tag-cloud">
+        <span class="tag">오순절</span>
+        <span class="tag">성령강림</span>
+        <span class="tag">방언</span>
+        <span class="tag">부활</span>
+        <span class="tag">회개</span>
+        <span class="tag">세례</span>
+        <span class="tag">공동체</span>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">숫자로 기억하기</div>
+      <div class="number-row">
+        <div class="num-item">
+          <div class="num-big">50</div>
+          <div class="num-label">오순절: 유월절 후 50일째<br>(pentēkostē)</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">9시</div>
+          <div class="num-label">성령강림 시각<br>(제삼시)</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">3,000</div>
+          <div class="num-label">그날 세례를 받고<br>더해진 사람 수</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">4</div>
+          <div class="num-label">공동체의 삶<br>(행 2:42)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이야기 연결</div>
+      <div class="story-conn">
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">이전 L01</div>
+          성령을 기다리라<br>맛디아 선출
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node current-node">
+          <div style="font-size:var(--fs-caption);">L02</div>
+          성령이 임하고<br>교회가 시작되다
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">다음 L03</div>
+          첫 기적, 첫 박해<br>행 3–4장
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        오순절에 성령이 임하고, 베드로의 복음 선포를 통해 많은 사람이 회개하고 세례를 받으면서 예루살렘에 새로운 신앙 공동체가 형성되었다.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 02 · 9</span>
+  </div>
+</section>
+
+
+</body>
+</html>

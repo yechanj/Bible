@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 03 — 첫 기적, 첫 박해</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 03 전용 스타일 ── */
+
+    /* Page 1: Story Connection */
+    .story-connection {
+      margin-top: auto;
+      border-top: 1px solid var(--rule);
+      padding-top: var(--sp-3);
+      display: flex;
+      gap: var(--sp-2);
+      align-items: stretch;
+    }
+    .sc-col {
+      flex: 1;
+      padding: var(--sp-2);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5mm;
+    }
+    .sc-col.current {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+    }
+    .sc-col-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--ink-faint);
+      letter-spacing: 0.08em;
+    }
+    .sc-col.current .sc-col-label { color: var(--accent); }
+    .sc-col-title {
+      font-size: var(--fs-small);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .sc-col.current .sc-col-title { color: var(--accent); }
+    .sc-flow-text {
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      line-height: 1.8;
+    }
+    .sc-arrow {
+      display: flex;
+      align-items: center;
+      font-size: 14pt;
+      color: var(--accent);
+      padding: 0 1mm;
+      padding-top: 12mm;
+    }
+
+    /* Before / After 비교 */
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--sp-2);
+      margin: var(--sp-2) 0;
+      align-items: stretch;
+    }
+    .ba-col {
+      padding: var(--sp-2) var(--sp-2);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .ba-col.after {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+    }
+    .ba-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--ink-faint);
+      letter-spacing: 0.1em;
+      margin-bottom: var(--sp-1);
+    }
+    .ba-col.after .ba-label { color: var(--accent); }
+    .ba-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5mm;
+      font-size: var(--fs-small);
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .ba-col.after .ba-items { color: var(--accent); font-weight: 700; }
+    .ba-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14pt;
+      color: var(--accent);
+    }
+
+    /* 설교 비교 (Acts 2 vs Acts 3) */
+    .sermon-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-2);
+      margin: var(--sp-2) 0;
+    }
+    .sc-sermon-col {
+      padding: var(--sp-2);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .sc-sermon-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: var(--sp-1);
+      letter-spacing: 0.06em;
+    }
+    .sc-sermon-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1mm;
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .sc-sermon-items span {
+      padding-left: 2.5mm;
+      border-left: 2px solid var(--rule);
+    }
+    .sc-sermon-common {
+      margin-top: var(--sp-2);
+      padding: var(--sp-1) var(--sp-2);
+      background: var(--accent-soft);
+      border-radius: 3px;
+      font-size: var(--fs-caption);
+      color: var(--accent);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* '이름' 키워드 체인 */
+    .name-chain {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: var(--sp-2) 0;
+    }
+    .nc-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 3mm;
+    }
+    .nc-ref {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+      min-width: 12mm;
+      padding-top: 0.5mm;
+    }
+    .nc-text {
+      flex: 1;
+      font-size: var(--fs-small);
+      color: var(--ink-soft);
+      line-height: 1.6;
+      padding-bottom: var(--sp-1);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nc-item:last-child .nc-text { border-bottom: none; }
+    .nc-text strong { color: var(--ink); }
+    .nc-connector {
+      height: 4mm;
+      width: 2px;
+      background: var(--rule);
+      margin-left: 5mm;
+    }
+    .nc-final {
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--accent);
+      border-radius: 4px;
+      margin-top: var(--sp-1);
+    }
+    .nc-final-text {
+      font-size: var(--fs-body);
+      color: var(--white);
+      line-height: var(--lh-body);
+      font-family: var(--ff-hand);
+    }
+    .nc-final-ref {
+      font-size: var(--fs-caption);
+      color: rgba(255,255,255,0.65);
+      text-align: right;
+      margin-top: 1.5mm;
+    }
+
+    /* 충돌 다이어그램 */
+    .clash-diagram {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: var(--sp-2);
+      margin: var(--sp-2) 0;
+    }
+    .clash-side {
+      padding: var(--sp-2);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .clash-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--ink-faint);
+      margin-bottom: 1.5mm;
+    }
+    .clash-title {
+      font-size: var(--fs-small);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.5mm;
+    }
+    .clash-desc {
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+    .clash-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5mm;
+    }
+    .clash-vs {
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--accent);
+      padding: 1.5mm 2.5mm;
+      border: 1.5px solid var(--accent);
+      border-radius: 3px;
+    }
+    .clash-result {
+      margin-top: var(--sp-1);
+      padding: var(--sp-1) var(--sp-2);
+      background: var(--accent-soft);
+      border-radius: 3px;
+      font-size: var(--fs-caption);
+      color: var(--accent);
+      font-weight: 700;
+      text-align: center;
+      grid-column: 1 / -1;
+    }
+
+    /* 기도 구조 */
+    .prayer-structure {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: var(--sp-2) 0;
+    }
+    .prayer-step {
+      display: flex;
+      gap: 3mm;
+      align-items: flex-start;
+    }
+    .prayer-num-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 7mm;
+      flex-shrink: 0;
+    }
+    .prayer-num {
+      width: 6.5mm;
+      height: 6.5mm;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7pt;
+      font-weight: 700;
+    }
+    .prayer-line {
+      flex: 1;
+      width: 1.5px;
+      background: var(--rule);
+      margin: 1mm 0;
+      min-height: 4mm;
+    }
+    .prayer-step:last-child .prayer-line { display: none; }
+    .prayer-content {
+      flex: 1;
+      padding-bottom: var(--sp-2);
+    }
+    .prayer-title {
+      font-size: var(--fs-small);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.5mm;
+    }
+    .prayer-body {
+      font-size: var(--fs-small);
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    /* 위협 vs 기도 대조 */
+    .contrast-big {
+      margin: var(--sp-3) 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--sp-2);
+      align-items: center;
+    }
+    .contrast-block {
+      padding: var(--sp-3) var(--sp-3);
+      border-radius: 4px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+    }
+    .contrast-block.threat {
+      background: #f2f0ed;
+      border: 1.5px solid var(--rule-mid);
+    }
+    .contrast-block.prayer {
+      background: var(--accent);
+      border: 1.5px solid var(--accent);
+    }
+    .contrast-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--ink-faint);
+      letter-spacing: 0.1em;
+    }
+    .contrast-block.prayer .contrast-label { color: rgba(255,255,255,0.7); }
+    .contrast-text {
+      font-size: 13pt;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+      font-family: var(--ff-hand);
+    }
+    .contrast-block.prayer .contrast-text { color: var(--white); }
+    .contrast-ref {
+      font-size: var(--fs-caption);
+      color: var(--ink-faint);
+    }
+    .contrast-block.prayer .contrast-ref { color: rgba(255,255,255,0.6); }
+    .contrast-vs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .contrast-result {
+      grid-column: 1/-1;
+      margin-top: var(--sp-1);
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--accent-pale);
+      border-radius: 4px;
+      text-align: center;
+      font-size: var(--fs-body);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Visual Explainer: 원인-결과 지그재그 맵 */
+    .causal-map {
+      margin: var(--sp-2) 0;
+    }
+    .cm-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .cm-row-reverse {
+      flex-direction: row-reverse;
+    }
+    .cm-step {
+      flex: 1;
+      padding: 2.5mm 3mm;
+      border: 1.5px solid var(--rule);
+      border-radius: 4px;
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      line-height: 1.4;
+      text-align: center;
+    }
+    .cm-step strong {
+      display: block;
+      font-size: var(--fs-small);
+      color: var(--ink);
+      margin-bottom: 0.5mm;
+    }
+    .cm-step.key {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+    }
+    .cm-step.key strong { color: var(--accent); }
+    .cm-arrow-h {
+      flex-shrink: 0;
+      width: 5mm;
+      text-align: center;
+      font-size: 9pt;
+      color: var(--rule-mid);
+    }
+    .cm-turn {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 0;
+      margin: 1mm 0;
+    }
+    .cm-turn.left { justify-content: flex-start; }
+    .cm-turn-arrow {
+      width: 3mm;
+      height: 4mm;
+      border-right: 2px solid var(--rule-mid);
+      border-bottom: 2px solid var(--rule-mid);
+      border-radius: 0 0 4px 0;
+    }
+    .cm-turn.left .cm-turn-arrow {
+      border-right: none;
+      border-left: 2px solid var(--rule-mid);
+      border-bottom: 2px solid var(--rule-mid);
+      border-radius: 0 0 0 4px;
+    }
+    .cm-big-statement {
+      margin-top: var(--sp-3);
+      text-align: center;
+      padding: var(--sp-2) var(--sp-3);
+      border: 2px solid var(--accent);
+      border-radius: 4px;
+    }
+    .cm-big-text {
+      font-size: 14pt;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.3;
+      font-family: var(--ff-hand);
+    }
+
+    /* 두 모티프 박스 */
+    .motif-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3);
+      margin-top: var(--sp-3);
+    }
+    .motif-box {
+      padding: var(--sp-2);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+    .motif-title {
+      font-size: var(--fs-small);
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: var(--sp-1);
+      padding-bottom: var(--sp-1);
+      border-bottom: 1.5px solid var(--accent-soft);
+    }
+    .motif-chain {
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      line-height: 2;
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 1: LESSON OPENING
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">03</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 2 — 예루살렘 교회의 성장</div>
+      <h1 class="opening-title">첫 기적, 첫 박해</h1>
+      <div class="opening-scripture">사도행전 3:1–4:31</div>
+    </div>
+  </div>
+
+  <div class="lesson-summary-line">
+    베드로와 요한이 성전에서 걷지 못하던 사람을 고치자 많은 사람이 모여들고, 베드로가 예수님의 부활을 선포하면서 사도들은 처음으로 종교지도자들의 본격적인 반대에 직면한다.
+  </div>
+
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">베드로, 요한, 걷지 못하던 사람, 제사장들, 사두개인들, 종교지도자들</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">예루살렘 성전 · 솔로몬 행각 · 산헤드린 공회</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">핵심 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2mm;margin-top:1.5mm;">
+        <span class="tag">치유</span><span class="tag">예수의 이름</span><span class="tag">회개</span>
+        <span class="tag">부활</span><span class="tag">사두개인</span><span class="tag">산헤드린</span>
+        <span class="tag">담대함</span><span class="tag">기도</span>
+      </div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">사도행전 현재 위치</div>
+      <div class="lesson-meta-value" style="color:var(--accent);font-weight:700;">예루살렘 — PART 2</div>
+    </div>
+  </div>
+
+  <!-- Story Connection -->
+  <div class="story-connection">
+    <div class="sc-col">
+      <div class="sc-col-label">LESSON 02</div>
+      <div class="sc-col-title">성령강림, 교회의 탄생</div>
+      <div class="sc-flow-text">성령강림<br>↓ 베드로의 설교<br>↓ 약 3천 명 회심<br>↓ 교회 공동체 형성</div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-col current">
+      <div class="sc-col-label">LESSON 03</div>
+      <div class="sc-col-title">복음이 공개적으로 선포되고 처음으로 강한 반대에 부딪히다</div>
+      <div class="sc-flow-text">치유 → 복음 선포<br>↓ 사두개인과 충돌<br>↓ 체포 · 심문<br>↓ 담대한 증언<br>↓ 공동체의 기도</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 03 · 1</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 2: STORY FLOW — 원인과 결과의 연쇄
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 03</span>
+    <span class="page-header-title">첫 기적, 첫 박해</span>
+  </div>
+
+  <h2 class="section-heading">한 번의 치유가 어디까지 이어졌을까?</h2>
+  <p class="flow-page-intro">행 3:1부터 4:31까지는 하나의 연속된 인과관계다. 각 사건은 앞 사건 때문에 일어났다.</p>
+
+  <div class="story-flow">
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">① 성전으로 가는 베드로와 요한</div>
+        <div class="flow-step-desc">제9시 기도 시간에 두 사도가 성전으로 올라간다.</div>
+      </div>
+      <div class="flow-step-ref">3:1</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">② 걷지 못하던 사람을 만남 — 치유</div>
+        <div class="flow-step-desc">태어날 때부터 걷지 못하던 사람이 미문 앞에서 도움을 구한다. "나사렛 예수 그리스도의 이름으로 일어나 걸으라." 그가 걷고 뛰며 하나님을 찬양한다.</div>
+      </div>
+      <div class="flow-step-ref">3:2–10</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">③ 사람들이 솔로몬 행각으로 몰려듦</div>
+        <div class="flow-step-desc">사람들이 놀라 두 사도에게 달려온다. 치유가 복음 선포의 계기가 된다.</div>
+      </div>
+      <div class="flow-step-ref">3:11</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">④ 베드로가 예수님을 전함</div>
+        <div class="flow-step-desc">베드로는 이 기적이 자신의 능력이 아님을 밝히고, 예수님의 죽음과 부활을 선포하며 회개를 촉구한다.</div>
+      </div>
+      <div class="flow-step-ref">3:12–26</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑤ 종교지도자들이 개입 — 체포</div>
+        <div class="flow-step-desc">제사장들, 성전 맡은 자, 사두개인들이 나타난다. 사도들이 예수의 부활을 가르치는 것을 못마땅하게 여겨 잡아 가둔다. 그러나 말씀을 들은 많은 사람이 믿는다 (남자의 수 약 5천).</div>
+      </div>
+      <div class="flow-step-ref">4:1–4</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑥ 산헤드린 심문 — "무슨 권세로?"</div>
+        <div class="flow-step-desc">관리들, 장로들, 서기관들, 대제사장 가문이 모인다. "무슨 권세와 누구의 이름으로 이 일을 행하였느냐?" 베드로가 성령 충만하여 나사렛 예수 그리스도의 이름으로 대답한다.</div>
+      </div>
+      <div class="flow-step-ref">4:5–12</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑦ 경고 후 석방 — "말하지 말라"</div>
+        <div class="flow-step-desc">지도자들은 기적을 부인할 수 없어 위협만 하고 풀어준다. "예수의 이름으로 말하지도 말고 가르치지도 말라." 베드로와 요한의 대답: "보고 들은 것을 말하지 아니할 수 없다."</div>
+      </div>
+      <div class="flow-step-ref">4:13–22</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑧ 공동체가 함께 기도함 — "담대하게 전하게 하소서"</div>
+        <div class="flow-step-desc">사도들이 돌아와 상황을 전하고 공동체가 하나님께 기도한다. 위협을 없애달라 구하지 않고, 담대하게 말씀을 전하게 해달라고 구한다. 모인 곳이 흔들리고 성령이 충만하여 다시 담대하게 전한다.</div>
+      </div>
+      <div class="flow-step-ref">4:23–31</div>
+    </div>
+
+    <div class="flow-result">
+      막으려 했지만, 오히려 복음은 계속 전해졌다
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 03 · 2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 3: SCENE 01 — "은과 금은 내게 없거니와" (3:1-10)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 03</span>
+    <span class="page-header-title">첫 기적, 첫 박해</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">"은과 금은 내게 없거니와"</span>
+      <span class="scene-ref">행 3:1–10</span>
+    </div>
+
+    <div class="scene-body">
+      <p>베드로와 요한은 제9시(오후 3시경) 기도 시간에 성전으로 올라가고 있었다. 성전 문 앞에는 태어날 때부터 걷지 못했던 사람이 있었다. 사람들은 매일 그를 성전 문 앞에 데려다 놓았고, 그는 성전에 들어가는 사람들에게 도움을 요청하고 있었다.</p>
+    </div>
+
+    <div class="story-flow" style="margin:var(--sp-2) 0;">
+      <div class="flow-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">도움을 구함</div>
+          <div class="flow-step-desc">베드로와 요한이 성전에 들어가려 할 때 그가 구제를 요청한다. 그는 돈을 받을 것이라고 기대했다.</div>
+        </div>
+        <div class="flow-step-ref">3:3</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step key-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">"나사렛 예수 그리스도의 이름으로 일어나 걸으라"</div>
+          <div class="flow-step-desc">"은과 금은 내게 없거니와 내게 있는 이것을 네게 주노니…" 베드로가 그의 오른손을 잡아 일으킨다.</div>
+        </div>
+        <div class="flow-step-ref">3:6–7</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">발과 발목에 힘을 얻음</div>
+          <div class="flow-step-desc">즉시 발과 발목이 힘을 얻어 뛰어 서서 걷고, 성전에 들어가며 하나님을 찬양한다.</div>
+        </div>
+        <div class="flow-step-ref">3:7–8</div>
+      </div>
+    </div>
+
+    <!-- Before / After -->
+    <div class="before-after">
+      <div class="ba-col">
+        <div class="ba-label">BEFORE</div>
+        <div class="ba-items">
+          <span>태어날 때부터 걷지 못함</span>
+          <span>매일 다른 사람이 데려다 놓음</span>
+          <span>성전 문 밖에서 도움을 구함</span>
+        </div>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-col after">
+        <div class="ba-label">AFTER</div>
+        <div class="ba-items">
+          <span>스스로 일어서고 걷고 뜀</span>
+          <span>성전 안으로 들어감</span>
+          <span>하나님을 찬양함</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="background-box" style="margin-top:var(--sp-2);">
+      <div class="background-box-title">배경 — 제9시와 미문</div>
+      <div class="background-box-body">유대식 시간 계산에서 제9시는 오늘날 대략 오후 3시경에 해당하며, 이 시간은 기도 시간이었다. 본문은 이 문을 '미문'이라고 부르지만, 당시 성전의 정확히 어느 문을 가리키는지에 대해서는 여러 견해가 있다. 4:22에 따르면 치유받은 사람은 40세가 넘었다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 03 · 3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 4: SCENE 02 — 기적을 본 사람들이 몰려들다 (3:11-26)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 03</span>
+    <span class="page-header-title">첫 기적, 첫 박해</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 2</span>
+      <span class="scene-title">기적을 본 사람들이 몰려들다</span>
+      <span class="scene-ref">행 3:11–26</span>
+    </div>
+
+    <div class="scene-body">
+      <p>치유받은 사람이 베드로와 요한을 붙잡고 있자, 놀란 사람들이 솔로몬 행각으로 달려왔다. 베드로는 이 순간을 자신을 드러내는 기회로 사용하지 않는다.</p>
+    </div>
+
+    <div class="sermon-flow" style="margin-top:var(--sp-2);">
+      <div class="sermon-step">
+        <div class="sermon-num-col"><div class="sermon-num">1</div><div class="sermon-line"></div></div>
+        <div class="sermon-content">
+          <div class="sermon-step-title">시선을 돌린다 <span class="sermon-ref-tag">3:12</span></div>
+          <div class="sermon-step-body">"이스라엘 사람들아, 왜 이 일을 놀랍게 여기느냐? 왜 우리를 주목하느냐? 우리가 우리 자신의 능력이나 경건으로 이 사람을 걷게 한 것이 아니다."</div>
+        </div>
+      </div>
+      <div class="sermon-step">
+        <div class="sermon-num-col"><div class="sermon-num">2</div><div class="sermon-line"></div></div>
+        <div class="sermon-content">
+          <div class="sermon-step-title">하나님께서 예수를 영화롭게 하셨다 <span class="sermon-ref-tag">3:13</span></div>
+          <div class="sermon-step-body">아브라함, 이삭, 야곱의 하나님, 즉 조상들의 하나님이 그의 종 예수를 영화롭게 하셨다.</div>
+        </div>
+      </div>
+      <div class="sermon-step">
+        <div class="sermon-num-col"><div class="sermon-num">3</div><div class="sermon-line"></div></div>
+        <div class="sermon-content">
+          <div class="sermon-step-title">그러나 너희는 그를 거부하고 죽였다 <span class="sermon-ref-tag">3:13–15</span></div>
+          <div class="sermon-step-body">거룩하고 의로운 이를 거부하고 살인자를 풀어주기를 구하였다. 생명의 주를 죽였다.</div>
+        </div>
+      </div>
+      <div class="sermon-step">
+        <div class="sermon-num-col"><div class="sermon-num">4</div><div class="sermon-line"></div></div>
+        <div class="sermon-content">
+          <div class="sermon-step-title">하나님께서 그를 죽은 자 가운데서 살리셨다 <span class="sermon-ref-tag">3:15</span></div>
+          <div class="sermon-step-body">"우리가 이 일에 증인이로다."</div>
+        </div>
+      </div>
+      <div class="sermon-step">
+        <div class="sermon-num-col"><div class="sermon-num">5</div><div class="sermon-line"></div></div>
+        <div class="sermon-content">
+          <div class="sermon-step-title">예수의 이름이 이 사람을 건강하게 했다 <span class="sermon-ref-tag">3:16</span></div>
+          <div class="sermon-step-body">예수의 이름과 그 이름을 믿는 믿음이 이 사람을 온전하게 했다.</div>
+        </div>
+      </div>
+      <div class="sermon-step">
+        <div class="sermon-num-col"><div class="sermon-num">6</div><div class="sermon-line"></div></div>
+        <div class="sermon-content">
+          <div class="sermon-step-title">그러므로 회개하고 돌이키라 <span class="sermon-ref-tag">3:19</span></div>
+          <div class="sermon-step-body">죄가 씻어지고 주 앞으로부터 안위의 때가 이른다. 무지하여 행했으나 회개할 수 있다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acts 2 vs Acts 3 설교 비교 -->
+    <h2 class="section-heading" style="margin-top:var(--sp-3);font-size:var(--fs-h3);">Acts 2와 Acts 3 설교의 공통 구조</h2>
+    <div class="sermon-compare">
+      <div class="sc-sermon-col">
+        <div class="sc-sermon-label">ACTS 2 — 오순절</div>
+        <div class="sc-sermon-items">
+          <span>요엘의 예언 성취</span>
+          <span>예수의 죽음·부활</span>
+          <span>성령강림의 의미</span>
+          <span>회개하고 세례를 받으라</span>
+        </div>
+      </div>
+      <div class="sc-sermon-col">
+        <div class="sc-sermon-label">ACTS 3 — 성전 미문</div>
+        <div class="sc-sermon-items">
+          <span>치유가 우리 능력이 아님</span>
+          <span>예수의 죽음·부활</span>
+          <span>우리가 증인</span>
+          <span>회개하고 돌이키라</span>
+        </div>
+      </div>
+    </div>
+    <div class="sc-sermon-common">반복되는 핵심: 예수님의 죽음 → 부활 → 우리가 증인 → 회개</div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 03 · 4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 5: SCENE 03 — 왜 종교지도자들은 화가 났을까? (4:1-4)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 03</span>
+    <span class="page-header-title">첫 기적, 첫 박해</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">왜 종교지도자들은 화가 났을까?</span>
+      <span class="scene-ref">행 4:1–4</span>
+    </div>
+
+    <div class="scene-body">
+      <p>사도들이 사람들에게 말하고 있을 때 새로운 인물들이 등장한다. 제사장들, 성전 맡은 자(성전 경비 대장), 사두개인들이 찾아왔다. 본문은 그들이 특히 사도들이 "예수를 들어 죽은 자 가운데서 부활하는 도를 백성에게 전함"을 싫어했다고 설명한다(4:2).</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-2);">사두개인은 누구인가?</h2>
+
+  <div class="background-box">
+    <div class="background-box-title">배경 — 사두개인 (Sadducees)</div>
+    <div class="background-box-body">사두개인은 당시 유대 사회의 중요한 종교 집단 중 하나로, 제사장 귀족층과 관련이 깊었으며 성전 체제에서 상당한 영향력을 가지고 있었다. 사도행전 23:8은 사두개인들이 부활, 천사, 귀신이 없다고 한다고 기록한다. 따라서 사도들이 예수의 부활을 공개적으로 선포하는 것은 이들의 신학적 입장과 정면으로 충돌했다.</div>
+  </div>
+
+  <!-- 충돌 다이어그램 -->
+  <div class="clash-diagram" style="margin-top:var(--sp-2);">
+    <div class="clash-side">
+      <div class="clash-label">사도들의 메시지</div>
+      <div class="clash-title">예수께서 죽은 자 가운데서 부활하셨다</div>
+      <div class="clash-desc">이것이 치유의 근거이며 구원의 근거다.</div>
+    </div>
+    <div class="clash-center">
+      <div class="clash-vs">충돌</div>
+    </div>
+    <div class="clash-side">
+      <div class="clash-label">사두개인의 입장</div>
+      <div class="clash-title">죽은 자의 부활은 없다</div>
+      <div class="clash-desc">사두개인들은 부활 자체를 인정하지 않았다. (행 23:8)</div>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">베드로와 요한 체포 · 구금</div>
+        <div class="flow-step-desc">이미 저녁이었으므로 다음 날까지 가두었다.</div>
+      </div>
+      <div class="flow-step-ref">4:3</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">그러나 복음은 계속 전해졌다</div>
+        <div class="flow-step-desc">말씀을 들은 사람 중 많은 사람이 믿었고, 믿는 남자의 수가 약 5천 명이 되었다(4:4). 이는 당일 회심한 5천 명의 총계가 아니라, 본문이 기록하는 믿는 이들의 수가 약 5천 명이 되었다는 것이다.</div>
+      </div>
+      <div class="flow-step-ref">4:4</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 03 · 5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 6: SCENE 04 — 산헤드린 앞에서 (4:5-12)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 03</span>
+    <span class="page-header-title">첫 기적, 첫 박해</span>
+  </div>
+
+  <h2 class="section-heading">배경: 산헤드린이란?</h2>
+
+  <div class="background-box" style="margin-bottom:var(--sp-3);">
+    <div class="background-box-title">산헤드린 (공회, Sanhedrin)</div>
+    <div class="background-box-body">당시 유대 사회에서 종교·사법적 역할을 담당하던 최고 의결기구를 일반적으로 산헤드린 또는 공회라고 부른다. 대제사장을 비롯한 종교지도자들, 장로들, 서기관 등이 참여했다. 4:5–6에는 관리들, 장로들, 서기관들, 대제사장 안나스, 가야바, 요한, 알렉산더, 대제사장 가문 사람들이 모인 것으로 기록된다. 사도행전에서 앞으로도 반복적으로 등장하는 기구다.</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">산헤드린 앞에 선 베드로와 요한</span>
+      <span class="scene-ref">행 4:5–12</span>
+    </div>
+
+    <div class="scripture-block" style="margin:var(--sp-2) 0;">
+      <div class="scripture-text">"너희가 무슨 권세와 누구의 이름으로 이 일을 행하였느냐?"</div>
+      <div class="scripture-ref">사도행전 4:7 — 산헤드린의 심문</div>
+    </div>
+
+    <div class="scene-body">
+      <p>베드로가 성령이 충만하여 대답한다. 이 치유는 나사렛 예수 그리스도의 이름으로 이루어졌으며, 너희가 십자가에 못 박았으나 하나님께서 죽은 자 가운데서 살리신 그분의 이름이다(4:10). 버림받은 돌이 집 모퉁이의 머릿돌이 되었다는 시편(118:22)을 인용한다.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">이 Lesson을 관통하는 키워드: 예수의 이름</h2>
+
+  <div class="name-chain">
+    <div class="nc-item">
+      <div class="nc-ref">행 3:6</div>
+      <div class="nc-text"><strong>나사렛 예수 그리스도의 이름으로</strong> 일어나 걸으라</div>
+    </div>
+    <div class="nc-connector"></div>
+    <div class="nc-item">
+      <div class="nc-ref">행 3:16</div>
+      <div class="nc-text"><strong>그 이름을 믿음으로</strong> 이 사람이 온전하게 되었다</div>
+    </div>
+    <div class="nc-connector"></div>
+    <div class="nc-item">
+      <div class="nc-ref">행 4:7</div>
+      <div class="nc-text">너희가 <strong>누구의 이름으로</strong> 이 일을 행하였느냐? (산헤드린의 질문)</div>
+    </div>
+    <div class="nc-connector"></div>
+    <div class="nc-item">
+      <div class="nc-ref">행 4:10</div>
+      <div class="nc-text"><strong>나사렛 예수 그리스도의 이름으로</strong> 이 사람이 건강하게 되었다</div>
+    </div>
+    <div class="nc-connector"></div>
+    <div class="nc-final">
+      <div class="nc-final-text">다른 이름을 우리에게 주신 일이 없음이라 천하 사람 중에 구원을 받을 만한 다른 이름이 없느니라</div>
+      <div class="nc-final-ref">사도행전 4:12</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 03 · 6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 7: SCENE 05 — "말하지 말라" (4:13-22)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 03</span>
+    <span class="page-header-title">첫 기적, 첫 박해</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 5</span>
+      <span class="scene-title">"말하지 말라"</span>
+      <span class="scene-ref">행 4:13–22</span>
+    </div>
+
+    <div class="scene-body">
+      <p>종교지도자들은 베드로와 요한의 담대함을 보고 놀란다. 본문은 지도자들이 "그들이 학문 없는 범인임을 알았다가 이상히 여기며 또한 그들이 예수와 함께 있던 줄을 알고"(4:13)라고 기록한다. 더구나 치유받은 사람이 함께 서 있어 일어난 일을 부인하기도 어려웠다.</p>
+    </div>
+
+    <div class="story-flow" style="margin:var(--sp-2) 0;">
+      <div class="flow-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">지도자들의 판단</div>
+          <div class="flow-step-desc">기적이 명백히 일어났고 예루살렘 사람들이 알고 있다. 부인할 수 없다. 그러나 더 퍼지는 것은 막아야 한다.</div>
+        </div>
+        <div class="flow-step-ref">4:16–17</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step key-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">명령: 예수의 이름으로 말하거나 가르치지 말라</div>
+        </div>
+        <div class="flow-step-ref">4:18</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">베드로와 요한의 대답</div>
+          <div class="flow-step-desc">"하나님 앞에서 너희의 말을 듣는 것이 하나님의 말씀을 듣는 것보다 옳은가 판단하라. 우리는 보고 들은 것을 말하지 아니할 수 없다."</div>
+        </div>
+        <div class="flow-step-ref">4:19–20</div>
+      </div>
+    </div>
+
+    <!-- Before / After: 예수님 체포 당시 vs 지금 -->
+    <div class="background-box">
+      <div class="background-box-title">본문 안에서의 대조</div>
+      <div class="background-box-body">사도행전은 이 시점에서 담대함을 직접 강조한다(4:13). 베드로와 요한이 예수님과 함께 있었음을 지도자들도 인식했다고 본문은 기록한다. 이 교재에서는 본문 자체의 묘사에 집중하며, 과거와의 심리적 비교는 독자의 판단에 맡긴다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 03 · 7</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 8: SCENE 06 — 교회의 기도 (4:23-31)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 03</span>
+    <span class="page-header-title">첫 기적, 첫 박해</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 6</span>
+      <span class="scene-title">박해를 받은 교회는 무엇을 기도했을까?</span>
+      <span class="scene-ref">행 4:23–31</span>
+    </div>
+
+    <div class="scene-body">
+      <p>석방된 베드로와 요한이 동료들에게 돌아와 상황을 알린다. 공동체는 함께 하나님께 기도한다. 이 기도의 내용과 구조가 중요하다.</p>
+    </div>
+
+    <div class="prayer-structure">
+      <div class="prayer-step">
+        <div class="prayer-num-col"><div class="prayer-num">①</div><div class="prayer-line"></div></div>
+        <div class="prayer-content">
+          <div class="prayer-title">하나님을 창조주로 고백한다</div>
+          <div class="prayer-body">하늘과 땅과 바다와 그 가운데 모든 것을 지으신 주권자이심을 먼저 선언한다(4:24).</div>
+        </div>
+      </div>
+      <div class="prayer-step">
+        <div class="prayer-num-col"><div class="prayer-num">②</div><div class="prayer-line"></div></div>
+        <div class="prayer-content">
+          <div class="prayer-title">시편 2편을 인용한다</div>
+          <div class="prayer-body">"어찌하여 열방이 분노하며 족속들이 허사를 경영하는가…" (4:25–26). 민족들과 통치자들의 반대는 이미 예언된 일이다.</div>
+        </div>
+      </div>
+      <div class="prayer-step">
+        <div class="prayer-num-col"><div class="prayer-num">③</div><div class="prayer-line"></div></div>
+        <div class="prayer-content">
+          <div class="prayer-title">지금 일어나는 일을 그 예언과 연결한다</div>
+          <div class="prayer-body">헤롯, 본디오 빌라도, 이방인, 이스라엘 백성이 예수를 대적했다. 이것은 하나님의 뜻 안에서 이루어진 일이었다(4:27–28).</div>
+        </div>
+      </div>
+      <div class="prayer-step">
+        <div class="prayer-num-col"><div class="prayer-num">④</div><div class="prayer-line"></div></div>
+        <div class="prayer-content">
+          <div class="prayer-title">그렇다면 무엇을 구하는가?</div>
+          <div class="prayer-body">위협을 없애달라고만 구하지 않는다. 본문에서 명시적으로 구하는 것은 다음이다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-verse-box" style="margin:var(--sp-1) 0 var(--sp-2);">
+      <div class="key-verse-label">기도의 핵심 요청 — 4:29</div>
+      <div class="key-verse-text">종들로 하여금 담대히 하나님의 말씀을 전하게 하여 주옵시며</div>
+      <div class="key-verse-ref">사도행전 4:29</div>
+    </div>
+
+    <!-- 위협 vs 기도 대조 -->
+    <div class="contrast-big">
+      <div class="contrast-block threat">
+        <div class="contrast-label">종교지도자들의 위협</div>
+        <div class="contrast-text">"예수의 이름으로<br>말하지도 말고<br>가르치지도 말라"</div>
+        <div class="contrast-ref">행 4:18</div>
+      </div>
+      <div class="contrast-vs">VS</div>
+      <div class="contrast-block prayer">
+        <div class="contrast-label">교회의 기도</div>
+        <div class="contrast-text">"담대히<br>하나님의 말씀을<br>전하게 하소서"</div>
+        <div class="contrast-ref">행 4:29</div>
+      </div>
+      <div class="contrast-result">
+        기도 후: 모인 곳이 흔들리고, 성령이 충만하여, 하나님의 말씀을 담대히 전했다 (4:31)
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 03 · 8</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 9: VISUAL EXPLAINER — 원인에서 결과까지
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 03</span>
+    <span class="page-header-title">첫 기적, 첫 박해</span>
+  </div>
+
+  <h2 class="section-heading">한 사람의 치유에서 첫 박해까지</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-faint);line-height:1.6;margin-bottom:var(--sp-3);">이 사건들은 각각 독립된 에피소드가 아니다. 하나가 다음을 일으켰다.</p>
+
+  <!-- 지그재그 인과 맵 -->
+  <div class="causal-map">
+    <div class="cm-row">
+      <div class="cm-step key"><strong>① 치유</strong>예수의 이름으로<br>걷지 못하던 자가 일어섬</div>
+      <div class="cm-arrow-h">→</div>
+      <div class="cm-step"><strong>② 사람들이 모임</strong>솔로몬 행각</div>
+      <div class="cm-arrow-h">→</div>
+      <div class="cm-step"><strong>③ 복음 선포</strong>베드로가<br>예수를 전함</div>
+      <div class="cm-arrow-h">→</div>
+      <div class="cm-step key"><strong>④ 부활 선포</strong>"우리가<br>이 일의 증인"</div>
+      <div class="cm-arrow-h">→</div>
+      <div class="cm-step"><strong>⑤ 충돌</strong>사두개인과<br>신학적 충돌</div>
+    </div>
+    <div class="cm-turn">
+      <div class="cm-turn-arrow"></div>
+    </div>
+    <div class="cm-row cm-row-reverse">
+      <div class="cm-step key"><strong>⑩ 다시 전함</strong>모인 곳 흔들림<br>담대하게 전함</div>
+      <div class="cm-arrow-h">←</div>
+      <div class="cm-step"><strong>⑨ 기도</strong>"담대하게<br>전하게 하소서"</div>
+      <div class="cm-arrow-h">←</div>
+      <div class="cm-step"><strong>⑧ 거부</strong>"보고 들은 것을<br>말하지 않을 수 없다"</div>
+      <div class="cm-arrow-h">←</div>
+      <div class="cm-step key"><strong>⑦ 경고</strong>"이름으로<br>말하지 말라"</div>
+      <div class="cm-arrow-h">←</div>
+      <div class="cm-step"><strong>⑥ 체포·심문</strong>산헤드린<br>앞에 서다</div>
+    </div>
+  </div>
+
+  <div class="cm-big-statement">
+    <div class="cm-big-text">막으려 했지만, 오히려 복음은 계속 전해졌다.</div>
+  </div>
+
+  <!-- 두 가지 반복 모티프 -->
+  <div class="motif-grid">
+    <div class="motif-box">
+      <div class="motif-title">예수의 이름</div>
+      <div class="motif-chain">
+        치유 (3:6)<br>
+        ↓ 구원의 근거 (4:12)<br>
+        ↓ 증언 (4:10)<br>
+        ↓ "다른 이름 없음" (4:12)
+      </div>
+    </div>
+    <div class="motif-box">
+      <div class="motif-title">담대함</div>
+      <div class="motif-chain">
+        공회 앞에서 증언 (4:8)<br>
+        ↓ "말하지 않을 수 없다" (4:20)<br>
+        ↓ 담대함을 위한 기도 (4:29)<br>
+        ↓ 다시 담대하게 전함 (4:31)
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 03 · 9</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 10: LESSON SUMMARY
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 03</span>
+    <span class="page-header-title">첫 기적, 첫 박해</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);margin-bottom:var(--sp-3);">
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);">한눈에 보는 LESSON 03</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">사도행전 3:1–4:31</div>
+  </div>
+
+  <div class="summary-grid">
+
+    <div class="summary-block">
+      <div class="summary-block-label">사건</div>
+      <div class="summary-block-content">미문의 치유 → 솔로몬 행각 설교 → 사두개인과 충돌 → 베드로·요한 체포 → 산헤드린 심문 → 경고 후 석방 → 공동체의 기도 → 다시 담대한 복음 선포</div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">인물</div>
+      <div class="summary-block-content">
+        <strong>베드로</strong> — 치유와 설교, 산헤드린 앞에서 증언<br>
+        <strong>요한</strong> — 체포와 심문을 함께 겪음<br>
+        <strong>치유받은 사람</strong> — 40세 이상, 태어날 때부터 못 걸었으나 치유됨<br>
+        <strong>사두개인·종교지도자</strong> — 부활 선포에 반발, 체포·심문
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">장소</div>
+      <div class="summary-block-content">
+        <strong>예루살렘 성전</strong> — 치유가 일어난 곳<br>
+        <strong>솔로몬 행각</strong> — 사람들이 모이고 베드로가 설교한 곳<br>
+        <strong>산헤드린 공회</strong> — 심문 장소
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">핵심 키워드</div>
+      <div class="tag-cloud">
+        <span class="tag">치유</span>
+        <span class="tag">예수의 이름</span>
+        <span class="tag">부활</span>
+        <span class="tag">사두개인</span>
+        <span class="tag">산헤드린</span>
+        <span class="tag">박해</span>
+        <span class="tag">담대함</span>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">숫자로 기억하기</div>
+      <div class="number-row">
+        <div class="num-item">
+          <div class="num-big">제9시</div>
+          <div class="num-label">기도 시간<br>오후 3시경</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">40+</div>
+          <div class="num-label">치유받은 사람의<br>나이 (행 4:22)</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">5,000</div>
+          <div class="num-label">믿는 남자의 수<br>(행 4:4)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">새롭게 배운 배경지식</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);">
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">사두개인</div>
+          <div class="background-box-body">제사장 귀족층과 관련된 종교 집단. 부활·천사·귀신을 인정하지 않음 (행 23:8).</div>
+        </div>
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">산헤드린 (공회)</div>
+          <div class="background-box-body">유대 사회의 최고 종교·사법 의결기구. 대제사장, 장로, 서기관 등이 참여. 사도행전에서 반복적으로 등장.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이야기 연결</div>
+      <div class="story-conn">
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">이전 L02</div>
+          성령강림<br>교회의 탄생
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node current-node">
+          <div style="font-size:var(--fs-caption);">L03</div>
+          첫 기적, 첫 박해<br>행 3–4장
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">다음 L04</div>
+          교회 성장 · 내부의 위기<br>행 4:32–5:42
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        한 사람의 치유를 계기로 예수님의 부활이 공개적으로 선포되자 사도들은 처음으로 종교지도자들의 강한 반대에 부딪혔지만, 위협에도 불구하고 복음 전파를 멈추지 않았다.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 03 · 10</span>
+  </div>
+</section>
+
+
+</body>
+</html>
