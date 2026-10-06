@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 01 — 땅끝을 향한 시작</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 01 전용 추가 스타일 ── */
+
+    /* 오프닝 페이지 레이아웃 */
+    .opening-title-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 6mm;
+      margin-bottom: var(--sp-3);
+    }
+
+    .opening-number-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .opening-number-label {
+      font-size: 7pt;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1mm;
+    }
+
+    .opening-number {
+      font-size: 38pt;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .opening-title-block {
+      flex: 1;
+      padding-top: 1mm;
+    }
+
+    .opening-part-label {
+      font-size: var(--fs-caption);
+      color: var(--ink-faint);
+      letter-spacing: 0.08em;
+      margin-bottom: 2mm;
+    }
+
+    .opening-title {
+      font-size: 20pt;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 2mm;
+    }
+
+    .opening-scripture {
+      font-size: var(--fs-small);
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .opening-divider {
+      height: 1px;
+      background: var(--rule);
+      margin: var(--sp-3) 0;
+    }
+
+    /* Story Flow 페이지 */
+    .flow-page-intro {
+      font-size: var(--fs-small);
+      color: var(--ink-faint);
+      margin-bottom: var(--sp-3);
+      line-height: 1.6;
+    }
+
+    .flow-container {
+      display: flex;
+      gap: 8mm;
+    }
+
+    .flow-main {
+      flex: 1;
+    }
+
+    .flow-result {
+      margin-top: var(--sp-2);
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--accent-soft);
+      border-radius: 4px;
+      font-size: var(--fs-small);
+      color: var(--accent);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* Scene 구분선 */
+    .scene-separator {
+      height: 1px;
+      background: var(--rule);
+      margin: var(--sp-3) 0;
+    }
+
+    /* 사도 이름 그리드 */
+    .apostle-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5mm;
+      margin: var(--sp-2) 0;
+    }
+
+    .apostle-item {
+      padding: 2mm 3mm;
+      background: #f4f3f1;
+      border-radius: 3px;
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* 선출 과정 */
+    .election-flow {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      margin: var(--sp-2) 0;
+      flex-wrap: wrap;
+    }
+
+    .election-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5mm;
+    }
+
+    .election-step-box {
+      padding: 2.5mm 4mm;
+      border: 1.5px solid var(--rule);
+      border-radius: 4px;
+      font-size: var(--fs-small);
+      color: var(--ink-soft);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .election-step-ref {
+      font-size: 6.5pt;
+      color: var(--ink-faint);
+    }
+
+    .election-arrow {
+      color: var(--accent);
+      font-size: 11pt;
+      margin-bottom: 4mm;
+    }
+
+    /* 유다 비교 박스 */
+    .judas-note {
+      margin: var(--sp-2) 0;
+      padding: var(--sp-2) var(--sp-3);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      font-size: var(--fs-small);
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .judas-note-title {
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.5mm;
+      font-size: var(--fs-small);
+    }
+
+    /* Visual Explainer 페이지 */
+    .visual-page-intro {
+      font-size: var(--fs-small);
+      color: var(--ink-faint);
+      line-height: 1.6;
+      margin-bottom: var(--sp-3);
+    }
+
+    .acts-backbone {
+      margin: var(--sp-3) 0;
+    }
+
+    .backbone-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--ink-faint);
+      letter-spacing: 0.1em;
+      text-align: center;
+      margin-bottom: var(--sp-3);
+    }
+
+    /* 5단계 세로 journey */
+    .journey-stages {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .journey-stage {
+      display: flex;
+      align-items: stretch;
+      gap: 5mm;
+      min-height: 26mm;
+    }
+
+    .journey-stage-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 20mm;
+      flex-shrink: 0;
+    }
+
+    .stage-dot {
+      width: 11mm;
+      height: 11mm;
+      border-radius: 50%;
+      border: 2.5px solid var(--rule-mid);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7pt;
+      font-weight: 700;
+      color: var(--ink-faint);
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .stage-dot.current {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .stage-line {
+      flex: 1;
+      width: 2px;
+      background: var(--rule);
+      margin: 0 auto;
+    }
+
+    .stage-line.done {
+      background: var(--accent-mid);
+    }
+
+    .journey-stage:last-child .stage-line {
+      display: none;
+    }
+
+    .journey-stage-right {
+      flex: 1;
+      padding: 0 0 6mm 0;
+    }
+
+    .stage-name {
+      font-size: var(--fs-h3);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.5mm;
+      margin-top: 1mm;
+    }
+
+    .stage-name.current {
+      color: var(--accent);
+    }
+
+    .stage-verse {
+      font-size: var(--fs-caption);
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 2mm;
+    }
+
+    .stage-lessons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5mm;
+    }
+
+    .stage-lesson-tag {
+      padding: 1mm 2.5mm;
+      background: #f0eeeb;
+      border-radius: 2px;
+      font-size: 6.5pt;
+      color: var(--ink-faint);
+    }
+
+    .stage-lesson-tag.current {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* 요약 페이지 */
+    .summary-page-header {
+      margin-bottom: var(--sp-3);
+      padding-bottom: var(--sp-2);
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .summary-page-title {
+      font-size: var(--fs-h2);
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .summary-page-subtitle {
+      font-size: var(--fs-caption);
+      color: var(--ink-faint);
+      margin-top: 1mm;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3);
+      flex: 1;
+    }
+
+    .summary-block {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-1);
+    }
+
+    .summary-block.full {
+      grid-column: 1 / -1;
+    }
+
+    .summary-block-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding-bottom: 1.5mm;
+      border-bottom: 1.5px solid var(--accent-soft);
+    }
+
+    .summary-block-content {
+      font-size: var(--fs-small);
+      color: var(--ink-soft);
+      line-height: var(--lh-body);
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2mm;
+    }
+
+    .tag {
+      padding: 1.5mm 3mm;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      border-radius: 2px;
+    }
+
+    .number-row {
+      display: flex;
+      gap: var(--sp-3);
+    }
+
+    .num-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1mm;
+    }
+
+    .num-big {
+      font-size: 16pt;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .num-label {
+      font-size: 6.5pt;
+      color: var(--ink-faint);
+      text-align: center;
+    }
+
+    .story-conn {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+    }
+
+    .conn-node {
+      flex: 1;
+      padding: 2mm 3mm;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+      font-size: var(--fs-caption);
+      color: var(--ink-faint);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .conn-node.current-node {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .conn-arrow {
+      font-size: 9pt;
+      color: var(--rule-mid);
+      flex-shrink: 0;
+    }
+
+    .one-line-box {
+      margin-top: var(--sp-2);
+      padding: var(--sp-2) var(--sp-3);
+      border-left: 3px solid var(--accent);
+      background: var(--accent-pale);
+      font-size: var(--fs-body);
+      color: var(--ink);
+      line-height: var(--lh-body);
+      font-family: var(--ff-hand);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     PAGE 1: LESSON OPENING
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <!-- 책 식별 띠 -->
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <!-- 레슨 번호 + 제목 -->
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">01</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 1 — 교회의 시작</div>
+      <h1 class="opening-title">땅끝을 향한 시작</h1>
+      <div class="opening-scripture">사도행전 1:1–26</div>
+    </div>
+  </div>
+
+  <!-- 한 줄 요약 -->
+  <div class="lesson-summary-line">
+    부활하신 예수님이 성령을 약속하고 승천하신 후, 제자들은 예루살렘에서 기도하며 유다를 대신할 열두 번째 사도를 선출한다.
+  </div>
+
+  <!-- 인물·장소 정보 -->
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">예수님, 베드로, 맛디아, 요셉 바사바, 유다 이스가리엇</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">감람산, 마가의 다락방 (예루살렘)</div>
+    </div>
+  </div>
+
+  <!-- Progress Map -->
+  <div class="progress-map-wrap">
+    <div class="progress-map-label">사도행전 전체에서 현재 위치 — 행 1:8</div>
+    <div class="progress-map">
+      <div class="progress-node active">
+        <div class="node-dot">●</div>
+        <div class="node-label">예루살렘</div>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-node">
+        <div class="node-dot"></div>
+        <div class="node-label">유대</div>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-node">
+        <div class="node-dot"></div>
+        <div class="node-label">사마리아</div>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-node">
+        <div class="node-dot"></div>
+        <div class="node-label">이방 세계</div>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-node">
+        <div class="node-dot"></div>
+        <div class="node-label">로마</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 목록 -->
+  <div class="scene-index">
+    <div class="scene-index-label">이 레슨의 구성</div>
+    <ul class="scene-index-list">
+      <li class="scene-index-item">
+        <span class="scene-index-num">SCENE 1</span>
+        <span class="scene-index-title">40일의 가르침과 사도행전 1:8</span>
+        <span class="scene-index-ref">1:1–8</span>
+      </li>
+      <li class="scene-index-item">
+        <span class="scene-index-num">SCENE 2</span>
+        <span class="scene-index-title">승천</span>
+        <span class="scene-index-ref">1:9–11</span>
+      </li>
+      <li class="scene-index-item">
+        <span class="scene-index-num">SCENE 3</span>
+        <span class="scene-index-title">기도하는 공동체</span>
+        <span class="scene-index-ref">1:12–14</span>
+      </li>
+      <li class="scene-index-item">
+        <span class="scene-index-num">SCENE 4</span>
+        <span class="scene-index-title">맛디아 선출</span>
+        <span class="scene-index-ref">1:15–26</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 01 · 1</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 2: STORY FLOW
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 01</span>
+    <span class="page-header-title">땅끝을 향한 시작</span>
+  </div>
+
+  <h2 class="section-heading">사건 흐름</h2>
+
+  <p class="flow-page-intro">
+    사도행전 1장의 모든 사건을 아래 흐름에서 한눈에 파악한다. 각 단계 옆의 구절을 확인하면 원문에서 찾을 수 있다.
+  </p>
+
+  <div class="story-flow">
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">데오빌로에게 드리는 서문</div>
+        <div class="flow-step-desc">첫 번째 책(누가복음)에서 이어지는 연속 저작임을 밝힌다. 부활하신 예수님이 40일 동안 제자들에게 나타나셨음을 요약한다.</div>
+      </div>
+      <div class="flow-step-ref">1:1–2</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">40일의 가르침</div>
+        <div class="flow-step-desc">예수님은 하나님 나라에 관한 일들을 말씀하신다. 예루살렘을 떠나지 말고 성령을 기다리라고 명하신다.</div>
+      </div>
+      <div class="flow-step-ref">1:3–5</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">★ 사도행전 1:8 — 복음이 가야 할 길</div>
+        <div class="flow-step-desc">"예루살렘과 온 유대와 사마리아와 땅끝까지 내 증인이 되리라." 사도행전 전체를 관통하는 핵심 구절이다.</div>
+      </div>
+      <div class="flow-step-ref">1:6–8</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">승천</div>
+        <div class="flow-step-desc">말씀을 마치신 예수님이 구름에 가리어 보이지 않게 되신다. 두 천사가 나타나 다시 오실 것을 선언한다.</div>
+      </div>
+      <div class="flow-step-ref">1:9–11</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">예루살렘의 다락방으로 귀환</div>
+        <div class="flow-step-desc">제자들이 감람산에서 예루살렘으로 돌아온다. 열한 사도, 여러 여자들, 마리아, 예수님의 형제들이 다락방에 모인다.</div>
+      </div>
+      <div class="flow-step-ref">1:12–14</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">베드로의 제안</div>
+        <div class="flow-step-desc">약 120명 앞에서 베드로가 일어난다. 유다의 배반과 죽음이 시편의 성취임을 설명하고, 열두 번째 사도를 세워야 한다고 제안한다.</div>
+      </div>
+      <div class="flow-step-ref">1:15–22</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">두 후보 선정</div>
+        <div class="flow-step-desc">요셉 바사바(유스도)와 맛디아 두 사람이 추천된다. 둘 다 세례 때부터 부활까지 함께한 증인이다.</div>
+      </div>
+      <div class="flow-step-ref">1:23</div>
+    </div>
+    <div class="flow-arrow"></div>
+
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">기도 후 제비뽑기 — 맛디아 선출</div>
+        <div class="flow-step-desc">두 후보 중 누가 열두 번째 자리를 채울지 주님께 맡기는 기도를 드린 후 제비를 뽑는다. 제비가 맛디아에게 돌아간다.</div>
+      </div>
+      <div class="flow-step-ref">1:24–26</div>
+    </div>
+
+    <div class="flow-result">
+      결과: 열두 사도가 다시 완성된다 → 교회는 오순절을 기다린다
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 01 · 2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 3: SCENE 1 + SCENE 2
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 01</span>
+    <span class="page-header-title">땅끝을 향한 시작</span>
+  </div>
+
+  <!-- SCENE 1 -->
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">40일의 가르침과 사도행전 1:8</span>
+      <span class="scene-ref">행 1:1–8</span>
+    </div>
+
+    <div class="scene-body">
+      <p>사도행전은 "데오빌로여, 내가 먼저 쓴 글에는…"이라는 문장으로 시작한다. 이 '먼저 쓴 글'은 누가복음을 가리킨다. 사도행전과 누가복음은 같은 저자가 같은 수신자에게 쓴 연속 저작이다.</p>
+
+      <div class="background-box" style="margin: var(--sp-2) 0;">
+        <div class="background-box-title">저자와 수신자</div>
+        <div class="background-box-body">사도행전과 누가복음의 저자는 성경 본문에 이름이 직접 기록되어 있지 않다. 초대 교회의 일관된 전통은 두 책 모두 누가(Luke)가 썼다고 전한다. 수신자 데오빌로(Θεόφιλος, '하나님을 사랑하는 자'라는 뜻)가 실존 인물인지, 아니면 불특정 독자를 가리키는 상징적 이름인지에 대해서는 학자들 사이에 견해가 나뉜다.</div>
+      </div>
+
+      <p>예수님은 부활하신 후 40일 동안 제자들에게 나타나셔서 하나님 나라에 관한 것을 말씀하셨다(1:3). 그리고 예루살렘을 떠나지 말고 성령의 약속을 기다리라고 명하셨다(1:4). 제자들이 "이스라엘 나라를 회복하심이 이때냐"고 묻자, 예수님은 그 때와 시기는 아버지께서 자기 권한에 두셨다고 답하시고(1:7), 곧이어 가장 중요한 말씀을 하셨다.</p>
+    </div>
+
+    <div class="key-verse-box">
+      <div class="key-verse-label">사도행전 전체를 이끄는 핵심 구절</div>
+      <div class="key-verse-text">오직 성령이 너희에게 임하시면 너희가 권능을 받고 예루살렘과 온 유대와 사마리아와 땅끝까지 이르러 내 증인이 되리라 하시니라</div>
+      <div class="key-verse-ref">사도행전 1:8</div>
+    </div>
+
+    <div class="scene-body" style="margin-top: var(--sp-2);">
+      <p>이 한 구절이 사도행전 전체의 지도다. 예루살렘에서 시작된 복음이 어떻게 유대, 사마리아, 이방 세계를 거쳐 로마까지 도달하는지가 이후 27장 전체의 내용이다.</p>
+    </div>
+  </div>
+
+  <div class="scene-separator"></div>
+
+  <!-- SCENE 2 -->
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 2</span>
+      <span class="scene-title">승천</span>
+      <span class="scene-ref">행 1:9–11</span>
+    </div>
+
+    <div class="scene-body">
+      <p>말씀을 마치신 예수님이 보는 앞에서 들려 올라가시고, 구름이 그를 가리어 보이지 않게 되었다(1:9). 제자들이 하늘을 쳐다보고 있을 때, 흰 옷 입은 두 사람이 나타나 말했다.</p>
+    </div>
+
+    <div class="scripture-block">
+      <div class="scripture-text">갈릴리 사람들아, 어찌하여 서서 하늘을 쳐다보느냐? 너희 가운데서 하늘로 올려지신 이 예수는 하늘로 가심을 본 그대로 오시리라</div>
+      <div class="scripture-ref">사도행전 1:11</div>
+    </div>
+
+    <div class="scene-body" style="margin-top: var(--sp-2);">
+      <p>천사들의 말은 두 가지를 전한다. 하나는 예수님이 분명히 하늘로 가셨다는 사실이고, 다른 하나는 같은 방식으로 다시 오실 것이라는 약속이다. 제자들은 이 말을 들은 후 비로소 감람산을 떠나 예루살렘으로 돌아간다.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 01 · 3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 4: SCENE 3 + SCENE 4
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 01</span>
+    <span class="page-header-title">땅끝을 향한 시작</span>
+  </div>
+
+  <!-- SCENE 3 -->
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">기도하는 공동체</span>
+      <span class="scene-ref">행 1:12–14</span>
+    </div>
+
+    <div class="scene-body">
+      <p>제자들은 감람산에서 예루살렘으로 돌아와 다락방에 올라갔다. 본문은 그 자리에 있던 사람들의 이름을 열거한다.</p>
+    </div>
+
+    <div class="apostle-grid">
+      <div class="apostle-item">베드로</div>
+      <div class="apostle-item">요한</div>
+      <div class="apostle-item">야고보</div>
+      <div class="apostle-item">안드레</div>
+      <div class="apostle-item">빌립</div>
+      <div class="apostle-item">도마</div>
+      <div class="apostle-item">바돌로매</div>
+      <div class="apostle-item">마태</div>
+      <div class="apostle-item">알패오의 아들 야고보</div>
+      <div class="apostle-item">셀롯인 시몬</div>
+      <div class="apostle-item">야고보의 아들 유다</div>
+      <div class="apostle-item" style="background: var(--accent-pale); color: var(--ink-faint); font-style: italic;">(유다 이스가리엇 자리 공석)</div>
+    </div>
+
+    <div class="scene-body" style="margin-top: var(--sp-2);">
+      <p>열한 사도 외에도 여러 여자들, 예수님의 어머니 마리아, 예수님의 형제들이 함께했다. 이들은 "마음을 같이하여 전혀 기도에 힘쓰더라"고 기록된다(1:14). 이후 본문에서 모인 자의 수가 약 120명이었음이 언급된다(1:15).</p>
+    </div>
+  </div>
+
+  <div class="scene-separator"></div>
+
+  <!-- SCENE 4 -->
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">맛디아 선출</span>
+      <span class="scene-ref">행 1:15–26</span>
+    </div>
+
+    <div class="scene-body">
+      <p>베드로가 약 120명 앞에 일어나 유다의 이탈이 시편의 성취임을 설명한다(시 69:25, 109:8 인용). 그리고 유다의 자리를 채울 사람을 세워야 한다고 제안한다.</p>
+    </div>
+
+    <div class="judas-note">
+      <div class="judas-note-title">유다의 죽음에 관한 두 기록</div>
+      사도행전 1:18–19은 유다가 불의의 삯으로 밭을 사고, 거꾸러져 배가 갈라졌다고 기록한다. 마태복음 27:3–10은 유다가 은 30을 돌려주고 스스로 목매어 죽었으며, 대제사장들이 그 돈으로 밭을 샀다고 기록한다. 두 기록을 어떻게 이해하는지에 대해서는 여러 해석이 있으며, 이 교재에서는 단정하지 않는다. 두 기록 모두 그 밭이 '아겔다마'(피밭)라 불리게 되었다고 전한다.
+    </div>
+
+    <div class="scene-body" style="margin-top: var(--sp-2);">
+      <p><strong>사도의 조건</strong> — 베드로가 제시한 기준은 두 가지다.</p>
+    </div>
+
+    <ul class="condition-list">
+      <li>
+        <span class="condition-num">①</span>
+        <span>요한의 세례 때부터 예수님과 함께 다닌 자</span>
+      </li>
+      <li>
+        <span class="condition-num">②</span>
+        <span>예수님의 부활을 직접 목격한 증인</span>
+      </li>
+    </ul>
+
+    <div class="scene-body" style="margin-top: var(--sp-2);">
+      <p>이 두 조건을 충족하는 두 사람이 추천된다.</p>
+    </div>
+
+    <div class="versus-row" style="margin: var(--sp-2) 0;">
+      <div class="versus-side">
+        <div class="side-name">요셉 바사바</div>
+        유스도라고도 불린다. 이 인물에 대한 정보는 본문에 더 이상 기록되어 있지 않다.
+      </div>
+      <div class="versus-mid">vs</div>
+      <div class="versus-side chosen">
+        <div class="side-name">맛디아 ✓</div>
+        제비뽑기로 선출되어 열한 사도에 합류한다. 이후 본문에 다시 등장하지 않는다.
+      </div>
+    </div>
+
+    <div class="election-flow">
+      <div class="election-step">
+        <div class="election-step-box">두 후보 추천</div>
+        <div class="election-step-ref">1:23</div>
+      </div>
+      <div class="election-arrow">→</div>
+      <div class="election-step">
+        <div class="election-step-box">기도</div>
+        <div class="election-step-ref">1:24–25</div>
+      </div>
+      <div class="election-arrow">→</div>
+      <div class="election-step">
+        <div class="election-step-box">제비뽑기</div>
+        <div class="election-step-ref">1:26</div>
+      </div>
+      <div class="election-arrow">→</div>
+      <div class="election-step">
+        <div class="election-step-box" style="border-color: var(--accent); color: var(--accent); font-weight: 700;">맛디아 선출</div>
+        <div class="election-step-ref">1:26</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 01 · 4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 5: BACKGROUND
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 01</span>
+    <span class="page-header-title">땅끝을 향한 시작</span>
+  </div>
+
+  <h2 class="section-heading">이것을 알면 더 잘 이해된다</h2>
+
+  <table class="bg-table">
+    <thead>
+      <tr>
+        <th>개념·인물·장소</th>
+        <th>설명</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>데오빌로</td>
+        <td>누가복음(눅 1:3)과 사도행전(행 1:1) 모두 데오빌로에게 헌정되어 있다. 이름의 뜻은 '하나님을 사랑하는 자'(그리스어 Θεόφιλος). 실존 인물로 보는 견해와, 모든 신자를 대표하는 상징적 이름으로 보는 견해가 있다. 누가복음에서는 '각하'(κράτιστος)라는 경칭이 붙어 있어, 사회적으로 높은 지위의 인물이었을 가능성이 있다.</td>
+      </tr>
+      <tr>
+        <td>40일</td>
+        <td>부활 후 예수님이 제자들에게 나타나신 기간(1:3). 구약에서 40이라는 수는 모세의 금식(출 34:28), 이스라엘의 광야 생활(민 14:34), 엘리야의 여정(왕상 19:8) 등 중요한 전환점에 등장한다. 사도행전 본문은 이 기간 동안 있었던 구체적인 사건들을 상세히 기록하지 않는다.</td>
+      </tr>
+      <tr>
+        <td>사도(使徒)</td>
+        <td>그리스어 ἀπόστολος(아포스톨로스), '파송 받은 자'라는 뜻. 단순히 예수님을 따른 제자(μαθητής, 마테테스)와 구별된다. 베드로가 제시한 조건(세례 때부터 함께 + 부활의 증인)에서 드러나듯, 사도직은 부활을 직접 목격했다는 증언에 근거한다.</td>
+      </tr>
+      <tr>
+        <td>감람산</td>
+        <td>예루살렘 성전 동쪽에 위치한 산. 두 장소의 거리는 안식일에 이동이 허용된 거리(안식일 행로, 약 900m–1km) 이내였다고 본문은 전한다(1:12). 예수님이 자주 찾으셨던 곳이기도 하다(눅 21:37, 요 8:1).</td>
+      </tr>
+      <tr>
+        <td>제비뽑기</td>
+        <td>구약 시대부터 이어진 하나님의 뜻을 구하는 방법으로, 인간의 판단을 배제하고 결정을 주님께 맡기는 의미가 있었다(잠 16:33). 사도들은 기도로 하나님의 뜻을 구한 뒤 제비를 뽑았다(1:24–26). 오순절 이후 성경 본문에서 교회가 제비뽑기로 중요한 결정을 내렸다는 기록은 나타나지 않는다.</td>
+      </tr>
+      <tr>
+        <td>다락방</td>
+        <td>본문은 그 장소를 '그들이 유하는 다락방'(1:13)이라고만 기록한다. 전통적으로 예수님이 최후의 만찬을 나누신 장소와 동일시하는 견해가 있으나, 본문에 명시적인 연결은 없다.</td>
+      </tr>
+      <tr>
+        <td>오순절 예고</td>
+        <td>예수님은 "성령의 세례를 받으리라"는 약속을 하시면서 예루살렘을 떠나지 말라고 명하셨다(1:4–5). 이 약속의 성취가 다음 레슨(Lesson 02)에서 다루는 오순절 성령강림이다.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 01 · 5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 6: VISUAL EXPLAINER — 사도행전 1:8 전체 여정
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 01</span>
+    <span class="page-header-title">땅끝을 향한 시작</span>
+  </div>
+
+  <h2 class="section-heading">사도행전 전체를 이끄는 하나의 문장</h2>
+
+  <p class="visual-page-intro">
+    사도행전은 17개 레슨 내내 하나의 방향을 향해 전진한다. 복음이 예루살렘에서 시작되어 어떻게 로마까지 도달하는지가 이 책 전체의 이야기다. 아래 다섯 단계는 사도행전 1:8에서 예수님이 직접 제시하신 지도다.
+  </p>
+
+  <div class="scripture-block" style="margin-bottom: var(--sp-3);">
+    <div class="scripture-text">오직 성령이 너희에게 임하시면 너희가 권능을 받고 <strong>예루살렘</strong>과 온 <strong>유대</strong>와 <strong>사마리아</strong>와 <strong>땅끝</strong>까지 이르러 내 증인이 되리라</div>
+    <div class="scripture-ref">사도행전 1:8</div>
+  </div>
+
+  <div class="journey-stages">
+
+    <!-- 예루살렘 -->
+    <div class="journey-stage">
+      <div class="journey-stage-left">
+        <div class="stage-dot current">●</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="journey-stage-right">
+        <div class="stage-name current">예루살렘</div>
+        <div class="stage-verse">PART 1–2 · 행 1–7장</div>
+        <div class="stage-lessons">
+          <span class="stage-lesson-tag current">L01 땅끝을 향한 시작 ◀ 지금 여기</span>
+          <span class="stage-lesson-tag">L02 교회의 탄생</span>
+          <span class="stage-lesson-tag">L03 첫 기적, 첫 박해</span>
+          <span class="stage-lesson-tag">L04 성장하는 교회와 내부의 위기</span>
+          <span class="stage-lesson-tag">L05 스데반과 첫 순교</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 유대 & 사마리아 -->
+    <div class="journey-stage">
+      <div class="journey-stage-left">
+        <div class="stage-dot"></div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="journey-stage-right">
+        <div class="stage-name">유대와 사마리아</div>
+        <div class="stage-verse">PART 3 · 행 8–12장</div>
+        <div class="stage-lessons">
+          <span class="stage-lesson-tag">L06 복음이 사마리아로</span>
+          <span class="stage-lesson-tag">L07 박해자 사울의 회심</span>
+          <span class="stage-lesson-tag">L08 이방인에게 열린 복음</span>
+          <span class="stage-lesson-tag">L09 안디옥교회의 등장</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 이방 선교 시작 -->
+    <div class="journey-stage">
+      <div class="journey-stage-left">
+        <div class="stage-dot"></div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="journey-stage-right">
+        <div class="stage-name">이방 선교의 시작</div>
+        <div class="stage-verse">PART 4 · 행 13–15장</div>
+        <div class="stage-lessons">
+          <span class="stage-lesson-tag">L10 1차 선교여행</span>
+          <span class="stage-lesson-tag">L11 예루살렘 회의</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 로마 세계로 -->
+    <div class="journey-stage">
+      <div class="journey-stage-left">
+        <div class="stage-dot"></div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="journey-stage-right">
+        <div class="stage-name">복음이 로마 세계로</div>
+        <div class="stage-verse">PART 5 · 행 15–20장</div>
+        <div class="stage-lessons">
+          <span class="stage-lesson-tag">L12 2차 선교여행</span>
+          <span class="stage-lesson-tag">L13 3차 선교여행</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 로마 -->
+    <div class="journey-stage">
+      <div class="journey-stage-left">
+        <div class="stage-dot"></div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="journey-stage-right">
+        <div class="stage-name">로마를 향하여 — 마침내 로마에서</div>
+        <div class="stage-verse">PART 6 · 행 21–28장</div>
+        <div class="stage-lessons">
+          <span class="stage-lesson-tag">L14 예루살렘에서 체포된 바울</span>
+          <span class="stage-lesson-tag">L15 총독과 왕 앞에 선 바울</span>
+          <span class="stage-lesson-tag">L16 폭풍을 지나 로마로</span>
+          <span class="stage-lesson-tag">L17 마침내 로마에서</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 01 · 6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 7: LESSON SUMMARY
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 01</span>
+    <span class="page-header-title">땅끝을 향한 시작</span>
+  </div>
+
+  <div class="summary-page-header">
+    <div class="summary-page-title">한눈에 보는 LESSON 01</div>
+    <div class="summary-page-subtitle">사도행전 1:1–26</div>
+  </div>
+
+  <div class="summary-grid">
+
+    <div class="summary-block">
+      <div class="summary-block-label">사건</div>
+      <div class="summary-block-content">
+        예수님의 40일 가르침과 승천 / 다락방에서 기도하는 공동체 / 맛디아 선출로 열두 사도 완성
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">인물</div>
+      <div class="summary-block-content">
+        <strong>예수님</strong> — 명령하고 승천하심<br>
+        <strong>베드로</strong> — 120명 앞에서 제안을 이끔<br>
+        <strong>맛디아</strong> — 제비로 선출된 열두 번째 사도<br>
+        <strong>요셉 바사바</strong> — 선출되지 않은 후보<br>
+        <strong>유다 이스가리엇</strong> — 배반 후 죽음, 공석이 된 자리
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">장소</div>
+      <div class="summary-block-content">
+        <strong>감람산</strong> — 승천이 일어난 곳 (예루살렘 동쪽)<br>
+        <strong>마가의 다락방</strong> — 약 120명이 모여 기도한 곳
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">핵심 키워드</div>
+      <div class="tag-cloud">
+        <span class="tag">승천</span>
+        <span class="tag">성령 약속</span>
+        <span class="tag">사도행전 1:8</span>
+        <span class="tag">증인</span>
+        <span class="tag">제비뽑기</span>
+        <span class="tag">열두 사도</span>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">숫자로 기억하기</div>
+      <div class="number-row">
+        <div class="num-item">
+          <div class="num-big">40</div>
+          <div class="num-label">부활 후<br>나타나신 날</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">120</div>
+          <div class="num-label">다락방에<br>모인 사람 수</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">2</div>
+          <div class="num-label">나타난<br>천사 수</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">2</div>
+          <div class="num-label">사도<br>후보 수</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">5</div>
+          <div class="num-label">1:8의<br>지리적 단계</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이야기 연결</div>
+      <div class="story-conn">
+        <div class="conn-node">
+          <div style="font-size: var(--fs-caption); color: var(--ink-faint);">이전</div>
+          누가복음<br>예수님의 사역과 부활
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node current-node">
+          <div style="font-size: var(--fs-caption);">L01</div>
+          땅끝을 향한 시작<br>행 1:1–26
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node">
+          <div style="font-size: var(--fs-caption); color: var(--ink-faint);">다음 L02</div>
+          교회의 탄생<br>오순절 성령강림
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        예수님은 "땅끝까지 내 증인이 되라"는 명령을 남기고 승천하셨고, 남은 제자들은 기도하며 열두 번째 사도를 뽑아 다음을 준비했다.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 01 · 7</span>
+  </div>
+</section>
+
+</body>
+</html>
