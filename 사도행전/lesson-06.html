@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 06 — 복음이 사마리아로</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 06 전용 스타일 ── */
+
+    /* Story Connection */
+    .story-connection { margin-top:auto; border-top:1px solid var(--rule); padding-top:var(--sp-3); display:flex; gap:var(--sp-2); align-items:stretch; }
+    .sc-col { flex:1; padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; display:flex; flex-direction:column; gap:1.5mm; }
+    .sc-col.current { border-color:var(--accent); background:var(--accent-pale); }
+    .sc-col-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.08em; }
+    .sc-col.current .sc-col-label { color:var(--accent); }
+    .sc-col-title { font-size:var(--fs-small); font-weight:700; color:var(--ink); line-height:1.3; }
+    .sc-col.current .sc-col-title { color:var(--accent); }
+    .sc-flow-text { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.8; }
+    .sc-arrow { display:flex; align-items:center; font-size:14pt; color:var(--accent); padding:0 1mm; padding-top:12mm; }
+
+    /* Recall Badge */
+    .recall-badge { display:inline-flex; align-items:center; padding:0.5mm 2mm; background:var(--page-bg); border:1px solid var(--rule); border-radius:3px; font-size:6.5pt; color:var(--ink-faint); font-weight:700; letter-spacing:.05em; vertical-align:middle; margin-left:2mm; }
+
+    /* Acts 1:8 Progress Bar */
+    .acts18-bar { display:flex; align-items:center; gap:0; margin:var(--sp-2) 0; }
+    .a18-node { display:flex; flex-direction:column; align-items:center; gap:1.5mm; }
+    .a18-circle { width:9mm; height:9mm; border-radius:50%; border:2px solid var(--rule); background:var(--white); display:flex; align-items:center; justify-content:center; font-size:7pt; flex-shrink:0; }
+    .a18-circle.done { background:var(--accent); border-color:var(--accent); color:var(--white); font-weight:700; }
+    .a18-circle.now { border-color:var(--accent); background:var(--accent-pale); color:var(--accent); font-weight:700; font-size:6.5pt; }
+    .a18-label { font-size:6.5pt; font-weight:700; color:var(--ink-faint); text-align:center; line-height:1.2; max-width:16mm; }
+    .a18-node.done .a18-label { color:var(--accent); }
+    .a18-node.now .a18-label { color:var(--accent); }
+    .a18-line { flex:1; height:1.5px; background:var(--rule); margin-bottom:4mm; }
+    .a18-line.done { background:var(--accent); }
+
+    /* Map (SVG-based geographic layout) */
+    .map-container { position:relative; margin:var(--sp-2) 0; }
+    .map-svg { width:100%; display:block; }
+
+    /* Paradox Box */
+    .paradox-grid { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-3); align-items:start; margin:var(--sp-2) 0; }
+    .paradox-col { display:flex; flex-direction:column; gap:2mm; }
+    .paradox-label { font-size:var(--fs-caption); font-weight:700; color:var(--accent); letter-spacing:.08em; }
+    .paradox-step { padding:2mm 3mm; border:1px solid var(--rule); border-radius:3px; font-size:var(--fs-caption); color:var(--ink-soft); }
+    .paradox-step.intent { background:var(--page-bg); }
+    .paradox-step.result { background:var(--accent-pale); border-color:var(--accent-soft); font-weight:700; color:var(--accent); }
+    .paradox-vs { display:flex; align-items:flex-start; justify-content:center; font-size:12pt; color:var(--rule-mid); padding-top:8mm; font-weight:700; }
+    .paradox-footer { padding:var(--sp-2) var(--sp-3); background:var(--accent); border-radius:4px; text-align:center; color:var(--white); font-size:var(--fs-body); font-weight:700; font-family:var(--ff-hand); }
+
+    /* Before/After contrast */
+    .before-after-block { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); margin:var(--sp-2) 0; align-items:stretch; }
+    .ba-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; }
+    .ba-col.before { background:var(--page-bg); }
+    .ba-col.after { background:var(--accent-pale); border-color:var(--accent-soft); }
+    .ba-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.08em; margin-bottom:2mm; }
+    .ba-col.after .ba-label { color:var(--accent); }
+    .ba-content { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.6; }
+    .ba-col.after .ba-content { color:var(--ink); }
+    .ba-arrow { display:flex; align-items:center; justify-content:center; font-size:14pt; color:var(--accent); }
+
+    /* Side note */
+    .side-note { margin:var(--sp-2) 0; padding:var(--sp-2) var(--sp-2); border-left:3px solid var(--rule-mid); background:var(--page-bg); }
+    .side-note-label { font-size:6.5pt; font-weight:700; color:var(--ink-faint); letter-spacing:.08em; margin-bottom:1mm; }
+    .side-note-body { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.5; }
+
+    /* Character card */
+    .char-card { padding:var(--sp-2) var(--sp-3); border:1.5px solid var(--rule); border-radius:4px; margin:var(--sp-2) 0; }
+    .char-card-name { font-size:var(--fs-h2); font-weight:700; color:var(--accent); }
+    .char-card-attrs { display:flex; flex-wrap:wrap; gap:2mm; margin-top:var(--sp-1); }
+    .char-attr { padding:1mm 3mm; background:var(--page-bg); border:1px solid var(--rule); border-radius:20px; font-size:var(--fs-caption); color:var(--ink-soft); }
+
+    /* Many vs One split */
+    .many-one-split { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-3); margin:var(--sp-2) 0; }
+    .mos-col { padding:var(--sp-2); border:1.5px solid var(--rule); border-radius:4px; }
+    .mos-col.many { border-color:var(--accent); background:var(--accent-pale); }
+    .mos-header { font-size:var(--fs-small); font-weight:700; color:var(--accent); margin-bottom:var(--sp-1); }
+    .mos-tag { font-size:8.5pt; font-weight:700; color:var(--ink-faint); letter-spacing:.08em; margin-bottom:1.5mm; }
+    .mos-col.many .mos-tag { color:var(--accent); }
+    .mos-items { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.6; }
+    .mos-result { margin-top:var(--sp-1); padding:1.5mm 3mm; background:var(--accent); border-radius:3px; text-align:center; font-size:var(--fs-small); font-weight:700; color:var(--white); }
+    .mos-result.light { background:var(--accent-pale); color:var(--accent); border:1px solid var(--accent-soft); }
+    .mos-vs { display:flex; align-items:center; justify-content:center; font-size:12pt; color:var(--accent); font-weight:700; }
+    .mos-footer { grid-column:1/-1; padding:var(--sp-2) var(--sp-3); background:var(--accent); border-radius:4px; text-align:center; color:var(--white); font-size:var(--fs-body); font-weight:700; font-family:var(--ff-hand); }
+
+    /* Learning flow */
+    .learn-flow { display:flex; flex-direction:column; gap:0; margin:var(--sp-2) 0; }
+    .lf-step { display:flex; align-items:center; gap:3mm; padding:2mm 3mm; border:1px solid var(--rule); border-radius:3px; background:var(--white); }
+    .lf-num { width:5mm; height:5mm; border-radius:50%; background:var(--accent); color:var(--white); font-size:6pt; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .lf-text { font-size:var(--fs-small); color:var(--ink-soft); }
+    .lf-arrow { text-align:center; font-size:9pt; color:var(--rule-mid); padding:1mm 0; }
+
+    /* Gifts vs Product */
+    .gift-contrast { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-3); margin:var(--sp-2) 0; align-items:center; }
+    .gc-col { padding:var(--sp-3); border-radius:4px; text-align:center; }
+    .gc-col.gift { background:var(--accent-pale); border:1.5px solid var(--accent-soft); }
+    .gc-col.product { background:var(--page-bg); border:1px solid var(--rule); }
+    .gc-title { font-size:var(--fs-h2); font-weight:700; line-height:1.2; margin-bottom:2mm; }
+    .gc-col.gift .gc-title { color:var(--accent); }
+    .gc-col.product .gc-title { color:var(--ink-faint); text-decoration:line-through; }
+    .gc-desc { font-size:var(--fs-caption); color:var(--ink-soft); }
+    .gc-neq { font-size:18pt; font-weight:700; color:var(--accent); display:flex; align-items:center; justify-content:center; }
+
+    /* Manuscript note */
+    .manuscript-note { margin:var(--sp-2) 0; padding:var(--sp-2) var(--sp-2); border:1px dashed var(--rule-mid); border-radius:3px; }
+    .ms-note-label { font-size:6.5pt; font-weight:700; color:var(--ink-faint); letter-spacing:.1em; margin-bottom:1mm; }
+    .ms-note-body { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.5; }
+
+    /* Roadmap visual */
+    .roadmap-visual { display:flex; flex-direction:column; gap:0; margin:var(--sp-2) 0; }
+    .rv-era { padding:var(--sp-2) var(--sp-3); border:1px solid var(--rule); border-radius:4px; display:flex; align-items:center; gap:var(--sp-2); }
+    .rv-era.active { border-color:var(--accent); background:var(--accent-pale); }
+    .rv-era.done { border-color:var(--rule); background:var(--page-bg); }
+    .rv-ref { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); min-width:16mm; }
+    .rv-era.active .rv-ref { color:var(--accent); }
+    .rv-content { font-size:var(--fs-small); color:var(--ink-soft); }
+    .rv-era.active .rv-content { color:var(--ink); font-weight:700; }
+    .rv-arrow-row { text-align:center; font-size:10pt; color:var(--rule-mid); padding:1mm 0; }
+  </style>
+</head>
+<body>
+
+
+<!-- ════════════════════════════════════
+     PAGE 1: LESSON OPENING
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">06</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 3 — 복음이 경계를 넘다</div>
+      <h1 class="opening-title">복음이 사마리아로</h1>
+      <div class="opening-scripture">사도행전 8:4–40</div>
+    </div>
+  </div>
+
+  <div class="lesson-summary-line">
+    박해로 예루살렘의 신자들이 흩어지자 빌립은 사마리아에서 복음을 전하고, 이후 광야 길에서 에티오피아 관리에게 예수를 전하면서 복음은 새로운 지역과 사람들에게 확장되기 시작한다.
+  </div>
+
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">빌립 · 시몬 · 베드로 · 요한 · 에티오피아 관리</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">예루살렘 · 사마리아 · 예루살렘-가사 길 · 아소도 · 가이사랴</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">핵심 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2mm;margin-top:1.5mm;">
+        <span class="tag">흩어짐</span><span class="tag">사마리아</span><span class="tag">빌립</span>
+        <span class="tag">성령</span><span class="tag">시몬</span><span class="tag">에티오피아</span>
+        <span class="tag">이사야</span><span class="tag">세례</span>
+      </div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">Acts 1:8 진행 상황</div>
+      <div class="acts18-bar" style="margin:var(--sp-1) 0 0;">
+        <div class="a18-node done">
+          <div class="a18-circle done">✓</div>
+          <div class="a18-label">예루살렘</div>
+        </div>
+        <div class="a18-line done"></div>
+        <div class="a18-node done">
+          <div class="a18-circle done">✓</div>
+          <div class="a18-label">유대</div>
+        </div>
+        <div class="a18-line done"></div>
+        <div class="a18-node now">
+          <div class="a18-circle now">NOW</div>
+          <div class="a18-label">사마리아</div>
+        </div>
+        <div class="a18-line"></div>
+        <div class="a18-node">
+          <div class="a18-circle"></div>
+          <div class="a18-label">땅끝</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-connection">
+    <div class="sc-col">
+      <div class="sc-col-label">LESSON 05 이후</div>
+      <div class="sc-col-title">스데반과 첫 순교</div>
+      <div class="sc-flow-text">
+        스데반 순교<br>
+        ↓ 예루살렘에 큰 박해 시작<br>
+        ↓ 신자들이 흩어짐<br>
+        ↓ <strong>"흩어진 사람들이 복음을 전했다"</strong>
+      </div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-col current">
+      <div class="sc-col-label">LESSON 06</div>
+      <div class="sc-col-title">흩어진 신자들이 새로운 곳에서 복음을 전하기 시작한다</div>
+      <div class="sc-flow-text">
+        빌립: 사마리아 선교<br>
+        ↓ 시몬 사건<br>
+        ↓ 베드로와 요한 방문<br>
+        ↓ 빌립: 광야 길 → 에티오피아 관리<br>
+        ↓ <strong>복음이 경계를 넘기 시작한다</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 1</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 2: TRANSITION — 박해 → 복음 확산
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <h2 class="section-heading">박해가 복음의 확산으로 이어지다</h2>
+
+  <div class="story-flow" style="margin-bottom:var(--sp-3);">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">스데반 순교</div>
+      </div>
+      <div class="flow-step-ref">행 7장</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">예루살렘 교회에 큰 박해가 시작됨</div>
+      </div>
+      <div class="flow-step-ref">8:1</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">신자들이 유대와 사마리아 여러 지역으로 흩어짐</div>
+      </div>
+      <div class="flow-step-ref">8:1</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">"그 흩어진 사람들이 두루 다니며 복음의 말씀을 전할새"</div>
+      </div>
+      <div class="flow-step-ref">8:4</div>
+    </div>
+  </div>
+
+  <h2 class="section-heading">역설 — 박해의 의도와 실제 결과</h2>
+
+  <div class="paradox-grid">
+    <div class="paradox-col">
+      <div class="paradox-label">박해자들의 의도</div>
+      <div class="paradox-step intent">교회를 억압한다</div>
+      <div style="text-align:center;font-size:9pt;color:var(--rule-mid);padding:1mm 0;">↓</div>
+      <div class="paradox-step intent">신자들이 흩어진다</div>
+      <div style="text-align:center;font-size:9pt;color:var(--rule-mid);padding:1mm 0;">↓</div>
+      <div class="paradox-step intent">복음이 약해진다?</div>
+    </div>
+    <div class="paradox-vs">VS</div>
+    <div class="paradox-col">
+      <div class="paradox-label">실제 결과</div>
+      <div class="paradox-step result">신자들이 흩어진다</div>
+      <div style="text-align:center;font-size:9pt;color:var(--accent);padding:1mm 0;">↓</div>
+      <div class="paradox-step result">그들이 가는 곳에서 복음을 전한다</div>
+      <div style="text-align:center;font-size:9pt;color:var(--accent);padding:1mm 0;">↓</div>
+      <div class="paradox-step result">복음의 활동 범위가 넓어진다</div>
+    </div>
+  </div>
+
+  <div class="paradox-footer" style="margin-top:var(--sp-2);">
+    복음을 막으려던 힘이 복음을 퍼뜨리는 역할을 했다.
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-2);border:1.5px solid var(--accent-soft);border-radius:4px;background:var(--accent-pale);">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:var(--sp-1);">사도행전 1:8과 나란히 보기</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);">
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:1.5mm;">행 1:8 — 예수님의 말씀</div>
+        "예루살렘과 온 유대와 사마리아와 땅끝까지 내 증인이 되리라"
+      </div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);">
+        <div style="font-weight:700;color:var(--ink);margin-bottom:1.5mm;">행 8:1 — 실제 사건</div>
+        "유대와 사마리아 모든 땅으로 흩어지니라"
+      </div>
+    </div>
+    <div style="font-size:var(--fs-caption);color:var(--accent);font-weight:700;text-align:center;margin-top:var(--sp-1);">같은 지리적 표현이 반복된다. 복음의 확장 로드맵이 실현되고 있다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 3: MAP — 복음의 이동
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <h2 class="section-heading">복음은 어디로 이동하고 있을까? — 학습용 지도</h2>
+  <p style="font-size:var(--fs-caption);color:var(--ink-faint);margin-bottom:var(--sp-2);">고대 지명과 경계는 오늘날 지도와 다르다. 이 지도는 복음의 이동 방향과 지역 관계 이해를 위한 학습용이다.</p>
+
+  <!-- SVG Map -->
+  <div style="display:grid;grid-template-columns:55mm 1fr;gap:var(--sp-3);align-items:start;">
+
+    <svg viewBox="0 0 110 210" xmlns="http://www.w3.org/2000/svg" style="width:55mm;border:1px solid var(--rule);border-radius:4px;background:#f8f6f3;display:block;">
+      <!-- 지중해 (왼쪽) -->
+      <rect x="0" y="0" width="25" height="210" fill="#dce8f0" opacity=".7"/>
+      <text x="12" y="100" font-size="5" fill="#7a9ab0" text-anchor="middle" transform="rotate(-90,12,100)" font-family="SCDream,sans-serif">지중해</text>
+
+      <!-- 갈릴리 region -->
+      <rect x="25" y="5" width="80" height="35" rx="3" fill="#f0ece6" stroke="#d8d4ce" stroke-width=".8"/>
+      <text x="65" y="17" font-size="6.5" fill="#4a4a4a" text-anchor="middle" font-family="SCDream,sans-serif" font-weight="700">갈릴리</text>
+
+      <!-- 사마리아 region -->
+      <rect x="25" y="45" width="80" height="50" rx="3" fill="#faf4f0" stroke="#b4552d" stroke-width="1.2"/>
+      <text x="65" y="62" font-size="6.5" fill="#b4552d" text-anchor="middle" font-family="SCDream,sans-serif" font-weight="700">사마리아</text>
+      <!-- 사마리아 별표 -->
+      <circle cx="60" cy="75" r="3.5" fill="#b4552d" opacity=".8"/>
+      <text x="68" y="77" font-size="5" fill="#b4552d" font-family="SCDream,sans-serif">② 빌립 선교</text>
+
+      <!-- 유대 region -->
+      <rect x="25" y="100" width="80" height="55" rx="3" fill="#f0ece6" stroke="#d8d4ce" stroke-width=".8"/>
+      <text x="65" y="116" font-size="6.5" fill="#4a4a4a" text-anchor="middle" font-family="SCDream,sans-serif" font-weight="700">유대</text>
+      <!-- 예루살렘 -->
+      <circle cx="65" cy="128" r="3" fill="#1e1e1e"/>
+      <text x="70" y="130" font-size="5.5" fill="#1e1e1e" font-family="SCDream,sans-serif" font-weight="700">예루살렘 ①</text>
+
+      <!-- 가사 방향 화살표 -->
+      <line x1="55" y1="155" x2="45" y2="170" stroke="#b4552d" stroke-width="1" stroke-dasharray="2,2"/>
+      <polygon points="45,170 42,163 50,165" fill="#b4552d"/>
+      <text x="52" y="162" font-size="5" fill="#b4552d" font-family="SCDream,sans-serif">③ 가사 방향</text>
+
+      <!-- 가이사랴 -->
+      <circle cx="30" cy="80" r="2.5" fill="#888" opacity=".7"/>
+      <text x="35" y="82" font-size="5" fill="#888" font-family="SCDream,sans-serif">가이사랴 ⑤</text>
+
+      <!-- 아소도 -->
+      <circle cx="28" cy="130" r="2.5" fill="#888" opacity=".7"/>
+      <text x="33" y="132" font-size="5" fill="#888" font-family="SCDream,sans-serif">아소도 ④</text>
+
+      <!-- 이동 경로 -->
+      <path d="M65,128 Q60,100 60,75" stroke="#b4552d" stroke-width="1" fill="none" stroke-dasharray="3,2"/>
+      <path d="M45,170 Q35,155 28,130" stroke="#b4552d" stroke-width="1" fill="none" stroke-dasharray="3,2"/>
+      <path d="M28,130 Q28,110 30,80" stroke="#b4552d" stroke-width="1" fill="none" stroke-dasharray="3,2"/>
+
+      <!-- 나침반 -->
+      <text x="95" y="15" font-size="7" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">N</text>
+      <text x="95" y="205" font-size="7" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">S</text>
+    </svg>
+
+    <div>
+      <div style="font-size:var(--fs-small);font-weight:700;color:var(--ink);margin-bottom:var(--sp-2);">이번 Lesson의 이동</div>
+
+      <div class="story-flow">
+        <div class="flow-step key-step">
+          <div class="flow-step-content">
+            <div class="flow-step-title">① 예루살렘 — 박해 발생</div>
+          </div>
+          <div class="flow-step-ref">8:1</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step key-step">
+          <div class="flow-step-content">
+            <div class="flow-step-title">② 사마리아 — 빌립의 복음 선포</div>
+          </div>
+          <div class="flow-step-ref">8:5–13</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-step-content">
+            <div class="flow-step-title">③ 예루살렘 → 가사로 내려가는 광야 길</div>
+            <div class="flow-step-desc">에티오피아 관리와 만남</div>
+          </div>
+          <div class="flow-step-ref">8:26–38</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-step-content">
+            <div class="flow-step-title">④ 아소도에 나타남</div>
+          </div>
+          <div class="flow-step-ref">8:40</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-step-content">
+            <div class="flow-step-title">⑤ 여러 성을 지나 가이사랴에 도착</div>
+          </div>
+          <div class="flow-step-ref">8:40</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 4: SCENE 01 — 빌립이 사마리아로 (8:4–8)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">빌립이 사마리아로 가다</span>
+      <span class="scene-ref">행 8:4–8</span>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr auto;gap:var(--sp-3);align-items:start;margin:var(--sp-2) 0;">
+    <div>
+      <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-2);">이번 Lesson의 주인공은 Lesson 05에서 이미 등장한 인물이다.</p>
+      <div class="recall-badge" style="font-size:7pt;padding:1mm 3mm;margin:0 0 var(--sp-2);">RECALL · L05 일곱 사람</div>
+      <div class="seven-grid" style="grid-template-columns:repeat(4,1fr);display:grid;gap:1.5mm;margin-bottom:var(--sp-2);">
+        <div style="padding:2mm 3mm;border:1px solid var(--rule);border-radius:3px;font-size:6pt;color:var(--ink-faint);text-align:center;">스데반</div>
+        <div style="padding:2mm 3mm;border:2px solid var(--accent);border-radius:3px;font-size:6pt;color:var(--accent);font-weight:700;text-align:center;background:var(--accent-pale);">빌립 ↑</div>
+        <div style="padding:2mm 3mm;border:1px solid var(--rule);border-radius:3px;font-size:6pt;color:var(--ink-faint);text-align:center;">브로고로</div>
+        <div style="padding:2mm 3mm;border:1px solid var(--rule);border-radius:3px;font-size:6pt;color:var(--ink-faint);text-align:center;">니가노르</div>
+        <div style="padding:2mm 3mm;border:1px solid var(--rule);border-radius:3px;font-size:6pt;color:var(--ink-faint);text-align:center;">디몬</div>
+        <div style="padding:2mm 3mm;border:1px solid var(--rule);border-radius:3px;font-size:6pt;color:var(--ink-faint);text-align:center;">바메나</div>
+        <div style="padding:2mm 3mm;border:1px solid var(--rule);border-radius:3px;font-size:6pt;color:var(--ink-faint);text-align:center;grid-column:span 2;">니골라</div>
+      </div>
+    </div>
+    <div>
+      <div style="padding:var(--sp-2) var(--sp-3);border:2px solid var(--accent);border-radius:4px;background:var(--accent-pale);text-align:center;">
+        <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);letter-spacing:.08em;margin-bottom:1.5mm;">CHARACTER</div>
+        <div style="font-size:var(--fs-h2);font-weight:700;color:var(--accent);">빌립</div>
+        <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:1.5mm;">이번 이야기의 중심인물</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-heading">사건 흐름</h2>
+  <div class="story-flow">
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">빌립이 사마리아 지역으로 이동</div></div>
+      <div class="flow-step-ref">8:5</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">그리스도를 전함 — 무리가 들음</div></div>
+      <div class="flow-step-ref">8:6</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">표적이 일어남 — 더러운 귀신들이 나감 · 중풍과 다리를 저는 자들이 나음</div></div>
+      <div class="flow-step-ref">8:6–7</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content"><div class="flow-step-title">"그 성에 큰 기쁨이 있더라"</div></div>
+      <div class="flow-step-ref">8:8</div>
+    </div>
+  </div>
+
+  <div class="side-note">
+    <div class="side-note-label">FUTURE REFERENCE</div>
+    <div class="side-note-body">훗날 사도행전 21:8에서 빌립은 <strong>"전도자 빌립"</strong>이라고 불리며, 그의 집이 바울 일행의 방문지가 된다. 이번 Lesson의 그의 모습이 그 이름과 잘 어울린다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 5: BACKGROUND — 사마리아
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <h2 class="section-heading">왜 '사마리아'가 중요할까?</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-2);">사마리아를 단순히 "예루살렘 북쪽 지역" 정도로 이해하면 이번 Lesson의 의미가 절반으로 줄어든다.</p>
+
+  <div class="story-flow" style="margin-bottom:var(--sp-3);">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">이스라엘 왕국 분열</div>
+        <div class="flow-step-desc">솔로몬 이후 이스라엘은 남왕국(유다)과 북왕국(이스라엘)으로 나뉜다.</div>
+      </div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">북이스라엘 수도 — 사마리아</div>
+      </div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">앗수르에 의해 북이스라엘 멸망</div>
+        <div class="flow-step-desc">지역 주민과 앗수르가 이주시킨 외부 민족들이 혼합되었다.</div>
+      </div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">유대인과 사마리아인 사이의 역사적·종교적 긴장</div>
+        <div class="flow-step-desc">두 집단은 모두 이스라엘의 하나님 전통과 연결되어 있었지만, 예배 장소·역사적 정체성·종교적 전통 등에서 차이가 있었고 오랜 갈등이 존재했다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);margin-bottom:var(--sp-3);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">복음서와 연결 <span class="recall-badge">참고</span></div>
+      <div class="background-box-body">
+        <strong>선한 사마리아인</strong> (누가복음 10장)<br>
+        <strong>사마리아 여인</strong> (요한복음 4장)<br><br>
+        이 본문들에서도 유대인과 사마리아인 사이의 사회적·종교적 거리감을 볼 수 있다.
+      </div>
+    </div>
+    <div style="padding:var(--sp-2);border:1.5px solid var(--rule);border-radius:4px;display:flex;flex-direction:column;justify-content:center;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:var(--sp-1);">이것을 알면 보이는 것</div>
+      <div style="font-size:var(--fs-small);color:var(--ink-soft);line-height:1.5;">요한복음 4:9<br><em>"유대인이 사마리아인과 상종하지 아니함이러라"</em></div>
+    </div>
+  </div>
+
+  <div style="padding:var(--sp-3);border:2px solid var(--accent);border-radius:4px;text-align:center;margin-top:var(--sp-2);">
+    <div style="font-size:14pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);line-height:1.5;">
+      그래서 사마리아에서 복음이 받아들여졌다는 것은<br>단순한 지역 이동 이상의 의미를 가진다.
+    </div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:var(--sp-1);">복음이 민족적·종교적 경계를 넘기 시작한 것이다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 6: SCENE 02 — 마술사 시몬 (8:9–13)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 2</span>
+      <span class="scene-title">마술사 시몬</span>
+      <span class="scene-ref">행 8:9–13</span>
+    </div>
+    <div class="scene-body">
+      <p>사마리아에는 이미 사람들의 관심을 받던 인물이 있었다. 그의 이름은 시몬이다.</p>
+    </div>
+  </div>
+
+  <div class="before-after-block">
+    <div class="ba-col before">
+      <div class="ba-label">빌립이 오기 전</div>
+      <div class="ba-content">
+        시몬이 마술을 행함<br>
+        ↓<br>
+        사람들이 크게 놀람<br>
+        ↓<br>
+        "하나님의 큰 능력"이라 불림<br>
+        ↓<br>
+        모든 사람이 시몬을 주목함
+      </div>
+    </div>
+    <div class="ba-arrow">→</div>
+    <div class="ba-col after">
+      <div class="ba-label">빌립이 복음을 전한 후</div>
+      <div class="ba-content">
+        하나님의 나라와 예수의 이름을 전함<br>
+        ↓<br>
+        사람들이 믿고 세례를 받음<br>
+        ↓<br>
+        <strong>시몬도 믿고 세례를 받음</strong><br>
+        ↓<br>
+        빌립을 따라다니며 표적과 큰 능력을 보고 놀람
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border:1.5px solid var(--accent-soft);border-radius:4px;text-align:center;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:1.5mm;">역전 구조</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);">
+      사람들을 <strong>놀라게 하던</strong> 시몬<br>
+      → 이제는 빌립을 통해 나타나는 표적에 <strong>자신이 놀라는</strong> 사람이 됨
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">시몬의 믿음은 진정한 믿음이었을까?</div>
+    <div class="background-box-body">본문(8:13)은 시몬이 믿고 세례를 받았다고 기록하지만, 이후 8:18–24에서 그의 내면이 드러난다. 이 부분은 SCENE 4에서 다룬다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 7: SCENE 03 — 베드로와 요한 (8:14–17)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">베드로와 요한이 사마리아에 오다</span>
+      <span class="scene-ref">행 8:14–17</span>
+    </div>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">예루살렘 사도들이 소식을 들음</div>
+        <div class="flow-step-desc">"사마리아도 하나님의 말씀을 받았다"</div>
+      </div>
+      <div class="flow-step-ref">8:14</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">베드로와 요한을 사마리아로 보냄</div>
+      </div>
+      <div class="flow-step-ref">8:14</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">기도하고 안수함</div>
+      </div>
+      <div class="flow-step-ref">8:15–17</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">그들이 성령을 받음</div>
+      </div>
+      <div class="flow-step-ref">8:17</div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">왜 성령을 나중에 받았을까?</div>
+    <div class="background-box-body">
+      본문은 사마리아 사람들이 하나님의 말씀을 받아들이고 예수의 이름으로 세례를 받았지만, 베드로와 요한이 기도하고 안수하기 전에는 성령이 아직 임하지 않았다고 기록한다.<br><br>
+      이 사건의 정확한 신학적 의미와 오늘날 모든 신자의 회심 과정에 동일하게 적용되는 패턴인지에 대해서는 기독교 전통별 해석 차이가 있다. 이 교재에서는 본문이 명시하는 사건의 흐름을 우선 이해하는 방식으로 접근한다.
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">이 사건이 보여주는 것</h2>
+
+  <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:var(--sp-2);align-items:center;margin-top:var(--sp-2);">
+    <div style="padding:var(--sp-2);border:1.5px solid var(--accent);border-radius:4px;text-align:center;background:var(--accent-pale);">
+      <div style="font-size:var(--fs-small);font-weight:700;color:var(--accent);">예루살렘 교회</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:1.5mm;">사도들 · 베드로 · 요한</div>
+    </div>
+    <div style="font-size:10pt;color:var(--accent);text-align:center;">⟷</div>
+    <div style="padding:var(--sp-2);border:1.5px solid var(--accent);border-radius:4px;text-align:center;background:var(--accent-pale);">
+      <div style="font-size:var(--fs-small);font-weight:700;color:var(--accent);">사마리아 신자들</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:1.5mm;">빌립의 선교로 믿게 됨</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);border:1.5px solid var(--rule);border-radius:4px;">
+    <div style="font-size:var(--fs-small);font-weight:700;color:var(--ink);">하나의 복음 공동체로 연결됨</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:1.5mm;">사마리아 선교가 예루살렘 교회와 별개의 운동으로 진행되지 않고 사도들과 연결되었음을 보여준다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 7</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 8: SCENE 04 — 시몬 사건 (8:18–25)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">성령의 능력을 돈으로 살 수 있을까?</span>
+      <span class="scene-ref">행 8:18–25</span>
+    </div>
+    <div class="scene-body">
+      <p>시몬은 사도들이 안수할 때 성령이 주어지는 것을 본다. 그리고 돈을 제시한다.</p>
+    </div>
+  </div>
+
+  <div class="gift-contrast">
+    <div class="gc-col gift">
+      <div class="gc-title">GIFT</div>
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:1.5mm;">하나님의 선물</div>
+      <div class="gc-desc">하나님이 주권적으로 주시는 것. 돈으로 구매되지 않는다.</div>
+    </div>
+    <div class="gc-neq">≠</div>
+    <div class="gc-col product">
+      <div class="gc-title">PRODUCT</div>
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);margin-bottom:1.5mm;">구매 가능한 상품</div>
+      <div class="gc-desc">시몬의 접근 방식 — 돈을 주고 영적인 권능을 얻으려 함.</div>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"하나님의 선물을 돈 주고 살 줄로 생각하였으니 네 은과 네가 함께 망할지어다"</div>
+    <div class="scripture-ref">사도행전 8:20 — 베드로의 강한 책망</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);margin-top:var(--sp-2);">
+    <div class="side-note" style="margin:0;">
+      <div class="side-note-label">WORD HISTORY · SIMONY</div>
+      <div class="side-note-body">후대 기독교 역사에서는 성직이나 영적 특권을 돈으로 사고파는 행위를 <strong>Simony(시모니)</strong>라고 부르게 되었다. 이 단어는 바로 이 <strong>Simon(시몬)</strong>의 이름에서 유래했다. 이것은 후대에 형성된 교회사 용어이며, 본문 자체가 이 표현을 사용하지는 않는다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">이후의 이야기</div>
+      <div class="background-box-body">베드로는 시몬에게 회개를 촉구하고, 베드로와 요한은 예루살렘으로 돌아가면서 여러 사마리아 마을에도 복음을 전한다. 사마리아 선교는 한 도시에서 끝나지 않는다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 8</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 9: TRANSITION — MANY vs ONE
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <h2 class="section-heading">그런데 하나님은 빌립을 어디로 보내셨을까?</h2>
+
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-2);">사마리아에서는 지금 놀라운 일이 일어나고 있었다. 큰 기쁨, 많은 믿는 자들, 베드로와 요한까지 방문한 상황. 그런데 갑자기—</p>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"주의 사자가 빌립더러 일러 이르되 일어나서 남쪽으로 향하여 예루살렘에서 가사로 내려가는 길까지 가라 하니 그 길은 광야라"</div>
+    <div class="scripture-ref">사도행전 8:26</div>
+  </div>
+
+  <div class="many-one-split" style="margin-top:var(--sp-3);">
+    <div class="mos-col many">
+      <div class="mos-tag">MANY</div>
+      <div class="mos-header">사마리아</div>
+      <div class="mos-items">
+        · 많은 사람<br>
+        · 도시<br>
+        · 공개적인 복음 선포<br>
+        · 표적과 치유<br>
+        · 큰 기쁨
+      </div>
+      <div class="mos-result">큰 공동체</div>
+    </div>
+    <div class="mos-vs">→</div>
+    <div class="mos-col">
+      <div class="mos-tag">ONE</div>
+      <div class="mos-header">광야 길</div>
+      <div class="mos-items">
+        · 한 사람<br>
+        · 병거<br>
+        · 개인적인 질문<br>
+        · 성경 설명<br>
+        · 세례
+      </div>
+      <div class="mos-result light">한 개인</div>
+    </div>
+    <div class="mos-footer">많은 사람에게서 한 사람에게로 — 사도행전의 카메라가 한 개인에게 집중된다.</div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border-radius:4px;">
+    <div style="font-size:var(--fs-small);color:var(--accent);font-weight:700;">빌립은 왜 사마리아의 성공적인 사역을 떠났을까?</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:1.5mm;">본문은 그것이 주의 사자의 지시였음을 기록한다. 빌립은 순종하여 이동했다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 9</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 10: SCENE 05 — 에티오피아 관리 (8:26–29)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 5</span>
+      <span class="scene-title">에티오피아에서 온 한 사람</span>
+      <span class="scene-ref">행 8:26–29</span>
+    </div>
+    <div class="scene-body">
+      <p>빌립이 광야 길을 가다가 한 사람을 만난다. 본문이 그에 대해 알려주는 정보는 생각보다 많다.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading">인물 카드 — 에티오피아 관리</h2>
+
+  <div class="char-card">
+    <div class="char-card-name">에티오피아 관리</div>
+    <div class="char-card-attrs">
+      <div class="char-attr">에티오피아 사람</div>
+      <div class="char-attr">내시</div>
+      <div class="char-attr">간다게의 고위 관리</div>
+      <div class="char-attr">국고를 맡은 자</div>
+      <div class="char-attr">예배하러 예루살렘에 왔다가 돌아가는 중</div>
+      <div class="char-attr">병거에서 이사야서를 읽고 있음</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">'간다게'는 이름인가?</div>
+      <div class="background-box-body">간다게(Candace)는 개인 이름이라기보다 당시 에티오피아/쿠시 왕국의 왕비 또는 여왕에게 사용된 왕실 <strong>칭호</strong>로 이해된다. "간다게라는 이름의 여왕"으로 단정하지 않는다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">여기서 말하는 '에티오피아'</div>
+      <div class="background-box-body">오늘날 에티오피아 국가와 경계가 동일하지 않다. 고대의 쿠시 지역, 특히 오늘날 수단 지역과 관련된 왕국을 가리키는 것으로 이해된다. 예루살렘에서 남쪽 방향의 먼 곳이었다.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:1mm;">이 사람이 중요한 이유</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);">그는 예루살렘에서 예배를 드리고 돌아가는 중이었고, 병거에서 이사야서를 읽고 있었다. 성경을 읽고 있었지만 그 의미를 이해하지 못하고 있었다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 10</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 11: SCENE 06 — 이사야 53장 (8:30–35)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 6</span>
+      <span class="scene-title">"읽는 것을 깨닫느냐?"</span>
+      <span class="scene-ref">행 8:30–35</span>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin:var(--sp-2) 0;">
+    <div>
+      <div class="scripture-block" style="margin-bottom:var(--sp-2);">
+        <div class="scripture-text">"읽는 것을 깨닫느냐?"</div>
+        <div class="scripture-ref">빌립의 질문 (8:30)</div>
+      </div>
+      <div class="scripture-block">
+        <div class="scripture-text">"지도해 주는 사람이 없으니 어찌 깨달을 수 있느냐?"</div>
+        <div class="scripture-ref">관리의 대답 (8:31)</div>
+      </div>
+    </div>
+    <div>
+      <div class="background-box" style="margin:0;">
+        <div class="background-box-title">읽고 있던 본문 — 이사야 53장</div>
+        <div class="background-box-body">고난받는 종에 관한 본문. 도살장으로 끌려가는 양처럼 고난받고 침묵하는 인물을 묘사한다.<br><br>관리의 질문: "선지자가 누구를 가리켜 말하는 것입니까?"</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-heading">대화의 흐름 — 이 성경에서 시작하여 예수를 전함</h2>
+
+  <div class="learn-flow">
+    <div class="lf-step">
+      <div class="lf-num">1</div>
+      <div class="lf-text">이사야서를 읽고 있었으나 이해하지 못함</div>
+    </div>
+    <div class="lf-arrow">↓</div>
+    <div class="lf-step">
+      <div class="lf-num">2</div>
+      <div class="lf-text">빌립이 "읽는 것을 깨닫느냐?"라고 물음</div>
+    </div>
+    <div class="lf-arrow">↓</div>
+    <div class="lf-step">
+      <div class="lf-num">3</div>
+      <div class="lf-text">관리가 병거에 올라오기를 청함</div>
+    </div>
+    <div class="lf-arrow">↓</div>
+    <div class="lf-step">
+      <div class="lf-num">4</div>
+      <div class="lf-text">"선지자가 누구를 가리켜 말하는 것입니까?" 질문함</div>
+    </div>
+    <div class="lf-arrow">↓</div>
+    <div class="lf-step key-step" style="border-color:var(--accent);background:var(--accent-pale);">
+      <div class="lf-num">5</div>
+      <div class="lf-text" style="color:var(--accent);font-weight:700;"><strong>빌립이 이 성경에서 시작하여 예수를 전함</strong></div>
+    </div>
+    <div class="lf-arrow">↓</div>
+    <div class="lf-step">
+      <div class="lf-num">6</div>
+      <div class="lf-text">관리가 반응함 → 세례를 요청</div>
+    </div>
+  </div>
+
+  <div class="side-note" style="margin-top:var(--sp-2);">
+    <div class="side-note-label">이 장면이 보여주는 것</div>
+    <div class="side-note-body">성경을 읽는 것만으로는 부족할 수 있다. 이해를 도와주는 사람이 필요했다. 빌립은 성경 본문에서 시작해서 예수를 향한 길을 열어준다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 11</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 12: SCENE 07 — 세례 (8:36–40)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 7</span>
+      <span class="scene-title">"내가 세례를 받음에 무슨 거리낌이 있느냐?"</span>
+      <span class="scene-ref">행 8:36–40</span>
+    </div>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">길을 가다가 물 있는 곳에 이름</div>
+      </div>
+      <div class="flow-step-ref">8:36</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">"보라 물이 있으니 내가 세례를 받음에 무슨 거리낌이 있느냐?"</div>
+      </div>
+      <div class="flow-step-ref">8:36</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">병거를 멈추고 빌립과 관리가 물로 내려감 → 세례</div>
+      </div>
+      <div class="flow-step-ref">8:38</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">물에서 올라옴 → 주의 영이 빌립을 이끌어 감</div>
+      </div>
+      <div class="flow-step-ref">8:39</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">관리는 기쁘게 길을 계속 간다</div>
+      </div>
+      <div class="flow-step-ref">8:39</div>
+    </div>
+  </div>
+
+  <div class="manuscript-note" style="margin-top:var(--sp-2);">
+    <div class="ms-note-label">MANUSCRIPT NOTE</div>
+    <div class="ms-note-body">일부 성경 번역본에는 사도행전 8:37이 본문에 없거나 각주로 처리되어 있다. 이는 이 구절이 초기의 중요한 사본들에 없기 때문이다. 특정 번역본에서 36절 다음이 38절로 이어져 보일 수 있다.</div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-2);">빌립의 이후 여정</h2>
+
+  <div style="display:flex;align-items:center;gap:var(--sp-2);flex-wrap:wrap;margin-top:var(--sp-1);">
+    <div style="padding:2mm 4mm;background:var(--accent);border-radius:3px;color:var(--white);font-size:var(--fs-caption);font-weight:700;">아소도</div>
+    <div style="font-size:9pt;color:var(--rule-mid);">→</div>
+    <div style="padding:2mm 4mm;background:var(--accent-pale);border:1px solid var(--accent-soft);border-radius:3px;color:var(--ink-soft);font-size:var(--fs-caption);">여러 성을 지나며 복음을 전함</div>
+    <div style="font-size:9pt;color:var(--rule-mid);">→</div>
+    <div style="padding:2mm 4mm;background:var(--accent);border-radius:3px;color:var(--white);font-size:var(--fs-caption);font-weight:700;">가이사랴</div>
+  </div>
+  <p style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:2mm;">가이사랴는 이후 사도행전에서 다시 중요한 무대가 된다. (고넬료 사건, 바울의 재판 등)</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 12</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 13: VISUAL — 두 선교 비교
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <h2 class="section-heading">사도행전 8장의 두 선교</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-3);">빌립의 선교는 두 개의 전혀 다른 장면으로 이루어져 있다. 그러나 핵심은 같다.</p>
+
+  <div class="many-one-split">
+    <div class="mos-col many">
+      <div class="mos-tag">MANY · 사마리아</div>
+      <div class="mos-header">도시에서의 선교</div>
+      <div class="mos-items">
+        · 사마리아 지역 전체에<br>
+        · 공개적인 복음 선포<br>
+        · 기사와 표적<br>
+        · 치유<br>
+        · 많은 남녀가 세례받음<br>
+        · 베드로와 요한 방문
+      </div>
+      <div style="margin-top:var(--sp-2);padding:2mm 3mm;background:var(--white);border-radius:3px;text-align:center;font-size:var(--fs-small);font-weight:700;color:var(--accent);">"그 성에 큰 기쁨이 있더라."<br><span style="font-size:var(--fs-caption);color:var(--ink-faint);font-weight:400;">행 8:8</span></div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;font-size:12pt;color:var(--accent);font-weight:700;">VS</div>
+    <div class="mos-col">
+      <div class="mos-tag">ONE · 광야 길</div>
+      <div class="mos-header">한 사람에게</div>
+      <div class="mos-items">
+        · 광야 길에서<br>
+        · 이사야서를 설명함<br>
+        · 개인적인 대화<br>
+        · 한 사람이 세례받음
+      </div>
+      <div style="margin-top:var(--sp-2);padding:2mm 3mm;background:var(--accent-pale);border:1px solid var(--accent-soft);border-radius:3px;text-align:center;font-size:var(--fs-small);font-weight:700;color:var(--accent);">"기쁘게 길을 가므로"<br><span style="font-size:var(--fs-caption);color:var(--ink-faint);font-weight:400;">행 8:39</span></div>
+    </div>
+    <div class="mos-footer">복음은 많은 사람에게도, 한 사람에게도 전해진다.</div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">두 장면의 공통점</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);margin-top:var(--sp-1);">
+    <div style="padding:var(--sp-2);border:1.5px solid var(--accent-soft);border-radius:4px;text-align:center;background:var(--accent-pale);">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);">빌립이 순종</div>
+      <div style="font-size:6.5pt;color:var(--ink-soft);margin-top:1mm;">주의 사자·성령의 지시에 따름</div>
+    </div>
+    <div style="padding:var(--sp-2);border:1.5px solid var(--accent-soft);border-radius:4px;text-align:center;background:var(--accent-pale);">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);">복음이 전해짐</div>
+    </div>
+    <div style="padding:var(--sp-2);border:1.5px solid var(--accent-soft);border-radius:4px;text-align:center;background:var(--accent-pale);">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);">받아들임</div>
+      <div style="font-size:6.5pt;color:var(--ink-soft);margin-top:1mm;">세례</div>
+    </div>
+    <div style="padding:var(--sp-2);border:1.5px solid var(--accent-soft);border-radius:4px;text-align:center;background:var(--accent-pale);">
+      <div style="font-size:14pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);">기쁨</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 13</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 14: VISUAL — 복음의 경계 확장
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <h2 class="section-heading">복음의 경계가 넓어지고 있다</h2>
+
+  <div class="roadmap-visual">
+    <div class="rv-era done">
+      <div class="rv-ref">행 1–7장</div>
+      <div class="rv-content">예루살렘 — 교회 탄생 · 성장 · 박해 · 스데반 순교</div>
+    </div>
+    <div class="rv-arrow-row">↓</div>
+    <div class="rv-era active">
+      <div class="rv-ref">행 8장 ← 지금</div>
+      <div class="rv-content">사마리아 (빌립) + 에티오피아 관리 (새로운 배경의 사람)</div>
+    </div>
+    <div class="rv-arrow-row">↓</div>
+    <div class="rv-era">
+      <div class="rv-ref">행 9장 이후</div>
+      <div class="rv-content">사울 — 박해자에서 복음 전도자로</div>
+    </div>
+    <div class="rv-arrow-row">↓</div>
+    <div class="rv-era">
+      <div class="rv-ref">행 10장</div>
+      <div class="rv-content">고넬료 — 이방인에게 복음이 본격적으로 열림</div>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">Acts 1:8 Roadmap — 지금 어디쯤일까?</h2>
+
+  <div class="acts18-bar" style="margin:var(--sp-2) 0;">
+    <div class="a18-node done">
+      <div class="a18-circle done">✓</div>
+      <div class="a18-label">예루살렘</div>
+    </div>
+    <div class="a18-line done"></div>
+    <div class="a18-node done">
+      <div class="a18-circle done">✓</div>
+      <div class="a18-label">온 유대</div>
+    </div>
+    <div class="a18-line done"></div>
+    <div class="a18-node done">
+      <div class="a18-circle done">✓</div>
+      <div class="a18-label">사마리아</div>
+    </div>
+    <div class="a18-line"></div>
+    <div class="a18-node">
+      <div class="a18-circle"></div>
+      <div class="a18-label">땅끝까지</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-3);border:2px solid var(--accent);border-radius:4px;">
+    <div style="font-size:15pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);text-align:center;line-height:1.4;">이제 이야기가 예루살렘 밖으로 나가기 시작했다.</div>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:var(--sp-2);align-items:center;margin-top:var(--sp-2);">
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);text-align:center;">예루살렘<br>한 점</div>
+      <div style="font-size:18pt;color:var(--accent);">→</div>
+      <div style="font-size:var(--fs-caption);color:var(--accent);font-weight:700;text-align:center;">사마리아 · 유대 · 남쪽 길 · 가이사랴<br>복음의 무대가 넓어진다</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 14</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 15: LESSON SUMMARY
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 06</span>
+    <span class="page-header-title">복음이 사마리아로</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);margin-bottom:var(--sp-3);">
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);">한눈에 보는 LESSON 06</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">사도행전 8:4–40</div>
+  </div>
+
+  <div class="summary-grid">
+
+    <div class="summary-block full">
+      <div class="summary-block-label">사건 흐름</div>
+      <div class="summary-block-content">
+        흩어진 신자들이 복음을 전함 → 빌립의 사마리아 선교 → 큰 기쁨 →
+        마술사 시몬 (믿고 세례받음) → 베드로·요한 방문 → 성령을 받음 →
+        시몬이 돈으로 권능을 사려 함 → 베드로의 책망 →
+        빌립이 광야 길로 이동 → 에티오피아 관리와 만남 → 이사야서 설명 →
+        예수를 전함 → 세례 → 빌립: 아소도 → 가이사랴
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">주요 인물</div>
+      <div class="summary-block-content">
+        <strong>빌립</strong> — 사마리아와 광야 길, 두 장면에서 복음을 전함<br>
+        <strong>시몬</strong> — 마술사, 믿었으나 성령의 능력을 돈으로 사려 함<br>
+        <strong>베드로·요한</strong> — 사마리아를 방문, 기도하고 성령을 전함<br>
+        <strong>에티오피아 관리</strong> — 이사야서를 읽다 세례를 받음
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">장소</div>
+      <div class="summary-block-content">
+        <strong>예루살렘</strong> — 박해의 출발점<br>
+        <strong>사마리아</strong> — 빌립의 선교 · 큰 기쁨<br>
+        <strong>가사 방향 광야 길</strong> — 에티오피아 관리<br>
+        <strong>아소도 → 가이사랴</strong> — 빌립의 계속되는 사역
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">핵심 키워드</div>
+      <div class="tag-cloud">
+        <span class="tag">흩어짐</span><span class="tag">사마리아</span>
+        <span class="tag">빌립</span><span class="tag">성령</span>
+        <span class="tag">시몬</span><span class="tag">에티오피아</span>
+        <span class="tag">이사야</span><span class="tag">세례</span>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">새롭게 배운 배경지식</div>
+      <div class="summary-block-content">
+        <strong>사마리아인</strong> — 유대인들과 역사적·종교적 긴장 관계<br>
+        <strong>간다게</strong> — 쿠시 왕국의 왕비/여왕 칭호<br>
+        <strong>Simony</strong> — 영적 직분이나 특권을 돈으로 거래하는 행위를 가리키는 후대 용어. 시몬의 이름에서 유래.
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">숫자로 기억하기</div>
+      <div class="number-row">
+        <div class="num-item">
+          <div class="num-big">2</div>
+          <div class="num-label">선교의<br>장면</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">53</div>
+          <div class="num-label">이사야 장<br>(인용된 본문)</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">1:8</div>
+          <div class="num-label">복음 확장<br>로드맵</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이야기 연결</div>
+      <div class="story-conn">
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">이전 L05</div>
+          스데반 순교<br>신자들이 흩어짐
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node current-node">
+          <div style="font-size:var(--fs-caption);">L06</div>
+          복음이 사마리아로<br>경계를 넘기 시작
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">다음 L07</div>
+          사울이 예수를 만남<br>박해자 → 증인
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        박해로 예루살렘의 신자들이 흩어졌지만 빌립을 통해 복음은 사마리아와 새로운 배경의 사람들에게 전해지면서 예수님이 말씀하신 복음의 지리적 확장이 본격적으로 시작되었다.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 06 · 15</span>
+  </div>
+</section>
+
+
+</body>
+</html>

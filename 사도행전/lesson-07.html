@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 07 — 박해자 사울의 회심</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 07 전용 스타일 ── */
+
+    /* Story Connection */
+    .story-connection { margin-top:auto; border-top:1px solid var(--rule); padding-top:var(--sp-3); display:flex; gap:var(--sp-2); align-items:stretch; }
+    .sc-col { flex:1; padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; display:flex; flex-direction:column; gap:1.5mm; }
+    .sc-col.current { border-color:var(--accent); background:var(--accent-pale); }
+    .sc-col-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.08em; }
+    .sc-col.current .sc-col-label { color:var(--accent); }
+    .sc-col-title { font-size:var(--fs-small); font-weight:700; color:var(--ink); line-height:1.3; }
+    .sc-col.current .sc-col-title { color:var(--accent); }
+    .sc-flow-text { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.8; }
+    .sc-arrow { display:flex; align-items:center; font-size:14pt; color:var(--accent); padding:0 1mm; padding-top:12mm; }
+
+    /* Recall Badge */
+    .recall-badge { display:inline-flex; align-items:center; padding:.5mm 2mm; background:var(--page-bg); border:1px solid var(--rule); border-radius:3px; font-size:6.5pt; color:var(--ink-faint); font-weight:700; letter-spacing:.05em; vertical-align:middle; margin-left:2mm; }
+
+    /* Acts 1:8 Progress Bar */
+    .acts18-bar { display:flex; align-items:center; gap:0; margin:var(--sp-1) 0; }
+    .a18-node { display:flex; flex-direction:column; align-items:center; gap:1.5mm; }
+    .a18-circle { width:9mm; height:9mm; border-radius:50%; border:2px solid var(--rule); background:var(--white); display:flex; align-items:center; justify-content:center; font-size:7pt; flex-shrink:0; }
+    .a18-circle.done { background:var(--accent); border-color:var(--accent); color:var(--white); font-weight:700; }
+    .a18-circle.now { border-color:var(--accent); background:var(--accent-pale); color:var(--accent); font-weight:700; font-size:6.5pt; }
+    .a18-label { font-size:6.5pt; font-weight:700; color:var(--ink-faint); text-align:center; line-height:1.2; max-width:16mm; }
+    .a18-node.done .a18-label { color:var(--accent); }
+    .a18-node.now .a18-label { color:var(--accent); }
+    .a18-line { flex:1; height:1.5px; background:var(--rule); margin-bottom:4mm; }
+    .a18-line.done { background:var(--accent); }
+
+    /* Before/After/Encounter triple */
+    .bea-track { display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:2mm; margin:var(--sp-2) 0; align-items:stretch; }
+    .bea-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; display:flex; flex-direction:column; gap:2mm; }
+    .bea-col.before { background:var(--page-bg); }
+    .bea-col.encounter { background:var(--accent); border-color:var(--accent); }
+    .bea-col.after { background:var(--accent-pale); border-color:var(--accent-soft); }
+    .bea-label { font-size:var(--fs-caption); font-weight:700; letter-spacing:.08em; }
+    .bea-col.before .bea-label { color:var(--ink-faint); }
+    .bea-col.encounter .bea-label { color:rgba(255,255,255,.7); }
+    .bea-col.after .bea-label { color:var(--accent); }
+    .bea-title { font-size:var(--fs-small); font-weight:700; line-height:1.3; }
+    .bea-col.before .bea-title { color:var(--ink); }
+    .bea-col.encounter .bea-title { color:var(--white); font-family:var(--ff-hand); font-size:var(--fs-body); }
+    .bea-col.after .bea-title { color:var(--accent); }
+    .bea-items { font-size:var(--fs-caption); line-height:1.7; }
+    .bea-col.before .bea-items { color:var(--ink-soft); }
+    .bea-col.encounter .bea-items { color:rgba(255,255,255,.85); }
+    .bea-col.after .bea-items { color:var(--ink-soft); }
+    .bea-arrow { display:flex; align-items:center; justify-content:center; font-size:14pt; color:var(--accent); }
+
+    /* Saul recall timeline */
+    .saul-recall { display:flex; flex-direction:column; gap:0; }
+    .sr-item { display:flex; align-items:flex-start; gap:3mm; }
+    .sr-ref { min-width:14mm; font-size:var(--fs-caption); font-weight:700; color:var(--accent); text-align:right; padding-top:.5mm; }
+    .sr-body { flex:1; padding-bottom:var(--sp-1); border-bottom:1px dashed var(--rule); font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.5; }
+    .sr-item:last-child .sr-body { border-bottom:none; }
+    .sr-conn { height:3mm; width:1.5px; background:var(--rule); margin-left:calc(14mm + 1.5mm); }
+
+    /* Voice dialogue */
+    .voice-exchange { margin:var(--sp-2) 0; display:flex; flex-direction:column; gap:var(--sp-2); }
+    .ve-line { padding:var(--sp-2) var(--sp-3); border-radius:4px; }
+    .ve-line.question { background:var(--page-bg); border:1px solid var(--rule); }
+    .ve-line.answer { background:var(--accent); }
+    .ve-speaker { font-size:var(--fs-caption); font-weight:700; letter-spacing:.08em; margin-bottom:1.5mm; }
+    .ve-line.question .ve-speaker { color:var(--ink-faint); }
+    .ve-line.answer .ve-speaker { color:rgba(255,255,255,.7); }
+    .ve-text { font-size:var(--fs-body); font-weight:700; line-height:1.5; font-family:var(--ff-hand); }
+    .ve-line.question .ve-text { color:var(--ink); }
+    .ve-line.answer .ve-text { color:var(--white); }
+
+    /* Parallel helpers (Ananias / Barnabas) */
+    .parallel-helpers { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); margin:var(--sp-2) 0; align-items:start; }
+    .ph-col { padding:var(--sp-2); border:1.5px solid var(--accent-soft); border-radius:4px; background:var(--accent-pale); }
+    .ph-city { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.08em; margin-bottom:1.5mm; }
+    .ph-name { font-size:var(--fs-h2); font-weight:700; color:var(--accent); margin-bottom:1.5mm; }
+    .ph-action { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.6; }
+    .ph-result { margin-top:var(--sp-1); font-size:var(--fs-small); font-weight:700; color:var(--accent); }
+    .ph-divider { display:flex; align-items:center; justify-content:center; font-size:10pt; color:var(--rule-mid); padding-top:8mm; }
+
+    /* Persecutor → Witness big visual */
+    .p2w-track { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-3); margin:var(--sp-2) 0; align-items:stretch; }
+    .p2w-col { padding:var(--sp-3); border-radius:4px; }
+    .p2w-col.persecutor { background:var(--page-bg); border:1.5px solid var(--rule); }
+    .p2w-col.witness { background:var(--accent-pale); border:2px solid var(--accent); }
+    .p2w-label { font-size:9pt; font-weight:700; letter-spacing:.1em; margin-bottom:var(--sp-2); }
+    .p2w-col.persecutor .p2w-label { color:var(--ink-faint); }
+    .p2w-col.witness .p2w-label { color:var(--accent); }
+    .p2w-heading { font-size:var(--fs-h2); font-weight:700; line-height:1.2; margin-bottom:var(--sp-2); }
+    .p2w-col.persecutor .p2w-heading { color:var(--ink); }
+    .p2w-col.witness .p2w-heading { color:var(--accent); }
+    .p2w-items { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.8; }
+    .p2w-verdict { margin-top:var(--sp-2); padding:2mm 3mm; border-radius:3px; text-align:center; font-size:var(--fs-small); font-weight:700; }
+    .p2w-col.persecutor .p2w-verdict { background:var(--rule); color:var(--ink-soft); }
+    .p2w-col.witness .p2w-verdict { background:var(--accent); color:var(--white); }
+    .p2w-center { display:flex; align-items:center; justify-content:center; }
+    .p2w-encounter { background:var(--accent); border-radius:4px; padding:var(--sp-2) var(--sp-1); display:flex; flex-direction:column; align-items:center; gap:2mm; }
+    .p2w-enc-text { font-size:var(--fs-small); font-weight:700; color:var(--white); font-family:var(--ff-hand); writing-mode:vertical-rl; text-orientation:mixed; }
+    .p2w-footer { grid-column:1/-1; padding:var(--sp-2) var(--sp-3); background:var(--accent); border-radius:4px; text-align:center; font-size:var(--fs-body); font-weight:700; color:var(--white); font-family:var(--ff-hand); }
+
+    /* Barnabas character timeline */
+    .char-timeline { display:flex; flex-direction:column; gap:0; }
+    .ct-item { display:flex; gap:3mm; }
+    .ct-left { display:flex; flex-direction:column; align-items:center; min-width:8mm; }
+    .ct-dot { width:7mm; height:7mm; border-radius:50%; border:2px solid var(--accent); background:var(--accent-pale); display:flex; align-items:center; justify-content:center; font-size:6pt; font-weight:700; color:var(--accent); flex-shrink:0; }
+    .ct-dot.current { background:var(--accent); color:var(--white); }
+    .ct-dot.future { border-color:var(--rule); background:var(--white); color:var(--ink-faint); }
+    .ct-line { flex:1; width:1.5px; background:var(--rule); margin:1mm 0; }
+    .ct-line.done { background:var(--accent); }
+    .ct-body { flex:1; padding-bottom:var(--sp-2); }
+    .ct-lesson { font-size:var(--fs-caption); font-weight:700; color:var(--accent); }
+    .ct-text { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.5; }
+
+    /* New concept badge */
+    .new-concept { display:inline-block; padding:1.5mm 3mm; background:var(--accent); border-radius:3px; font-size:6.5pt; font-weight:700; color:var(--white); letter-spacing:.08em; margin-right:2mm; vertical-align:middle; }
+
+    /* Region spread */
+    .region-spread { display:flex; gap:var(--sp-2); margin:var(--sp-2) 0; align-items:center; }
+    .rs-item { flex:1; padding:var(--sp-2); border:1.5px solid var(--accent-soft); border-radius:4px; text-align:center; background:var(--accent-pale); }
+    .rs-name { font-size:var(--fs-small); font-weight:700; color:var(--accent); }
+    .rs-desc { font-size:6.5pt; color:var(--ink-soft); margin-top:1mm; }
+
+    /* Capture reversal */
+    .cap-reversal { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-3); margin:var(--sp-2) 0; align-items:start; }
+    .cr-col { padding:var(--sp-2); border-radius:4px; }
+    .cr-col.plan { background:var(--page-bg); border:1px solid var(--rule); }
+    .cr-col.reality { background:var(--accent-pale); border:1.5px solid var(--accent-soft); }
+    .cr-label { font-size:var(--fs-caption); font-weight:700; letter-spacing:.08em; margin-bottom:var(--sp-1); }
+    .cr-col.plan .cr-label { color:var(--ink-faint); }
+    .cr-col.reality .cr-label { color:var(--accent); }
+    .cr-items { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.9; }
+    .cr-vs { display:flex; align-items:flex-start; justify-content:center; font-size:10pt; color:var(--accent); font-weight:700; padding-top:10mm; }
+  </style>
+</head>
+<body>
+
+
+<!-- ════════════════════════════════════
+     PAGE 1: LESSON OPENING
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">07</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 3 — 복음이 경계를 넘다</div>
+      <h1 class="opening-title">박해자 사울의 회심</h1>
+      <div class="opening-scripture">사도행전 9:1–31</div>
+    </div>
+  </div>
+
+  <div class="lesson-summary-line">
+    교회를 박해하기 위해 다메섹으로 향하던 사울은 부활하신 예수를 만나 눈이 멀고, 아나니아를 통해 다시 보게 된 뒤 세례를 받고 자신이 박해하던 예수가 하나님의 아들이심을 전하기 시작한다.
+  </div>
+
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">사울 · 예수 · 아나니아 · 다메섹의 제자들 · 바나바</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">예루살렘 · 다메섹 · 예루살렘 · 가이사랴 · 다소</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">핵심 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2mm;margin-top:1.5mm;">
+        <span class="tag">박해</span><span class="tag">다메섹</span><span class="tag">빛</span>
+        <span class="tag">회심</span><span class="tag">아나니아</span><span class="tag">세례</span>
+        <span class="tag">증언</span><span class="tag">바나바</span>
+      </div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">Acts 1:8 진행</div>
+      <div class="acts18-bar">
+        <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">예루살렘</div></div>
+        <div class="a18-line done"></div>
+        <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">유대</div></div>
+        <div class="a18-line done"></div>
+        <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">사마리아</div></div>
+        <div class="a18-line"></div>
+        <div class="a18-node"><div class="a18-circle"></div><div class="a18-label">땅끝</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEFORE → AFTER 큰 시각 요약 -->
+  <div class="bea-track">
+    <div class="bea-col before">
+      <div class="bea-label">BEFORE</div>
+      <div class="bea-title">교회를 없애려던 사울</div>
+      <div class="bea-items">
+        예루살렘에서 출발<br>
+        다메섹으로 이동<br>
+        신자들을 체포하려 함<br>
+        <strong style="color:var(--ink);">예수를 박해함</strong>
+      </div>
+    </div>
+    <div class="bea-arrow">→</div>
+    <div class="bea-col encounter">
+      <div class="bea-label">ENCOUNTER</div>
+      <div class="bea-title">"나는 네가 박해하는<br>예수라."</div>
+      <div class="bea-items">다메섹으로 가는 길<br>하늘의 빛<br>목소리<br>눈이 멂</div>
+    </div>
+    <div class="bea-arrow" style="color:var(--white);">→</div>
+    <div class="bea-col after">
+      <div class="bea-label">AFTER</div>
+      <div class="bea-title">예수를 전하는 사울</div>
+      <div class="bea-items">
+        다메섹에서 세례<br>
+        회당에서 전함<br>
+        예루살렘에서 증언<br>
+        <strong>예수를 전함</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 1</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 2: RECALL — 지금까지의 사울
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <h2 class="section-heading">지금까지의 사울 — 이 인물을 다시 떠올리자</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-2);">사울은 이번 Lesson에서 갑자기 등장하는 인물이 아니다. 이전 두 Lesson에서 이미 세 번 등장했다.</p>
+
+  <div class="saul-recall">
+    <div class="sr-item">
+      <div class="sr-ref">행 7:58</div>
+      <div class="sr-body">스데반을 돌로 치던 사람들이 옷을 <strong>사울의 발 앞에</strong> 두었다. — 스데반의 죽음 현장에 있었다.</div>
+    </div>
+    <div class="sr-conn"></div>
+    <div class="sr-item">
+      <div class="sr-ref">행 8:1</div>
+      <div class="sr-body">사울이 스데반의 죽임당함을 <strong>옳게 여겼다.</strong></div>
+    </div>
+    <div class="sr-conn"></div>
+    <div class="sr-item">
+      <div class="sr-ref">행 8:3</div>
+      <div class="sr-body">사울이 <strong>교회를 파괴</strong>하려고 집집마다 들어가 남자와 여자를 끌어다 감옥에 넘겼다.</div>
+    </div>
+    <div class="sr-conn"></div>
+    <div class="sr-item">
+      <div class="sr-ref">행 9:1–2</div>
+      <div class="sr-body">여전히 주의 제자들을 위협하며 <strong>다메섹</strong>의 신자들까지 잡으러 출발한다.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:1.5mm;">이 점이 중요하다</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);line-height:1.6;">사울은 기독교에 무관심하거나 처음 들어보는 사람이 아니었다. 그는 예수 운동을 <strong>위험하다고 판단하고 적극적으로 제거하려 했던</strong> 인물이었다. 따라서 이후의 변화가 더욱 극적이다.</div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">이번 Lesson의 구조 — 사울의 방향 전환</h2>
+
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:var(--sp-1);margin-top:var(--sp-1);">
+    <div style="padding:2mm 4mm;background:var(--page-bg);border:1px solid var(--rule);border-radius:20px;font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);">PERSECUTOR</div>
+    <div style="color:var(--rule-mid);font-size:10pt;">→</div>
+    <div style="padding:2mm 4mm;background:var(--accent);border-radius:20px;font-size:var(--fs-caption);font-weight:700;color:var(--white);">ENCOUNTER</div>
+    <div style="color:var(--rule-mid);font-size:10pt;">→</div>
+    <div style="padding:2mm 4mm;background:var(--page-bg);border:1px solid var(--rule);border-radius:20px;font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);">BLINDNESS</div>
+    <div style="color:var(--rule-mid);font-size:10pt;">→</div>
+    <div style="padding:2mm 4mm;background:var(--accent-pale);border:1px solid var(--accent-soft);border-radius:20px;font-size:var(--fs-caption);font-weight:700;color:var(--accent);">ANANIAS</div>
+    <div style="color:var(--rule-mid);font-size:10pt;">→</div>
+    <div style="padding:2mm 4mm;background:var(--accent-pale);border:1px solid var(--accent-soft);border-radius:20px;font-size:var(--fs-caption);font-weight:700;color:var(--accent);">BAPTISM</div>
+    <div style="color:var(--rule-mid);font-size:10pt;">→</div>
+    <div style="padding:2mm 4mm;background:var(--accent-pale);border:1px solid var(--accent-soft);border-radius:20px;font-size:var(--fs-caption);font-weight:700;color:var(--accent);">WITNESS</div>
+    <div style="color:var(--rule-mid);font-size:10pt;">→</div>
+    <div style="padding:2mm 4mm;background:var(--accent);border-radius:20px;font-size:var(--fs-caption);font-weight:700;color:var(--white);">PERSECUTED</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 3: SCENE 01 — 왜 다메섹으로? + 지도 (9:1–2)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">왜 다메섹으로 가고 있었을까?</span>
+      <span class="scene-ref">행 9:1–2</span>
+    </div>
+    <div class="scene-body">
+      <p>사울은 대제사장에게 찾아가 다메섹의 여러 회당에 보낼 <strong>공문</strong>을 요청한다. "그 도를 따르는 사람"을 남녀를 불문하고 결박해 예루살렘으로 데려오겠다는 계획이었다.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin:var(--sp-2) 0;align-items:start;">
+    <div>
+      <div class="background-box">
+        <div class="background-box-title"><span class="new-concept">NEW CONCEPT</span> "그 도" · The Way</div>
+        <div class="background-box-body">사도행전에서 초기 예수 공동체와 그 신앙을 가리키는 표현으로 <strong>"그 도(The Way)"</strong>가 반복 등장한다. 단순한 교리가 아니라 삶의 방향 전체를 아우르는 표현으로 이해된다. 앞으로 사도행전에서 다시 만나게 된다.</div>
+      </div>
+      <div class="background-box" style="margin-top:var(--sp-2);">
+        <div class="background-box-title">공문(Letters)이 의미하는 것</div>
+        <div class="background-box-body">사울은 단순히 예루살렘 내부에서 신자들을 체포한 것이 아니었다. 공식적인 권한을 가지고 타 도시의 회당에까지 협력을 요청하려 했다. 박해의 범위와 조직성을 보여준다.</div>
+      </div>
+    </div>
+
+    <!-- 지도 -->
+    <div>
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink);margin-bottom:2mm;">예루살렘 → 다메섹 (학습용 지도)</div>
+      <svg viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;border:1px solid var(--rule);border-radius:4px;background:#f8f6f3;display:block;">
+        <!-- 지중해 -->
+        <rect x="0" y="0" width="22" height="160" fill="#dce8f0" opacity=".7"/>
+        <text x="11" y="85" font-size="4.5" fill="#7a9ab0" text-anchor="middle" transform="rotate(-90,11,85)" font-family="SCDream,sans-serif">지중해</text>
+        <!-- 갈릴리 -->
+        <rect x="22" y="5" width="73" height="30" rx="2" fill="#f0ece6" stroke="#d8d4ce" stroke-width=".7"/>
+        <text x="58" y="17" font-size="5.5" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">갈릴리</text>
+        <!-- 다메섹 별표 -->
+        <circle cx="85" cy="22" r="4" fill="#b4552d"/>
+        <text x="72" y="32" font-size="5.5" fill="#b4552d" font-family="SCDream,sans-serif" font-weight="700">다메섹 ②</text>
+        <!-- 사마리아 -->
+        <rect x="22" y="38" width="73" height="35" rx="2" fill="#f0ece6" stroke="#d8d4ce" stroke-width=".7"/>
+        <text x="58" y="52" font-size="5.5" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">사마리아</text>
+        <!-- 유대 -->
+        <rect x="22" y="76" width="73" height="50" rx="2" fill="#f0ece6" stroke="#d8d4ce" stroke-width=".7"/>
+        <text x="58" y="90" font-size="5.5" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">유대</text>
+        <!-- 예루살렘 -->
+        <circle cx="60" cy="107" r="3.5" fill="#1e1e1e"/>
+        <text x="65" y="109" font-size="5.5" fill="#1e1e1e" font-family="SCDream,sans-serif" font-weight="700">예루살렘 ①</text>
+        <!-- 이동 경로 -->
+        <path d="M60,107 Q65,75 75,55 Q80,40 85,22" stroke="#b4552d" stroke-width="1.5" fill="none" stroke-dasharray="3,2"/>
+        <!-- 화살 -->
+        <polygon points="85,18 82,25 89,25" fill="#b4552d"/>
+        <!-- 범례 -->
+        <line x1="25" y1="148" x2="40" y2="148" stroke="#b4552d" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="43" y="151" font-size="4.5" fill="#b4552d" font-family="SCDream,sans-serif">사울의 이동 경로</text>
+        <!-- 나침반 -->
+        <text x="88" y="155" font-size="6" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">S</text>
+        <text x="88" y="10" font-size="6" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">N</text>
+      </svg>
+      <p style="font-size:6pt;color:var(--ink-faint);margin-top:2mm;">다메섹은 예루살렘에서 상당히 먼 도시였다. 사울의 박해가 다른 도시의 신자들까지 추적할 정도로 확대되고 있었음을 보여준다.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 4: SCENE 02 — "사울아 사울아" (9:3–9)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 2</span>
+      <span class="scene-title">"사울아, 사울아"</span>
+      <span class="scene-ref">행 9:3–9</span>
+    </div>
+    <div class="scene-body">
+      <p>다메섹에 가까이 갔을 때, 갑자기 하늘에서 빛이 사울을 둘러 비춘다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin:var(--sp-2) 0;">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">다메섹에 가까이 이름</div>
+      </div>
+      <div class="flow-step-ref">9:3</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">갑자기 하늘에서 빛이 둘러 비춤 — 땅에 엎드러짐</div>
+      </div>
+      <div class="flow-step-ref">9:3–4</div>
+    </div>
+  </div>
+
+  <div class="voice-exchange">
+    <div class="ve-line question">
+      <div class="ve-speaker">목소리</div>
+      <div class="ve-text">"사울아 사울아 네가 어찌하여 나를 박해하느냐?"</div>
+    </div>
+    <div class="ve-line question">
+      <div class="ve-speaker">사울</div>
+      <div class="ve-text">"주여 누구시니이까?"</div>
+    </div>
+    <div class="ve-line answer">
+      <div class="ve-speaker">목소리</div>
+      <div class="ve-text">"나는 네가 박해하는 예수라."</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border:1.5px solid var(--accent-soft);border-radius:4px;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:var(--sp-1);">본문이 보여주는 것</div>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:var(--sp-2);align-items:center;">
+      <div style="font-size:var(--fs-small);color:var(--ink-soft);">사울이 실제로 잡으려 했던 사람:<br><strong style="color:var(--ink);">예수의 제자들</strong></div>
+      <div style="font-size:14pt;color:var(--accent);">→</div>
+      <div style="font-size:var(--fs-small);color:var(--ink);">예수님의 말씀:<br><strong>"왜 <em>나를</em> 박해하느냐?"</strong></div>
+    </div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:var(--sp-1);">예수님은 제자들이 받는 박해를 자신에 대한 박해로 말씀하신다. 본문이 그 표현을 직접 사용한다.</div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">사울이 땅에서 일어남</div>
+      </div>
+      <div class="flow-step-ref">9:8</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">눈을 떴으나 아무것도 보지 못함</div>
+        <div class="flow-step-desc">사람들이 손을 잡고 다메섹으로 데려감.</div>
+      </div>
+      <div class="flow-step-ref">9:8–9</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">3일 동안 보지 못함 · 먹지도 마시지도 않음</div>
+      </div>
+      <div class="flow-step-ref">9:9</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 5: VISUAL — 보던 사람이 보지 못하게 되다
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <h2 class="section-heading">보고 있다고 생각했던 사람이 보지 못하게 되다</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-2);">사울의 실명(失明)은 단순한 신체적 사건이 아니다. 본문은 그것을 무엇과 함께 놓는가?</p>
+
+  <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:var(--sp-3);margin:var(--sp-2) 0;align-items:start;">
+    <div style="padding:var(--sp-3);background:var(--page-bg);border:1.5px solid var(--rule);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);letter-spacing:.08em;margin-bottom:var(--sp-2);">박해자로서의 사울</div>
+      <div style="font-size:var(--fs-small);font-weight:700;color:var(--ink);margin-bottom:var(--sp-1);">확신하고 있었다</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);line-height:1.8;">
+        누가 옳은가?<br>
+        누가 잘못되었는가?<br>
+        무엇을 제거해야 하는가?
+      </div>
+      <div style="margin-top:var(--sp-2);padding:2mm 3mm;background:var(--rule);border-radius:3px;font-size:var(--fs-caption);color:var(--ink-soft);font-weight:700;">스스로 목적지를 정함</div>
+      <div style="margin-top:1.5mm;padding:2mm 3mm;background:var(--rule);border-radius:3px;font-size:var(--fs-caption);color:var(--ink-soft);">공문을 가지고 감</div>
+      <div style="margin-top:1.5mm;padding:2mm 3mm;background:var(--rule);border-radius:3px;font-size:var(--fs-caption);color:var(--ink-soft);">사람들을 결박하려 함</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--sp-1);padding-top:12mm;">
+      <div style="width:10mm;height:10mm;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;">
+        <div style="font-size:8pt;color:var(--white);font-weight:700;">빛</div>
+      </div>
+      <div style="font-size:9pt;color:var(--accent);">↓</div>
+    </div>
+
+    <div style="padding:var(--sp-3);background:var(--accent-pale);border:2px solid var(--accent);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);letter-spacing:.08em;margin-bottom:var(--sp-2);">예수를 만난 이후</div>
+      <div style="font-size:var(--fs-small);font-weight:700;color:var(--accent);margin-bottom:var(--sp-1);">아무것도 보지 못한다</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);line-height:1.8;">
+        눈을 떴으나 아무것도 보지 못함<br>
+        3일 동안 먹지도 마시지도 않음<br>
+        다른 사람의 손에 이끌려 다메섹으로 들어감
+      </div>
+      <div style="margin-top:var(--sp-2);padding:2mm 3mm;background:var(--accent);border-radius:3px;font-size:var(--fs-caption);color:var(--white);">보지 못함</div>
+      <div style="margin-top:1.5mm;padding:2mm 3mm;background:var(--accent-soft);border-radius:3px;font-size:var(--fs-caption);color:var(--accent);font-weight:700;">다른 사람에게 이끌림</div>
+      <div style="margin-top:1.5mm;padding:2mm 3mm;background:var(--accent-soft);border-radius:3px;font-size:var(--fs-caption);color:var(--accent);">기다림</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-3);border:2px solid var(--accent);border-radius:4px;text-align:center;">
+    <div style="font-size:14pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);">주도권의 역전</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:var(--sp-1);">확신하며 달려가던 사울이, 아무것도 보지 못하고 기다리는 사람이 된다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 6: SCENE 03 — 아나니아에게 주어진 명령 (9:10–16)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">아나니아에게 주어진 명령</span>
+      <span class="scene-ref">행 9:10–16</span>
+    </div>
+    <div class="scene-body">
+      <p>다메섹에 아나니아라는 제자가 있었다. 주님이 환상 중에 그를 부르신다.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin:var(--sp-2) 0;align-items:start;">
+    <div>
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);letter-spacing:.08em;margin-bottom:var(--sp-1);">주님의 명령</div>
+      <div class="story-flow">
+        <div class="flow-step">
+          <div class="flow-step-content"><div class="flow-step-title">직가라는 거리로 가라</div></div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-step-content"><div class="flow-step-title">유다의 집을 찾아라</div></div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step key-step">
+          <div class="flow-step-content"><div class="flow-step-title">다소 사람 사울을 찾아라</div></div>
+          <div class="flow-step-ref">9:11</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);letter-spacing:.08em;margin-bottom:var(--sp-1);">아나니아의 반응</div>
+      <div class="background-box" style="margin:0;">
+        <div class="background-box-title">아나니아에게 사울은 누구였나</div>
+        <div class="background-box-body">
+          · 예루살렘에서 성도들에게 많은 해를 끼쳤다는 소문을 들었다<br>
+          · 다메섹에서도 신자들을 잡아갈 권한을 가지고 있다<br><br>
+          그는 사울을 <strong>위험한 박해자</strong>로 알고 있었다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"가라 이 사람은 내 이름을 이방인과 임금들과 이스라엘 자손들에게 전하기 위하여 택한 나의 그릇이라"</div>
+    <div class="scripture-ref">사도행전 9:15 — 주님의 대답</div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border-radius:4px;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:var(--sp-1);">사울에게 예고된 사역 — FUTURE PREVIEW</div>
+    <div style="display:flex;gap:var(--sp-2);align-items:center;">
+      <div style="padding:2mm 4mm;background:var(--accent);border-radius:3px;font-size:var(--fs-caption);font-weight:700;color:var(--white);">이방인</div>
+      <div style="padding:2mm 4mm;background:var(--accent);border-radius:3px;font-size:var(--fs-caption);font-weight:700;color:var(--white);">왕들</div>
+      <div style="padding:2mm 4mm;background:var(--accent);border-radius:3px;font-size:var(--fs-caption);font-weight:700;color:var(--white);">이스라엘 자손</div>
+      <div style="font-size:9pt;color:var(--rule-mid);">→</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-faint);">앞으로 사도행전에서 실제로 펼쳐질 이야기</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 7: SCENE 04 — "형제 사울아" (9:17–19)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">"형제 사울아"</span>
+      <span class="scene-ref">행 9:17–19</span>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin:var(--sp-2) 0;padding:var(--sp-3);background:var(--accent);border-radius:4px;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.08em;margin-bottom:2mm;">아나니아가 사울에게 한 첫 마디</div>
+    <div style="font-size:20pt;font-weight:700;color:var(--white);font-family:var(--ff-hand);">"형제 사울아"</div>
+    <div style="font-size:var(--fs-caption);color:rgba(255,255,255,.7);margin-top:2mm;">아나니아가 두려워하던 사람이었다. 그러나 주님의 명령에 따라 찾아가 이렇게 불렀다.</div>
+  </div>
+
+  <div class="story-flow" style="margin:var(--sp-2) 0;">
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">아나니아가 사울에게 안수함</div></div>
+      <div class="flow-step-ref">9:17</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">예수께서 자신을 보내셨다고 설명함</div>
+        <div class="flow-step-desc">다시 보게 되고 성령으로 충만하게 되리라.</div>
+      </div>
+      <div class="flow-step-ref">9:17</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">눈에서 비늘 같은 것이 벗어짐 → 다시 봄</div>
+      </div>
+      <div class="flow-step-ref">9:18</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">세례 · 음식을 먹음 · 기운을 차림</div>
+      </div>
+      <div class="flow-step-ref">9:18–19</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:var(--sp-3);margin-top:var(--sp-2);">
+    <div style="padding:var(--sp-2);background:var(--page-bg);border:1px solid var(--rule);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);margin-bottom:var(--sp-1);">사울이 하려던 일</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);line-height:1.7;">
+        다메섹의 신자들을 <em>찾아냄</em><br>
+        → 결박함<br>
+        → 예루살렘으로 끌고 감
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;font-size:14pt;color:var(--accent);">→</div>
+    <div style="padding:var(--sp-2);background:var(--accent-pale);border:1.5px solid var(--accent-soft);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:var(--sp-1);">실제로 일어난 일</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);line-height:1.7;">
+        제자 아나니아가 사울을 <em>찾아냄</em><br>
+        → 손을 얹음<br>
+        → <strong>"형제 사울"</strong> → 세례
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 7</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 8: SCENE 05 — 사울이 전하기 시작하다 (9:19–22)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 5</span>
+      <span class="scene-title">사울이 무엇을 전하기 시작했을까?</span>
+      <span class="scene-ref">행 9:19–22</span>
+    </div>
+    <div class="scene-body">
+      <p>사울은 다메섹의 제자들과 며칠을 함께 지낸다. 그리고 <strong>즉시</strong> 회당에서 예수를 전하기 시작한다.</p>
+    </div>
+  </div>
+
+  <div style="margin:var(--sp-3) 0;text-align:center;padding:var(--sp-3);border:2px solid var(--accent);border-radius:4px;background:var(--accent-pale);">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);letter-spacing:.08em;margin-bottom:2mm;">사울의 메시지</div>
+    <div style="font-size:18pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);">"예수는 하나님의 아들이시다."</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:2mm;">행 9:20</div>
+  </div>
+
+  <h2 class="section-heading">사람들의 반응</h2>
+  <div class="background-box">
+    <div class="background-box-title">사람들의 놀람</div>
+    <div class="background-box-body">
+      "이 사람은 예루살렘에서 이 이름을 부르는 사람들을 없애려던 사람이 아닌가?"<br>
+      "여기에도 그들을 잡아가려고 온 것이 아닌가?" (행 9:21)<br><br>
+      사람들은 혼란스러웠다. 그러나 사울은 더욱 힘을 얻어 예수가 그리스도이심을 증언했다.
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">BEFORE → AFTER</h2>
+
+  <div class="p2w-track" style="margin-top:var(--sp-1);">
+    <div class="p2w-col persecutor">
+      <div class="p2w-label">BEFORE</div>
+      <div class="p2w-heading">회당에서…</div>
+      <div class="p2w-items">
+        예수를 믿는 사람을<br>
+        찾아내려 함
+      </div>
+      <div class="p2w-verdict">찾으려 함</div>
+    </div>
+    <div class="p2w-center">
+      <div style="font-size:14pt;color:var(--accent);">→</div>
+    </div>
+    <div class="p2w-col witness">
+      <div class="p2w-label">AFTER</div>
+      <div class="p2w-heading">같은 도시의 회당에서…</div>
+      <div class="p2w-items">
+        예수를 그리스도로<br>
+        전함
+      </div>
+      <div class="p2w-verdict">전하기 시작함</div>
+    </div>
+    <div class="p2w-footer">PERSECUTOR → PREACHER · 박해자가 전도자가 되다</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 8</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 9: SCENE 06 — 다메섹 탈출 (9:23–25)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 6</span>
+      <span class="scene-title">이번에는 사울이 도망쳐야 했다</span>
+      <span class="scene-ref">행 9:23–25</span>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin:var(--sp-2) 0;">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">여러 날이 지난 후, 유대인들이 사울을 죽이려는 계획을 세움</div>
+      </div>
+      <div class="flow-step-ref">9:23</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">성문을 밤낮으로 지킴</div>
+      </div>
+      <div class="flow-step-ref">9:24</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">제자들이 밤에 사울을 광주리에 태워 성벽 창문으로 내려보냄</div>
+      </div>
+      <div class="flow-step-ref">9:25</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">탈출</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-3);border:2px solid var(--accent);border-radius:4px;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);letter-spacing:.08em;margin-bottom:var(--sp-2);">이번 Lesson의 역전 구조</div>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:var(--sp-1);align-items:center;">
+      <div style="padding:var(--sp-2);background:var(--page-bg);border:1px solid var(--rule);border-radius:3px;text-align:center;">
+        <div style="font-size:6.5pt;font-weight:700;color:var(--ink-faint);margin-bottom:1.5mm;">Lesson 시작</div>
+        <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink);">사울이 신자들을 잡으러 들어옴</div>
+      </div>
+      <div style="font-size:10pt;color:var(--rule-mid);">→</div>
+      <div style="padding:var(--sp-2);background:var(--accent-pale);border:1px solid var(--accent-soft);border-radius:3px;text-align:center;">
+        <div style="font-size:6.5pt;font-weight:700;color:var(--accent);margin-bottom:1.5mm;">Lesson 중반</div>
+        <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);">사울이 예수를 전함</div>
+      </div>
+      <div style="font-size:10pt;color:var(--rule-mid);">→</div>
+      <div style="padding:var(--sp-2);background:var(--accent);border-radius:3px;text-align:center;">
+        <div style="font-size:6.5pt;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:1.5mm;">이제</div>
+        <div style="font-size:var(--fs-caption);font-weight:700;color:var(--white);">사울 자신이 도망친다</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);text-align:center;padding:var(--sp-2);">
+    <div style="font-size:15pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);">박해하던 사람이 이제 박해받는 사람이 되었다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 9</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 10: SCENE 07 — 예루살렘의 제자들 (9:26–30)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 7</span>
+      <span class="scene-title">예루살렘의 제자들은 사울을 믿지 않았다</span>
+      <span class="scene-ref">행 9:26–30</span>
+    </div>
+    <div class="scene-body">
+      <p>사울이 예루살렘으로 돌아와 제자들과 함께하려 한다. 그러나 모두 그를 두려워하며 "제자라는 것을 믿지 않았다."(9:26)</p>
+    </div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">그들이 기억하는 사울 <span class="recall-badge">RECALL · L05, L06</span></div>
+    <div class="background-box-body">
+      스데반의 죽음에 동의 → 교회 파괴 → 집집마다 신자들을 체포 → 다메섹까지 추적<br><br>
+      그런 사람이 갑자기 "나도 이제 제자입니다."라고 한다면 당연히 의심할 수 있었다.
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">그리고 한 사람이 등장한다 — 바나바</h2>
+
+  <div style="display:grid;grid-template-columns:auto 1fr;gap:var(--sp-3);align-items:start;margin-top:var(--sp-2);">
+    <div>
+      <div style="padding:var(--sp-2);border:2px solid var(--accent);border-radius:4px;text-align:center;min-width:22mm;">
+        <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);">바나바</div>
+        <div class="recall-badge" style="margin:1.5mm 0 0;font-size:6pt;">RECALL · L04</div>
+        <div style="font-size:6pt;color:var(--ink-faint);margin-top:1mm;">자신의 밭을<br>팔아 공동체에 드림</div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-2);">바나바는 사울을 사도들에게 데려가 설명했다.</p>
+      <div class="story-flow">
+        <div class="flow-step">
+          <div class="flow-step-content"><div class="flow-step-title">사울이 길에서 주님을 만났다</div></div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-step-content"><div class="flow-step-title">주님이 사울에게 말씀하셨다</div></div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step key-step">
+          <div class="flow-step-content"><div class="flow-step-title">다메섹에서 예수의 이름으로 담대히 전했다</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border-radius:4px;text-align:center;">
+    <div style="font-size:var(--fs-small);font-weight:700;color:var(--accent);">바나바의 역할 — 사울을 공동체 안으로 연결하다</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:1mm;">그 결과 사울은 제자들과 함께 예루살렘을 다니며 주 예수의 이름으로 담대히 말하게 된다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 10</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 11: CHARACTER CONNECTION — 바나바
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <h2 class="section-heading">CHARACTER TIMELINE — 바나바</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-3);">바나바는 사도행전에서 단순한 조연이 아니다. 그의 역할은 계속 확장된다.</p>
+
+  <div class="char-timeline">
+    <div class="ct-item">
+      <div class="ct-left">
+        <div class="ct-dot done">04</div>
+        <div class="ct-line done"></div>
+      </div>
+      <div class="ct-body">
+        <div class="ct-lesson">LESSON 04 — 등장</div>
+        <div class="ct-text">자신의 밭을 팔아 사도들의 발 앞에 내놓음. 공동체의 나눔을 보여주는 긍정적 모습으로 소개됨.</div>
+      </div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-left">
+        <div class="ct-dot current">07</div>
+        <div class="ct-line"></div>
+      </div>
+      <div class="ct-body">
+        <div class="ct-lesson">LESSON 07 — 지금</div>
+        <div class="ct-text">두려워하던 예루살렘 제자들과 사울 사이에 다리 역할을 함. 사울의 회심 경험을 사도들에게 설명하고 사울을 공동체와 연결함.</div>
+      </div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-left">
+        <div class="ct-dot future">후</div>
+        <div class="ct-line"></div>
+      </div>
+      <div class="ct-body">
+        <div class="ct-lesson">이후 — 안디옥</div>
+        <div class="ct-text">안디옥 교회에서 사역하다 다소에 있는 사울을 직접 찾아가 함께 데려옴.</div>
+      </div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-left">
+        <div class="ct-dot future">후</div>
+      </div>
+      <div class="ct-body">
+        <div class="ct-lesson">이후 — 1차 선교여행</div>
+        <div class="ct-text">바나바와 사울(바울)이 함께 제1차 선교여행을 떠난다.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">두 명의 연결자</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-2);">사울이 새로운 공동체 안으로 들어오는 과정에 두 사람의 역할이 있었다.</p>
+
+  <div class="parallel-helpers">
+    <div class="ph-col">
+      <div class="ph-city">다메섹</div>
+      <div class="ph-name">아나니아</div>
+      <div class="ph-action">두려워하던 사울에게 먼저 찾아감<br>안수하고 "형제 사울"이라 부름<br>세례로 이어짐</div>
+      <div class="ph-result">사울을 받아들임</div>
+    </div>
+    <div class="ph-divider">→</div>
+    <div class="ph-col">
+      <div class="ph-city">예루살렘</div>
+      <div class="ph-name">바나바</div>
+      <div class="ph-action">두려워하던 제자들에게 사울을 데려감<br>사울의 이야기를 대신 설명함<br>공동체와의 연결로 이어짐</div>
+      <div class="ph-result">사울을 연결함</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 11</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 12: SCENE 08 — 예루살렘 → 다소 (9:28–30) + 지도
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 8</span>
+      <span class="scene-title">예루살렘에서도 예수를 전하다</span>
+      <span class="scene-ref">행 9:28–30</span>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 50mm;gap:var(--sp-3);align-items:start;margin:var(--sp-2) 0;">
+    <div>
+      <div class="story-flow">
+        <div class="flow-step">
+          <div class="flow-step-content"><div class="flow-step-title">사도들과 함께 예루살렘을 다님</div></div>
+          <div class="flow-step-ref">9:28</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step key-step">
+          <div class="flow-step-content"><div class="flow-step-title">주 예수의 이름으로 담대히 말함</div></div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-step-content">
+            <div class="flow-step-title">헬라파 유대인들과 말하고 논쟁함</div>
+            <div class="flow-step-desc">그들이 사울을 죽이려 함.</div>
+          </div>
+          <div class="flow-step-ref">9:29</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-step-content">
+            <div class="flow-step-title">형제들이 사울을 가이사랴로 데려감</div>
+          </div>
+          <div class="flow-step-ref">9:30</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step key-step">
+          <div class="flow-step-content">
+            <div class="flow-step-title">다소로 보냄</div>
+          </div>
+          <div class="flow-step-ref">9:30</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 지도 -->
+    <div>
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink);margin-bottom:2mm;">사울의 전체 이동</div>
+      <svg viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg" style="width:50mm;border:1px solid var(--rule);border-radius:4px;background:#f8f6f3;display:block;">
+        <!-- 지중해 -->
+        <rect x="0" y="0" width="20" height="200" fill="#dce8f0" opacity=".7"/>
+        <text x="10" y="100" font-size="4" fill="#7a9ab0" text-anchor="middle" transform="rotate(-90,10,100)" font-family="SCDream,sans-serif">지중해</text>
+        <!-- 소아시아 상단 -->
+        <text x="60" y="12" font-size="4.5" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">소아시아 방향</text>
+        <!-- 다소 -->
+        <circle cx="55" cy="22" r="3" fill="#888" opacity=".8"/>
+        <text x="60" y="24" font-size="5" fill="#888" font-family="SCDream,sans-serif" font-weight="700">다소 ⑤</text>
+        <!-- 가이사랴 -->
+        <circle cx="22" cy="75" r="2.5" fill="#888" opacity=".6"/>
+        <text x="27" y="77" font-size="4.5" fill="#888" font-family="SCDream,sans-serif">가이사랴 ④</text>
+        <!-- 다메섹 -->
+        <circle cx="82" cy="80" r="3.5" fill="#b4552d"/>
+        <text x="70" y="92" font-size="5" fill="#b4552d" font-family="SCDream,sans-serif" font-weight="700">다메섹 ②③</text>
+        <!-- 예루살렘 -->
+        <circle cx="55" cy="145" r="3.5" fill="#1e1e1e"/>
+        <text x="40" y="157" font-size="5" fill="#1e1e1e" font-family="SCDream,sans-serif" font-weight="700">예루살렘 ①④</text>
+        <!-- 경로 -->
+        <path d="M55,145 Q65,115 82,80" stroke="#888" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+        <path d="M82,80 Q70,78 55,145" stroke="#b4552d" stroke-width="1.2" fill="none" stroke-dasharray="3,2"/>
+        <path d="M55,145 Q40,110 22,75" stroke="#b4552d" stroke-width="1.2" fill="none" stroke-dasharray="3,2"/>
+        <path d="M22,75 Q35,48 55,22" stroke="#b4552d" stroke-width="1.2" fill="none" stroke-dasharray="3,2"/>
+        <!-- 번호 범례 -->
+        <text x="25" y="183" font-size="3.8" fill="#888" font-family="SCDream,sans-serif">① 예루살렘 출발 (박해자)</text>
+        <text x="25" y="189" font-size="3.8" fill="#b4552d" font-family="SCDream,sans-serif">② 다메섹 → 예수 만남</text>
+        <text x="25" y="195" font-size="3.8" fill="#b4552d" font-family="SCDream,sans-serif">④→⑤ 예루살렘 → 다소</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">다소 — 사울의 고향 <span class="new-concept" style="font-size:5.5pt;">기억할 도시</span></div>
+    <div class="background-box-body">행 9:11에서 이미 "다소 사람 사울"이라고 소개되었다. 다소는 소아시아 지역의 중요한 도시로 앞으로 사울/바울의 배경을 이해하는 데 중요한 도시다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 12</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 13: VISUAL — 박해자 → 증인 (완전한 역전)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <h2 class="section-heading">사울의 완전한 역전 — 한눈에 보기</h2>
+
+  <div class="p2w-track">
+    <div class="p2w-col persecutor">
+      <div class="p2w-label">SAUL THE PERSECUTOR</div>
+      <div class="p2w-heading">박해자 사울</div>
+      <div class="p2w-items">
+        스데반의 죽음에 동의<br>
+        ↓ 교회를 파괴<br>
+        ↓ 신자들을 체포<br>
+        ↓ 대제사장의 권한을 받음<br>
+        ↓ 다메섹까지 신자들을 잡으러 감<br>
+        ↓ <strong style="color:var(--ink);">예수를 박해함</strong>
+      </div>
+      <div class="p2w-verdict">박해함</div>
+    </div>
+    <div class="p2w-center">
+      <div class="p2w-encounter">
+        <div class="p2w-enc-text">"나는 네가 박해하는 예수라."</div>
+      </div>
+    </div>
+    <div class="p2w-col witness">
+      <div class="p2w-label">SAUL THE WITNESS</div>
+      <div class="p2w-heading">증인 사울</div>
+      <div class="p2w-items">
+        아나니아에게 도움받음<br>
+        ↓ 세례받음<br>
+        ↓ 제자들과 함께함<br>
+        ↓ 회당에서 예수를 전함<br>
+        ↓ 예루살렘에서 담대히 증언함<br>
+        ↓ <strong>예수를 증언함</strong>
+      </div>
+      <div class="p2w-verdict">증언함</div>
+    </div>
+    <div class="p2w-footer">박해자 → 증인 · PERSECUTOR → WITNESS</div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);">
+    <div style="padding:var(--sp-2);background:var(--page-bg);border:1px solid var(--rule);border-radius:3px;text-align:center;">
+      <div style="font-size:9pt;font-weight:700;color:var(--ink-faint);">이름 주의사항</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:1.5mm;line-height:1.5;">사도행전은 이 시점에서 여전히 그를 <strong>사울</strong>이라고 부른다. "회심 후 이름이 바울로 바뀌었다"는 표현은 정확하지 않다. 이름 변경 관련 표현은 행 13:9에서 처음 나타난다.</div>
+    </div>
+    <div style="padding:var(--sp-2);background:var(--accent-pale);border:1px solid var(--accent-soft);border-radius:3px;text-align:center;">
+      <div style="font-size:9pt;font-weight:700;color:var(--accent);">핵심 질문</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:1.5mm;line-height:1.5;">"교회를 없애려던 사람이 어떻게 복음을 전하는 사람이 되었는가?" — 이 변화의 중심에는 부활하신 예수와의 만남이 있었다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 13</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 14: VISUAL — 누가 누구를 잡으러 갔는가
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <h2 class="section-heading">누가 누구를 잡으러 갔는가?</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-3);">이번 Lesson의 역설을 가장 간결하게 정리하면 이렇게 된다.</p>
+
+  <div class="cap-reversal">
+    <div class="cr-col plan">
+      <div class="cr-label">사울의 계획</div>
+      <div class="cr-items">
+        예루살렘 출발<br>
+        ↓<br>
+        다메섹으로 이동<br>
+        ↓<br>
+        <strong>제자들을 찾는다</strong><br>
+        ↓<br>
+        결박한다<br>
+        ↓<br>
+        예루살렘으로 데려온다
+      </div>
+    </div>
+    <div class="cr-vs">→</div>
+    <div class="cr-col reality">
+      <div class="cr-label">실제로 일어난 일</div>
+      <div class="cr-items">
+        예루살렘 출발<br>
+        ↓<br>
+        다메섹으로 이동<br>
+        ↓<br>
+        <strong>예수께서 사울을 만나신다</strong><br>
+        ↓<br>
+        사울이 앞을 보지 못한다<br>
+        ↓<br>
+        제자 아나니아가 사울을 찾아간다<br>
+        ↓<br>
+        사울이 세례를 받는다<br>
+        ↓<br>
+        사울 자신이 제자가 된다
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-3);border:2px solid var(--accent);border-radius:4px;text-align:center;">
+    <div style="font-size:16pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);line-height:1.5;">제자들을 붙잡으러 갔던 사울이<br>예수께 붙잡힌다.</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:var(--sp-1);">이것은 교육적 요약으로, 직접적인 성경 인용이 아니다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 14</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 15: SCENE 09 — 교회가 평안해지다 (9:31)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 9</span>
+      <span class="scene-title">교회는 다시 평안해졌다</span>
+      <span class="scene-ref">행 9:31</span>
+    </div>
+    <div class="scene-body">
+      <p>이 한 절을 지나치지 않는다. 사도행전이 이야기의 흐름을 정리하는 방식을 보여주는 중요한 Summary Verse다.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"그리하여 온 유대와 갈릴리와 사마리아 교회가 평안하여 든든히 서 가고 주를 경외함과 성령의 위로로 진행하여 수가 더 많아지니라"</div>
+    <div class="scripture-ref">사도행전 9:31</div>
+  </div>
+
+  <div class="region-spread" style="margin-top:var(--sp-3);">
+    <div class="rs-item"><div class="rs-name">온 유대</div><div class="rs-desc">평안 · 든든히 서 가고</div></div>
+    <div class="rs-item"><div class="rs-name">갈릴리</div><div class="rs-desc">주를 경외함</div></div>
+    <div class="rs-item"><div class="rs-name">사마리아</div><div class="rs-desc">성령의 위로로 진행</div></div>
+  </div>
+
+  <div style="text-align:center;margin-top:var(--sp-2);padding:2mm;font-size:9pt;font-weight:700;color:var(--accent);">↓ 수가 더 많아졌다</div>
+
+  <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:var(--sp-3);margin-top:var(--sp-3);align-items:center;">
+    <div style="padding:var(--sp-2);background:var(--page-bg);border:1px solid var(--rule);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);margin-bottom:1.5mm;">초기 (Acts 1–2장)</div>
+      <div style="font-size:var(--fs-small);color:var(--ink-soft);">예루살렘의<br>한 공동체</div>
+    </div>
+    <div style="font-size:14pt;color:var(--accent);">→</div>
+    <div style="padding:var(--sp-2);background:var(--accent-pale);border:1.5px solid var(--accent-soft);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:1.5mm;">현재 (Acts 9:31)</div>
+      <div style="font-size:var(--fs-small);color:var(--ink);">유대 · 갈릴리 · 사마리아의<br>여러 지역의 교회들</div>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">Acts 1:8 진행 현황</h2>
+  <div class="acts18-bar" style="margin:var(--sp-1) 0;">
+    <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">예루살렘</div></div>
+    <div class="a18-line done"></div>
+    <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">온 유대</div></div>
+    <div class="a18-line done"></div>
+    <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">사마리아</div></div>
+    <div class="a18-line"></div>
+    <div class="a18-node"><div class="a18-circle"></div><div class="a18-label">땅끝까지</div></div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border-radius:4px;text-align:center;">
+    <div style="font-size:var(--fs-body);font-weight:700;color:var(--accent);font-family:var(--ff-hand);">복음의 지리적 범위가 계속 넓어지고 있다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 15</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 16: LESSON SUMMARY
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 07</span>
+    <span class="page-header-title">박해자 사울의 회심</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);margin-bottom:var(--sp-3);">
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);">한눈에 보는 LESSON 07</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">사도행전 9:1–31</div>
+  </div>
+
+  <div class="summary-grid">
+
+    <div class="summary-block full">
+      <div class="summary-block-label">사건 흐름</div>
+      <div class="summary-block-content">
+        사울이 다메섹의 신자들을 잡으러 출발 → 다메섹 근처에서 예수를 만남 → 눈이 멂 (3일) →
+        아나니아가 찾아와 안수 → 다시 봄 · 세례 → 다메섹에서 예수를 전함 →
+        죽음의 위협 → 광주리로 성벽 탈출 → 예루살렘 귀환 →
+        바나바의 중재 → 예루살렘에서도 전도 → 가이사랴 → 다소 →
+        유대·갈릴리·사마리아 교회가 평안히 성장
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">주요 인물</div>
+      <div class="summary-block-content">
+        <strong>사울</strong> — 박해자에서 증인으로<br>
+        <strong>아나니아</strong> — 두려워하면서도 순종하여 사울에게 찾아감<br>
+        <strong>바나바</strong> — 예루살렘에서 사울을 공동체와 연결
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">장소</div>
+      <div class="summary-block-content">
+        <strong>예루살렘</strong> → <strong>다메섹</strong> → <strong>예루살렘</strong> → <strong>가이사랴</strong> → <strong>다소</strong>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">핵심 키워드</div>
+      <div class="tag-cloud">
+        <span class="tag">사울</span><span class="tag">박해</span><span class="tag">다메섹</span>
+        <span class="tag">예수</span><span class="tag">아나니아</span><span class="tag">세례</span>
+        <span class="tag">바나바</span><span class="tag">증언</span>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">숫자로 기억하기</div>
+      <div class="number-row">
+        <div class="num-item"><div class="num-big">3일</div><div class="num-label">사울이 보지 못하고<br>먹지 않은 기간</div></div>
+        <div class="num-item"><div class="num-big">9:31</div><div class="num-label">교회가 평안해짐<br>요약 구절</div></div>
+        <div class="num-item"><div class="num-big">3개</div><div class="num-label">유대·갈릴리·사마리아<br>교회 지역</div></div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">새롭게 배운 개념</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--sp-2);">
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">그 도 · The Way</div>
+          <div class="background-box-body">초기 사도행전에서 예수 공동체와 그 신앙을 가리키는 표현. 앞으로 사도행전에서 다시 등장한다.</div>
+        </div>
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">다소</div>
+          <div class="background-box-body">사울의 출신 도시. 소아시아 지역의 중요한 도시로 앞으로 사울/바울의 배경을 이해할 때 중요한 지명이다.</div>
+        </div>
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">이름 주의</div>
+          <div class="background-box-body">"회심하면서 이름이 바울로 바뀌었다"는 것은 정확하지 않다. 사도행전은 아직 그를 사울이라고 부른다. 행 13:9에서 관련 표현이 처음 나온다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이야기 연결</div>
+      <div class="story-conn">
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">이전 L06</div>
+          복음이 사마리아로<br>경계를 넘기 시작
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node current-node">
+          <div style="font-size:var(--fs-caption);">L07</div>
+          박해자 사울이<br>예수를 만나 증인이 됨
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">다음 L08</div>
+          베드로와 이방인<br>고넬료의 집
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        교회를 박해하기 위해 다메섹으로 향하던 사울은 부활하신 예수를 만나 자신이 박해하던 예수가 주이심을 깨닫고, 세례를 받은 뒤 오히려 예수를 담대하게 전하는 증인이 되었다.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 07 · 16</span>
+  </div>
+</section>
+
+
+</body>
+</html>

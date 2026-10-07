@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 08 — 이방인에게 열린 복음</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 08 전용 스타일 ── */
+
+    .story-connection { margin-top:auto; border-top:1px solid var(--rule); padding-top:var(--sp-3); display:flex; gap:var(--sp-2); align-items:stretch; }
+    .sc-col { flex:1; padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; display:flex; flex-direction:column; gap:1.5mm; }
+    .sc-col.current { border-color:var(--accent); background:var(--accent-pale); }
+    .sc-col-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.08em; }
+    .sc-col.current .sc-col-label { color:var(--accent); }
+    .sc-col-title { font-size:var(--fs-small); font-weight:700; color:var(--ink); line-height:1.3; }
+    .sc-col.current .sc-col-title { color:var(--accent); }
+    .sc-flow-text { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.8; }
+    .sc-arrow { display:flex; align-items:center; font-size:14pt; color:var(--accent); padding:0 1mm; padding-top:12mm; }
+
+    .recall-badge { display:inline-flex; align-items:center; padding:.5mm 2mm; background:var(--page-bg); border:1px solid var(--rule); border-radius:3px; font-size:6.5pt; color:var(--ink-faint); font-weight:700; letter-spacing:.05em; vertical-align:middle; margin-left:2mm; }
+
+    .acts18-bar { display:flex; align-items:center; gap:0; margin:var(--sp-1) 0; }
+    .a18-node { display:flex; flex-direction:column; align-items:center; gap:1.5mm; }
+    .a18-circle { width:9mm; height:9mm; border-radius:50%; border:2px solid var(--rule); background:var(--white); display:flex; align-items:center; justify-content:center; font-size:7pt; flex-shrink:0; }
+    .a18-circle.done { background:var(--accent); border-color:var(--accent); color:var(--white); font-weight:700; }
+    .a18-circle.going { border-color:var(--accent); background:var(--accent-pale); color:var(--accent); font-weight:700; font-size:6pt; }
+    .a18-label { font-size:6.5pt; font-weight:700; color:var(--ink-faint); text-align:center; line-height:1.2; max-width:16mm; }
+    .a18-node.done .a18-label { color:var(--accent); }
+    .a18-node.going .a18-label { color:var(--accent); }
+    .a18-line { flex:1; height:1.5px; background:var(--rule); margin-bottom:4mm; }
+    .a18-line.done { background:var(--accent); }
+
+    /* Parallel Timeline */
+    .parallel-tl { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); margin:var(--sp-2) 0; }
+    .ptl-col { display:flex; flex-direction:column; gap:0; }
+    .ptl-header { padding:var(--sp-1) var(--sp-2); border-radius:4px 4px 0 0; font-size:var(--fs-caption); font-weight:700; letter-spacing:.06em; text-align:center; }
+    .ptl-col.cornelius .ptl-header { background:var(--page-bg); border:1.5px solid var(--rule); color:var(--ink-faint); }
+    .ptl-col.peter .ptl-header { background:var(--accent); border:1.5px solid var(--accent); color:var(--white); }
+    .ptl-step { padding:2mm 3mm; border:1px solid var(--rule); border-top:none; font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.5; }
+    .ptl-col.peter .ptl-step { border-color:var(--accent-soft); background:var(--accent-pale); color:var(--ink); }
+    .ptl-mid { display:flex; align-items:center; justify-content:center; }
+    .ptl-merge { padding:var(--sp-2) var(--sp-3); background:var(--accent); border-radius:4px; text-align:center; color:var(--white); font-size:var(--fs-small); font-weight:700; }
+
+    /* Food → People transform */
+    .food-people { display:flex; flex-direction:column; gap:2mm; margin:var(--sp-2) 0; }
+    .fp-step { display:flex; align-items:center; gap:3mm; padding:2mm 4mm; border-radius:3px; }
+    .fp-step.food { background:var(--page-bg); border:1px solid var(--rule); }
+    .fp-step.transition { background:var(--accent); }
+    .fp-step.people { background:var(--accent-pale); border:1.5px solid var(--accent-soft); }
+    .fp-icon { width:6mm; height:6mm; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:7pt; font-weight:700; }
+    .fp-step.food .fp-icon { background:var(--rule); color:var(--ink-faint); }
+    .fp-step.transition .fp-icon { background:rgba(255,255,255,.3); color:var(--white); }
+    .fp-step.people .fp-icon { background:var(--accent); color:var(--white); }
+    .fp-text { font-size:var(--fs-small); }
+    .fp-step.food .fp-text { color:var(--ink-soft); }
+    .fp-step.transition .fp-text { color:var(--white); font-weight:700; font-family:var(--ff-hand); }
+    .fp-step.people .fp-text { color:var(--ink); font-weight:700; }
+    .fp-arrow { text-align:center; font-size:9pt; color:var(--rule-mid); padding:0; }
+
+    /* Gospel Pattern */
+    .gospel-pattern { display:flex; flex-direction:column; gap:0; margin:var(--sp-2) 0; }
+    .gp-step { display:flex; align-items:center; gap:3mm; padding:2mm 3mm; border:1px solid var(--rule); border-top:none; }
+    .gp-step:first-child { border-top:1px solid var(--rule); border-radius:4px 4px 0 0; }
+    .gp-step:last-child { border-radius:0 0 4px 4px; }
+    .gp-step.key { background:var(--accent-pale); border-color:var(--accent-soft); }
+    .gp-num { width:5mm; height:5mm; border-radius:50%; background:var(--accent); color:var(--white); font-size:6pt; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .gp-text { font-size:var(--fs-small); color:var(--ink-soft); }
+    .gp-step.key .gp-text { color:var(--ink); font-weight:700; }
+
+    /* Acts 2 vs 10 */
+    .acts-compare { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); margin:var(--sp-2) 0; }
+    .ac-col { padding:var(--sp-2); border:1.5px solid var(--rule); border-radius:4px; }
+    .ac-col.match { border-color:var(--accent); background:var(--accent-pale); }
+    .ac-ref { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); margin-bottom:var(--sp-1); }
+    .ac-col.match .ac-ref { color:var(--accent); }
+    .ac-items { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.7; }
+    .ac-center { display:flex; align-items:center; justify-content:center; }
+    .ac-equals { padding:var(--sp-2); text-align:center; }
+    .ac-eq-text { font-size:14pt; font-weight:700; color:var(--accent); font-family:var(--ff-hand); }
+    .ac-eq-sub { font-size:6.5pt; color:var(--ink-soft); margin-top:1mm; }
+
+    /* God Acts First */
+    .god-acts { margin:var(--sp-2) 0; display:flex; flex-direction:column; gap:0; }
+    .ga-step { display:flex; align-items:center; gap:3mm; padding:var(--sp-1) var(--sp-2); border:1px solid var(--rule); border-top:none; }
+    .ga-step:first-child { border-top:1px solid var(--rule); border-radius:4px 4px 0 0; }
+    .ga-step:last-child { border-radius:0 0 4px 4px; }
+    .ga-step.god { background:var(--accent); border-color:var(--accent); }
+    .ga-step.human { background:var(--page-bg); }
+    .ga-step.result { background:var(--accent-pale); border-color:var(--accent-soft); }
+    .ga-actor { min-width:16mm; font-size:var(--fs-caption); font-weight:700; }
+    .ga-step.god .ga-actor { color:rgba(255,255,255,.8); }
+    .ga-step.human .ga-actor { color:var(--ink-faint); }
+    .ga-step.result .ga-actor { color:var(--accent); }
+    .ga-text { font-size:var(--fs-caption); }
+    .ga-step.god .ga-text { color:var(--white); }
+    .ga-step.human .ga-text { color:var(--ink-soft); }
+    .ga-step.result .ga-text { color:var(--ink); font-weight:700; }
+
+    /* Three changes */
+    .three-change { display:grid; grid-template-columns:1fr 1fr 1fr; gap:var(--sp-2); margin:var(--sp-2) 0; }
+    .tc-col { padding:var(--sp-2); border:1.5px solid var(--accent-soft); border-radius:4px; background:var(--accent-pale); }
+    .tc-name { font-size:var(--fs-small); font-weight:700; color:var(--accent); margin-bottom:var(--sp-1); }
+    .tc-before { font-size:var(--fs-caption); color:var(--ink-faint); padding:1.5mm 2mm; background:var(--page-bg); border-radius:3px; margin-bottom:1.5mm; }
+    .tc-arrow { text-align:center; font-size:9pt; color:var(--accent); margin:1mm 0; }
+    .tc-after { font-size:var(--fs-caption); color:var(--ink); font-weight:700; padding:1.5mm 2mm; background:var(--accent); border-radius:3px; color:var(--white); }
+
+    /* Char card */
+    .char-card { padding:var(--sp-2) var(--sp-3); border:1.5px solid var(--rule); border-radius:4px; margin:var(--sp-2) 0; }
+    .char-card-name { font-size:var(--fs-h2); font-weight:700; color:var(--accent); }
+    .char-card-attrs { display:flex; flex-wrap:wrap; gap:2mm; margin-top:var(--sp-1); }
+    .char-attr { padding:1mm 3mm; background:var(--page-bg); border:1px solid var(--rule); border-radius:20px; font-size:var(--fs-caption); color:var(--ink-soft); }
+
+    /* Narrative order */
+    .narrative-order { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-3); margin:var(--sp-2) 0; align-items:start; }
+    .no-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; background:var(--page-bg); }
+    .no-col.correct { background:var(--accent-pale); border-color:var(--accent-soft); }
+    .no-label { font-size:var(--fs-caption); font-weight:700; letter-spacing:.08em; margin-bottom:var(--sp-1); }
+    .no-col .no-label { color:var(--ink-faint); }
+    .no-col.correct .no-label { color:var(--accent); }
+    .no-items { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.8; }
+    .no-vs { display:flex; align-items:flex-start; justify-content:center; font-size:10pt; color:var(--rule-mid); padding-top:12mm; font-weight:700; }
+
+    /* New concept */
+    .new-concept { display:inline-block; padding:1.5mm 3mm; background:var(--accent); border-radius:3px; font-size:6.5pt; font-weight:700; color:var(--white); letter-spacing:.08em; margin-right:2mm; vertical-align:middle; }
+
+    /* Future flag */
+    .future-flag { margin:var(--sp-2) 0; padding:var(--sp-2) var(--sp-3); border:1px dashed var(--accent); border-radius:4px; background:var(--accent-pale); }
+    .ff-label { font-size:var(--fs-caption); font-weight:700; color:var(--accent); letter-spacing:.08em; margin-bottom:1mm; }
+    .ff-body { font-size:var(--fs-small); color:var(--ink-soft); }
+    .ff-ref { font-size:var(--fs-caption); color:var(--accent); font-weight:700; margin-top:1mm; }
+  </style>
+</head>
+<body>
+
+
+<!-- ════════════════════════════════════
+     PAGE 1: LESSON OPENING
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">08</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 3 — 복음이 경계를 넘다</div>
+      <h1 class="opening-title">이방인에게 열린 복음</h1>
+      <div class="opening-scripture">사도행전 9:32–11:18</div>
+    </div>
+  </div>
+
+  <div class="lesson-summary-line">
+    하나님은 로마 백부장 고넬료와 베드로를 각각 준비시켜 만나게 하시고, 베드로가 복음을 전하는 중 이방인들에게도 성령이 임하게 하심으로 복음이 민족의 경계를 넘어가고 있음을 분명하게 보여주신다.
+  </div>
+
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">베드로 · 애니아 · 다비다 · 고넬료 · 예루살렘의 신자들</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">룻다 · 욥바 · 가이사랴 · 예루살렘</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">핵심 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2mm;margin-top:1.5mm;">
+        <span class="tag">이방인</span><span class="tag">고넬료</span><span class="tag">환상</span>
+        <span class="tag">정결</span><span class="tag">성령</span><span class="tag">세례</span>
+        <span class="tag">차별없음</span>
+      </div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">Acts 1:8 진행</div>
+      <div class="acts18-bar">
+        <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">예루살렘</div></div>
+        <div class="a18-line done"></div>
+        <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">유대</div></div>
+        <div class="a18-line done"></div>
+        <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">사마리아</div></div>
+        <div class="a18-line done"></div>
+        <div class="a18-node going"><div class="a18-circle going">→</div><div class="a18-label">땅끝</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--accent);border-radius:4px;text-align:center;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.08em;margin-bottom:1.5mm;">이번 Lesson의 핵심 질문</div>
+    <div style="font-size:var(--fs-body);font-weight:700;color:var(--white);font-family:var(--ff-hand);line-height:1.5;">유대인 중심으로 시작된 교회는 어떻게 이방인도<br>동일하게 복음을 받을 수 있다는 사실을 받아들이게 되었는가?</div>
+  </div>
+
+  <div class="story-connection">
+    <div class="sc-col">
+      <div class="sc-col-label">LESSON 07 이후</div>
+      <div class="sc-col-title">박해자 사울이 예수를 만나 복음을 전함</div>
+      <div class="sc-flow-text">회심 · 다메섹 전도 · 예루살렘 귀환<br>↓ 유대·갈릴리·사마리아 교회 평안<br>↓ 복음의 지리적 범위가 계속 확장</div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-col current">
+      <div class="sc-col-label">LESSON 08</div>
+      <div class="sc-col-title">복음이 민족의 경계를 본격적으로 넘어간다</div>
+      <div class="sc-flow-text">베드로 순회 사역<br>↓ 고넬료 ↔ 베드로 각각 환상<br>↓ 이방인들에게 성령이 임함<br>↓ 예루살렘 교회가 인정</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 1</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 2: MAP
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <h2 class="section-heading">베드로는 어디로 이동하고 있었을까? — 학습용 지도</h2>
+  <p style="font-size:var(--fs-caption);color:var(--ink-faint);margin-bottom:var(--sp-2);">이번 Lesson은 지리를 먼저 이해하면 이야기 흐름이 훨씬 쉬워진다.</p>
+
+  <div style="display:grid;grid-template-columns:60mm 1fr;gap:var(--sp-3);align-items:start;">
+    <svg viewBox="0 0 110 200" xmlns="http://www.w3.org/2000/svg" style="width:60mm;border:1px solid var(--rule);border-radius:4px;background:#f8f6f3;display:block;">
+      <rect x="0" y="0" width="30" height="200" fill="#dce8f0" opacity=".7"/>
+      <text x="15" y="100" font-size="4.5" fill="#7a9ab0" text-anchor="middle" transform="rotate(-90,15,100)" font-family="SCDream,sans-serif">지중해</text>
+
+      <!-- 갈릴리 -->
+      <rect x="30" y="5" width="75" height="30" rx="2" fill="#f0ece6" stroke="#d8d4ce" stroke-width=".7"/>
+      <text x="68" y="18" font-size="5.5" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">갈릴리</text>
+
+      <!-- 사마리아 -->
+      <rect x="30" y="38" width="75" height="35" rx="2" fill="#f0ece6" stroke="#d8d4ce" stroke-width=".7"/>
+      <text x="68" y="52" font-size="5.5" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">사마리아</text>
+
+      <!-- 유대 -->
+      <rect x="30" y="76" width="75" height="75" rx="2" fill="#f0ece6" stroke="#d8d4ce" stroke-width=".7"/>
+      <text x="68" y="92" font-size="5.5" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">유대</text>
+
+      <!-- 가이사랴 -->
+      <circle cx="35" cy="58" r="4" fill="#b4552d"/>
+      <text x="41" y="60" font-size="5" fill="#b4552d" font-family="SCDream,sans-serif" font-weight="700">가이사랴 ④고넬료</text>
+
+      <!-- 욥바 -->
+      <circle cx="33" cy="100" r="3.5" fill="#b4552d" opacity=".8"/>
+      <text x="39" y="102" font-size="5" fill="#b4552d" font-family="SCDream,sans-serif" font-weight="700">욥바 ③다비다</text>
+
+      <!-- 룻다 -->
+      <circle cx="45" cy="118" r="3" fill="#888"/>
+      <text x="51" y="120" font-size="5" fill="#888" font-family="SCDream,sans-serif">룻다 ②애니아</text>
+
+      <!-- 예루살렘 -->
+      <circle cx="73" cy="140" r="3.5" fill="#1e1e1e"/>
+      <text x="55" y="152" font-size="5" fill="#1e1e1e" font-family="SCDream,sans-serif" font-weight="700">예루살렘 ①⑤</text>
+
+      <!-- 이동 경로 -->
+      <path d="M73,140 Q60,130 45,118" stroke="#888" stroke-width="1" fill="none" stroke-dasharray="2,2"/>
+      <path d="M45,118 Q40,110 33,100" stroke="#b4552d" stroke-width="1.2" fill="none" stroke-dasharray="3,2"/>
+      <path d="M33,100 Q33,80 35,58" stroke="#b4552d" stroke-width="1.2" fill="none" stroke-dasharray="3,2"/>
+      <path d="M35,58 Q55,90 73,140" stroke="#b4552d" stroke-width="1" fill="none" stroke-dasharray="2,3" opacity=".5"/>
+      <polygon points="73,136 70,143 77,143" fill="#888" opacity=".5"/>
+
+      <text x="33" y="188" font-size="3.8" fill="#b4552d" font-family="SCDream,sans-serif">━ 베드로의 이동</text>
+      <text x="33" y="194" font-size="3.8" fill="#888" font-family="SCDream,sans-serif">┅ 예루살렘 귀환</text>
+      <text x="75" y="10" font-size="6" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">N</text>
+      <text x="75" y="198" font-size="6" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">S</text>
+    </svg>
+
+    <div>
+      <div style="font-size:var(--fs-small);font-weight:700;color:var(--ink);margin-bottom:var(--sp-2);">베드로의 이동 순서</div>
+      <div class="story-flow">
+        <div class="flow-step">
+          <div class="flow-step-content"><div class="flow-step-title">① 예루살렘 — 출발점</div></div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-step-content"><div class="flow-step-title">② 룻다 — 애니아 치유 (9:32–35)</div></div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-step-content"><div class="flow-step-title">③ 욥바 — 다비다를 살림 · 환상 (9:36–10:16)</div></div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step key-step">
+          <div class="flow-step-content"><div class="flow-step-title">④ 가이사랴 — 고넬료의 집 · 이방인 성령 (10:17–48)</div></div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step">
+          <div class="flow-step-content"><div class="flow-step-title">⑤ 예루살렘 — 사건을 설명 (11:1–18)</div></div>
+        </div>
+      </div>
+      <div class="background-box" style="margin-top:var(--sp-2);">
+        <div class="background-box-title">STORY NOTE</div>
+        <div class="background-box-body">고넬료 사건은 갑자기 가이사랴에서 시작되지 않는다. 베드로가 예루살렘 밖을 돌아다니는 상황이 먼저 만들어진 뒤, 그 흐름 안에서 사건이 전개된다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 3: SCENE 01 — 애니아 (9:32–35)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">룻다에서 일어난 일 — 애니아</span>
+      <span class="scene-ref">행 9:32–35</span>
+    </div>
+    <div class="scene-body">
+      <p>베드로가 여러 지역을 순회하다가 룻다의 성도들을 방문한다. 그곳에서 한 사람을 만난다.</p>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-card-name">애니아</div>
+    <div class="char-card-attrs">
+      <div class="char-attr">8년 동안 중풍병</div>
+      <div class="char-attr">침상에 누워 있었음</div>
+    </div>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">베드로가 애니아에게 말함</div>
+        <div class="flow-step-desc">"애니아야 예수 그리스도께서 너를 낫게 하시니 일어나 네 자리를 정돈하라." (9:34)</div>
+      </div>
+      <div class="flow-step-ref">9:34</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">즉시 일어남</div>
+      </div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">룻다와 사론 사람들이 그를 보고 주께로 돌아옴</div>
+      </div>
+      <div class="flow-step-ref">9:35</div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">치유의 주체는 누구인가? <span class="recall-badge">RECALL · L03</span></div>
+    <div class="background-box-body">
+      베드로는 "내가 너를 고친다"고 말하지 않는다. <strong>"예수 그리스도께서 너를 낫게 하시니"</strong>라고 말한다.<br><br>
+      Lesson 03에서 성전 미문의 치유 때도 베드로는 동일하게 기적을 자신의 능력으로 돌리지 않았다. 이 패턴이 반복되고 있다.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 4: SCENE 02 — 다비다 (9:36–43)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 2</span>
+      <span class="scene-title">욥바의 다비다</span>
+      <span class="scene-ref">행 9:36–43</span>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);align-items:start;margin:var(--sp-2) 0;">
+    <div>
+      <div class="char-card" style="margin-top:0;">
+        <div class="char-card-name">다비다 (그리스어: 도르가)</div>
+        <div class="char-card-attrs">
+          <div class="char-attr">욥바의 여제자</div>
+          <div class="char-attr">선행이 심히 많음</div>
+          <div class="char-attr">구제하는 일</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="background-box" style="margin:0;">
+        <div class="background-box-title">본문이 묘사하는 다비다</div>
+        <div class="background-box-body">과부들이 베드로에게 다비다가 살아있을 때 만들어 준 속옷과 겉옷을 보여주며 울었다. 그녀가 공동체에서 어떤 사람이었는지를 이 장면이 보여준다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">다비다가 병들어 죽음 → 시신을 씻어 다락에 둠</div></div>
+      <div class="flow-step-ref">9:37</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">제자들이 욥바 근처 룻다의 베드로에게 사람을 보냄</div></div>
+      <div class="flow-step-ref">9:38</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">베드로가 욥바로 옴 → 다락에서 무릎 꿇고 기도함</div></div>
+      <div class="flow-step-ref">9:39–40</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">"다비다야 일어나라." → 눈을 뜨고 베드로를 봄 → 일어나 앉음</div>
+      </div>
+      <div class="flow-step-ref">9:40</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">베드로가 성도들과 과부들에게 살아난 다비다를 보여줌</div></div>
+      <div class="flow-step-ref">9:41</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content"><div class="flow-step-title">욥바의 많은 사람이 주를 믿음</div></div>
+      <div class="flow-step-ref">9:42</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 5: TRANSITION — 무두장이 시몬 (9:43)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <h2 class="section-heading">베드로는 어디에 머물렀을까?</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-2);">사도행전 9:43은 사소해 보이지만, 다음 사건을 준비하는 중요한 문장이다.</p>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"베드로가 욥바에 여러 날 있어 시몬이라 하는 한 무두장이와 함께 하니라"</div>
+    <div class="scripture-ref">사도행전 9:43</div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-3);">
+    <div class="background-box-title">무두장이는 무슨 일을 했을까?</div>
+    <div class="background-box-body">무두장이는 동물의 가죽을 처리하여 가죽 제품의 재료로 만드는 일을 했다. 직업 특성상 죽은 동물의 가죽을 다루어야 했다. 유대교의 정결 규정과 관련하여 다소 꺼려질 수 있는 직업이었다고 이해되지만, 당시 모든 무두장이가 자동으로 종교적으로 부정한 사람으로 취급되었다고 과도하게 단정하지 않는다.</div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-3);border:1.5px solid var(--accent-soft);border-radius:4px;background:var(--accent-pale);">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);letter-spacing:.08em;margin-bottom:var(--sp-2);">STORY PREPARATION — 이야기의 배치</div>
+    <div style="display:flex;align-items:center;gap:var(--sp-2);flex-wrap:wrap;">
+      <div style="padding:2mm 4mm;background:var(--white);border:1px solid var(--rule);border-radius:3px;font-size:var(--fs-caption);color:var(--ink-soft);">베드로가 무두장이 집에 머묾</div>
+      <div style="font-size:9pt;color:var(--accent);">→</div>
+      <div style="padding:2mm 4mm;background:var(--white);border:1px solid var(--accent-soft);border-radius:3px;font-size:var(--fs-caption);color:var(--accent);font-weight:700;">환상: 정결 / 부정</div>
+      <div style="font-size:9pt;color:var(--accent);">→</div>
+      <div style="padding:2mm 4mm;background:var(--accent);border-radius:3px;font-size:var(--fs-caption);color:var(--white);font-weight:700;">이방인 고넬료</div>
+    </div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:var(--sp-1);">사도행전의 이야기 배치가 다음 사건을 자연스럽게 준비하고 있다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 6: SCENE 03 — 고넬료 (10:1–8)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">가이사랴의 로마 군인, 고넬료</span>
+      <span class="scene-ref">행 10:1–8</span>
+    </div>
+    <div class="scene-body">
+      <p>이야기의 카메라가 욥바에서 가이사랴로 이동한다. 새로운 인물이 등장한다.</p>
+    </div>
+  </div>
+
+  <div class="char-card">
+    <div class="char-card-name">고넬료</div>
+    <div class="char-card-attrs">
+      <div class="char-attr">로마군 백부장</div>
+      <div class="char-attr">이달리야 부대 소속</div>
+      <div class="char-attr">경건한 사람</div>
+      <div class="char-attr">온 집안과 함께 하나님을 경외함</div>
+      <div class="char-attr">백성을 많이 구제함</div>
+      <div class="char-attr">항상 하나님께 기도함</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title"><span class="new-concept">NEW CONCEPT</span> 백부장이란?</div>
+      <div class="background-box-body">로마군의 centurion에 해당하는 장교다. 명칭은 '100'과 관련되어 있지만 실제 지휘 인원이 항상 정확히 100명이었다고 볼 수 없다. "100명을 지휘하는 군인"으로 단정하지 않는다.</div>
+    </div>
+    <div style="padding:var(--sp-3);border:2px solid var(--accent);border-radius:4px;display:flex;flex-direction:column;justify-content:center;gap:var(--sp-1);">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);letter-spacing:.08em;">이것이 이번 Lesson에서 가장 중요하다</div>
+      <div style="font-size:var(--fs-small);color:var(--ink-soft);">고넬료는 경건하고 하나님을 경외하는 사람이었다.</div>
+      <div style="font-size:var(--fs-small);font-weight:700;color:var(--accent);">그러나 유대인이 아니다. 이방인이다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 7: SCENE 04 — 고넬료의 환상 (10:3–8)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">고넬료에게 먼저 일어난 일</span>
+      <span class="scene-ref">행 10:3–8</span>
+    </div>
+    <div class="scene-body">
+      <p>오후 제9시쯤 고넬료가 환상을 본다. 하나님의 사자가 나타난다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">환상 — 하나님의 사자가 나타남</div>
+        <div class="flow-step-desc">고넬료가 두려워함. 기도와 구제가 하나님 앞에 기억되었다고 말함.</div>
+      </div>
+      <div class="flow-step-ref">10:3–5</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">명령: "욥바로 사람을 보내어 베드로라 하는 시몬을 청하라."</div>
+      </div>
+      <div class="flow-step-ref">10:5–6</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">고넬료가 군인 1명과 경건한 부하 2명을 욥바로 보냄</div>
+      </div>
+      <div class="flow-step-ref">10:7–8</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);display:flex;gap:var(--sp-2);align-items:center;padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border-radius:4px;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1mm;">
+      <div style="padding:2mm 4mm;background:var(--accent);border-radius:3px;font-size:var(--fs-caption);font-weight:700;color:var(--white);">가이사랴</div>
+      <div style="font-size:6pt;color:var(--ink-faint);">FROM</div>
+    </div>
+    <div style="font-size:12pt;color:var(--accent);">→→→</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1mm;">
+      <div style="padding:2mm 4mm;background:var(--white);border:1px solid var(--accent-soft);border-radius:3px;font-size:var(--fs-caption);font-weight:700;color:var(--accent);">욥바</div>
+      <div style="font-size:6pt;color:var(--ink-faint);">TO</div>
+    </div>
+    <div style="font-size:12pt;color:var(--accent);">→</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);">무두장이 시몬의 집에 있는 베드로를 찾는다.</div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">왜 고넬료의 기도와 구제가 기억되었다고 했을까?</div>
+    <div class="background-box-body">본문은 고넬료가 이미 하나님 앞에서 진실하게 살아온 사람이었음을 보여준다. 그러나 그는 아직 복음을 듣지 못했다. 이 환상은 그를 복음으로 인도하는 하나님의 방법이었다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 7</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 8: PARALLEL TIMELINE (고넬료 ↔ 베드로)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <h2 class="section-heading">하나님은 양쪽을 동시에 준비하고 계셨다</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-3);">고넬료와 베드로의 사건은 서로 다른 장소에서 독립적으로 진행되지만 하나의 만남을 향해 움직이고 있었다.</p>
+
+  <div class="parallel-tl">
+    <div class="ptl-col cornelius">
+      <div class="ptl-header">가이사랴 · 고넬료</div>
+      <div class="ptl-step">오후 제9시쯤 기도 중</div>
+      <div class="ptl-step">천사의 환상</div>
+      <div class="ptl-step">"베드로를 불러오라."</div>
+      <div class="ptl-step">군인과 부하 2명을 욥바로 보냄</div>
+      <div class="ptl-step">→ 욥바로 이동 중…</div>
+    </div>
+    <div class="ptl-mid">
+      <div style="font-size:9pt;color:var(--rule-mid);text-align:center;">다음날<br>↕</div>
+    </div>
+    <div class="ptl-col peter">
+      <div class="ptl-header">욥바 · 베드로</div>
+      <div class="ptl-step">정오쯤 기도 중</div>
+      <div class="ptl-step">배가 고픔</div>
+      <div class="ptl-step">환상 — 보자기와 여러 짐승</div>
+      <div class="ptl-step">"잡아먹어라." "아닙니다, 주여."</div>
+      <div class="ptl-step">"하나님이 깨끗하게 하신 것을 속되다 하지 말라." ×3</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);">
+    <div class="ptl-merge">고넬료가 보낸 사람들이 베드로가 있는 집 문 앞에 도착한다.<br><span style="font-size:var(--fs-caption);font-weight:400;opacity:.85;">두 독립적인 사건이 하나의 만남으로 합쳐진다.</span></div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-2) var(--sp-3);border:1.5px solid var(--accent-soft);border-radius:4px;background:var(--accent-pale);">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:1.5mm;">이 장면이 말하는 것</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);">두 사람의 만남은 인간의 계획이나 우연이 아니었다. 고넬료에게도, 베드로에게도 하나님이 각각 준비시키신 사건이 하나의 지점에서 만나게 된 것이다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 8</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 9: SCENE 05 — 베드로의 환상 (10:9–16)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 5</span>
+      <span class="scene-title">베드로가 본 환상</span>
+      <span class="scene-ref">행 10:9–16</span>
+    </div>
+    <div class="scene-body">
+      <p>베드로가 정오쯤 지붕에 올라가 기도한다. 그때 환상을 본다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">하늘이 열리고 큰 보자기 같은 것이 내려옴</div></div>
+      <div class="flow-step-ref">10:11</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">여러 종류의 네 발 가진 짐승, 기는 것, 새들이 가득함</div></div>
+      <div class="flow-step-ref">10:12</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">음성: "베드로야 일어나 잡아먹어라."</div>
+      </div>
+      <div class="flow-step-ref">10:13</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">베드로: "주여 그럴 수 없나이다. 속되고 깨끗하지 않은 것은 먹어본 적이 없습니다."</div>
+      </div>
+      <div class="flow-step-ref">10:14</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">"하나님께서 깨끗하게 하신 것을 네가 속되다 하지 말라." — 이 일이 세 번 반복됨</div>
+      </div>
+      <div class="flow-step-ref">10:15–16</div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">정결 음식 규정 배경</div>
+    <div class="background-box-body">
+      레위기 11장 등을 통해 이스라엘에는 먹을 수 있는 동물과 먹지 말아야 할 동물에 관한 정결 규정이 있었다. 베드로의 반응이 단순히 음식 취향의 문제가 아니라 그가 평생 지켜온 종교적 정결 규정과 관련된 문제였음을 이해해야 한다.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 9</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 10: SCENE 06 — 환상의 해석 (10:17–23)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 6</span>
+      <span class="scene-title">이 환상의 핵심은 음식뿐이었을까?</span>
+      <span class="scene-ref">행 10:17–23</span>
+    </div>
+    <div class="scene-body">
+      <p>베드로가 환상의 의미를 고민하고 있을 때, 고넬료가 보낸 사람들이 도착한다. 성령이 베드로에게 말한다. "세 사람이 너를 찾고 있다. 의심하지 말고 함께 가라. 내가 그들을 보내었느니라."</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-2);">환상이 가리키는 방향</h2>
+  <p style="font-size:var(--fs-caption);color:var(--ink-faint);margin-bottom:var(--sp-2);">교재가 임의로 해석하지 않는다. 베드로 자신이 나중에 설명한 내용을 기준으로 한다.</p>
+
+  <div class="food-people">
+    <div class="fp-step food">
+      <div class="fp-icon">1</div>
+      <div class="fp-text">환상: 정결 규정에 따라 먹지 말아야 할 것들</div>
+    </div>
+    <div class="fp-arrow">↓</div>
+    <div class="fp-step transition">
+      <div class="fp-icon">→</div>
+      <div class="fp-text">"하나님께서 깨끗하게 하신 것을 속되다 하지 말라."</div>
+    </div>
+    <div class="fp-arrow">↓</div>
+    <div class="fp-step people">
+      <div class="fp-icon">2</div>
+      <div class="fp-text">베드로의 해석 (행 10:28): "하나님께서 내게 보여주셨다 — 아무도 속되다 하거나 깨끗하지 않다 하지 말라."</div>
+    </div>
+    <div class="fp-arrow">↓</div>
+    <div class="fp-step people">
+      <div class="fp-icon">→</div>
+      <div class="fp-text" style="color:var(--accent);font-weight:700;">이방인 고넬료의 집으로 들어감</div>
+    </div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-2);">
+    <div class="scripture-text">"하나님께서 내게 어떤 사람도 속되다 하거나 깨끗하지 않다 하지 말라 하셨느니라"</div>
+    <div class="scripture-ref">사도행전 10:28 — 베드로 자신의 해석</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 10</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 11: SCENE 07 — 이방인의 집에 들어가다 (10:23–33)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 7</span>
+      <span class="scene-title">베드로가 이방인의 집에 들어가다</span>
+      <span class="scene-ref">행 10:23–33</span>
+    </div>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">베드로가 욥바의 형제 몇 명과 함께 가이사랴로 출발</div></div>
+      <div class="flow-step-ref">10:23</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">고넬료가 친척과 가까운 친구들을 불러 모아 기다리고 있음</div>
+      </div>
+      <div class="flow-step-ref">10:24</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">고넬료가 베드로 발 앞에 엎드려 절함 → 베드로가 일으킴: "나도 사람이라."</div>
+      </div>
+      <div class="flow-step-ref">10:25–26</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);display:grid;grid-template-columns:1fr auto 1fr;gap:var(--sp-2);">
+    <div style="padding:var(--sp-2);background:var(--page-bg);border:1px solid var(--rule);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);margin-bottom:var(--sp-1);">환상 이전</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);line-height:1.6;">"부정한 것은 먹을 수 없습니다."<br>유대인이 이방인과 교제하는 것은 일반적으로 꺼려지던 상황이었다.</div>
+    </div>
+    <div style="display:flex;align-items:center;font-size:12pt;color:var(--accent);">→</div>
+    <div style="padding:var(--sp-2);background:var(--accent-pale);border:1.5px solid var(--accent-soft);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:var(--sp-1);">환상 이후</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink);line-height:1.6;font-weight:700;">"하나님께서 아무도 속되다 하지 말라 하셨기로 부름을 받고 왔습니다." (10:29)</div>
+    </div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-2);">
+    <div class="scripture-text">"이에 베드로가 입을 열어 말하되 내가 참으로 하나님은 사람의 외모를 보지 아니하시고 각 나라 중 하나님을 경외하며 의를 행하는 사람은 다 받으시는 줄 깨달았도다"</div>
+    <div class="scripture-ref">사도행전 10:34–35</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 11</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 12: SCENE 08 — 베드로의 복음 선포 (10:34–43)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 8</span>
+      <span class="scene-title">베드로는 무엇을 전했을까?</span>
+      <span class="scene-ref">행 10:34–43</span>
+    </div>
+    <div class="scene-body">
+      <p>고넬료의 집에 모인 사람들이 기다리고 있다. 베드로가 입을 연다.</p>
+    </div>
+  </div>
+
+  <div class="gospel-pattern">
+    <div class="gp-step">
+      <div class="gp-num">①</div>
+      <div class="gp-text">예수님의 사역 — 갈릴리에서 시작, 유대 전역에서 선한 일을 행하고 병든 자들을 고침</div>
+    </div>
+    <div class="gp-step">
+      <div class="gp-num">②</div>
+      <div class="gp-text">예수님의 죽음 — 사람들이 나무에 달아 죽임</div>
+    </div>
+    <div class="gp-step key">
+      <div class="gp-num">③</div>
+      <div class="gp-text">하나님의 행동 — "하나님이 사흘 만에 살리사 나타내심"</div>
+    </div>
+    <div class="gp-step">
+      <div class="gp-num">④</div>
+      <div class="gp-text">증인들 — 부활하신 예수님과 함께 먹고 마심</div>
+    </div>
+    <div class="gp-step">
+      <div class="gp-num">⑤</div>
+      <div class="gp-text">사명 — 사람들에게 전하고 증언하도록 명령받음</div>
+    </div>
+    <div class="gp-step key">
+      <div class="gp-num">⑥</div>
+      <div class="gp-text">결론 — "그를 믿는 사람은 그의 이름을 힘입어 죄 사함을 받는다."</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border-radius:4px;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:1.5mm;">반복되는 복음의 패턴 <span class="recall-badge">RECALL · L02–04</span></div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-soft);">예수의 사역 → 죽음 → 하나님이 살리심 → 우리는 증인 → 믿음과 죄 사함. 사도들의 복음 선포 핵심 구조가 이방인 앞에서도 동일하게 반복된다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 12</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 13: SCENE 09 — 이방인에게 성령이 임함 (10:44–48)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 9</span>
+      <span class="scene-title">베드로가 말을 마치기도 전에</span>
+      <span class="scene-ref">행 10:44–48</span>
+    </div>
+    <div class="scene-body">
+      <p>이번 Lesson의 클라이맥스다. 베드로가 아직 말하고 있을 때—</p>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin:var(--sp-2) 0;padding:var(--sp-3);background:var(--accent);border-radius:4px;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:rgba(255,255,255,.7);margin-bottom:2mm;">사도행전 10:44</div>
+    <div style="font-size:16pt;font-weight:700;color:var(--white);font-family:var(--ff-hand);">성령이 말씀 듣는 모든 사람에게 임하시다</div>
+  </div>
+
+  <div class="acts-compare" style="margin-top:var(--sp-2);">
+    <div class="ac-col">
+      <div class="ac-ref">사도행전 2장 — 오순절</div>
+      <div class="ac-items">대상: 유대인들<br>↓ 성령<br>↓ 방언<br>↓ 복음 공동체</div>
+    </div>
+    <div class="ac-center">
+      <div class="ac-equals">
+        <div class="ac-eq-text">"우리와<br>같이"</div>
+        <div class="ac-eq-sub">행 10:47<br>베드로의 말</div>
+      </div>
+    </div>
+    <div class="ac-col match">
+      <div class="ac-ref">사도행전 10장 — 고넬료의 집</div>
+      <div class="ac-items">대상: 이방인들<br>↓ 성령<br>↓ 방언<br>↓ 세례</div>
+    </div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-2);">
+    <div class="scripture-text">"이 사람들이 우리와 같이 성령을 받았으니 누가 능히 물로 세례 베풂을 금하리요?"</div>
+    <div class="scripture-ref">사도행전 10:47 — 베드로</div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border-radius:4px;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:1.5mm;">이방인들에게 주어진 것</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);">이방인들에게 별도의 낮은 단계의 성령이 주어진 것이 아니었다. 베드로와 동행자들은 자신들이 받은 것과 동일하게 연결하여 이해했다. 그것이 "우리와 같이"라는 표현이 담긴 의미다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 13</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 14: VISUAL — GOD ACTS FIRST
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <h2 class="section-heading">누가 먼저 결정했을까? — 이 사건의 순서</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-2);">순서를 거꾸로 이해하면 이 사건의 의미를 놓친다.</p>
+
+  <div class="narrative-order">
+    <div class="no-col">
+      <div class="no-label">오해하기 쉬운 순서</div>
+      <div class="no-items">
+        베드로가 고민함<br>
+        ↓<br>
+        "이방인도 받아주자."<br>
+        ↓<br>
+        교회가 회의·승인<br>
+        ↓<br>
+        성령이 임함
+      </div>
+    </div>
+    <div class="no-vs">VS</div>
+    <div class="no-col correct">
+      <div class="no-label">실제 이야기의 순서</div>
+      <div class="no-items">
+        하나님이 먼저 행하심<br>
+        ↓<br>
+        베드로가 목격<br>
+        ↓<br>
+        예루살렘 교회에 보고<br>
+        ↓<br>
+        교회가 확인·인정
+      </div>
+    </div>
+  </div>
+
+  <div class="god-acts" style="margin-top:var(--sp-3);">
+    <div class="ga-step god"><div class="ga-actor">하나님</div><div class="ga-text">고넬료에게 천사를 보내심</div></div>
+    <div class="ga-step god"><div class="ga-actor">하나님</div><div class="ga-text">베드로에게 환상을 보여주심</div></div>
+    <div class="ga-step god"><div class="ga-actor">성령</div><div class="ga-text">베드로에게 함께 가라고 명하심</div></div>
+    <div class="ga-step human"><div class="ga-actor">베드로</div><div class="ga-text">복음을 전함</div></div>
+    <div class="ga-step god"><div class="ga-actor">하나님</div><div class="ga-text">이방인들에게 성령을 주심</div></div>
+    <div class="ga-step human"><div class="ga-actor">베드로</div><div class="ga-text">세례를 명함</div></div>
+    <div class="ga-step result"><div class="ga-actor">교회</div><div class="ga-text">사건을 듣고 하나님의 역사를 인정함</div></div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-2) var(--sp-3);border:2px solid var(--accent);border-radius:4px;text-align:center;">
+    <div style="font-size:13pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);line-height:1.5;">교회가 이방인을 받아들이기로 먼저 결정한 것이 아니었다.<br>하나님이 먼저 행하신 일을 교회가 확인하고 받아들인 것이었다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 14</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 15: SCENE 10 — 예루살렘의 문제 제기 (11:1–3)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 10</span>
+      <span class="scene-title">그런데 예루살렘에서는 문제가 되었다</span>
+      <span class="scene-ref">행 11:1–3</span>
+    </div>
+    <div class="scene-body">
+      <p>이방인들이 하나님의 말씀을 받았다는 소식이 유대 지역의 사도들과 신자들에게 전해진다. 베드로가 예루살렘으로 돌아오자 할례자들이 문제를 제기한다.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"네가 무할례자의 집에 들어가 함께 먹었다."</div>
+    <div class="scripture-ref">사도행전 11:3 — 예루살렘 신자들의 문제 제기</div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">독자가 이해해야 할 점</div>
+    <div class="background-box-body">
+      우리는 이미 사건의 결과를 알고 있기 때문에 이 반응이 이상해 보일 수 있다. 그러나 당시 유대인 신자들에게는 이방인과의 관계·정결·할례·식탁 교제 등이 매우 중요한 문제였다. 그들의 질문은 당시의 맥락에서 이해할 수 있는 반응이었다.
+    </div>
+  </div>
+
+  <div class="future-flag" style="margin-top:var(--sp-2);">
+    <div class="ff-label">FUTURE FLAG — 앞으로 더 큰 논쟁이 온다</div>
+    <div class="ff-body">
+      지금은 "이방인도 복음을 받을 수 있는가?"가 문제였다면, 앞으로는 더 어려운 질문이 등장한다:<br><br>
+      <strong>"이방인 신자도 할례를 받고 모세의 율법을 지켜야 하는가?"</strong>
+    </div>
+    <div class="ff-ref">→ LESSON 11 · 예루살렘 회의에서 본격적으로 다룰 문제</div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border-radius:4px;">
+    <div style="font-size:var(--fs-small);color:var(--accent);font-weight:700;">이번 Lesson에서 모든 논쟁이 완전히 끝난 것은 아니다.</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:1mm;">이방인도 복음을 받을 수 있다는 사실이 확인되기 시작한 것이며, 더 깊은 신학적 논쟁은 사도행전 후반부에서 계속 이어진다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 15</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 16: SCENE 11 — 베드로의 설명 (11:4–17)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 11</span>
+      <span class="scene-title">베드로는 어떻게 설명했을까?</span>
+      <span class="scene-ref">행 11:4–17</span>
+    </div>
+    <div class="scene-body">
+      <p>베드로는 화를 내거나 권위로 답하지 않는다. 본문은 그가 <strong>"차례로 설명했다"</strong>고 기록한다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">① 욥바에서 환상을 봄</div></div><div class="flow-step-ref">11:5–10</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">② 성령이 고넬료가 보낸 세 사람과 함께 가라고 명함</div></div><div class="flow-step-ref">11:11–12</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">③ 고넬료의 집에 들어감</div></div><div class="flow-step-ref">11:12</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">④ 복음을 전하기 시작함</div></div><div class="flow-step-ref">11:14</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">⑤ 말하기 시작할 때 성령이 그들에게 임함</div></div><div class="flow-step-ref">11:15</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content">
+      <div class="flow-step-title">⑥ 예수님의 말씀을 기억함</div>
+      <div class="flow-step-desc">"요한은 물로 세례를 베풀었으나 너희는 성령으로 세례를 받으리라."</div>
+    </div><div class="flow-step-ref">11:16</div></div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-2);">
+    <div class="scripture-text">"내가 누구이기에 하나님을 능히 막겠느냐?"</div>
+    <div class="scripture-ref">사도행전 11:17 — 베드로의 결론</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 16</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 17: SCENE 12 — 예루살렘 교회의 결론 (11:18)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 12</span>
+      <span class="scene-title">예루살렘 교회의 결론</span>
+      <span class="scene-ref">행 11:18</span>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin:var(--sp-2) 0;">
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">베드로의 설명을 들음</div></div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">더 이상 반박하지 않음</div></div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">하나님께 영광을 돌림</div></div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">결론: "그러면 하나님께서 이방인에게도 생명 얻는 회개를 주셨도다."</div>
+      </div>
+      <div class="flow-step-ref">11:18</div>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">BEFORE → AFTER</h2>
+
+  <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:var(--sp-2);margin:var(--sp-1) 0;align-items:stretch;">
+    <div style="padding:var(--sp-2);background:var(--page-bg);border:1px solid var(--rule);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);margin-bottom:var(--sp-1);">BEFORE</div>
+      <div style="font-size:var(--fs-small);color:var(--ink-soft);">"왜 이방인의 집에 들어갔는가?"</div>
+    </div>
+    <div style="display:flex;align-items:center;font-size:14pt;color:var(--accent);">→</div>
+    <div style="padding:var(--sp-2);background:var(--accent-pale);border:1.5px solid var(--accent-soft);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:var(--sp-1);">AFTER</div>
+      <div style="font-size:var(--fs-small);color:var(--ink);font-weight:700;">"하나님께서 이방인에게도 회개를 주셨다."</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-2) var(--sp-3);background:var(--accent);border-radius:4px;text-align:center;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:rgba(255,255,255,.7);margin-bottom:1.5mm;">핵심 변화</div>
+    <div style="font-size:var(--fs-small);color:var(--white);font-family:var(--ff-hand);font-size:14pt;line-height:1.5;">고넬료 한 사람의 변화가 아니었다.</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:var(--sp-2);margin-top:var(--sp-1);">
+      <div style="padding:1.5mm 3mm;background:rgba(255,255,255,.2);border-radius:3px;font-size:var(--fs-caption);color:var(--white);">고넬료</div>
+      <div style="font-size:10pt;color:rgba(255,255,255,.7);">→</div>
+      <div style="padding:1.5mm 3mm;background:rgba(255,255,255,.2);border-radius:3px;font-size:var(--fs-caption);color:var(--white);">베드로</div>
+      <div style="font-size:10pt;color:rgba(255,255,255,.7);">→</div>
+      <div style="padding:1.5mm 3mm;background:rgba(255,255,255,.3);border-radius:3px;font-size:var(--fs-caption);color:var(--white);font-weight:700;">예루살렘 교회</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 17</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 18: VISUAL — 세 사람의 변화
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <h2 class="section-heading">세 사람(집단)의 변화 — 이번 Lesson 전체</h2>
+
+  <div class="three-change">
+    <div class="tc-col">
+      <div class="tc-name">고넬료</div>
+      <div class="tc-before">하나님을 경외하나 복음을 아직 듣지 못함</div>
+      <div class="tc-arrow">↓ 베드로 만남<br>↓ 복음을 들음</div>
+      <div class="tc-after">성령 · 세례 · 예수 공동체에 연결</div>
+    </div>
+    <div class="tc-col">
+      <div class="tc-name">베드로</div>
+      <div class="tc-before">정결 규정 — 이방인 집에 들어가기 어려움</div>
+      <div class="tc-arrow">↓ 환상<br>↓ 이방인 집 방문<br>↓ 직접 목격</div>
+      <div class="tc-after">"하나님은 사람을 차별하지 않으신다."</div>
+    </div>
+    <div class="tc-col">
+      <div class="tc-name">예루살렘 교회</div>
+      <div class="tc-before">베드로를 비판 — 이방인과 함께 먹었다</div>
+      <div class="tc-arrow">↓ 베드로의 설명<br>↓ 증거를 들음</div>
+      <div class="tc-after">"이방인에게도 생명 얻는 회개를 주셨다."</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-3);border:2px solid var(--accent);border-radius:4px;text-align:center;">
+    <div style="font-size:15pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);line-height:1.5;">고넬료만 변화한 것이 아니었다.</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:var(--sp-1);">이 사건은 고넬료 한 사람의 회심으로 끝나지 않는다. 베드로와 예루살렘 교회의 이방인에 대한 인식이 변화하는 사건이기도 하다.</div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:1mm;">복음이 넘어간 경계</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);">예루살렘 → 유대 → 사마리아(L06)를 거쳐, 이번에는 이방인이라는 더 큰 경계를 넘어간다. 이것이 사도행전 1:8의 "땅끝"을 향한 흐름이다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 18</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 19: VISUAL — 복음의 경계 확장 누적
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <h2 class="section-heading">PART 3 — 복음의 경계가 어떻게 넓어졌나</h2>
+  <p style="font-size:var(--fs-caption);color:var(--ink-faint);margin-bottom:var(--sp-2);">Lesson 05부터 이번 Lesson까지 누적해서 보면 전체 그림이 보인다.</p>
+
+  <div style="display:flex;flex-direction:column;gap:2mm;margin:var(--sp-2) 0;">
+    <div style="padding:var(--sp-2) var(--sp-3);border:1px solid var(--rule);border-radius:4px;background:var(--page-bg);">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);">LESSON 05 · 행 6–8장</div>
+      <div style="font-size:var(--fs-small);color:var(--ink-soft);">스데반 순교 → 박해 → 신자들이 유대·사마리아로 흩어짐</div>
+    </div>
+    <div style="text-align:center;font-size:9pt;color:var(--rule-mid);">↓</div>
+    <div style="padding:var(--sp-2) var(--sp-3);border:1px solid var(--rule);border-radius:4px;background:var(--page-bg);">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);">LESSON 06 · 행 8장</div>
+      <div style="font-size:var(--fs-small);color:var(--ink-soft);">빌립 — 사마리아 + 에티오피아 관리 (민족적·문화적 배경 확장)</div>
+    </div>
+    <div style="text-align:center;font-size:9pt;color:var(--rule-mid);">↓</div>
+    <div style="padding:var(--sp-2) var(--sp-3);border:1px solid var(--rule);border-radius:4px;background:var(--page-bg);">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);">LESSON 07 · 행 9장</div>
+      <div style="font-size:var(--fs-small);color:var(--ink-soft);">사울 회심 — 미래 이방인 선교의 핵심 인물 준비됨</div>
+    </div>
+    <div style="text-align:center;font-size:9pt;color:var(--rule-mid);">↓</div>
+    <div style="padding:var(--sp-3) var(--sp-3);border:2px solid var(--accent);border-radius:4px;background:var(--accent-pale);">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);">LESSON 08 · 행 10–11장 ← 지금</div>
+      <div style="font-size:var(--fs-small);color:var(--ink);font-weight:700;">고넬료 사건 — 이방인에게도 성령이 임함. 예루살렘 교회가 인정.</div>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">Acts 1:8 — 이제 어디까지 왔는가?</h2>
+
+  <div class="acts18-bar" style="margin:var(--sp-1) 0;">
+    <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">예루살렘</div></div>
+    <div class="a18-line done"></div>
+    <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">온 유대</div></div>
+    <div class="a18-line done"></div>
+    <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">사마리아</div></div>
+    <div class="a18-line done"></div>
+    <div class="a18-node going"><div class="a18-circle going" style="font-size:5.5pt;">시작</div><div class="a18-label">땅끝까지</div></div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--accent);border-radius:4px;text-align:center;">
+    <div style="font-size:14pt;font-weight:700;color:var(--white);font-family:var(--ff-hand);">복음의 경계가 계속 넓어지고 있다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 19</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 20: LESSON SUMMARY
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 08</span>
+    <span class="page-header-title">이방인에게 열린 복음</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);margin-bottom:var(--sp-2);">
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);">한눈에 보는 LESSON 08</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">사도행전 9:32–11:18</div>
+  </div>
+
+  <div class="summary-grid">
+
+    <div class="summary-block full">
+      <div class="summary-block-label">사건 흐름</div>
+      <div class="summary-block-content">
+        애니아 치유(룻다) → 다비다를 살림(욥바) → 무두장이 시몬의 집에 머묾 →
+        고넬료의 환상(가이사랴) → 베드로의 환상(욥바) → 두 사람의 만남 →
+        베드로: "하나님은 사람을 차별하지 않으신다." → 복음 선포 →
+        이방인들에게 성령이 임함 → 세례 → 예루살렘 문제 제기 →
+        베드로가 차례로 설명 → 예루살렘 교회: "이방인에게도 회개를 주셨다."
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">주요 인물</div>
+      <div class="summary-block-content">
+        <strong>베드로</strong> — 환상을 통해 이방인 집에 들어가 복음을 전함<br>
+        <strong>고넬료</strong> — 이방인 백부장, 복음을 받아들임<br>
+        <strong>다비다</strong> — 욥바의 여제자, 선행과 구제<br>
+        <strong>애니아</strong> — 룻다, 8년 중풍 후 치유됨
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">장소 / 숫자</div>
+      <div class="summary-block-content">
+        룻다 → 욥바 → 가이사랴 → 예루살렘<br><br>
+        <div class="number-row" style="margin-top:var(--sp-1);">
+          <div class="num-item"><div class="num-big">8년</div><div class="num-label">애니아<br>중풍 기간</div></div>
+          <div class="num-item"><div class="num-big">×3</div><div class="num-label">환상의<br>반복 횟수</div></div>
+          <div class="num-item"><div class="num-big">3명</div><div class="num-label">고넬료가<br>보낸 사람들</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">새롭게 배운 개념</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--sp-1);">
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">백부장</div>
+          <div class="background-box-body">로마군의 centurion에 해당하는 장교. "정확히 100명"이라고 단정하지 않는다.</div>
+        </div>
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">정결 규정</div>
+          <div class="background-box-body">이스라엘의 음식·생활에 적용된 정결/부정의 구분. 베드로의 환상의 배경.</div>
+        </div>
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">고넬료 사건의 의미</div>
+          <div class="background-box-body">하나님이 먼저 이방인들에게 행하신 후 교회가 확인한 사건. 순서가 중요하다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이야기 연결</div>
+      <div class="story-conn">
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">이전 L07</div>
+          박해자 사울이<br>예수를 만나 증인이 됨
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node current-node">
+          <div style="font-size:var(--fs-caption);">L08</div>
+          이방인에게도<br>복음이 열림
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">다음 L09</div>
+          안디옥 — 새로운<br>선교 중심지 탄생
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        하나님은 고넬료와 베드로를 각각 준비시켜 만나게 하시고 이방인들에게도 성령을 주심으로 복음이 민족의 경계를 넘어 동일하게 주어지고 있음을 베드로와 예루살렘 교회가 직접 확인하게 하셨다.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 08 · 20</span>
+  </div>
+</section>
+
+
+</body>
+</html>

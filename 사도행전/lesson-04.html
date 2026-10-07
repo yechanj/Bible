@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 04 — 성장하는 교회, 내부와 외부의 위기</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 04 전용 스타일 ── */
+
+    /* Story Connection (P1) — reused pattern */
+    .story-connection {
+      margin-top: auto;
+      border-top: 1px solid var(--rule);
+      padding-top: var(--sp-3);
+      display: flex;
+      gap: var(--sp-2);
+      align-items: stretch;
+    }
+    .sc-col {
+      flex: 1;
+      padding: var(--sp-2);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5mm;
+    }
+    .sc-col.current {
+      border-color: var(--accent);
+      background: var(--accent-pale);
+    }
+    .sc-col-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--ink-faint);
+      letter-spacing: 0.08em;
+    }
+    .sc-col.current .sc-col-label { color: var(--accent); }
+    .sc-col-title {
+      font-size: var(--fs-small);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .sc-col.current .sc-col-title { color: var(--accent); }
+    .sc-flow-text {
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      line-height: 1.8;
+    }
+    .sc-arrow {
+      display: flex;
+      align-items: center;
+      font-size: 14pt;
+      color: var(--accent);
+      padding: 0 1mm;
+      padding-top: 12mm;
+    }
+
+    /* Dual Track Flow (P2) */
+    .dual-track {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: var(--sp-2);
+    }
+    .dt-header {
+      display: grid;
+      grid-template-columns: 1fr 10mm 1fr;
+      margin-bottom: 1mm;
+    }
+    .dth-inside {
+      padding: 2mm 3mm;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      border-radius: 3px 0 0 3px;
+    }
+    .dth-center {
+      background: var(--accent);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      writing-mode: vertical-lr;
+      font-size: 5.5pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      padding: 1mm 0;
+    }
+    .dth-outside {
+      padding: 2mm 3mm;
+      background: #eeecea;
+      color: var(--ink-soft);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      border-radius: 0 3px 3px 0;
+      text-align: right;
+    }
+    .dt-body {
+      display: flex;
+      flex: 1;
+      gap: 0;
+    }
+    .dt-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5mm 2mm;
+      border: 1px solid var(--rule);
+    }
+    .dt-col.inside-col { border-right: none; border-radius: 0 0 0 3px; }
+    .dt-col.outside-col { border-left: none; border-radius: 0 0 3px 0; }
+    .dt-center-bar {
+      width: 10mm;
+      flex-shrink: 0;
+      background: var(--accent-pale);
+      border-top: 1px solid var(--accent-soft);
+      border-bottom: 1px solid var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dt-step {
+      padding: 1.5mm 2mm;
+      border-radius: 2px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 2mm;
+    }
+    .dt-step.key {
+      background: var(--accent-pale);
+      border: 1px solid var(--accent-soft);
+    }
+    .dt-step-title {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .dt-step.key .dt-step-title { color: var(--accent); }
+    .dt-step-desc {
+      font-size: 7.5pt;
+      color: var(--ink-soft);
+      line-height: 1.4;
+      margin-top: 0.5mm;
+    }
+    .dt-step-ref {
+      font-size: 7pt;
+      color: var(--ink-faint);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .dt-arrow {
+      text-align: center;
+      font-size: 8pt;
+      color: var(--rule-mid);
+      line-height: 1.4;
+    }
+    .dt-footer {
+      padding: 3mm 4mm;
+      background: var(--accent);
+      border-radius: 0 0 3px 3px;
+      text-align: center;
+      font-size: var(--fs-small);
+      font-weight: 700;
+      color: var(--white);
+    }
+    .dt-footer span {
+      font-size: var(--fs-caption);
+      opacity: 0.75;
+      margin-left: 2mm;
+    }
+
+    /* Parallel Compare (P4) */
+    .parallel-compare {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--sp-2);
+      margin: var(--sp-2) 0;
+    }
+    .pc-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .pc-col-head {
+      padding: var(--sp-2) var(--sp-2) var(--sp-1);
+      border-bottom: 2px solid var(--rule);
+    }
+    .pc-col.positive .pc-col-head { border-bottom-color: var(--accent); }
+    .pc-col.negative .pc-col-head { border-bottom-color: var(--rule-mid); }
+    .pc-name {
+      font-size: var(--fs-small);
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .pc-col.positive .pc-name { color: var(--accent); }
+    .pc-ref {
+      font-size: var(--fs-caption);
+      color: var(--ink-faint);
+    }
+    .pc-steps {
+      padding: var(--sp-1) var(--sp-2);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .pc-step {
+      padding: 1.5mm 0;
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      border-bottom: 1px dashed var(--rule);
+      line-height: 1.4;
+    }
+    .pc-step:last-child { border-bottom: none; }
+    .pc-step.shared {
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .pc-step.diverge {
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-pale);
+      margin: 0 -3.5mm;
+      padding: 1.5mm 3.5mm;
+    }
+    .pc-step.diverge.negative {
+      color: var(--ink);
+      background: #f2f0ed;
+    }
+    .pc-result {
+      padding: var(--sp-1) var(--sp-2);
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      margin-top: auto;
+    }
+    .pc-col.positive .pc-result {
+      background: var(--accent-pale);
+      color: var(--accent);
+    }
+    .pc-col.negative .pc-result {
+      background: #f0eeeb;
+      color: var(--ink);
+    }
+    .pc-mid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2mm;
+      padding: 0 1mm;
+    }
+    .pc-mid-tag {
+      writing-mode: vertical-lr;
+      font-size: 7pt;
+      font-weight: 700;
+      color: var(--ink-faint);
+      letter-spacing: 0.1em;
+      padding: 2mm 1mm;
+      border: 1px solid var(--rule);
+      border-radius: 3px;
+    }
+    .pc-insight {
+      padding: var(--sp-2) var(--sp-3);
+      border: 2px solid var(--accent);
+      border-radius: 4px;
+      margin: var(--sp-2) 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5mm;
+    }
+    .pc-insight-big {
+      font-size: var(--fs-h2);
+      font-weight: 700;
+      color: var(--accent);
+      font-family: var(--ff-hand);
+    }
+    .pc-insight-sub {
+      font-size: var(--fs-small);
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+    .pc-insight-focus {
+      font-size: var(--fs-small);
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* Spread Diagram (P6) */
+    .spread-diagram {
+      margin: var(--sp-2) 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-2);
+    }
+    .spread-center {
+      width: 36mm;
+      height: 36mm;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--fs-small);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+    .spread-ring {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+    .spread-arrow-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1mm;
+    }
+    .spread-arrow-item {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+    }
+    .spread-arrow-item::before {
+      content: "→";
+      color: var(--accent);
+      font-size: 9pt;
+    }
+
+    /* Repeated Pattern (P8) */
+    .repeat-pattern {
+      margin: var(--sp-2) 0;
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--accent-pale);
+      border: 1.5px solid var(--accent-soft);
+      border-radius: 4px;
+    }
+    .rp-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: var(--sp-1);
+    }
+    .rp-flow {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-1);
+      flex-wrap: wrap;
+    }
+    .rp-item {
+      padding: 1.5mm 3mm;
+      border: 1.5px solid var(--accent);
+      border-radius: 20px;
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .rp-arrow {
+      font-size: 9pt;
+      color: var(--rule-mid);
+    }
+
+    /* Gamaliel logic flow (P9) */
+    .gamaliel-logic {
+      margin: var(--sp-2) 0;
+    }
+    .gl-example {
+      display: flex;
+      gap: 3mm;
+      align-items: flex-start;
+      margin-bottom: var(--sp-1);
+    }
+    .gl-example-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+      min-width: 14mm;
+      padding-top: 0.5mm;
+    }
+    .gl-example-flow {
+      flex: 1;
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      line-height: 1.6;
+      border-left: 2px solid var(--rule);
+      padding-left: 3mm;
+    }
+    .gl-conclusion {
+      margin-top: var(--sp-2);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--sp-2);
+    }
+    .gl-if {
+      padding: var(--sp-2);
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+    .gl-if strong {
+      display: block;
+      color: var(--ink);
+      font-size: var(--fs-small);
+      margin-bottom: 1mm;
+    }
+    .gl-vs {
+      display: flex;
+      align-items: center;
+      font-size: 8pt;
+      font-weight: 700;
+      color: var(--ink-faint);
+    }
+
+    /* Contrast (P7) — "말하지마라" vs "가서 말하라" */
+    .command-contrast {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--sp-2);
+      margin: var(--sp-2) 0;
+      align-items: center;
+    }
+    .cmd-block {
+      padding: var(--sp-2) var(--sp-2);
+      border-radius: 4px;
+      text-align: center;
+    }
+    .cmd-block.human {
+      background: #f2f0ed;
+      border: 1.5px solid var(--rule-mid);
+    }
+    .cmd-block.divine {
+      background: var(--accent);
+      border: 1.5px solid var(--accent);
+    }
+    .cmd-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--ink-faint);
+      margin-bottom: 1.5mm;
+    }
+    .cmd-block.divine .cmd-label { color: rgba(255,255,255,0.7); }
+    .cmd-text {
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+      font-family: var(--ff-hand);
+    }
+    .cmd-block.divine .cmd-text { color: var(--white); }
+    .cmd-ref {
+      font-size: var(--fs-caption);
+      color: var(--ink-faint);
+      margin-top: 1.5mm;
+    }
+    .cmd-block.divine .cmd-ref { color: rgba(255,255,255,0.6); }
+    .cmd-vs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8pt;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .cmd-result {
+      grid-column: 1/-1;
+      margin-top: var(--sp-1);
+      padding: var(--sp-2) var(--sp-3);
+      border: 1.5px solid var(--accent);
+      border-radius: 4px;
+      text-align: center;
+    }
+    .cmd-result-text {
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: var(--ff-hand);
+    }
+    .cmd-result-ref {
+      font-size: var(--fs-caption);
+      color: var(--ink-faint);
+      margin-top: 1mm;
+    }
+
+    /* Visual Explainer (P11) */
+    .vis-dual {
+      margin: var(--sp-2) 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--sp-2);
+    }
+    .vis-track {
+      padding: var(--sp-2);
+      border: 1.5px solid var(--rule);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .vis-track.inside { border-color: var(--accent-soft); background: var(--accent-pale); }
+    .vis-track.outside { border-color: var(--rule); }
+    .vis-track-label {
+      font-size: var(--fs-small);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: var(--sp-1);
+      padding-bottom: var(--sp-1);
+      border-bottom: 2px solid var(--accent-soft);
+    }
+    .vis-track.outside .vis-track-label { color: var(--ink-soft); border-bottom-color: var(--rule); }
+    .vis-node {
+      padding: 1.5mm 0;
+      font-size: var(--fs-caption);
+      color: var(--ink-soft);
+      display: flex;
+      align-items: baseline;
+      gap: 2mm;
+      border-bottom: 1px dashed var(--rule);
+    }
+    .vis-node:last-child { border-bottom: none; }
+    .vis-node-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--rule-mid);
+      flex-shrink: 0;
+      margin-top: 1.5mm;
+    }
+    .vis-node.key .vis-node-dot { background: var(--accent); }
+    .vis-node.key { color: var(--accent); font-weight: 700; }
+    .vis-mini-arrow {
+      font-size: 7pt;
+      color: var(--rule);
+      text-align: center;
+      line-height: 1.5;
+    }
+    .vis-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2mm;
+    }
+    .vis-church-badge {
+      width: 22mm;
+      height: 22mm;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 6pt;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .vis-dual-footer {
+      grid-column: 1/-1;
+      margin-top: var(--sp-2);
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--accent);
+      border-radius: 4px;
+      text-align: center;
+      font-size: var(--fs-body);
+      font-weight: 700;
+      color: var(--white);
+      font-family: var(--ff-hand);
+      line-height: 1.5;
+    }
+    .vis-dual-summary {
+      grid-column: 1/-1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-2);
+      margin-top: var(--sp-2);
+    }
+    .vis-summary-box {
+      padding: var(--sp-2);
+      border-radius: 4px;
+      font-size: var(--fs-caption);
+      line-height: 1.6;
+    }
+    .vis-summary-box.inside { background: var(--accent-pale); color: var(--accent); }
+    .vis-summary-box.outside { background: #f0eeeb; color: var(--ink-soft); }
+    .vis-summary-title {
+      font-weight: 700;
+      font-size: var(--fs-small);
+      margin-bottom: 1.5mm;
+    }
+
+    /* Expected vs Actual (P10) */
+    .expectation-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--sp-2);
+      margin: var(--sp-2) 0;
+      align-items: start;
+    }
+    .exp-col {
+      padding: var(--sp-2);
+      border-radius: 4px;
+    }
+    .exp-col.expected {
+      background: #f2f0ed;
+      border: 1px solid var(--rule);
+    }
+    .exp-col.actual {
+      background: var(--accent-pale);
+      border: 1.5px solid var(--accent);
+    }
+    .exp-label {
+      font-size: var(--fs-caption);
+      font-weight: 700;
+      color: var(--ink-faint);
+      margin-bottom: 1.5mm;
+    }
+    .exp-col.actual .exp-label { color: var(--accent); }
+    .exp-items {
+      font-size: var(--fs-small);
+      color: var(--ink-soft);
+      line-height: 1.8;
+    }
+    .exp-col.actual .exp-items { color: var(--accent); font-weight: 700; }
+    .exp-vs {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--accent);
+      padding-top: 10mm;
+    }
+
+    /* Pharisee-Sadducee comparison table */
+    .ps-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--sp-2) 0;
+      font-size: var(--fs-caption);
+    }
+    .ps-table th {
+      padding: 2mm 3mm;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      text-align: left;
+      border: 1px solid var(--rule);
+    }
+    .ps-table th:first-child {
+      background: var(--page-bg);
+      color: var(--ink-faint);
+      width: 22mm;
+    }
+    .ps-table td {
+      padding: 2mm 3mm;
+      border: 1px solid var(--rule);
+      color: var(--ink-soft);
+      line-height: 1.5;
+      vertical-align: top;
+    }
+    .ps-table tr:nth-child(even) td { background: var(--accent-pale); }
+  </style>
+</head>
+<body>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 1: LESSON OPENING
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">04</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 2 — 예루살렘 교회의 성장</div>
+      <h1 class="opening-title">성장하는 교회,<br>내부와 외부의 위기</h1>
+      <div class="opening-scripture">사도행전 4:32–5:42</div>
+    </div>
+  </div>
+
+  <div class="lesson-summary-line">
+    예루살렘 교회가 서로의 필요를 돌보며 빠르게 성장하는 가운데, 내부에서는 아나니아와 삽비라의 거짓이 드러나고 외부에서는 종교지도자들의 박해가 더욱 거세진다. 그러나 사도들은 멈추지 않는다.
+  </div>
+
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">사도들 · 바나바 · 아나니아 · 삽비라 · 베드로 · 대제사장 · 사두개인 · 가말리엘</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">예루살렘 · 솔로몬 행각 · 감옥 · 산헤드린 공회</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">핵심 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2mm;margin-top:1.5mm;">
+        <span class="tag">공동체</span><span class="tag">나눔</span><span class="tag">거짓</span>
+        <span class="tag">두려움</span><span class="tag">시기</span><span class="tag">순종</span>
+        <span class="tag">박해</span><span class="tag">가말리엘</span>
+      </div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">사도행전 현재 위치</div>
+      <div class="lesson-meta-value" style="color:var(--accent);font-weight:700;">예루살렘 — PART 2 (진행 중)</div>
+    </div>
+  </div>
+
+  <div class="story-connection">
+    <div class="sc-col">
+      <div class="sc-col-label">LESSON 03 이후</div>
+      <div class="sc-col-title">첫 기적, 첫 박해</div>
+      <div class="sc-flow-text">
+        "말하지 마라" (4:18)<br>
+        ↓ 교회의 기도<br>
+        "담대히 전하게 하소서" (4:29)<br>
+        ↓ 성령 충만 → 다시 담대하게 전함
+      </div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-col current">
+      <div class="sc-col-label">LESSON 04</div>
+      <div class="sc-col-title">사도들은 실제로 전도를 계속하고 교회는 더욱 성장한다</div>
+      <div class="sc-flow-text">
+        교회 성장 (4:32–5:16)<br>
+        ↓ 내부 위기: 아나니아와 삽비라의 거짓<br>
+        ↓ 외부 위기: 재체포, 산헤드린 심문<br>
+        ↓ 그래도 전도를 멈추지 않음 (5:42)
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 04 · 1</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 2: STORY FLOW — INSIDE / OUTSIDE 이중 흐름
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 04</span>
+    <span class="page-header-title">성장하는 교회, 내부와 외부의 위기</span>
+  </div>
+
+  <h2 class="section-heading">성장하는 교회에 무슨 일이 일어났을까?</h2>
+  <p class="flow-page-intro">이번 Lesson의 사건들은 두 흐름으로 동시에 진행된다. 하나의 성장하는 교회가 안과 밖에서 각각 다른 종류의 위기를 경험한다.</p>
+
+  <div class="dual-track">
+    <div class="dt-header">
+      <div class="dth-inside">INSIDE · 내부</div>
+      <div class="dth-center">GROWING<br>CHURCH</div>
+      <div class="dth-outside">OUTSIDE · 외부</div>
+    </div>
+    <div class="dt-body">
+      <div class="dt-col inside-col">
+        <div class="dt-step">
+          <div>
+            <div class="dt-step-title">하나 된 공동체</div>
+            <div class="dt-step-desc">한마음과 한뜻. 필요를 나눔. "가난한 사람이 없었다."</div>
+          </div>
+          <div class="dt-step-ref">4:32–35</div>
+        </div>
+        <div class="dt-arrow">↓</div>
+        <div class="dt-step">
+          <div>
+            <div class="dt-step-title">바나바</div>
+            <div class="dt-step-desc">밭을 팔아 그 값을 사도들 앞에 둠. 공동체의 모범.</div>
+          </div>
+          <div class="dt-step-ref">4:36–37</div>
+        </div>
+        <div class="dt-arrow">↓</div>
+        <div class="dt-step key">
+          <div>
+            <div class="dt-step-title">아나니아와 삽비라</div>
+            <div class="dt-step-desc">같은 행동, 다른 마음. 일부를 감추고 전부인 것처럼 행동.</div>
+          </div>
+          <div class="dt-step-ref">5:1–11</div>
+        </div>
+        <div class="dt-arrow">↓</div>
+        <div class="dt-step key">
+          <div>
+            <div class="dt-step-title">큰 두려움이 임함</div>
+            <div class="dt-step-desc">"온 교회와 이 일을 듣는 사람들이 다 크게 두려워하니라."</div>
+          </div>
+          <div class="dt-step-ref">5:11</div>
+        </div>
+      </div>
+      <div class="dt-center-bar"></div>
+      <div class="dt-col outside-col">
+        <div class="dt-step">
+          <div class="dt-step-title">사도들의 표적과 기사</div>
+          <div class="dt-step-desc">솔로몬 행각에 믿는 사람들이 모임.</div>
+          <div class="dt-step-ref" style="display:block;font-size:7pt;color:var(--ink-faint);">5:12–13</div>
+        </div>
+        <div class="dt-arrow">↓</div>
+        <div class="dt-step">
+          <div class="dt-step-title">교회의 성장</div>
+          <div class="dt-step-desc">주를 믿는 사람들이 더욱 많아짐. 주변 지역에서도 사람들이 모여듦.</div>
+          <div class="dt-step-ref" style="display:block;font-size:7pt;color:var(--ink-faint);">5:14–16</div>
+        </div>
+        <div class="dt-arrow">↓</div>
+        <div class="dt-step key">
+          <div class="dt-step-title">종교지도자들의 시기</div>
+          <div class="dt-step-desc">대제사장과 사두개인들이 시기가 가득하여 사도들을 잡음.</div>
+          <div class="dt-step-ref" style="display:block;font-size:7pt;color:var(--ink-faint);">5:17–18</div>
+        </div>
+        <div class="dt-arrow">↓</div>
+        <div class="dt-step">
+          <div class="dt-step-title">주의 사자가 풀어줌</div>
+          <div class="dt-step-desc">밤에 감옥 문을 열고 "성전에 가서 생명의 말씀을 말하라."</div>
+          <div class="dt-step-ref" style="display:block;font-size:7pt;color:var(--ink-faint);">5:19–21</div>
+        </div>
+        <div class="dt-arrow">↓</div>
+        <div class="dt-step">
+          <div class="dt-step-title">재체포 · 공회 심문</div>
+          <div class="dt-step-desc">"예루살렘에 너희 가르침이 가득하다."</div>
+          <div class="dt-step-ref" style="display:block;font-size:7pt;color:var(--ink-faint);">5:26–32</div>
+        </div>
+        <div class="dt-arrow">↓</div>
+        <div class="dt-step">
+          <div class="dt-step-title">가말리엘의 중재</div>
+          <div class="dt-step-desc">"이 사람들을 그냥 두라."</div>
+          <div class="dt-step-ref" style="display:block;font-size:7pt;color:var(--ink-faint);">5:33–40</div>
+        </div>
+        <div class="dt-arrow">↓</div>
+        <div class="dt-step key">
+          <div class="dt-step-title">채찍질 후 석방</div>
+          <div class="dt-step-desc">"예수의 이름으로 말하지 말라." — 그러나 기뻐하며 떠남.</div>
+          <div class="dt-step-ref" style="display:block;font-size:7pt;color:var(--ink-faint);">5:40–42</div>
+        </div>
+      </div>
+    </div>
+    <div class="dt-footer">그래도 날마다 성전과 집에서 가르치기와 전도하기를 그치지 않음 <span>행 5:42</span></div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 04 · 2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 3: SCENE 01 — "모든 물건을 서로 통용하고" (4:32–37)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 04</span>
+    <span class="page-header-title">성장하는 교회, 내부와 외부의 위기</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">"모든 물건을 서로 통용하고"</span>
+      <span class="scene-ref">행 4:32–37</span>
+    </div>
+
+    <div class="scene-body">
+      <p>사도행전 2장(LESSON 02)에서 본 초대교회의 나눔이 4장에서 다시 한 번 구체적으로 묘사된다. 본문은 믿는 무리가 <strong>한마음과 한뜻이 되었다</strong>고 기록하며, 자신의 소유를 자신의 것이라고만 주장하지 않고 서로의 필요를 나누었다고 설명한다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin:var(--sp-2) 0;">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">재산을 가진 일부가 밭이나 집을 판매함</div>
+      </div>
+      <div class="flow-step-ref">4:34</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">그 값을 가져와 사도들 앞에 둠</div>
+      </div>
+      <div class="flow-step-ref">4:34–35</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">각 사람의 필요에 따라 나눔</div>
+        <div class="flow-step-desc">→ "그 중에 가난한 사람이 없었더니" (4:34)</div>
+      </div>
+      <div class="flow-step-ref">4:35</div>
+    </div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">이것은 모든 재산을 의무적으로 포기해야 했다는 뜻인가?</div>
+    <div class="background-box-body">바로 다음에 이어지는 5장에서 베드로는 아나니아에게 "땅이 그대로 있을 때에는 네 것이 아니었느냐 판 후에도 네 마음대로 할 수가 없었느냐"라고 말한다(5:4). 즉, 재산을 판매하거나 나눠주는 행위는 의무가 아니었다. 본문의 핵심은 강제적 재산 포기가 아니라 공동체 안에서 서로의 필요를 자발적으로 돌보았다는 데 있다.</div>
+  </div>
+
+  <div class="scene" style="margin-top:var(--sp-3);">
+    <div class="scene-head">
+      <span class="scene-num">바나바</span>
+      <span class="scene-title">공동체의 모범 — 구체적인 예시</span>
+      <span class="scene-ref">행 4:36–37</span>
+    </div>
+    <div class="scene-body">
+      <p>본문은 즉시 한 사람을 구체적인 예로 소개한다. 본명 <strong>요셉</strong>, 레위인이며 구브로 출신. 사도들은 그를 <strong>바나바</strong>라고 불렀으며, 본문은 이 이름을 "위로의 아들"이라고 설명한다. 그는 자신의 밭을 팔아 그 값을 사도들 앞에 두었다. 바나바는 이후 사도행전에서 바울과 함께 중요한 역할을 하며 반복적으로 등장한다.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 04 · 3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 4: SCENE 02 — 바나바 vs 아나니아와 삽비라
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 04</span>
+    <span class="page-header-title">성장하는 교회, 내부와 외부의 위기</span>
+  </div>
+
+  <h2 class="section-heading">비슷해 보이는 두 사건, 완전히 다른 결말</h2>
+
+  <div class="parallel-compare">
+    <div class="pc-col positive">
+      <div class="pc-col-head">
+        <div class="pc-name">바나바</div>
+        <div class="pc-ref">행 4:36–37</div>
+      </div>
+      <div class="pc-steps">
+        <div class="pc-step shared">밭을 소유함</div>
+        <div class="pc-step shared">판매함</div>
+        <div class="pc-step shared">돈을 가져옴</div>
+        <div class="pc-step diverge">사도들 앞에 둠</div>
+      </div>
+      <div class="pc-result">믿음과 나눔의 본보기</div>
+    </div>
+    <div class="pc-mid">
+      <div class="pc-mid-tag">동일한 외형적 행동</div>
+    </div>
+    <div class="pc-col negative">
+      <div class="pc-col-head">
+        <div class="pc-name">아나니아와 삽비라</div>
+        <div class="pc-ref">행 5:1–11</div>
+      </div>
+      <div class="pc-steps">
+        <div class="pc-step shared">재산을 소유함</div>
+        <div class="pc-step shared">판매함</div>
+        <div class="pc-step diverge negative">일부만 가져옴<br>→ 전부인 것처럼 행동</div>
+        <div class="pc-step">거짓이 드러남</div>
+      </div>
+      <div class="pc-result">아나니아 죽음 → 삽비라 죽음<br>온 교회에 큰 두려움</div>
+    </div>
+  </div>
+
+  <div class="pc-insight">
+    <div class="pc-insight-big">"얼마를 냈는가?"가 문제가 아니었다.</div>
+    <div class="pc-insight-sub">베드로는 아나니아에게 말한다: "땅이 그대로 있을 때에는 네 것이 아니었느냐? 판 후에도 네 마음대로 할 수가 없었느냐?" (행 5:4). 재산을 팔지 않을 자유도, 판 뒤의 돈을 어떻게 사용할지 결정할 자유도 있었다.</div>
+    <div class="pc-insight-focus">초점은 기부 액수가 아니라 거짓과 속임에 있었다.</div>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">아나니아가 돈의 일부를 따로 두고 나머지를 가져옴</div>
+      </div>
+      <div class="flow-step-ref">5:2</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">베드로: "성령을 속이고 땅값 얼마를 감추었느냐?"</div>
+        <div class="flow-step-desc">"사람에게 거짓말한 것이 아니요 하나님께로다." (5:4)</div>
+      </div>
+      <div class="flow-step-ref">5:3–4</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">아나니아 쓰러져 죽음 → 약 3시간 후 삽비라 동일한 거짓 → 죽음</div>
+      </div>
+      <div class="flow-step-ref">5:5–10</div>
+    </div>
+    <div class="flow-result">
+      "온 교회와 이 일을 듣는 사람들이 다 크게 두려워하니라." (5:11)
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 04 · 4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 5: SCENE 03 — 왜 이렇게 심각한 사건이었을까? (5:1–11)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 04</span>
+    <span class="page-header-title">성장하는 교회, 내부와 외부의 위기</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">왜 이렇게 심각한 사건이었을까?</span>
+      <span class="scene-ref">행 5:1–11</span>
+    </div>
+    <div class="scene-body">
+      <p>아나니아와 삽비라의 사건에서 베드로가 사용한 표현을 보면, 단순한 거짓말 이상의 문제를 지적하고 있음을 알 수 있다.</p>
+    </div>
+  </div>
+
+  <div class="sermon-flow" style="margin:var(--sp-2) 0;">
+    <div class="sermon-step">
+      <div class="sermon-num-col"><div class="sermon-num">1</div><div class="sermon-line"></div></div>
+      <div class="sermon-content">
+        <div class="sermon-step-title">베드로가 아나니아에게 <span class="sermon-ref-tag">5:3</span></div>
+        <div class="sermon-step-body">"어찌하여 사탄이 네 마음에 가득하여 네가 성령을 속이고 땅값 얼마를 감추었느냐?"<br><strong>→ "성령을 속이고"</strong></div>
+      </div>
+    </div>
+    <div class="sermon-step">
+      <div class="sermon-num-col"><div class="sermon-num">2</div><div class="sermon-line"></div></div>
+      <div class="sermon-content">
+        <div class="sermon-step-title">베드로의 설명 <span class="sermon-ref-tag">5:4</span></div>
+        <div class="sermon-step-body">"사람에게 거짓말한 것이 아니요 하나님께로다."<br><strong>→ "하나님께 거짓말함"</strong></div>
+      </div>
+    </div>
+    <div class="sermon-step">
+      <div class="sermon-num-col"><div class="sermon-num">3</div></div>
+      <div class="sermon-content">
+        <div class="sermon-step-title">두 표현이 나란히 쓰임</div>
+        <div class="sermon-step-body">5:3의 "성령을 속이고"와 5:4의 "하나님께로다"가 같은 사건을 설명한다. 이 두 표현을 나란히 이해하는 것이 본문을 읽는 독자에게 중요하다.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">'교회'라는 표현의 첫 등장</h2>
+
+  <div class="background-box">
+    <div class="background-box-title">행 5:11 — "온 교회"</div>
+    <div class="background-box-body">"온 교회와 이 일을 듣는 사람들이 다 크게 두려워하니라." 사도행전 본문에서 '교회'(공동체)라는 표현이 이 맥락에서 중요한 공동체 명칭으로 사용된다. 이 표현은 이후 사도행전 전반에 걸쳐 계속 등장한다.</div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">사건의 결과</h2>
+
+  <div class="story-flow">
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">아나니아와 삽비라의 죽음</div>
+      </div>
+      <div class="flow-step-ref">5:5, 10</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">큰 두려움 — 공동체 안으로, 공동체 밖으로</div>
+        <div class="flow-step-desc">이 사건은 공동체가 하나님 앞에서의 진실성이 어떤 의미인지를 경험하는 계기가 된다. 두려움의 대상은 처벌이 아니라 하나님 앞에 있다는 사실 자체다.</div>
+      </div>
+      <div class="flow-step-ref">5:11</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 04 · 5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 6: SCENE 04 — 교회는 계속 성장했다 (5:12–16)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 04</span>
+    <span class="page-header-title">성장하는 교회, 내부와 외부의 위기</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">내부의 위기에도 교회는 계속 성장했다</span>
+      <span class="scene-ref">행 5:12–16</span>
+    </div>
+
+    <div class="scene-body">
+      <p>아나니아와 삽비라 사건 이후, 본문은 교회가 무너지는 것이 아니라 사도들의 활동이 계속되고 있음을 기록한다. 표적과 기사가 일어났고, 믿는 사람들이 더욱 많아졌다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin:var(--sp-2) 0;">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">사도들을 통해 표적과 기사가 일어남</div>
+        <div class="flow-step-desc">솔로몬 행각에 믿는 사람들이 모임 — 솔로몬 행각은 LESSON 03에서 등장한 장소.</div>
+      </div>
+      <div class="flow-step-ref">5:12</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">주를 믿는 사람들이 더욱 많아짐</div>
+        <div class="flow-step-desc">남녀 무리가 많아졌다. 박해와 내부의 위기에도 불구하고 성장이 계속되었다.</div>
+      </div>
+      <div class="flow-step-ref">5:14</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">예루살렘 주변 지역에서도 사람들이 찾아옴</div>
+        <div class="flow-step-desc">병자들을 거리로 데리고 나와 베드로가 지나갈 때 그의 그림자라도 덮이기를 바랐다.</div>
+      </div>
+      <div class="flow-step-ref">5:15–16</div>
+    </div>
+  </div>
+
+  <!-- 성장 방향 다이어그램 -->
+  <div style="margin:var(--sp-3) 0;display:flex;gap:var(--sp-3);align-items:center;">
+    <div style="flex:1;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:var(--sp-1);letter-spacing:0.08em;">사람들이 모여드는 방향</div>
+      <div style="display:flex;flex-direction:column;gap:1.5mm;">
+        <div style="display:flex;align-items:center;gap:3mm;font-size:var(--fs-caption);color:var(--ink-soft);">
+          <span style="color:var(--accent);font-size:9pt;">→</span>
+          예루살렘 주변 마을들
+        </div>
+        <div style="display:flex;align-items:center;gap:3mm;font-size:var(--fs-caption);color:var(--ink-soft);">
+          <span style="color:var(--accent);font-size:9pt;">→</span>
+          병자와 귀신 들린 사람들
+        </div>
+        <div style="display:flex;align-items:center;gap:3mm;font-size:var(--fs-caption);color:var(--ink-soft);">
+          <span style="color:var(--accent);font-size:9pt;">→</span>
+          모두 나음을 받음 (5:16)
+        </div>
+      </div>
+    </div>
+    <div style="width:32mm;height:32mm;border-radius:50%;background:var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;font-size:7pt;font-weight:700;text-align:center;line-height:1.5;flex-shrink:0;">
+      예루살렘<br>솔로몬 행각<br>(중심)
+    </div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">베드로의 그림자 — 본문이 말하는 범위 안에서</div>
+    <div class="background-box-body">행 5:15는 사람들이 베드로가 지나갈 때 그의 그림자라도 누구에게 덮이기를 바랐다고 기록한다. 본문은 사람들이 그렇게 기대했다는 사실을 기록한다. 본문은 "베드로의 그림자가 실제로 병을 고쳤다"고 명시적으로 진술하지는 않는다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 04 · 6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 7: SCENE 05 — 또다시 감옥에 (5:17–26)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 04</span>
+    <span class="page-header-title">성장하는 교회, 내부와 외부의 위기</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 5</span>
+      <span class="scene-title">또다시 감옥에 — 그러나 방향은 하나</span>
+      <span class="scene-ref">행 5:17–26</span>
+    </div>
+    <div class="scene-body">
+      <p>본문은 대제사장과 사두개인 계열 사람들이 <strong>시기가 가득하여</strong> 사도들을 잡아 공공 감옥에 가두었다고 기록한다. 그러나 밤에 주의 사자가 감옥 문을 열었다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin:var(--sp-2) 0;">
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">복음 전파 계속</div>
+      </div>
+      <div class="flow-step-ref">5:12–16</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">체포 · 감옥</div>
+        <div class="flow-step-desc">대제사장과 사두개인들이 시기가 가득하여 사도들을 잡아 가둠.</div>
+      </div>
+      <div class="flow-step-ref">5:17–18</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">주의 사자가 문을 열어 이끌어 냄</div>
+        <div class="flow-step-desc">명령: "성전에 서서 이 생명의 말씀을 다 백성에게 말하라."</div>
+      </div>
+      <div class="flow-step-ref">5:19–20</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">어디로 갔을까? → 다시 성전으로 — 다시 가르침</div>
+      </div>
+      <div class="flow-step-ref">5:21</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">당황한 종교지도자들 → 재체포</div>
+        <div class="flow-step-desc">감옥 문이 잠겨 있고 간수들도 있었으나 안에 아무도 없었다. 성전에서 가르치고 있는 사도들을 데려옴.</div>
+      </div>
+      <div class="flow-step-ref">5:22–26</div>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">두 명령의 충돌</h2>
+
+  <div class="command-contrast">
+    <div class="cmd-block human">
+      <div class="cmd-label">종교지도자의 명령 (LESSON 03)</div>
+      <div class="cmd-text">"예수의 이름으로<br>말하지도 말고<br>가르치지도 말라"</div>
+      <div class="cmd-ref">행 4:18</div>
+    </div>
+    <div class="cmd-vs">VS</div>
+    <div class="cmd-block divine">
+      <div class="cmd-label">주의 사자의 명령</div>
+      <div class="cmd-text">"성전에 서서<br>이 생명의 말씀을<br>다 백성에게 말하라"</div>
+      <div class="cmd-ref">행 5:20</div>
+    </div>
+    <div class="cmd-result">
+      <div class="cmd-result-text">사도들은 다시 성전으로 갔다.</div>
+      <div class="cmd-result-ref">행 5:21</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 04 · 7</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 8: SCENE 06 — "사람보다 하나님께 순종" (5:27–32)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 04</span>
+    <span class="page-header-title">성장하는 교회, 내부와 외부의 위기</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 6</span>
+      <span class="scene-title">"사람보다 하나님께 순종하는 것이 마땅하니라"</span>
+      <span class="scene-ref">행 5:27–32</span>
+    </div>
+    <div class="scene-body">
+      <p>사도들이 다시 공회 앞에 끌려온다. 대제사장의 말: <strong>"우리가 이 이름으로 가르치지 말라고 명령하지 않았느냐? 그런데 예루살렘에 너희 가르침이 가득하다."</strong> 예수의 피에 대한 책임을 우리에게 돌리려 한다.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-2);">사건의 연결 고리</h2>
+
+  <div class="story-flow" style="margin:var(--sp-1) 0 var(--sp-2);">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">행 4 — "예수의 이름으로 말하지 말라." (L03)</div>
+      </div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">사도들 — "보고 들은 것을 말하지 않을 수 없다."</div>
+      </div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">행 5 — 계속 복음을 전함</div>
+      </div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">결과 — "예루살렘이 너희 가르침으로 가득하다."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"사람보다 하나님께 순종하는 것이 마땅하니라."</div>
+    <div class="scripture-ref">사도행전 5:29 — 베드로와 사도들의 대답</div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">사도행전 2–5장의 반복되는 메시지</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-2);">사도들의 설교는 다른 장소와 상황에서도 동일한 핵심 구조를 유지한다.</p>
+
+  <div class="repeat-pattern">
+    <div class="rp-label">REPEATED MESSAGE — 사도들의 복음 선포 패턴</div>
+    <div class="rp-flow">
+      <div class="rp-item">예수의 죽음</div>
+      <div class="rp-arrow">→</div>
+      <div class="rp-item">하나님의 부활시키심</div>
+      <div class="rp-arrow">→</div>
+      <div class="rp-item">우리는 이 일의 증인</div>
+      <div class="rp-arrow">→</div>
+      <div class="rp-item">회개 / 죄 사함</div>
+    </div>
+  </div>
+
+  <div class="sermon-flow" style="margin-top:var(--sp-2);">
+    <div class="sermon-step">
+      <div class="sermon-num-col"><div class="sermon-num">1</div><div class="sermon-line"></div></div>
+      <div class="sermon-content">
+        <div class="sermon-step-title">예수를 죽임 — 그러나 하나님께서 살리심 <span class="sermon-ref-tag">5:30</span></div>
+        <div class="sermon-step-body">"너희가 나무에 달아 죽인 예수를 우리 조상의 하나님이 살리시고"</div>
+      </div>
+    </div>
+    <div class="sermon-step">
+      <div class="sermon-num-col"><div class="sermon-num">2</div><div class="sermon-line"></div></div>
+      <div class="sermon-content">
+        <div class="sermon-step-title">하나님이 그를 높이심 <span class="sermon-ref-tag">5:31</span></div>
+        <div class="sermon-step-body">오른손으로 높이사 임금과 구주로 삼으셨다. 이스라엘에게 회개와 죄 사함을 주시려 함이다.</div>
+      </div>
+    </div>
+    <div class="sermon-step">
+      <div class="sermon-num-col"><div class="sermon-num">3</div></div>
+      <div class="sermon-content">
+        <div class="sermon-step-title">우리는 이 일에 증인 <span class="sermon-ref-tag">5:32</span></div>
+        <div class="sermon-step-body">"우리는 이 일에 증인이요 하나님이 자기에게 순종하는 사람들에게 주신 성령도 그러하니라."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 04 · 8</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 9: SCENE 07 — 가말리엘의 조언 (5:33–40)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 04</span>
+    <span class="page-header-title">성장하는 교회, 내부와 외부의 위기</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 7</span>
+      <span class="scene-title">가말리엘의 조언</span>
+      <span class="scene-ref">행 5:33–40</span>
+    </div>
+    <div class="scene-body">
+      <p>공회원들은 사도들의 말을 듣고 분노하여 그들을 죽이려 했다. 그때 한 사람이 일어난다. <strong>가말리엘</strong>. 본문은 그를 바리새인이며 율법교사로, 모든 백성에게 존경받는 인물로 소개한다(5:34).</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading">배경: 바리새인과 사두개인</h2>
+  <p style="font-size:var(--fs-caption);color:var(--ink-faint);margin-bottom:1.5mm;">사두개인은 LESSON 03에서 배웠다. 이번에 처음 등장하는 바리새인과 비교한다.</p>
+
+  <table class="ps-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>바리새인 (Pharisees)</th>
+        <th>사두개인 (Sadducees)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>성격</td>
+        <td>율법과 전통을 중시한 종교 집단</td>
+        <td>제사장 귀족층과 밀접</td>
+      </tr>
+      <tr>
+        <td>부활 신앙</td>
+        <td>인정</td>
+        <td>인정하지 않음 (행 23:8)</td>
+      </tr>
+      <tr>
+        <td>사도행전에서</td>
+        <td>이후 바울과 관련해서도 등장</td>
+        <td>초기 사도들과 충돌 (L03–L04)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-heading">가말리엘의 논리</h2>
+
+  <div class="gamaliel-logic">
+    <div class="gl-example">
+      <div class="gl-example-label">드다의 사례</div>
+      <div class="gl-example-flow">등장 → 추종자 약 400명 → 그가 죽음 → 추종자들이 흩어지고 아무 일도 없었음</div>
+    </div>
+    <div class="gl-example">
+      <div class="gl-example-label">갈릴리 유다</div>
+      <div class="gl-example-flow">호적할 때 등장 → 사람들을 이끔 → 그가 죽음 → 추종자들이 흩어짐</div>
+    </div>
+
+    <div class="gl-conclusion">
+      <div class="gl-if">
+        <strong>사람에게서 나온 일이라면</strong>
+        스스로 무너질 것이다. 손댈 필요 없다.
+      </div>
+      <div class="gl-vs">BUT</div>
+      <div class="gl-if" style="border-color:var(--accent);background:var(--accent-pale);">
+        <strong style="color:var(--accent);">하나님께로부터 나온 일이라면</strong>
+        <span style="color:var(--accent);">너희가 무너뜨릴 수 없다. 자칫 하나님을 대적하는 자가 될 수도 있다. (5:39)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">가말리엘을 어떻게 이해해야 할까?</div>
+    <div class="background-box-body">본문에서 가말리엘은 사도들을 처형하려는 움직임을 제지하고 신중한 판단을 촉구한다. 그가 사도들의 메시지를 지지했는지, 혹은 개인적으로 신앙을 가졌는지는 본문이 말하지 않는다. 본문의 범위 안에서 그는 "신중하게 판단하자"고 말하는 인물이다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 04 · 9</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 10: SCENE 08 — 매를 맞고도 기뻐한 사람들 (5:40–42)
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 04</span>
+    <span class="page-header-title">성장하는 교회, 내부와 외부의 위기</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 8</span>
+      <span class="scene-title">매를 맞고도 기뻐한 사람들</span>
+      <span class="scene-ref">행 5:40–42</span>
+    </div>
+    <div class="scene-body">
+      <p>공회는 가말리엘의 의견을 받아들여 사도들을 죽이지는 않기로 했다. 그러나 그냥 풀어주지도 않았다. 사도들을 불러 채찍질한 뒤, 예수의 이름으로 말하지 말라고 명령하고 석방했다.</p>
+    </div>
+  </div>
+
+  <div class="expectation-row">
+    <div class="exp-col expected">
+      <div class="exp-label">예상할 수 있는 반응</div>
+      <div class="exp-items">
+        박해를 경험함<br>
+        → 두려움<br>
+        → 전도 중단<br>
+        → 조용히 지냄
+      </div>
+    </div>
+    <div class="exp-vs">→</div>
+    <div class="exp-col actual">
+      <div class="exp-label">실제 반응</div>
+      <div class="exp-items">
+        채찍질 후 석방됨<br>
+        → 기뻐하며 떠남<br>
+        → 날마다 그치지 않음
+      </div>
+    </div>
+  </div>
+
+  <div class="key-verse-box" style="margin:var(--sp-3) 0;">
+    <div class="key-verse-label">행 5:41 — 공회를 떠나며</div>
+    <div class="key-verse-text">그 이름을 위하여 능욕 받는 일에 합당한 자로 여기심을 기뻐하면서 공회 앞을 떠나니라</div>
+    <div class="key-verse-ref">사도행전 5:41</div>
+  </div>
+
+  <div class="story-flow" style="margin:var(--sp-2) 0;">
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">날마다 성전에서</div>
+      </div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">날마다 집에서</div>
+      </div>
+    </div>
+    <div class="flow-result" style="font-size:13pt;font-family:var(--ff-hand);">
+      예수는 그리스도라 가르치기와 전도하기를 그치지 아니하니라 (5:42)
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-3);background:var(--accent);border-radius:4px;text-align:center;">
+    <div style="font-size:16pt;font-weight:700;color:var(--white);font-family:var(--ff-hand);line-height:1.4;">막으려 할수록, 복음은 멈추지 않았다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 04 · 10</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 11: VISUAL EXPLAINER — 두 개의 위기
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 04</span>
+    <span class="page-header-title">성장하는 교회, 내부와 외부의 위기</span>
+  </div>
+
+  <h2 class="section-heading">성장하는 교회를 둘러싼 두 개의 위기</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-faint);margin-bottom:var(--sp-2);">두 흐름은 독립적인 사건이 아니라 같은 교회가 같은 시기에 동시에 경험한 이중의 시험이다.</p>
+
+  <!-- 중앙 배지 -->
+  <div style="display:flex;justify-content:center;margin-bottom:var(--sp-2);">
+    <div style="padding:3mm 8mm;background:var(--accent);border-radius:20px;color:var(--white);font-size:var(--fs-small);font-weight:700;letter-spacing:0.08em;">
+      GROWING CHURCH — 성장하는 교회 (4:32–5:42)
+    </div>
+  </div>
+
+  <div class="vis-dual">
+    <div class="vis-track inside">
+      <div class="vis-track-label">INSIDE — 내부의 위기: 진실성</div>
+      <div class="vis-node">
+        <div class="vis-node-dot"></div>
+        <span>공동체의 나눔 (4:32–35)</span>
+      </div>
+      <div class="vis-mini-arrow">↓</div>
+      <div class="vis-node">
+        <div class="vis-node-dot"></div>
+        <span>바나바의 자발적 헌신 (4:36–37)</span>
+      </div>
+      <div class="vis-mini-arrow">↓</div>
+      <div class="vis-node key">
+        <div class="vis-node-dot"></div>
+        <span>아나니아와 삽비라의 거짓 (5:1–11)</span>
+      </div>
+      <div class="vis-mini-arrow">↓</div>
+      <div class="vis-node key">
+        <div class="vis-node-dot"></div>
+        <span>큰 두려움 (5:11)</span>
+      </div>
+      <div style="margin-top:var(--sp-2);padding:var(--sp-1) var(--sp-2);background:var(--accent-soft);border-radius:3px;font-size:var(--fs-caption);color:var(--accent);font-weight:700;">
+        하나님 앞에서의 진실성이 요구되었다
+      </div>
+    </div>
+
+    <div class="vis-center">
+      <div class="vis-church-badge">예루살렘<br>교회</div>
+      <div style="font-size:6pt;color:var(--ink-faint);text-align:center;line-height:1.5;">동시에<br>진행됨</div>
+    </div>
+
+    <div class="vis-track outside">
+      <div class="vis-track-label" style="color:var(--ink-soft);">OUTSIDE — 외부의 위기: 박해</div>
+      <div class="vis-node">
+        <div class="vis-node-dot"></div>
+        <span>표적과 기사 · 교회 성장 (5:12–16)</span>
+      </div>
+      <div class="vis-mini-arrow">↓</div>
+      <div class="vis-node key">
+        <div class="vis-node-dot"></div>
+        <span>종교지도자들의 시기 (5:17)</span>
+      </div>
+      <div class="vis-mini-arrow">↓</div>
+      <div class="vis-node">
+        <div class="vis-node-dot"></div>
+        <span>체포 · 감옥 (5:17–18)</span>
+      </div>
+      <div class="vis-mini-arrow">↓</div>
+      <div class="vis-node">
+        <div class="vis-node-dot"></div>
+        <span>주의 사자가 풀어줌 (5:19–21)</span>
+      </div>
+      <div class="vis-mini-arrow">↓</div>
+      <div class="vis-node">
+        <div class="vis-node-dot"></div>
+        <span>재체포 · 공회 심문 (5:26–32)</span>
+      </div>
+      <div class="vis-mini-arrow">↓</div>
+      <div class="vis-node">
+        <div class="vis-node-dot"></div>
+        <span>가말리엘의 중재 (5:33–40)</span>
+      </div>
+      <div class="vis-mini-arrow">↓</div>
+      <div class="vis-node key">
+        <div class="vis-node-dot"></div>
+        <span>채찍질 후 석방 (5:40–42)</span>
+      </div>
+      <div style="margin-top:var(--sp-2);padding:var(--sp-1) var(--sp-2);background:#eeecea;border-radius:3px;font-size:var(--fs-caption);color:var(--ink-soft);font-weight:700;">
+        박해 앞에서 담대함이 요구되었다
+      </div>
+    </div>
+
+    <div class="vis-dual-footer">
+      안에서는 진실성이, 밖에서는 담대함이 — 그래도 복음은 멈추지 않았다
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 04 · 11</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 12: LESSON SUMMARY
+     ════════════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 04</span>
+    <span class="page-header-title">성장하는 교회, 내부와 외부의 위기</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);margin-bottom:var(--sp-3);">
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);">한눈에 보는 LESSON 04</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">사도행전 4:32–5:42</div>
+  </div>
+
+  <div class="summary-grid">
+
+    <div class="summary-block full">
+      <div class="summary-block-label">사건 흐름</div>
+      <div class="summary-block-content">
+        공동체의 나눔 → 바나바의 헌신 → 아나니아와 삽비라의 거짓 → 큰 두려움 →
+        사도들의 표적과 교회 성장 → 종교지도자들의 시기 → 사도들 체포 →
+        주의 사자가 풀어줌 → 다시 성전 전도 → 재체포 · 공회 심문 →
+        가말리엘의 중재 → 채찍질 후 석방 → 그래도 날마다 전도를 그치지 않음
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">주요 인물</div>
+      <div class="summary-block-content">
+        <strong>바나바</strong> — 밭을 팔아 사도들 앞에 둠. 이후 사도행전에서 계속 등장.<br>
+        <strong>아나니아·삽비라</strong> — 일부를 감추고 전부인 것처럼 행동. 거짓이 드러남.<br>
+        <strong>베드로와 사도들</strong> — 박해에도 복음 선포를 멈추지 않음.<br>
+        <strong>가말리엘</strong> — 바리새인, 율법교사, 사도들을 처형하려는 움직임을 제지함.
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">장소</div>
+      <div class="summary-block-content">
+        <strong>예루살렘</strong> — 공동체의 중심<br>
+        <strong>솔로몬 행각</strong> — 사도들의 활동 거점 (L03에서 배움)<br>
+        <strong>공공 감옥</strong> — 두 번 등장<br>
+        <strong>산헤드린 공회</strong> — 심문 장소 (L03에서 배움)
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">핵심 키워드</div>
+      <div class="tag-cloud">
+        <span class="tag">공동체</span><span class="tag">나눔</span>
+        <span class="tag">바나바</span><span class="tag">거짓</span>
+        <span class="tag">두려움</span><span class="tag">성장</span>
+        <span class="tag">시기</span><span class="tag">담대함</span>
+        <span class="tag">가말리엘</span><span class="tag">순종</span>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">숫자로 기억하기</div>
+      <div class="number-row">
+        <div class="num-item">
+          <div class="num-big">약 3시간</div>
+          <div class="num-label">아나니아 죽음과<br>삽비라 등장 사이</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">약 400명</div>
+          <div class="num-label">드다의<br>추종자 수</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">5:42</div>
+          <div class="num-label">날마다 그치지<br>않았다</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이야기 연결</div>
+      <div class="story-conn">
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">이전 L03</div>
+          첫 기적, 첫 박해<br>행 3–4장
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node current-node">
+          <div style="font-size:var(--fs-caption);">L04</div>
+          성장하는 교회<br>내부와 외부의 위기
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">다음 L05</div>
+          스데반의 등장<br>행 6:1–7:60
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        빠르게 성장하던 예루살렘 교회는 내부의 거짓과 외부의 박해라는 위기를 동시에 경험했지만, 사도들은 "사람보다 하나님께 순종하는 것이 마땅하다"는 원칙 아래 복음 선포를 멈추지 않았다.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 04 · 12</span>
+  </div>
+</section>
+
+
+</body>
+</html>

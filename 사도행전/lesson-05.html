@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 05 — 스데반과 첫 순교</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 05 전용 스타일 ── */
+
+    /* Story Connection */
+    .story-connection { margin-top:auto; border-top:1px solid var(--rule); padding-top:var(--sp-3); display:flex; gap:var(--sp-2); align-items:stretch; }
+    .sc-col { flex:1; padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; display:flex; flex-direction:column; gap:1.5mm; }
+    .sc-col.current { border-color:var(--accent); background:var(--accent-pale); }
+    .sc-col-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.08em; }
+    .sc-col.current .sc-col-label { color:var(--accent); }
+    .sc-col-title { font-size:var(--fs-small); font-weight:700; color:var(--ink); line-height:1.3; }
+    .sc-col.current .sc-col-title { color:var(--accent); }
+    .sc-flow-text { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.8; }
+    .sc-arrow { display:flex; align-items:center; font-size:14pt; color:var(--accent); padding:0 1mm; padding-top:12mm; }
+
+    /* Recall Badge */
+    .recall-badge { display:inline-flex; align-items:center; padding:0.5mm 2mm; background:var(--page-bg); border:1px solid var(--rule); border-radius:3px; font-size:6.5pt; color:var(--ink-faint); font-weight:700; letter-spacing:.05em; vertical-align:middle; margin-left:2mm; }
+
+    /* Two Group Compare */
+    .two-group { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); margin:var(--sp-2) 0; align-items:center; }
+    .tg-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; }
+    .tg-col.highlight { border-color:var(--accent); background:var(--accent-pale); }
+    .tg-name { font-size:var(--fs-small); font-weight:700; color:var(--ink); margin-bottom:1.5mm; }
+    .tg-col.highlight .tg-name { color:var(--accent); }
+    .tg-desc { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.5; }
+    .tg-vs { display:flex; align-items:center; justify-content:center; font-size:9pt; font-weight:700; color:var(--accent); padding:0 1mm; }
+
+    /* Criteria Row */
+    .criteria-row { display:flex; gap:var(--sp-2); margin:var(--sp-2) 0; }
+    .criteria-item { flex:1; padding:var(--sp-2) var(--sp-2); border:1.5px solid var(--accent); border-radius:4px; background:var(--accent-pale); text-align:center; font-size:var(--fs-small); font-weight:700; color:var(--accent); }
+
+    /* Seven Grid */
+    .seven-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2mm; margin:var(--sp-2) 0; }
+    .seven-item { padding:2mm 3mm; border:1px solid var(--rule); border-radius:3px; font-size:var(--fs-caption); color:var(--ink-soft); text-align:center; }
+    .seven-item.key { border-color:var(--accent); background:var(--accent-pale); color:var(--accent); font-weight:700; }
+
+    /* Character Attr Grid */
+    .char-attr-grid { display:flex; flex-wrap:wrap; gap:2mm; margin:var(--sp-2) 0; }
+    .char-attr { padding:2mm 4mm; background:var(--accent-pale); border:1.5px solid var(--accent); border-radius:20px; font-size:var(--fs-small); font-weight:700; color:var(--accent); }
+
+    /* Accusation List */
+    .accusation-list { margin:var(--sp-2) 0; display:flex; flex-direction:column; gap:2mm; }
+    .acc-item { display:flex; align-items:center; gap:3mm; padding:2mm 3mm; border:1px solid var(--rule); border-radius:3px; }
+    .acc-icon { width:4mm; height:4mm; border-radius:50%; background:var(--rule-mid); flex-shrink:0; }
+    .acc-text { font-size:var(--fs-small); color:var(--ink-soft); }
+
+    /* Horizontal Timeline */
+    .h-timeline { position:relative; margin:var(--sp-2) 0; }
+    .ht-bg-line { position:absolute; top:3.5mm; left:3.5%; right:3.5%; height:1.5px; background:var(--rule); z-index:0; }
+    .ht-nodes-row { display:flex; justify-content:space-between; position:relative; z-index:1; }
+    .ht-node { display:flex; flex-direction:column; align-items:center; width:calc(100%/9); }
+    .ht-dot { width:7mm; height:7mm; border-radius:50%; border:1.5px solid var(--rule); background:var(--white); display:flex; align-items:center; justify-content:center; font-size:5.5pt; flex-shrink:0; margin-bottom:1.5mm; font-weight:700; }
+    .ht-dot.reject { border-color:var(--accent); background:var(--accent); color:var(--white); }
+    .ht-dot.key { border-color:var(--accent); background:var(--accent-pale); color:var(--accent); }
+    .ht-name { font-size:6.5pt; font-weight:700; color:var(--ink); text-align:center; line-height:1.2; }
+    .ht-note { font-size:6pt; color:var(--ink-soft); text-align:center; line-height:1.2; margin-top:.5mm; }
+    .ht-badge { font-size:5.5pt; font-weight:700; color:var(--accent); margin-top:.5mm; text-align:center; }
+
+    /* Rejection Chain (P11) */
+    .rejection-chain { display:flex; flex-direction:column; gap:0; margin:var(--sp-2) 0; }
+    .rc-item { display:flex; align-items:flex-start; gap:3mm; }
+    .rc-left { min-width:18mm; font-size:var(--fs-caption); font-weight:700; color:var(--accent); text-align:right; padding-top:.5mm; }
+    .rc-body { flex:1; padding-bottom:var(--sp-1); border-bottom:1px dashed var(--rule); font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.5; }
+    .rc-item:last-child .rc-body { border-bottom:none; }
+    .rc-connector { height:3mm; width:1.5px; background:var(--rule); margin-left:calc(18mm + 1.5mm); }
+
+    /* Parallel Pattern */
+    .parallel-pattern { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-2); margin:var(--sp-2) 0; }
+    .pp-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; }
+    .pp-name { font-size:var(--fs-small); font-weight:700; color:var(--accent); margin-bottom:var(--sp-1); }
+    .pp-flow { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.8; }
+    .pp-footer { grid-column:1/-1; padding:var(--sp-2) var(--sp-3); background:var(--accent-pale); border-radius:4px; text-align:center; font-size:var(--fs-body); color:var(--accent); font-weight:700; }
+
+    /* New Character Badge */
+    .new-char-badge { display:inline-block; padding:var(--sp-2); border:2px solid var(--accent); border-radius:4px; background:var(--accent-pale); }
+    .nc-badge-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.1em; }
+    .nc-badge-name { font-size:var(--fs-h2); font-weight:700; color:var(--accent); line-height:1.2; margin-top:1mm; }
+    .nc-badge-note { font-size:var(--fs-caption); color:var(--ink-soft); margin-top:1mm; }
+
+    /* Luke Parallel */
+    .luke-parallel { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); margin:var(--sp-2) 0; align-items:start; }
+    .lp-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; }
+    .lp-title { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); margin-bottom:var(--sp-1); }
+    .lp-items { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.6; }
+    .lp-divider { display:flex; align-items:center; justify-content:center; font-size:12pt; color:var(--rule-mid); }
+    .lp-note { grid-column:1/-1; font-size:7pt; color:var(--ink-faint); text-align:center; padding-top:1mm; }
+
+    /* GOD SENDS Grid */
+    .god-sends-grid { margin:var(--sp-2) 0; }
+    .gs-header-row { display:grid; grid-template-columns:20mm 1fr 1fr 1fr; gap:2mm; margin-bottom:1.5mm; }
+    .gs-col-title { font-size:var(--fs-small); font-weight:700; color:var(--ink); text-align:center; padding:1.5mm; border-bottom:2px solid var(--accent); }
+    .gs-data-row { display:grid; grid-template-columns:20mm 1fr 1fr 1fr; gap:2mm; margin-bottom:2mm; align-items:stretch; }
+    .gs-row-label { font-size:var(--fs-caption); font-weight:700; color:var(--accent); text-align:right; display:flex; align-items:center; justify-content:flex-end; padding-right:2mm; letter-spacing:.05em; line-height:1.3; }
+    .gs-cell { padding:2mm 3mm; border-radius:3px; font-size:var(--fs-caption); text-align:center; line-height:1.4; border:1px solid var(--rule); color:var(--ink-soft); }
+    .gs-cell.sends { background:var(--accent-pale); border-color:var(--accent-soft); }
+    .gs-cell.reject { background:#f0eeeb; border-color:var(--rule); font-weight:700; color:var(--ink); }
+    .gs-cell.continues { background:var(--accent); border-color:var(--accent); color:var(--white); font-weight:700; }
+    .gs-stephen-row { margin-top:var(--sp-2); padding:var(--sp-2) var(--sp-3); border:2px solid var(--accent); border-radius:4px; display:grid; grid-template-columns:20mm 1fr; gap:var(--sp-2); align-items:center; }
+    .gs-stephen-label { font-size:var(--fs-small); font-weight:700; color:var(--accent); text-align:right; }
+    .gs-stephen-content { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.6; }
+
+    /* Movement Spread */
+    .movement-spread { margin:var(--sp-2) 0; }
+    .ms-top { padding:var(--sp-2) var(--sp-3); background:var(--accent); color:var(--white); border-radius:4px 4px 0 0; text-align:center; font-size:var(--fs-small); font-weight:700; }
+    .ms-trigger { padding:var(--sp-1) var(--sp-3); background:#f0eeeb; border:1px solid var(--rule); border-top:none; text-align:center; font-size:var(--fs-caption); color:var(--ink-soft); }
+    .ms-arrow-row { text-align:center; font-size:12pt; color:var(--rule-mid); padding:1mm 0; }
+    .ms-dest-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:2mm; }
+    .ms-dest { padding:var(--sp-2); border:1.5px solid var(--accent); border-radius:4px; text-align:center; background:var(--accent-pale); }
+    .ms-dest-name { font-size:var(--fs-small); font-weight:700; color:var(--accent); }
+    .ms-dest-note { font-size:var(--fs-caption); color:var(--ink-soft); margin-top:1mm; }
+    .ms-result { margin-top:var(--sp-2); padding:var(--sp-2) var(--sp-3); background:var(--accent); border-radius:4px; text-align:center; color:var(--white); font-size:var(--fs-body); font-weight:700; font-family:var(--ff-hand); }
+
+    /* Acts 1:8 Progress Update */
+    .acts18-progress { margin:var(--sp-2) 0; }
+    .a18-label { font-size:var(--fs-caption); font-weight:700; color:var(--accent); letter-spacing:.08em; margin-bottom:var(--sp-1); }
+    .a18-row { display:flex; align-items:center; gap:0; }
+    .a18-item { flex:1; display:flex; flex-direction:column; align-items:center; gap:1mm; }
+    .a18-dot { width:8mm; height:8mm; border-radius:50%; border:2px solid var(--rule); background:var(--white); display:flex; align-items:center; justify-content:center; font-size:7pt; flex-shrink:0; }
+    .a18-dot.done { background:var(--accent); border-color:var(--accent); color:var(--white); font-weight:700; }
+    .a18-dot.active { border-color:var(--accent); background:var(--accent-pale); color:var(--accent); font-weight:700; }
+    .a18-conn { flex:1; height:1.5px; background:var(--rule); }
+    .a18-conn.done { background:var(--accent); }
+    .a18-name { font-size:6.5pt; font-weight:700; color:var(--ink-faint); text-align:center; }
+    .a18-item.done .a18-name { color:var(--accent); }
+    .a18-item.active .a18-name { color:var(--accent); }
+    .a18-status { font-size:6pt; color:var(--ink-faint); text-align:center; }
+    .a18-item.active .a18-status { color:var(--accent); }
+  </style>
+</head>
+<body>
+
+
+<!-- ════════════════════════════════════
+     PAGE 1: LESSON OPENING
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">05</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 2 — 예루살렘 교회의 성장 (마지막)</div>
+      <h1 class="opening-title">스데반과 첫 순교</h1>
+      <div class="opening-scripture">사도행전 6:1–8:3</div>
+    </div>
+  </div>
+
+  <div class="lesson-summary-line">
+    빠르게 성장하던 예루살렘 교회는 내부의 갈등을 해결하기 위해 일곱 사람을 세우고, 그중 스데반은 복음을 전하다 체포되어 이스라엘 역사 전체를 되짚는 변론 끝에 순교하며, 그의 죽음 이후 시작된 박해로 신자들이 예루살렘 밖으로 흩어진다.
+  </div>
+
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">스데반 · 열두 사도 · 일곱 사람 · 종교지도자들 · 사울</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">예루살렘 · 산헤드린 공회 · 예루살렘 성 밖</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">핵심 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2mm;margin-top:1.5mm;">
+        <span class="tag">일곱 사람</span><span class="tag">스데반</span><span class="tag">성전</span>
+        <span class="tag">모세</span><span class="tag">거절</span><span class="tag">순교</span>
+        <span class="tag">사울</span><span class="tag">박해</span><span class="tag">흩어짐</span>
+      </div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">사도행전 현재 위치</div>
+      <div class="lesson-meta-value" style="color:var(--accent);font-weight:700;">예루살렘 → 유대/사마리아로 전환</div>
+    </div>
+  </div>
+
+  <div class="story-connection">
+    <div class="sc-col">
+      <div class="sc-col-label">LESSON 04 이후</div>
+      <div class="sc-col-title">성장하는 교회 — 내부와 외부의 위기</div>
+      <div class="sc-flow-text">
+        교회가 계속 성장함<br>
+        ↓ 내부 위기 + 외부 박해<br>
+        ↓ 사도들은 전도를 멈추지 않음<br>
+        ↓ 예루살렘에 복음이 가득함
+      </div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-col current">
+      <div class="sc-col-label">LESSON 05</div>
+      <div class="sc-col-title">성장이 계속되면서 새로운 문제, 스데반 등장, 순교, 신자들이 흩어진다</div>
+      <div class="sc-flow-text">
+        갈등 → 일곱 사람 선택<br>
+        ↓ 스데반의 사역 · 논쟁 · 체포<br>
+        ↓ 변론 · 순교 (사울 등장)<br>
+        ↓ 박해 → 신자들이 흩어짐<br>
+        ↓ <strong>복음도 함께 흩어진다</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 1</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 2: STORY FLOW
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <h2 class="section-heading">스데반의 이야기는 어떻게 시작되었을까?</h2>
+  <p class="flow-page-intro">이번 Lesson은 교회의 성장에서 시작해 첫 순교와 박해, 그리고 복음의 이동으로 이어지는 하나의 긴 인과관계다.</p>
+
+  <div class="story-flow">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">① 제자의 수가 많아짐</div>
+      </div>
+      <div class="flow-step-ref">6:1</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">② 헬라파 유대인들의 불만 — 과부들이 구제에서 빠짐</div>
+      </div>
+      <div class="flow-step-ref">6:1</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">③ 열두 사도가 공동체를 모음 — 역할 분담 제안</div>
+      </div>
+      <div class="flow-step-ref">6:2–4</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">④ 일곱 사람을 선택 — 스데반이 첫 번째</div>
+      </div>
+      <div class="flow-step-ref">6:5–6</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑤ 하나님의 말씀이 더욱 퍼짐 · 제자 수가 크게 늘어남</div>
+      </div>
+      <div class="flow-step-ref">6:7</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑥ 스데반의 사역 — 기사와 표적, 회당에서 논쟁</div>
+      </div>
+      <div class="flow-step-ref">6:8–10</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑦ 고발과 체포 — "모세와 하나님과 성전을 거슬러 말한다"</div>
+      </div>
+      <div class="flow-step-ref">6:11–15</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑧ 스데반의 긴 변론 — 아브라함부터 이스라엘 역사 전체</div>
+      </div>
+      <div class="flow-step-ref">7:1–53</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑨ 지도자들을 향한 직접적 지적 — "너희도 조상들처럼"</div>
+      </div>
+      <div class="flow-step-ref">7:51–53</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑩ 스데반의 죽음 — 성 밖에서 돌에 맞음 · 사울 등장</div>
+      </div>
+      <div class="flow-step-ref">7:54–60</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑪ 예루살렘 교회에 큰 박해가 시작됨</div>
+      </div>
+      <div class="flow-step-ref">8:1–3</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">⑫ 신자들이 유대와 사마리아로 흩어짐</div>
+      </div>
+      <div class="flow-step-ref">8:1</div>
+    </div>
+    <div class="flow-result">
+      한 사람의 순교로 이야기가 끝나지 않는다. 박해 → 흩어짐 → 복음의 확산으로 이어진다.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 3: SCENE 01 — 성장하던 교회에 갈등 (6:1–7)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">성장하던 교회에 갈등이 생기다</span>
+      <span class="scene-ref">행 6:1–7</span>
+    </div>
+    <div class="scene-body">
+      <p>본문은 먼저 <strong>"제자가 더 많아졌는데"</strong>라고 기록한다. 교회가 성장하고 있었다. 그러나 성장과 함께 새로운 문제가 드러난다.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading">두 집단 — 서로 다른 언어·문화적 배경</h2>
+
+  <div class="two-group">
+    <div class="tg-col highlight">
+      <div class="tg-name">헬라파 유대인</div>
+      <div class="tg-desc">그리스어와 헬레니즘 문화의 영향을 많이 받은 유대인. 디아스포라 배경이 많았다.</div>
+    </div>
+    <div class="tg-vs">VS</div>
+    <div class="tg-col">
+      <div class="tg-name">히브리파 유대인</div>
+      <div class="tg-desc">팔레스타인 지역에서 히브리어·아람어를 주로 사용하며 전통 유대 문화에 더 가까웠던 유대인.</div>
+    </div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">두 집단에 대한 주의</div>
+    <div class="background-box-body">이 두 집단을 고정적이고 완전히 분리된 집단처럼 이해하지 않는다. 초기 예루살렘 공동체 안에도 서로 다른 언어·문화적 배경을 가진 유대인들이 있었다는 것이 핵심이다.</div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">문제가 무엇이었나?</h2>
+
+  <div class="story-flow">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">공동체가 매일 구제를 실시함</div>
+      </div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">헬라파 과부들이 매일의 구제에서 빠짐</div>
+        <div class="flow-step-desc">히브리파 유대인들의 과부들에 비해 소홀하게 대우받는다는 불만이 제기됨.</div>
+      </div>
+      <div class="flow-step-ref">6:1</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">원망이 발생</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">배경 — 왜 과부를 돌보는 일이 중요했을까?</div>
+    <div class="background-box-body">고대 사회에서 남편을 잃은 여성은 경제적으로 취약한 상황에 놓이기 쉬웠다. 성경에서도 과부와 고아처럼 사회적으로 취약한 사람들을 돌보는 문제가 반복적으로 강조된다. 초대교회 역시 공동체 안의 필요를 돌보고 있었으며, 이 과정에서 공정성 문제가 발생한 것이다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 4: SCENE 02 — 일곱 사람을 세우다 (6:2–7)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 2</span>
+      <span class="scene-title">일곱 사람을 세우다</span>
+      <span class="scene-ref">행 6:2–7</span>
+    </div>
+    <div class="scene-body">
+      <p>열두 사도는 문제를 무시하지 않는다. 그러나 자신들의 핵심 역할도 분명히 한다. 사도들은 <strong>기도와 말씀 사역</strong>에 집중하고, 공동체의 필요를 담당할 다른 사람들을 세우기로 한다.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading">선발 기준</h2>
+
+  <div class="criteria-row">
+    <div class="criteria-item">좋은 평판</div>
+    <div class="criteria-item">성령이 충만함</div>
+    <div class="criteria-item">지혜가 충만함</div>
+  </div>
+
+  <h2 class="section-heading">선택된 일곱 사람</h2>
+
+  <div class="seven-grid">
+    <div class="seven-item key">스데반<br><span style="font-size:6pt;font-weight:400;">믿음과 성령이 충만</span></div>
+    <div class="seven-item">빌립</div>
+    <div class="seven-item">브로고로</div>
+    <div class="seven-item">니가노르</div>
+    <div class="seven-item">디몬</div>
+    <div class="seven-item">바메나</div>
+    <div class="seven-item" style="grid-column:span 2;">니골라 (안디옥 출신 개종자)</div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">이들을 '집사'라고 불러도 될까?</div>
+    <div class="background-box-body">전통적으로 이 사건을 초대교회의 집사 직분과 연결하여 이해해 왔다. 그러나 사도행전 6장은 이 일곱 사람을 직접적으로 '집사'라는 직함으로 부르지는 않는다. 이 교재에서는 본문의 표현을 따라 <strong>"일곱 사람"</strong>이라고 부르며, 후대 교회가 이 사건을 집사 직분의 중요한 배경으로 이해해 왔다는 점을 별도로 설명한다.</div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-2);">역할을 나눈 결과</h2>
+
+  <div class="story-flow">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">공동체의 문제가 해결됨</div>
+      </div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">하나님의 말씀이 점점 왕성해짐</div>
+        <div class="flow-step-desc">예루살렘의 제자 수가 더욱 늘어났고, 많은 제사장도 믿음에 순종하게 됨.</div>
+      </div>
+      <div class="flow-step-ref">6:7</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 5: CHARACTER FOCUS — 스데반
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <h2 class="section-heading">CHARACTER FOCUS — 스데반은 누구인가?</h2>
+
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-2);">본문이 스데반을 묘사하는 표현들을 모아서 보면, 그가 어떤 사람인지 이해할 수 있다.</p>
+
+  <div class="char-attr-grid">
+    <div class="char-attr">믿음이 충만함</div>
+    <div class="char-attr">성령이 충만함</div>
+    <div class="char-attr">은혜가 충만함</div>
+    <div class="char-attr">권능이 충만함</div>
+    <div class="char-attr">지혜가 충만함</div>
+    <div class="char-attr">지혜와 성령으로 말함</div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">그의 역할은 처음 기대보다 훨씬 컸다</h2>
+
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-2);">스데반은 공동체의 필요를 돌보기 위해 선택된 일곱 사람 중 하나였다. 하지만 그의 활동은 그 역할에만 머물지 않는다.</p>
+
+  <div class="story-flow">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">공동체를 섬기도록 선택됨</div>
+        <div class="flow-step-desc">일곱 사람 중 첫 번째로 언급됨.</div>
+      </div>
+      <div class="flow-step-ref">6:5</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">기사와 표적을 행함</div>
+        <div class="flow-step-desc">백성 가운데 큰 기사와 표적을 행하다.</div>
+      </div>
+      <div class="flow-step-ref">6:8</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">회당에서 논쟁 — 지혜와 성령으로 말함</div>
+        <div class="flow-step-desc">능히 당하지 못하는 지혜와 성령으로 말하다.</div>
+      </div>
+      <div class="flow-step-ref">6:9–10</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">산헤드린에서 변론 — 이스라엘 역사 전체를 되짚음</div>
+      </div>
+      <div class="flow-step-ref">7:1–53</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">순교 — 사도행전 첫 번째 순교자</div>
+      </div>
+      <div class="flow-step-ref">7:54–60</div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">일곱 사람 = 단순한 음식 배급 담당자?</div>
+    <div class="background-box-body">빌립(8장), 스데반의 활동을 보면 일곱 사람이 단순히 음식 배급만 담당한 행정 담당자로 이해되기 어렵다. 사도행전은 이들이 복음 증언에도 매우 적극적으로 참여했음을 보여준다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 6: SCENE 03 — 왜 체포되었을까? (6:8–15)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">스데반은 왜 체포되었을까?</span>
+      <span class="scene-ref">행 6:8–15</span>
+    </div>
+    <div class="scene-body">
+      <p>스데반과 논쟁하던 사람들은 그의 지혜와 성령으로 말함을 당해내지 못한다(6:10). 결국 사람들을 선동하여 거짓 증인을 세우고 스데반을 공회로 끌고 간다.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading">고발 내용 <span class="recall-badge">RECALL · L03 산헤드린</span></h2>
+
+  <div class="accusation-list">
+    <div class="acc-item">
+      <div class="acc-icon"></div>
+      <div class="acc-text"><strong>모세를 거슬러 말한다.</strong></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-icon"></div>
+      <div class="acc-text"><strong>하나님을 거슬러 말한다.</strong></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-icon"></div>
+      <div class="acc-text"><strong>성전을 거슬러 말한다.</strong></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-icon"></div>
+      <div class="acc-text"><strong>율법을 거슬러 말한다.</strong></div>
+    </div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">핵심 고발 — 거짓 증인들의 주장 (6:14)</div>
+    <div class="background-box-body">거짓 증인들은 스데반이 "나사렛 예수가 이곳(성전)을 헐고 모세가 전하여 준 규례를 고칠 것이다"라는 취지로 말했다고 주장한다. 이 고발이 진짜인지 왜곡인지 본문이 판단하지 않는다. 다만 스데반 자신의 변론(7장)에서 그가 실제로 무슨 말을 하는지 확인할 수 있다.</div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">스데반 설교를 이해하는 두 열쇠</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);margin-top:var(--sp-2);">
+    <div style="padding:var(--sp-3);border:2px solid var(--accent);border-radius:4px;text-align:center;">
+      <div style="font-size:16pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);">성전</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:1.5mm;">하나님은 인간이 만든<br>건물에 제한되지 않는다</div>
+    </div>
+    <div style="padding:var(--sp-3);border:1.5px solid var(--rule);border-radius:4px;text-align:center;">
+      <div style="font-size:16pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);">모세 / 율법</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);margin-top:1.5mm;">하나님이 세우신 사람을<br>이스라엘이 반복해서 거절했다</div>
+    </div>
+  </div>
+
+  <p style="font-size:var(--fs-small);color:var(--ink-faint);text-align:center;margin-top:var(--sp-2);">이 두 주제가 7장 스데반 설교의 핵심 논리를 이루는 열쇠다.</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 7: VISUAL — 스데반 설교 전체 구조
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <h2 class="section-heading">스데반의 설교 — 전체 흐름을 먼저 보자</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-3);">사도행전 7장은 성경에서 가장 긴 설교 중 하나다. 세부 내용에 들어가기 전에 전체 구조를 한눈에 파악한다.</p>
+
+  <!-- Horizontal Timeline -->
+  <div class="h-timeline">
+    <div class="ht-bg-line"></div>
+    <div class="ht-nodes-row">
+      <div class="ht-node">
+        <div class="ht-dot key">아브</div>
+        <div class="ht-name">아브라함</div>
+        <div class="ht-note">메소보다미아<br>→ 가나안</div>
+      </div>
+      <div class="ht-node">
+        <div class="ht-dot reject">요셉</div>
+        <div class="ht-name">요셉</div>
+        <div class="ht-note">형제들이<br>팔아넘김</div>
+        <div class="ht-badge">REJECT</div>
+      </div>
+      <div class="ht-node">
+        <div class="ht-dot reject">모세</div>
+        <div class="ht-name">모세</div>
+        <div class="ht-note">이스라엘이<br>거절</div>
+        <div class="ht-badge">REJECT</div>
+      </div>
+      <div class="ht-node">
+        <div class="ht-dot reject">광야</div>
+        <div class="ht-name">광야</div>
+        <div class="ht-note">불순종<br>금송아지</div>
+        <div class="ht-badge">REJECT</div>
+      </div>
+      <div class="ht-node">
+        <div class="ht-dot">성막</div>
+        <div class="ht-name">성막</div>
+        <div class="ht-note">광야의<br>예배 장소</div>
+      </div>
+      <div class="ht-node">
+        <div class="ht-dot">다윗</div>
+        <div class="ht-name">다윗</div>
+        <div class="ht-note">처소를<br>원함</div>
+      </div>
+      <div class="ht-node">
+        <div class="ht-dot key">솔로몬</div>
+        <div class="ht-name">솔로몬</div>
+        <div class="ht-note">성전<br>건축</div>
+      </div>
+      <div class="ht-node">
+        <div class="ht-dot reject">선지자</div>
+        <div class="ht-name">선지자들</div>
+        <div class="ht-note">박해받고<br>죽임</div>
+        <div class="ht-badge">REJECT</div>
+      </div>
+      <div class="ht-node">
+        <div class="ht-dot reject">결론</div>
+        <div class="ht-name">스데반의 고발</div>
+        <div class="ht-note">의로우신 이를<br>죽임</div>
+        <div class="ht-badge">REJECT</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);display:flex;gap:var(--sp-2);align-items:center;font-size:var(--fs-caption);">
+    <div style="display:flex;align-items:center;gap:2mm;"><div style="width:6mm;height:6mm;border-radius:50%;background:var(--accent);"></div><span style="color:var(--ink-soft);">거절/박해 사건 (REJECT)</span></div>
+    <div style="display:flex;align-items:center;gap:2mm;"><div style="width:6mm;height:6mm;border-radius:50%;border:1.5px solid var(--accent);background:var(--accent-pale);"></div><span style="color:var(--ink-soft);">중요 전환점</span></div>
+    <div style="display:flex;align-items:center;gap:2mm;"><div style="width:6mm;height:6mm;border-radius:50%;border:1.5px solid var(--rule);background:var(--white);"></div><span style="color:var(--ink-soft);">역사적 사건</span></div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-3);background:var(--accent-pale);border:1.5px solid var(--accent-soft);border-radius:4px;">
+    <div style="font-size:var(--fs-small);font-weight:700;color:var(--accent);margin-bottom:var(--sp-1);">스데반은 왜 이 긴 역사를 이야기했을까?</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);line-height:1.7;">그는 이스라엘 역사를 <strong>선택적으로 재구성</strong>하고 있다. 아브라함부터 시작해서 하나님이 보내신 사람들을 이스라엘이 반복해서 거절해 온 패턴을 보여준 뒤, 지금의 지도자들이 그 패턴의 최종 지점에 서 있다고 지적하는 것이다. 이 논리 구조가 다음 세 페이지에서 설명된다.</div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-3);">
+    <div class="scripture-text">"지극히 높으신 이는 손으로 지은 곳에 계시지 아니하시나니"</div>
+    <div class="scripture-ref">사도행전 7:48 — 스데반의 변론 중</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 7</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 8: SCENE 04 — 아브라함과 요셉 (7:1–16)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">아브라함과 요셉 — 시작은 예루살렘이 아니었다</span>
+      <span class="scene-ref">행 7:1–16</span>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-2);">① 아브라함 — 하나님은 성전이 없을 때부터 나타나셨다</h2>
+
+  <div class="scene-body" style="margin-bottom:var(--sp-2);">
+    <p>스데반은 이스라엘 역사를 <strong>성전에서 시작하지 않는다.</strong> 메소보다미아에 있던 아브라함에게 하나님이 나타나신 이야기부터 시작한다. 이 점이 중요하다.</p>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3);">
+    <div style="padding:2mm 4mm;background:var(--accent-pale);border:1px solid var(--accent-soft);border-radius:3px;font-size:var(--fs-caption);color:var(--accent);font-weight:700;white-space:nowrap;">메소보다미아</div>
+    <div style="font-size:9pt;color:var(--rule-mid);">→→→</div>
+    <div style="padding:2mm 4mm;background:var(--accent-pale);border:1px solid var(--accent-soft);border-radius:3px;font-size:var(--fs-caption);color:var(--accent);font-weight:700;">하란</div>
+    <div style="font-size:9pt;color:var(--rule-mid);">→→→</div>
+    <div style="padding:2mm 4mm;background:var(--accent);border-radius:3px;font-size:var(--fs-caption);color:var(--white);font-weight:700;">가나안</div>
+  </div>
+
+  <div style="padding:var(--sp-2);background:var(--accent-pale);border-radius:3px;margin-bottom:var(--sp-3);">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);">KEY POINT</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:1mm;">하나님의 역사는 예루살렘 성전이 존재하기 훨씬 전부터 시작되었다. 하나님은 장소에 제한되지 않는다.</div>
+  </div>
+
+  <h2 class="section-heading">② 요셉 — 패턴의 시작</h2>
+
+  <div class="scene-body" style="margin-bottom:var(--sp-2);">
+    <p>요셉의 이야기에서 스데반이 보여주고자 하는 패턴이 처음으로 나타난다.</p>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">형제들의 시기 → 요셉을 애굽에 팔아넘김</div>
+        <div class="flow-step-desc">하나님이 세운 사람을 자기 형제들이 거절했다.</div>
+      </div>
+      <div class="flow-step-ref">7:9</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">그러나 하나님이 요셉과 함께하심</div>
+        <div class="flow-step-desc">애굽에서 높임받음. 기근 때 가족들을 구함.</div>
+      </div>
+      <div class="flow-step-ref">7:9–14</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-2) var(--sp-3);background:var(--accent-pale);border-left:3px solid var(--accent);border-radius:0 3px 3px 0;">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);letter-spacing:.08em;margin-bottom:1mm;">반복 패턴의 시작</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);">하나님이 세운 사람 → <strong>자기 백성에게 거절당함</strong> → 그러나 하나님께서 그와 함께하심</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">→ 이 패턴이 모세, 선지자들, 예수님 순으로 반복된다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 8</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 9: SCENE 05 — 모세 (7:17–43)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 5</span>
+      <span class="scene-title">모세도 처음에는 거절당했다</span>
+      <span class="scene-ref">행 7:17–43</span>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-2);">세 번의 40년</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--sp-2);margin:var(--sp-2) 0;">
+    <div style="padding:var(--sp-2);border:1px solid var(--rule);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:1.5mm;">제1기 · 40년</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);line-height:1.5;">바로의 딸에게 양육됨<br>→ 40세: 자기 백성을 돌아봄<br>→ 애굽 사람을 죽임<br>→ 이스라엘에게 거절당함</div>
+    </div>
+    <div style="padding:var(--sp-2);border:1px solid var(--rule);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--ink-faint);margin-bottom:1.5mm;">제2기 · 40년</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);line-height:1.5;">미디안으로 도망<br>→ 40년 체류<br>→ 불붙는 떨기나무<br>→ 하나님의 부르심</div>
+    </div>
+    <div style="padding:var(--sp-2);border:1px solid var(--accent-soft);background:var(--accent-pale);border-radius:4px;">
+      <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);margin-bottom:1.5mm;">제3기 · 40년</div>
+      <div style="font-size:var(--fs-caption);color:var(--ink-soft);line-height:1.5;">출애굽<br>→ 40년 광야 여정<br>→ 그러나 이스라엘은<br>또다시 불순종</div>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"누가 너를 관리와 재판장으로 세웠느냐?"</div>
+    <div class="scripture-ref">사도행전 7:27 — 이스라엘 사람이 모세를 거절하며</div>
+  </div>
+
+  <div class="parallel-pattern" style="margin-top:var(--sp-2);">
+    <div class="pp-col">
+      <div class="pp-name">요셉의 패턴</div>
+      <div class="pp-flow">
+        형제들에게 거절당함<br>
+        ↓ 그러나 하나님께서 함께<br>
+        ↓ 가족들을 구함
+      </div>
+    </div>
+    <div class="pp-col">
+      <div class="pp-name">모세의 패턴</div>
+      <div class="pp-flow">
+        이스라엘 백성에게 거절당함<br>
+        ↓ 그러나 하나님께서 다시 보내심<br>
+        ↓ 출애굽의 지도자로 사용됨
+      </div>
+    </div>
+    <div class="pp-footer">반복되는 패턴 — 하나님이 세우신 사람을 백성이 거절했다</div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-2);">출애굽 이후에도 계속된 불순종</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);">기적을 경험한 뒤에도 백성은 마음으로 애굽을 향하고 금송아지를 만들었다(7:39–41). 스데반은 이 불순종의 역사를 숨기지 않는다.</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 9</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 10: SCENE 06 — 성전 문제 (7:44–50)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 6</span>
+      <span class="scene-title">성전이 하나님을 가둘 수 있는가?</span>
+      <span class="scene-ref">행 7:44–50</span>
+    </div>
+    <div class="scene-body">
+      <p>고발 내용 중 하나는 스데반이 성전을 거슬러 말했다는 것이었다. 스데반은 성전 자체를 악한 것으로 취급하지 않는다. 그는 이스라엘 역사 안에서 성막과 성전의 존재를 인정하면서도, 하나님을 인간이 만든 건물에 제한할 수 없다는 선지자적 말씀을 인용한다.</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-2);">하나님의 처소에 대한 역사적 흐름</h2>
+
+  <div class="story-flow" style="margin:var(--sp-2) 0;">
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">광야의 성막 — 하나님을 예배하는 이동식 장소</div>
+        <div class="flow-step-desc">모세에게 지시하신 대로 만든 성막. 광야 40년 동안 함께함.</div>
+      </div>
+      <div class="flow-step-ref">7:44</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">다윗 — 하나님을 위한 처소를 원함</div>
+        <div class="flow-step-desc">하나님께 은총을 입어 야곱의 하나님을 위한 처소를 원했다.</div>
+      </div>
+      <div class="flow-step-ref">7:45–46</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">솔로몬 — 성전을 건축함</div>
+      </div>
+      <div class="flow-step-ref">7:47</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">그러나 — 하나님은 손으로 지은 곳에 계시지 않는다</div>
+      </div>
+      <div class="flow-step-ref">7:48</div>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"지극히 높으신 이는 손으로 지은 곳에 계시지 아니하시나니 선지자가 말한 바 주께서 이르시되 하늘은 나의 보좌요 땅은 나의 발판이니 너희가 나를 위하여 무슨 집을 짓겠으며…"</div>
+    <div class="scripture-ref">사도행전 7:48–49 (사 66:1 인용)</div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">스데반이 성전 자체를 부정했는가?</div>
+    <div class="background-box-body">스데반은 성전 건축의 역사를 긍정적으로 언급하면서도, 하나님이 인간의 건물에 제한될 수 없다는 선지자의 말씀을 인용한다. 이 구분이 중요하다. 그는 예배의 장소가 아니라 하나님에 대한 이해의 범위를 문제 삼고 있다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 10</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 11: SCENE 07 — 스데반의 결론 (7:51–53)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 7</span>
+      <span class="scene-title">스데반의 결론 — 현재의 지도자들을 향해</span>
+      <span class="scene-ref">행 7:51–53</span>
+    </div>
+    <div class="scene-body">
+      <p>긴 역사 설명이 끝난 뒤, 스데반은 갑자기 현재의 지도자들을 직접 향한다. "목이 곧고 마음과 귀에 할례를 받지 못한 사람들아, 너희도 너희 조상들과 같이 항상 성령을 거스른다."(7:51)</p>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-2);">반복되는 거절의 역사</h2>
+
+  <div class="rejection-chain">
+    <div class="rc-item">
+      <div class="rc-left">요셉</div>
+      <div class="rc-body">형제들에게 팔아넘겨짐 — 하나님이 세우신 자를 거절</div>
+    </div>
+    <div class="rc-connector"></div>
+    <div class="rc-item">
+      <div class="rc-left">모세</div>
+      <div class="rc-body">"누가 너를 세웠느냐?" 이스라엘 백성이 거절 → 이후 광야에서도 반복적 불순종</div>
+    </div>
+    <div class="rc-connector"></div>
+    <div class="rc-item">
+      <div class="rc-left">선지자들</div>
+      <div class="rc-body">의로우신 이가 오실 것을 예고한 선지자들을 조상들이 박해하고 죽임 (7:52)</div>
+    </div>
+    <div class="rc-connector"></div>
+    <div class="rc-item">
+      <div class="rc-left">예수</div>
+      <div class="rc-body">의로우신 이를 배반하고 죽임 — 너희가 배반하고 죽인 자 (7:52)</div>
+    </div>
+    <div class="rc-connector"></div>
+    <div class="rc-item">
+      <div class="rc-left" style="color:var(--ink);">지금</div>
+      <div class="rc-body" style="font-weight:700;color:var(--ink);">지금 이 자리에서도 스데반이 거절당하고 있다</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-3);border:2px solid var(--accent);border-radius:4px;text-align:center;">
+    <div style="font-size:15pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);line-height:1.4;">문제는 새로운 것이 아니었다.</div>
+    <div style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:var(--sp-1);">하나님이 보내신 사람들을 거부하는 역사가 반복되고 있었다.</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">이 문장은 스데반 설교의 구조를 설명하는 교육적 요약이며 직접적인 성경 인용이 아니다.</div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-3);">
+    <div class="scripture-text">"너희 조상들이 선지자들 중의 누구를 박해하지 아니하였느냐? 의로운 이가 오시리라 예고한 자들을 그들이 죽였고 이제 너희는 그 의로운 이를 잡아 준 자요 살인한 자가 되나니"</div>
+    <div class="scripture-ref">사도행전 7:52 — 스데반의 결론</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 11</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 12: SCENE 08 — 스데반의 죽음 (7:54–60)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 8</span>
+      <span class="scene-title">스데반의 마지막 순간</span>
+      <span class="scene-ref">행 7:54–60</span>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr auto;gap:var(--sp-3);margin:var(--sp-2) 0;align-items:start;">
+    <div class="story-flow">
+      <div class="flow-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">성령이 충만하여 하늘을 바라봄</div>
+          <div class="flow-step-desc">"하나님의 영광과 및 예수께서 하나님 우편에 서신 것을 보노라."</div>
+        </div>
+        <div class="flow-step-ref">7:55–56</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step key-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">사람들이 귀를 막고 일제히 달려듦</div>
+        </div>
+        <div class="flow-step-ref">7:57</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">성 밖으로 끌어내어 돌로 침</div>
+        </div>
+        <div class="flow-step-ref">7:58</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step key-step">
+        <div class="flow-step-content">
+          <div class="flow-step-title">스데반의 두 기도</div>
+          <div class="flow-step-desc">① "주 예수여 내 영혼을 받으시옵소서." (7:59)<br>② "주여 이 죄를 그들에게 돌리지 마옵소서." (7:60)</div>
+        </div>
+        <div class="flow-step-ref">7:59–60</div>
+      </div>
+    </div>
+    <div>
+      <div class="new-char-badge">
+        <div class="nc-badge-label">NEW CHARACTER</div>
+        <div class="nc-badge-name">사울</div>
+        <div class="nc-badge-note">증인들이 옷을 사울이라는<br>청년의 발 앞에 두었다. (7:58)<br><br>스데반을 죽이는 일을<br>마땅히 여겼다. (8:1)</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-heading">누가복음의 예수님 이야기와의 문학적 유사성</h2>
+
+  <div class="luke-parallel">
+    <div class="lp-col">
+      <div class="lp-title">예수님의 죽음 (누가복음 23장)</div>
+      <div class="lp-items">
+        · 십자가에서 하나님께 영을 부탁함<br>
+        · 자신을 못 박는 자들을 위한 용서의 기도
+      </div>
+    </div>
+    <div class="lp-divider">↕</div>
+    <div class="lp-col">
+      <div class="lp-title">스데반의 죽음 (사도행전 7장)</div>
+      <div class="lp-items">
+        · 예수께 자신의 영을 부탁함<br>
+        · 자신을 죽이는 자들을 위한 용서의 기도
+      </div>
+    </div>
+    <div class="lp-note">직접적 동일시보다는 누가의 기록에서 보이는 문학적 패턴으로 이해한다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 12</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 13: SCENE 09 — 순교 이후 (8:1–3)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 9</span>
+      <span class="scene-title">순교 이후 무슨 일이 일어났을까?</span>
+      <span class="scene-ref">행 8:1–3</span>
+    </div>
+    <div class="scene-body">
+      <p>스데반의 죽음으로 이야기가 끝나지 않는다. 그날 예루살렘 교회에 큰 박해가 시작된다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin:var(--sp-2) 0;">
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">스데반의 순교 당일, 예루살렘 교회에 큰 박해가 시작됨</div>
+      </div>
+      <div class="flow-step-ref">8:1</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">사도들 외에 신자들이 유대와 사마리아 각 지역으로 흩어짐</div>
+      </div>
+      <div class="flow-step-ref">8:1</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content">
+        <div class="flow-step-title">사울 — 교회를 잔멸하려 함, 집집마다 남녀를 끌어다 감옥에 넘김</div>
+      </div>
+      <div class="flow-step-ref">8:3</div>
+    </div>
+  </div>
+
+  <h2 class="section-heading" style="margin-top:var(--sp-3);">Acts 1:8 로드맵이 지금 움직이기 시작한다</h2>
+
+  <div class="acts18-progress">
+    <div class="a18-label">사도행전 1:8 — 현재 진행 상황</div>
+    <div class="a18-row">
+      <div class="a18-item done">
+        <div class="a18-dot done">✓</div>
+        <div class="a18-name">예루살렘</div>
+        <div class="a18-status">완료</div>
+      </div>
+      <div class="a18-conn done"></div>
+      <div class="a18-item active">
+        <div class="a18-dot active">→</div>
+        <div class="a18-name">온 유대</div>
+        <div class="a18-status">지금 시작</div>
+      </div>
+      <div class="a18-conn"></div>
+      <div class="a18-item active">
+        <div class="a18-dot active">→</div>
+        <div class="a18-name">사마리아</div>
+        <div class="a18-status">지금 시작</div>
+      </div>
+      <div class="a18-conn"></div>
+      <div class="a18-item">
+        <div class="a18-dot"></div>
+        <div class="a18-name">이방세계</div>
+        <div class="a18-status">이후</div>
+      </div>
+      <div class="a18-conn"></div>
+      <div class="a18-item">
+        <div class="a18-dot"></div>
+        <div class="a18-name">로마</div>
+        <div class="a18-status">이후</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-3);background:var(--accent-pale);border:1.5px solid var(--accent-soft);border-radius:4px;">
+    <div style="font-size:13pt;font-weight:700;color:var(--accent);font-family:var(--ff-hand);text-align:center;margin-bottom:var(--sp-1);">교회를 없애려는 박해가 시작되었다.</div>
+    <div style="font-size:var(--fs-small);color:var(--accent);text-align:center;font-weight:700;">그렇다면 복음도 멈췄을까?</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);text-align:center;margin-top:1.5mm;">→ LESSON 06에서 계속</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 13</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 14: VISUAL — GOD SENDS 패턴
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <h2 class="section-heading">스데반의 설교 — 반복되는 패턴 한 장에 보기</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-faint);margin-bottom:var(--sp-2);">각 사례가 완전히 동일하지는 않지만, 스데반이 의도적으로 배치한 반복 구조가 있다.</p>
+
+  <div class="god-sends-grid">
+    <div class="gs-header-row">
+      <div></div>
+      <div class="gs-col-title">요셉</div>
+      <div class="gs-col-title">모세</div>
+      <div class="gs-col-title">예수</div>
+    </div>
+
+    <div class="gs-data-row">
+      <div class="gs-row-label">GOD<br>SENDS</div>
+      <div class="gs-cell sends">하나님이 함께하심<br><span style="font-size:6pt;color:var(--ink-faint);">7:9</span></div>
+      <div class="gs-cell sends">지도자·구원자로<br>세우심<br><span style="font-size:6pt;color:var(--ink-faint);">7:35</span></div>
+      <div class="gs-cell sends">하나님이 보내신<br>의로우신 이<br><span style="font-size:6pt;color:var(--ink-faint);">7:52</span></div>
+    </div>
+
+    <div class="gs-data-row">
+      <div class="gs-row-label">PEOPLE<br>REJECT</div>
+      <div class="gs-cell reject">형제들이<br>시기하여 팔아넘김<br><span style="font-size:6pt;color:var(--ink-faint);">7:9</span></div>
+      <div class="gs-cell reject">"누가 너를<br>세웠느냐?" 거절<br><span style="font-size:6pt;color:var(--ink-faint);">7:27, 35</span></div>
+      <div class="gs-cell reject">배반하고<br>죽임<br><span style="font-size:6pt;color:var(--ink-faint);">7:52</span></div>
+    </div>
+
+    <div class="gs-data-row">
+      <div class="gs-row-label">PURPOSE<br>CONT.</div>
+      <div class="gs-cell continues">애굽에서<br>가족을 구함<br><span style="font-size:6pt;opacity:.7;">7:10–14</span></div>
+      <div class="gs-cell continues">출애굽을<br>이끄는 지도자<br><span style="font-size:6pt;opacity:.7;">7:36</span></div>
+      <div class="gs-cell continues">죽음과 부활<br>(스데반의 전제)<br><span style="font-size:6pt;opacity:.7;">7:55–56</span></div>
+    </div>
+  </div>
+
+  <div class="gs-stephen-row">
+    <div class="gs-stephen-label">스데반<br>자신</div>
+    <div class="gs-stephen-content">
+      복음을 증언함 → <strong>지도자들에게 거절당함</strong> → 죽임당함<br>
+      그러나: <span style="color:var(--accent);font-weight:700;">박해로 흩어진 신자들이 복음을 가지고 나갔다 (8:4)</span>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-2) var(--sp-3);background:var(--accent);border-radius:4px;text-align:center;">
+    <div style="font-size:14pt;font-weight:700;color:var(--white);font-family:var(--ff-hand);line-height:1.5;">복음은 예루살렘 밖으로 나가기 시작한다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 14</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 15: VISUAL — 박해가 복음의 이동으로
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <h2 class="section-heading">박해가 복음의 이동으로 이어지다</h2>
+  <p style="font-size:var(--fs-small);color:var(--ink-soft);margin-bottom:var(--sp-3);">이번 Lesson과 다음 Lesson을 연결하는 결정적 전환점이다.</p>
+
+  <div class="movement-spread">
+    <div class="ms-top">예루살렘 교회 — 성장하던 공동체</div>
+    <div class="ms-trigger">스데반 순교 → 그날 예루살렘 교회에 큰 박해 시작 (8:1)</div>
+    <div class="ms-arrow-row">↓ &nbsp; ↓ &nbsp; ↓</div>
+    <div class="ms-dest-row">
+      <div class="ms-dest">
+        <div class="ms-dest-name">유대</div>
+        <div class="ms-dest-note">신자들이 흩어짐</div>
+      </div>
+      <div class="ms-dest">
+        <div class="ms-dest-name">사마리아</div>
+        <div class="ms-dest-note">신자들이 흩어짐</div>
+      </div>
+      <div class="ms-dest">
+        <div class="ms-dest-name">다른 지역</div>
+        <div class="ms-dest-note">각 지역으로</div>
+      </div>
+    </div>
+    <div class="ms-result">복음도 함께 이동한다</div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-3);">
+    <div class="scripture-text">"그 흩어진 사람들이 두루 다니며 복음의 말씀을 전할새"</div>
+    <div class="scripture-ref">사도행전 8:4 — 다음 Lesson의 시작</div>
+  </div>
+
+  <div style="margin-top:var(--sp-3);padding:var(--sp-3);border:2px solid var(--accent);border-radius:4px;">
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:var(--sp-2);align-items:center;">
+      <div style="font-size:var(--fs-small);color:var(--ink-soft);">
+        <div style="font-weight:700;color:var(--accent);margin-bottom:1.5mm;">PART 2 끝</div>
+        예루살렘 교회가 성장하고 첫 순교자가 나왔다.
+        박해가 시작되어 신자들이 흩어진다.
+      </div>
+      <div style="font-size:12pt;color:var(--accent);">→</div>
+      <div style="font-size:var(--fs-small);color:var(--ink);">
+        <div style="font-weight:700;color:var(--accent);margin-bottom:1.5mm;">PART 3 시작 · LESSON 06</div>
+        <strong>복음이 사마리아로</strong><br>
+        빌립이 사마리아에서 복음을 전하고, 에티오피아 내시를 만난다.
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 15</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 16: LESSON SUMMARY
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 05</span>
+    <span class="page-header-title">스데반과 첫 순교</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);margin-bottom:var(--sp-3);">
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);">한눈에 보는 LESSON 05</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">사도행전 6:1–8:3</div>
+  </div>
+
+  <div class="summary-grid">
+
+    <div class="summary-block full">
+      <div class="summary-block-label">사건 흐름</div>
+      <div class="summary-block-content">
+        교회 성장 → 헬라파/히브리파 갈등 → 일곱 사람 선택 → 말씀이 더 퍼짐 →
+        스데반의 사역 → 논쟁 → 고발·체포 → 산헤드린 변론 (이스라엘 역사) →
+        지도자들에 대한 직접 지적 → 스데반 순교 (사울 등장) →
+        대박해 → 신자들이 유대·사마리아로 흩어짐
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">주요 인물</div>
+      <div class="summary-block-content">
+        <strong>스데반</strong> — 일곱 사람 중 하나, 사도행전 첫 순교자<br>
+        <strong>열두 사도</strong> — 기도와 말씀에 집중, 역할 분담<br>
+        <strong>사울</strong> — 스데반의 죽음에 동의, 교회를 박해 시작
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">장소</div>
+      <div class="summary-block-content">
+        <strong>예루살렘</strong> — 공동체 중심 · 흩어짐의 출발점<br>
+        <strong>산헤드린 공회</strong> — 스데반의 변론 장소<br>
+        <strong>유대·사마리아</strong> — 신자들이 흩어진 곳
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">핵심 키워드</div>
+      <div class="tag-cloud">
+        <span class="tag">일곱 사람</span><span class="tag">스데반</span>
+        <span class="tag">성전</span><span class="tag">모세</span>
+        <span class="tag">거절</span><span class="tag">순교</span>
+        <span class="tag">사울</span><span class="tag">박해</span>
+        <span class="tag">흩어짐</span>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">숫자로 기억하기</div>
+      <div class="number-row">
+        <div class="num-item">
+          <div class="num-big">7명</div>
+          <div class="num-label">선택된<br>일곱 사람</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">40×3</div>
+          <div class="num-label">모세의<br>세 시기</div>
+        </div>
+        <div class="num-item">
+          <div class="num-big">8:4</div>
+          <div class="num-label">복음이<br>이동 시작</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이번 Lesson에서 새롭게 배운 개념</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--sp-2);">
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">헬라파 / 히브리파</div>
+          <div class="background-box-body">초기 예루살렘 공동체 내부의 서로 다른 언어·문화적 배경을 가진 유대인들.</div>
+        </div>
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">일곱 사람</div>
+          <div class="background-box-body">좋은 평판·성령·지혜가 충만한 조건으로 선택. 본문은 직접 '집사'라 부르지 않는다.</div>
+        </div>
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">스데반의 역사 설교</div>
+          <div class="background-box-body">아브라함부터 이스라엘 역사를 되짚으며 반복적 거절 패턴을 통해 현재 지도자들을 지적.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이야기 연결</div>
+      <div class="story-conn">
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">이전 L04</div>
+          성장하는 교회<br>내부·외부의 위기
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node current-node">
+          <div style="font-size:var(--fs-caption);">L05</div>
+          스데반과 첫 순교<br>신자들이 흩어짐
+        </div>
+        <div class="conn-arrow">▶</div>
+        <div class="conn-node">
+          <div style="font-size:var(--fs-caption);color:var(--ink-faint);">다음 L06</div>
+          복음이 사마리아로<br>행 8:4–9:43
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        스데반은 이스라엘 역사를 통해 하나님이 보내신 이들을 반복해서 거부해 온 패턴을 지적하다 순교하고, 그의 죽음 이후 시작된 박해로 신자들이 흩어지면서 역설적으로 복음은 예루살렘 밖으로 나아가기 시작한다.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 05 · 16</span>
+  </div>
+</section>
+
+
+</body>
+</html>
