@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 14 — 예루살렘에서 체포된 바울</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 14 전용 스타일 ── */
+
+    .recall-badge { display:inline-flex; align-items:center; padding:.5mm 2mm; background:var(--page-bg); border:1px solid var(--rule); border-radius:3px; font-size:6.5pt; color:var(--ink-faint); font-weight:700; letter-spacing:.05em; vertical-align:middle; margin-left:2mm; }
+    .new-concept { display:inline-block; padding:1.5mm 3mm; background:var(--accent); border-radius:3px; font-size:6.5pt; font-weight:700; color:var(--white); letter-spacing:.08em; margin-right:2mm; vertical-align:middle; }
+    .lead { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.7; margin-bottom:var(--sp-2); }
+    .body-text { font-size:var(--fs-body); color:var(--ink); line-height:1.75; }
+    .body-text + .body-text { margin-top:var(--sp-1); }
+    .text-note { margin:var(--sp-2) 0 0; padding:var(--sp-2) var(--sp-3); border-left:3px solid var(--rule-mid); background:var(--page-bg); border-radius:0 3px 3px 0; }
+    .text-note-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); margin-bottom:1mm; }
+    .text-note-body { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.65; }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-3); align-items:start; }
+
+    .map-frame { border:1px solid var(--rule); border-radius:4px; background:#e3ecf1; display:block; width:100%; }
+    .map-legend { display:flex; flex-wrap:wrap; gap:1.5mm 6mm; margin-top:var(--sp-1); font-size:var(--fs-caption); color:var(--ink-soft); align-items:center; }
+    .map-legend i { display:inline-block; width:9mm; height:0; vertical-align:middle; margin-right:1.5mm; }
+    .lg-out { border-top:2.2px solid var(--accent); }
+    .lg-sea { border-top:2.2px dashed var(--accent); }
+    .map-note { font-size:var(--fs-caption); color:var(--ink-faint); line-height:1.55; margin-top:1mm; }
+
+    /* 여섯 단계 진행 막대 — 원인과 결과의 사슬 */
+    .stage-bar { display:grid; grid-template-columns:repeat(6,1fr); gap:1mm; margin:0 0 var(--sp-2); }
+    .sg { padding:1.5mm 2mm; border:1px solid var(--rule); border-radius:3px; font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); line-height:1.3; white-space:nowrap; }
+    .sg.on { background:var(--accent); border-color:var(--accent); color:var(--white); }
+    .sg.done { background:var(--accent-pale); border-color:var(--accent-soft); color:var(--accent); }
+
+    /* 장소 머리띠 */
+    .city-head { display:flex; align-items:baseline; gap:3mm; padding:1.6mm 0; border-top:2px solid var(--ink); border-bottom:1px solid var(--rule); margin-bottom:var(--sp-2); }
+    .city-head-num { font-size:var(--fs-caption); font-weight:700; color:var(--accent); letter-spacing:.08em; }
+    .city-head-name { font-size:var(--fs-h2); font-weight:700; color:var(--ink); }
+    .city-head-region { font-size:var(--fs-caption); color:var(--ink-faint); }
+    .city-head-next { margin-left:auto; font-size:var(--fs-caption); color:var(--ink-faint); }
+
+    .shift { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); align-items:stretch; margin:var(--sp-2) 0; }
+    .shift-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; background:var(--page-bg); }
+    .shift-col.now { background:var(--accent-pale); border:1.5px solid var(--accent-soft); }
+    .shift-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.06em; margin-bottom:1mm; }
+    .shift-col.now .shift-label { color:var(--accent); }
+    .shift-text { font-size:var(--fs-small); color:var(--ink); line-height:1.6; }
+    .shift-mid { display:flex; align-items:center; font-size:13pt; color:var(--accent); }
+
+    /* 원인 사슬 */
+    .chain { display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr; gap:1mm; align-items:stretch; margin:var(--sp-2) 0; }
+    .ch { padding:2.4mm 1.2mm; border:1px solid var(--rule); border-radius:4px; text-align:center; font-size:6.5pt; color:var(--ink-soft); display:flex; flex-direction:column; justify-content:center; gap:.6mm; line-height:1.4; }
+    .ch b { font-size:var(--fs-small); color:var(--ink); }
+    .ch.key { border-color:var(--accent); background:var(--accent-pale); }
+    .ch.key b { color:var(--accent); }
+    .ch-arrow { display:flex; align-items:center; color:var(--accent); font-size:9pt; }
+    .big-line { margin-top:var(--sp-2); text-align:center; font-family:var(--ff-hand); font-size:14pt; color:var(--accent); line-height:1.5; }
+
+    /* 두 칸 대비 */
+    .duo { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--rule); border-radius:4px; overflow:hidden; margin:var(--sp-2) 0; }
+    .duo-col { padding:var(--sp-2) var(--sp-3); }
+    .duo-col + .duo-col { border-left:1px solid var(--rule); background:var(--accent-pale); }
+    .duo-role { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .duo-name { font-size:var(--fs-h2); font-weight:700; color:var(--ink); margin:.5mm 0 1mm; }
+    .duo-col + .duo-col .duo-name { color:var(--accent); }
+    .duo-text { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.65; }
+    .duo-text b { color:var(--ink); }
+
+    /* 소문 / 고발 vs 사실 */
+    .claim { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-2); margin:var(--sp-2) 0; }
+    .cl { padding:var(--sp-2) var(--sp-3); border-radius:4px; }
+    .cl.said { border:1px dashed var(--rule-mid); }
+    .cl.fact { border:1.5px solid var(--accent); background:var(--accent-pale); }
+    .cl-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .cl.fact .cl-label { color:var(--accent); }
+    .cl-text { font-size:var(--fs-small); color:var(--ink); margin-top:1mm; line-height:1.65; }
+    .cl.said .cl-text { color:var(--ink-soft); }
+
+    /* 문답 */
+    .dialog { margin:var(--sp-2) 0; }
+    .dl { display:grid; grid-template-columns:22mm 1fr 12mm; gap:2mm; padding:1.8mm 0; border-bottom:1px dotted var(--rule); align-items:baseline; }
+    .dl-who { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); }
+    .dl-say { font-family:var(--ff-hand); font-size:12.5pt; color:var(--ink); line-height:1.45; }
+    .dl-ref { font-size:var(--fs-caption); color:var(--ink-faint); text-align:right; }
+    .dl.a .dl-who, .dl.a .dl-say { color:var(--accent); }
+
+    /* 표 */
+    .trip-table { width:100%; border-collapse:collapse; font-size:var(--fs-small); margin:var(--sp-2) 0; }
+    .trip-table th { text-align:left; padding:1.8mm 2.5mm; font-size:var(--fs-caption); letter-spacing:.06em; color:var(--white); background:var(--ink); }
+    .trip-table td { padding:1.8mm 2.5mm; border-bottom:1px solid var(--rule); color:var(--ink-soft); line-height:1.45; vertical-align:top; }
+    .trip-table td:first-child { font-weight:700; color:var(--ink); white-space:nowrap; }
+    .trip-table tr.edge td { background:var(--accent-pale); color:var(--ink); }
+    .trip-table tr.edge td:first-child { color:var(--accent); }
+    .trip-table td.ref { color:var(--ink-faint); font-size:var(--fs-caption); white-space:nowrap; }
+
+    /* 이력 */
+    .profile-attrs { display:grid; grid-template-columns:24mm 1fr 14mm; gap:0; font-size:var(--fs-small); margin:var(--sp-2) 0; border-top:2px solid var(--ink); }
+    .profile-attrs > * { padding:2mm 0; border-bottom:1px solid var(--rule); margin:0; }
+    .profile-attrs dt { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); }
+    .profile-attrs dd { color:var(--ink); }
+    .profile-attrs span { font-size:var(--fs-caption); color:var(--ink-faint); text-align:right; }
+
+    /* 숫자 */
+    .nums { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--sp-1); margin:var(--sp-2) 0; }
+    .nm { padding:2.5mm 2mm; border-top:2px solid var(--ink); }
+    .nm b { display:block; font-size:17pt; color:var(--ink); line-height:1.1; }
+    .nm span { font-size:var(--fs-caption); color:var(--ink-soft); }
+    .nm.sum { border-top-color:var(--accent); }
+    .nm.sum b { color:var(--accent); }
+
+    /* 편지 */
+    .letter { margin:var(--sp-2) 0; padding:var(--sp-2) var(--sp-3); border:1px solid var(--rule-mid); border-radius:2px; background:var(--accent-pale); position:relative; }
+    .letter::before { content:"편지 · 행 23:26–30"; position:absolute; top:-2.4mm; left:6mm; padding:0 2mm; background:var(--white); font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .letter-line { display:grid; grid-template-columns:22mm 1fr 12mm; gap:2mm; padding:1.5mm 0; border-bottom:1px dotted var(--rule-mid); font-size:var(--fs-small); align-items:baseline; }
+    .letter-line:last-child { border-bottom:none; }
+    .letter-k { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); }
+    .letter-v { color:var(--ink); line-height:1.55; }
+    .letter-r { font-size:var(--fs-caption); color:var(--ink-faint); text-align:right; }
+
+    /* 관계도 */
+    .rel { display:grid; grid-template-columns:1fr 26mm 1fr; gap:var(--sp-2); align-items:stretch; margin:var(--sp-2) 0; }
+    .rel-side { display:flex; flex-direction:column; gap:1.5mm; }
+    .rel-head { font-size:6.5pt; font-weight:700; letter-spacing:.12em; color:var(--ink-faint); padding-bottom:1mm; border-bottom:2px solid var(--ink); }
+    .rel-side.rome .rel-head { text-align:right; }
+    .rl { display:grid; grid-template-columns:1fr auto; gap:2mm; align-items:center; padding:1.8mm 2.5mm; border:1px solid var(--rule); border-radius:4px; font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.45; }
+    .rl b { display:block; font-size:var(--fs-small); color:var(--ink); }
+    .rl i { font-style:normal; color:var(--accent); font-size:10pt; }
+    .rel-side.rome .rl { grid-template-columns:auto 1fr; }
+    .rl.hostile { border-color:var(--ink); }
+    .rl.help { border-color:var(--accent); background:var(--accent-pale); }
+    .rel-center { display:flex; align-items:center; justify-content:center; background:var(--accent); border-radius:4px; color:var(--white); font-size:var(--fs-title); font-weight:700; writing-mode:vertical-rl; letter-spacing:.4em; }
+
+    .next-box { margin-top:var(--sp-3); padding:var(--sp-3); background:var(--ink); border-radius:4px; color:var(--white); }
+    .next-part { font-size:var(--fs-caption); font-weight:700; letter-spacing:.12em; opacity:.7; }
+    .next-title { font-size:var(--fs-title); font-weight:700; margin-top:1mm; }
+    .next-ref { font-size:var(--fs-caption); opacity:.7; margin-top:.5mm; }
+    .next-text { font-size:var(--fs-small); line-height:1.7; margin-top:var(--sp-2); opacity:.92; }
+  </style>
+</head>
+<body>
+
+<!-- 공통 지도 — 좌표계는 DESIGN.md "선교여행 지도 시스템" 참고.  x = (경도 − 20) × 20,  y = (42 − 위도) × 25
+     이번 Lesson에서 새로 쓰는 좌표: 고스 142,128 · 로도 164.4,139 · 바다라 186.4,143.6 · 두로 304,218.3
+     돌레마이 301.6,227 · 가이사랴 297.8,237.5 · 안디바드리 298.6,247.5 · 예루살렘 304.4,255.5 -->
+<svg id="map-defs" width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <marker id="mk-acc" markerWidth="4" markerHeight="4" refX="3.2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#b4552d"/></marker>
+    <marker id="mk-ink" markerWidth="4" markerHeight="4" refX="3.2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#1e1e1e"/></marker>
+    <g id="basemap" fill="#f4f0ea" stroke="#d2cdc5" stroke-width=".45" stroke-linejoin="round">
+      <!-- 아시아(소아시아·수리아·유대)와 아프리카 북안 -->
+      <path d="M181,24.5 L198,31.3 L182,38.8 L160,40.5 L146,40 L134,40.5 L130,47 L126,51.5 L123,56.3 L121.4,63 L139,61.3 L134,67.5 L137,77.5 L135,83.3 L142,89.5 L126,92.5 L132,97.5 L145.2,103.5 L144,112.5 L146,124.3 L160,125 L148,133 L165,130 L172,135 L182,133.8 L186,143.8 L192.8,145 L203,142.5 L208,145 L211.4,135 L214,128 L227.8,130.8 L240,136.5 L246,143.3 L256.6,149.5 L266,146.5 L279,142.5 L292.6,130 L298,131.3 L307.6,135.8 L315.8,130.8 L324,127.5 L323.4,135.5 L315.6,142 L318.6,148.3 L315.6,162 L317.6,177.8 L316.6,189 L310,202.5 L307.4,211 L304,218.3 L300,229.5 L297.8,237.5 L295,248.8 L289,262.5 L264,272.5 L246,268.8 L220,261.3 L198,270 L178,277.5 L144,266.3 L102,260 L80,248.8 L64,245 L52,230 L34,227.5 L12,235 L0,245 L0,290 L360,290 L360,0 L272,0 L246,6.3 L228,22.5 L182,20 Z"/>
+      <!-- 유럽(마게도냐·아가야) -->
+      <path d="M0,53.8 L5,62.5 L15,76.3 L22,91.3 L34.6,93.8 L26,108.8 L33.4,118.8 L33,126.3 L37.6,132 L42,124.5 L49.6,140 L51.4,131.3 L64,139 L58,121.3 L56,111.3 L70,116.3 L64,110 L60,102 L72.6,101.5 L80.6,108.8 L80,96.3 L72,85 L52,77.5 L67,71.3 L58,60 L52,43.8 L59,34.5 L68,43.8 L75,52 L79.6,51.3 L88,46.8 L75,31.3 L88,26.8 L117.4,28.8 L121,32 L134,33.5 L121,47.5 L126,45 L132,39 L142,36.5 L150,25.8 L160,25 L179,24.5 L180,18.8 L160,2.5 L160,0 L0,0 Z"/>
+      <!-- 고린도만 -->
+      <path d="M26,92 L35,92.5 L48,91.3 L59,100 L58,101.8 L46,97.5 L36,95.3 L28,95.5 Z" fill="#e3ecf1" stroke="none"/>
+      <!-- 그레데 · 로도 · 구브로 -->
+      <path d="M71,162.5 L80,162 L102.6,166.5 L126,168.8 L122,175 L95,176.8 L72,169.3 Z"/>
+      <path d="M164,138.8 L155,147.5 L161,152.5 Z"/>
+      <path d="M245.4,172.5 L248,181.3 L259,185.8 L272.6,177.5 L281.6,176 L279,171.8 L291.6,157.8 L266.4,166.5 L258.4,165 L258,170.5 L251,170.8 Z"/>
+    </g>
+    <g id="islands" fill="#f4f0ea" stroke="#d2cdc5" stroke-width=".45">
+      <ellipse cx="136.5" cy="107.2" rx="3.4" ry="1.9"/>
+      <ellipse cx="141.6" cy="128.4" rx="3" ry="1.5"/>
+    </g>
+  </defs>
+</svg>
+
+
+<!-- ════════════════════════════════════
+     PAGE 1: LESSON OPENING
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">14</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 6 — 로마를 향하여 · 첫 Lesson</div>
+      <h1 class="opening-title">예루살렘에서 체포된 바울</h1>
+      <div class="opening-scripture">사도행전 21:1–23:35</div>
+    </div>
+  </div>
+
+  <div class="lesson-summary-line">
+    바울은 여러 사람의 만류에도 예루살렘으로 향하지만, 성전에서 유대인들의 고발로 소동이 일어나 로마 군대에 체포된다. 이후 자신의 신앙과 회심을 설명하고 공회 앞에서 변론하지만, 그를 죽이려는 음모가 드러나면서 로마 군대의 보호 아래 가이사랴로 이송된다.
+  </div>
+
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">바울 · 아가보 · 야고보 · 예루살렘 장로들 · 천부장 글라우디오 루시아 · 대제사장 아나니아 · 바울의 조카 · 총독 벨릭스</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">두로 · 가이사랴 · 예루살렘 · 안디바드리 · 가이사랴</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">핵심 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2mm;margin-top:1.5mm;">
+        <span class="tag">예루살렘</span><span class="tag">성전</span><span class="tag">율법</span><span class="tag">체포</span><span class="tag">변호</span>
+        <span class="tag">로마 시민권</span><span class="tag">공회</span><span class="tag">음모</span><span class="tag">가이사랴</span>
+      </div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">PART 6의 흐름</div>
+      <div class="lesson-meta-value" style="font-size:var(--fs-small);line-height:1.7;"><strong>예루살렘 도착 → 체포 → 변호</strong> → 재판 → 가이사랴 구금 → 로마행 항해 → 로마 도착<br><span style="color:var(--ink-faint);font-size:var(--fs-caption);">굵은 부분이 이번 Lesson이다.</span></div>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">핵심 질문</h3>
+  <p class="body-text" style="font-weight:700;">바울은 왜 예루살렘에서 체포되었으며, 어떻게 로마 군대의 보호 아래 가이사랴로 가게 되었는가?</p>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">이번 Lesson의 여섯 단계 — 앞 사건이 뒤 사건의 원인이 된다</h3>
+  <div class="chain">
+    <div class="ch"><b>예루살렘으로</b>만류를 뚫고 도착</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>성전 소동</b>소문과 고발</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch key"><b>체포</b>로마 군대의 개입</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>변호</b>군중 앞 · 공회 앞</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>음모</b>사십여 명의 맹세</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch key"><b>이송</b>가이사랴로</div>
+  </div>
+  <p class="lead" style="margin-bottom:0;">이 여섯 칸은 3쪽부터 각 쪽 위에 작은 막대로 다시 나온다. 지금 읽는 장면이 사슬의 어디쯤인지 확인하며 읽자.</p>
+
+  <div class="big-line">바울은 선교여행을 계속하는 대신,<br>이제 로마 당국의 구금과 재판을 겪게 된다.</div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 1</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 2: BIG PICTURE
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <h2 class="section-heading">바울은 왜 예루살렘으로 향했을까? <span class="recall-badge">RECALL · L13</span></h2>
+
+  <div class="shift" style="margin-top:0;">
+    <div class="shift-col">
+      <div class="shift-label">LESSON 13 · 밀레도 · 20:22–24</div>
+      <div class="shift-text">성령에 매여 예루살렘으로 감 → 결박과 환난이 기다린다는 증언 → 그러나 사명을 마치려 함</div>
+    </div>
+    <div class="shift-mid">→</div>
+    <div class="shift-col now">
+      <div class="shift-label">LESSON 14 · 21장</div>
+      <div class="shift-text">바울이 <strong>실제로</strong> 예루살렘으로 향한다. 예고되었던 일이 하나씩 일어난다.</div>
+    </div>
+  </div>
+
+  <svg class="map-frame" viewBox="126 94 228 170" xmlns="http://www.w3.org/2000/svg" style="margin-top:var(--sp-2);">
+    <use href="#basemap"/><use href="#islands"/>
+    <g fill="none" stroke="#b4552d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M145,113 L142,127 Q145,136 164,139.4 L186,144.4 C212,172 252,204 302.6,218.4 L300.8,226.4" stroke-dasharray="3.4,2.4"/>
+      <path d="M301.6,227 L298.4,236.4" stroke-width="1.2" stroke-dasharray=".8,2"/>
+      <path d="M297.8,237.5 L303,246 L304.2,253.4" marker-end="url(#mk-acc)"/>
+    </g>
+    <circle cx="146.8" cy="101.5" r="1.3" fill="#a39d92"/>
+    <g fill="#fff" stroke="#1e1e1e" stroke-width=".9">
+      <circle cx="145.6" cy="111.8" r="1.7"/><circle cx="304" cy="218.3" r="1.7"/><circle cx="297.8" cy="237.5" r="1.7"/>
+    </g>
+    <g fill="#1e1e1e"><circle cx="141.6" cy="128.2" r="1"/><circle cx="164.4" cy="139.2" r="1"/><circle cx="186.4" cy="144" r="1"/><circle cx="301.6" cy="227" r="1"/></g>
+    <circle cx="304.4" cy="255.5" r="5" fill="#b4552d" opacity=".2"/>
+    <circle cx="304.4" cy="255.5" r="2.6" fill="#b4552d"/>
+    <g font-family="SCDream,sans-serif" font-size="4.6" font-weight="700" fill="#1e1e1e">
+      <text x="149" y="111">밀레도</text>
+      <text x="150" y="101.6" font-size="3.6" font-weight="400" fill="#888">에베소</text>
+      <text x="309" y="217.4">두로</text>
+      <text x="294" y="239.4" text-anchor="end">가이사랴</text>
+      <text x="310" y="257.4" fill="#b4552d">예루살렘</text>
+      <g font-size="3.8" font-weight="400" fill="#4a4a4a">
+        <text x="137.6" y="130" text-anchor="end">고스</text>
+        <text x="158" y="157">로도</text>
+        <text x="190" y="139.6">바다라</text>
+        <text x="306" y="228.4">돌레마이</text>
+        <text x="188" y="212" fill="#b4552d">구브로를 왼편에 두고 (21:3)</text>
+      </g>
+      <g font-size="4.2" font-weight="400" fill="#a39d92" letter-spacing=".8">
+        <text x="196" y="118">아시아</text><text x="268" y="176">구브로</text><text x="330" y="186">수리아</text><text x="324" y="206">베니게</text>
+        <text x="196" y="232" fill="#8aa5b6" font-size="5" letter-spacing="3">지 중 해</text>
+      </g>
+    </g>
+  </svg>
+  <div class="map-legend">
+    <span><i class="lg-sea"></i>바닷길</span>
+    <span><i class="lg-out"></i>육로</span>
+    <span style="color:var(--ink-faint);">돌레마이 → 가이사랴는 본문에 이동 수단이 나오지 않아 가는 점선으로 그렸다.</span>
+  </div>
+
+  <table class="trip-table">
+    <thead><tr><th>곳</th><th>기록</th><th></th></tr></thead>
+    <tbody>
+      <tr><td>밀레도 → 고스 → 로도 → 바다라</td><td>하루씩 이어지는 항해</td><td class="ref">21:1</td></tr>
+      <tr><td>바다라 → 두로</td><td>베니게로 가는 배로 갈아탐. 두로에서 <strong>이레</strong>를 머묾</td><td class="ref">21:2–4</td></tr>
+      <tr><td>돌레마이</td><td>형제들에게 안부를 묻고 하루를 지냄</td><td class="ref">21:7</td></tr>
+      <tr><td>가이사랴</td><td>빌립의 집에서 <strong>여러 날</strong>을 머묾</td><td class="ref">21:8–10</td></tr>
+      <tr class="edge"><td>예루살렘</td><td>도착</td><td class="ref">21:17</td></tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 3: SCENE 01 (21:1–6)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg on">① 예루살렘으로</div><div class="sg">② 성전 소동</div><div class="sg">③ 체포</div><div class="sg">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">두로</span>
+    <span class="city-head-region">베니게의 항구 · 이레를 머묾</span>
+    <span class="city-head-next">다음 → 돌레마이 · 가이사랴</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">여러 사람들이 바울을 만류하다</span>
+      <span class="scene-ref">행 21:1–6</span>
+    </div>
+    <div class="scene-body">
+      <p>밀레도에서 장로들과 헤어진 일행은 며칠 만에 지중해를 건너 두로에 닿는다. 배가 짐을 푸는 동안 일행은 그 도시의 제자들을 찾아 이레를 함께 지낸다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">두로에 상륙하여 제자들을 찾아 이레를 머묾</div></div><div class="flow-step-ref">21:3–4</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">그 제자들이 성령의 감동으로 바울에게 예루살렘에 들어가지 말라 함</div></div><div class="flow-step-ref">21:4</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">일행이 다시 떠남 — 제자들이 처자와 함께 성문 밖까지 전송하고, 바닷가에서 무릎을 꿇고 기도한 뒤 작별함</div></div><div class="flow-step-ref">21:5–6</div></div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">두로의 교회에 대해 사도행전은 흩어진 사람들이 베니게까지 갔다는 한 줄(11:19)만 적었다. 이 제자들은 이레 만에 아내와 아이들까지 데리고 바닷가에 나와 무릎을 꿇는 사이가 된다.</p>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">성령의 인도와 사람들의 만류는 어떻게 이해해야 할까?</h3>
+
+  <div class="duo">
+    <div class="duo-col">
+      <div class="duo-role">LESSON 13 · 20:22–23</div>
+      <div class="duo-name">바울의 말</div>
+      <div class="duo-text">"<b>성령에 매여</b> 예루살렘으로 가는데 … 성령이 각 성에서 내게 증언하여 결박과 환난이 나를 기다린다 하시나"</div>
+    </div>
+    <div class="duo-col">
+      <div class="duo-role">LESSON 14 · 21:4</div>
+      <div class="duo-name">두로의 제자들</div>
+      <div class="duo-text">"그 제자들이 <b>성령의 감동으로</b> 바울더러 예루살렘에 들어가지 말라 하더라"</div>
+    </div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">IMPORTANT — 단정하지 않는다</div>
+    <div class="background-box-body">본문에는 성령의 경고와, 그럼에도 계속 예루살렘으로 가는 바울이 함께 놓여 있다. 이 둘의 관계에 대해서는 해석이 나뉜다. 성령이 알려 주신 것은 닥칠 <strong>환난</strong>이고 "가지 말라"는 그것을 들은 제자들의 권고라고 읽는 견해가 있고, 달리 읽는 견해도 있다. 본문은 바울을 꾸짖지 않으며, 이 교재도 "바울이 성령께 불순종했다"고 단정하지 않는다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 4: SCENE 02 (21:7–14)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg on">① 예루살렘으로</div><div class="sg">② 성전 소동</div><div class="sg">③ 체포</div><div class="sg">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">가이사랴</span>
+    <span class="city-head-region">전도자 빌립의 집 · 여러 날을 머묾</span>
+    <span class="city-head-next">다음 → 예루살렘</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 2</span>
+      <span class="scene-title">아가보의 예언</span>
+      <span class="scene-ref">행 21:7–14</span>
+    </div>
+    <div class="scene-body">
+      <p>일행은 돌레마이를 거쳐 가이사랴에 이르고, 전도자 빌립의 집에 들어가 머문다. 낯익은 두 사람이 다시 등장한다.</p>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">빌립 <span class="recall-badge">RECALL · L05 · L06</span></div>
+      <div class="background-box-body">일곱 사람 가운데 하나. 사마리아에서 복음을 전하고 에티오피아 관리에게 세례를 베푼 뒤 가이사랴에 이르렀던 사람이다(8:40). 그를 예루살렘에서 떠나게 한 박해에 앞장섰던 사울이 이제 그의 집 손님이다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">아가보 <span class="recall-badge">RECALL · L09</span></div>
+      <div class="background-box-body">안디옥에서 큰 흉년을 예언했던 선지자(11:28). 그가 유대에서 내려와 다시 바울 앞에 선다.</div>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">아가보가 바울의 띠로 자기 손과 발을 잡아매고 말함</div><div class="flow-step-desc">"성령이 말씀하시되 예루살렘에서 유대인들이 이같이 이 띠 임자를 결박하여 이방인의 손에 넘겨 주리라"</div></div><div class="flow-step-ref">21:11</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">'우리'와 그곳 사람들이 바울에게 예루살렘으로 올라가지 말라 권함</div></div><div class="flow-step-ref">21:12</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">바울: "나는 주 예수의 이름을 위하여 결박당할 뿐 아니라 예루살렘에서 죽을 것도 각오하였노라"</div></div><div class="flow-step-ref">21:13</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">"주의 뜻대로 이루어지이다" 하고 그침</div></div><div class="flow-step-ref">21:14</div></div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">아가보는 "가지 말라"고 하지 않는다. 그가 성령의 말씀으로 전한 것은 <strong>무슨 일이 일어날 것인가</strong>까지다. "올라가지 말라"는 그 말을 들은 사람들의 반응이고, 서술자 '우리'도 그 편에 서 있다.</p>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">"주의 뜻대로 이루어지이다"</div>
+      <div class="background-box-body">말리던 사람들이 마지막에 한 말이다. 그들은 바울의 길을 주의 뜻으로 받아들이고 그친다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">IMPORTANT — 예언과 성취</div>
+      <div class="background-box-body">이 예언은 10쪽의 체포와 이어진다. 다만 세부까지 기계적으로 맞추려 하지 않는다. 실제로 쇠사슬로 묶은 것은 로마 군인들이었다. 예언은 일의 큰 줄기를 말한다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 5: SCENE 03 (21:15–19)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg on">① 예루살렘으로</div><div class="sg">② 성전 소동</div><div class="sg">③ 체포</div><div class="sg">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘</span>
+    <span class="city-head-region">야고보와 장로들 · 1 / 3</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">바울이 예루살렘에 도착하다</span>
+      <span class="scene-ref">행 21:15–19</span>
+    </div>
+    <div class="scene-body">
+      <p>일행은 짐을 꾸려 예루살렘으로 올라간다. 가이사랴의 제자 몇 사람이 함께 가며, 오랜 제자인 구브로 사람 나손의 집으로 일행을 인도한다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">가이사랴에서 출발하여 예루살렘에 이름</div></div><div class="flow-step-ref">21:15–17</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">형제들이 기꺼이 영접함</div></div><div class="flow-step-ref">21:17</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">이튿날 바울이 '우리'와 함께 야고보에게 들어감 — 장로들도 다 있음</div></div><div class="flow-step-ref">21:18</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">하나님이 자기의 사역으로 말미암아 이방 가운데서 하신 일을 낱낱이 말함</div></div><div class="flow-step-ref">21:19</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">그들이 듣고 하나님께 영광을 돌림</div></div><div class="flow-step-ref">21:20</div></div>
+  </div>
+
+  <div class="two-col" style="margin-top:var(--sp-3);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">어느 야고보인가? <span class="recall-badge">RECALL · L09 · L11</span></div>
+      <div class="background-box-body">요한의 형제 야고보는 오래전에 처형되었다(12:2). 이 야고보는 예수의 형제로 알려진 예루살렘 교회의 지도자다. Lesson 11의 회의에서 성경을 근거로 결론을 제안했던 바로 그 사람이다. 이 장면에는 베드로를 비롯한 사도들의 이름이 나오지 않는다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">세 번째 보고 <span class="recall-badge">RECALL · L10 · L11</span></div>
+      <div class="background-box-body">1차 여행 뒤 안디옥에서(14:27), 회의를 앞두고 예루살렘에서(15:4), 그리고 지금. 세 번 모두 주어는 <strong>하나님</strong>이다. 바울은 "내가 한 일"이 아니라 "하나님이 하신 일"을 보고한다. 듣는 쪽의 반응도 같다. 하나님께 영광을 돌린다.</div>
+    </div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">여기까지는 따뜻한 재회다. 형제들은 기꺼이 맞았고, 지도자들은 보고를 듣고 하나님께 영광을 돌렸다. 예루살렘 교회의 지도자들과 바울 사이에는 갈등이 없다. 문제는 그 방 바깥에 있었다. 야고보와 장로들은 영광을 돌린 바로 그 자리에서 곧이어 한 가지 걱정을 꺼낸다.</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 6: SCENE 04 (21:20–22)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg on">① 예루살렘으로</div><div class="sg">② 성전 소동</div><div class="sg">③ 체포</div><div class="sg">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘</span>
+    <span class="city-head-region">야고보와 장로들 · 2 / 3</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">예루살렘 신자들이 바울을 걱정한 이유</span>
+      <span class="scene-ref">행 21:20–22</span>
+    </div>
+    <div class="scene-body">
+      <p>야고보와 장로들은 바울에게 예루살렘의 형편을 들려준다. "형제여 그대도 보는 바에 유대인 중에 믿는 자 수만 명이 있으니 다 율법에 열성을 가진 자라."</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">예수를 믿는 유대인이 수만 명이고, 그들은 다 율법에 열성을 가진 사람들이다</div></div><div class="flow-step-ref">21:20</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">그들이 바울에 관한 말을 들었다</div></div><div class="flow-step-ref">21:21</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">"그러면 어찌할꼬 그들이 필연 그대가 온 것을 들으리니"</div></div><div class="flow-step-ref">21:22</div></div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-2);">
+    <div class="scripture-text">"네가 이방에 있는 모든 유대인을 가르치되 모세를 배반하고 아들들에게 할례를 행하지 말고 또 관습을 지키지 말라 한다 함을 그들이 들었도다"</div>
+    <div class="scripture-ref">사도행전 21:21 — 바울에 관해 퍼진 소문</div>
+  </div>
+
+  <div class="claim">
+    <div class="cl said">
+      <div class="cl-label">소문이 말하는 것</div>
+      <div class="cl-text">바울이 이방에 사는 <strong>유대인들에게</strong><br>· 모세를 배반하라<br>· 아들들에게 할례를 행하지 말라<br>· 관습을 지키지 말라<br>고 가르친다.</div>
+    </div>
+    <div class="cl fact">
+      <div class="cl-label">지금까지 본문에서 본 것</div>
+      <div class="cl-text">· 어머니가 유대인인 디모데에게 할례를 행함 (16:3)<br>· 스스로 서원하고 머리를 깎음 (18:18)<br>· 도시마다 회당에서부터 전함<br>· <strong>이방인에게</strong> 할례를 구원의 조건으로 요구하지 않음 (15장)</div>
+    </div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">IMPORTANT — 이것은 '소문'이다</div>
+    <div class="background-box-body">본문은 이 말을 사실로 적지 않는다. "그들이 <strong>들었도다</strong>"라고, 곧 사람들 사이에 퍼진 말로 적는다. 그러므로 이 교재는 바울이 유대인들에게 율법을 버리라고 가르쳤다고 단정하지 않는다. 예루살렘 회의(L11)의 결정은 <strong>이방인</strong>에 관한 것이었는데, 소문은 그것을 <strong>유대인</strong>에 관한 가르침으로 바꾸어 전한다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 7: SCENE 05 (21:23–26)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg on">① 예루살렘으로</div><div class="sg">② 성전 소동</div><div class="sg">③ 체포</div><div class="sg">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘</span>
+    <span class="city-head-region">야고보와 장로들 · 3 / 3</span>
+    <span class="city-head-next">다음 → 성전</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 5</span>
+      <span class="scene-title">바울이 정결 의식에 참여하다</span>
+      <span class="scene-ref">행 21:23–26</span>
+    </div>
+    <div class="scene-body">
+      <p>야고보와 장로들은 걱정만 하지 않고 방법을 내놓는다. "우리가 말하는 이대로 하라." 말로 해명하는 대신 사람들이 볼 수 있는 행동으로 보이자는 것이다.</p>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-2);">제안 (21:23–24)</h3>
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">서원한 네 사람을 데리고 함께 결례를 행하고, 그들을 위하여 비용을 내어 머리를 깎게 하라</div></div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">목적 — 모든 사람이 들은 것이 사실이 아니고, 그대도 율법을 지켜 행하는 줄 알게 하려는 것</div></div></div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">장로들은 곧바로 한 가지를 덧붙인다. "주를 믿는 <strong>이방인</strong>에게는 우리가 우상의 제물과 피와 목매어 죽인 것과 음행을 피할 것을 결의하고 편지하였느니라"(21:25). Lesson 11의 결정은 그대로라는 뜻이다. 지금 하려는 일은 그 결정을 뒤집는 것이 아니다.</p>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-2);">바울의 행동 (21:26)</h3>
+  <div class="story-flow">
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">바울이 그 사람들을 데리고 이튿날 그들과 함께 결례를 행함</div></div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">성전에 들어가, 각 사람을 위하여 제사 드릴 때까지의 결례 기간이 찰 날을 신고함</div></div></div>
+  </div>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">서원과 머리 깎기 <span class="recall-badge">RECALL · L12</span></div>
+      <div class="background-box-body">일정 기간 하나님께 자신을 구별해 드리는 서원을 마칠 때 머리를 깎고 제물을 드렸다(민 6장). 제물에는 비용이 들었고, 남의 비용을 대신 내주는 것은 경건한 일로 여겨졌다. 바울 자신도 겐그레아에서 서원으로 머리를 깎은 적이 있다(18:18).</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">IMPORTANT — 원칙을 굽힌 것인가?</div>
+      <div class="background-box-body">아니다. 이 일은 <strong>구원의 조건</strong>에 관한 것이 아니다. 바울은 할례와 율법 준수를 이방인의 구원 조건으로 다시 인정하지 않았다. 이 일은 율법에 열심인 유대인 신자들과의 <strong>관계</strong> 속에서, 사실이 아닌 소문을 풀기 위해 한 일이다. Lesson 12에서 디모데에게 할례를 행한 것과 같은 자리에 놓인다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 7</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 8: SCENE 06 (21:27–30)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg on">② 성전 소동</div><div class="sg">③ 체포</div><div class="sg">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘 · 성전</span>
+    <span class="city-head-region">결례 기간이 거의 찼을 때</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 6</span>
+      <span class="scene-title">성전에서 소동이 일어나다</span>
+      <span class="scene-ref">행 21:27–30</span>
+    </div>
+    <div class="scene-body">
+      <p>이레가 거의 찼을 때, 아시아에서 온 유대인들이 성전에서 바울을 보고 무리를 충동하여 외친다. "이스라엘 사람들아 도우라!"</p>
+    </div>
+  </div>
+
+  <table class="trip-table">
+    <thead><tr><th>고발</th><th>내용 (21:28)</th></tr></thead>
+    <tbody>
+      <tr><td>① 백성</td><td>각처에서 우리 백성을 비방하여 가르친다</td></tr>
+      <tr><td>② 율법</td><td>율법을 비방하여 가르친다</td></tr>
+      <tr><td>③ 이곳</td><td>이곳, 곧 성전을 비방하여 가르친다</td></tr>
+      <tr class="edge"><td>④ 더럽힘</td><td>헬라인을 데리고 성전에 들어가서 이 거룩한 곳을 더럽혔다</td></tr>
+    </tbody>
+  </table>
+
+  <p class="body-text">앞의 셋은 6쪽의 소문과 같은 종류다. 넷째는 눈앞의 성전에서 벌어졌다는 <strong>행동</strong>에 관한 것이고, 무리를 움직인 것은 이것이었다. 그런데 누가는 바로 다음 절에서 이 고발이 어디서 나왔는지 밝힌다.</p>
+
+  <div class="claim">
+    <div class="cl said">
+      <div class="cl-label">그들이 본 것 · 21:29</div>
+      <div class="cl-text">전에 에베소 사람 <strong>드로비모</strong>가 바울과 함께 <strong>시내에</strong> 있는 것</div>
+    </div>
+    <div class="cl said">
+      <div class="cl-label">그들이 생각한 것 · 21:29</div>
+      <div class="cl-text">바울이 그를 <strong>성전에</strong> 데리고 들어간 줄로 <strong>생각함</strong></div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:0;">
+    <div class="background-box-title">IMPORTANT — 고발과 사실을 구분한다</div>
+    <div class="background-box-body">본문은 드로비모가 성전의 출입 제한 구역에 들어갔다고 기록하지 않는다. 사람들이 그렇게 <strong>생각했다</strong>고 기록한다. 그때 바울은 오히려 율법을 따라 결례를 행하고 있었다.</div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">온 성이 소동하여 백성이 달려와 모임</div></div><div class="flow-step-ref">21:30</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">바울을 잡아 성전 밖으로 끌고 나감 — 문들이 곧 닫힘</div></div><div class="flow-step-ref">21:30</div></div>
+  </div>
+
+  <div class="text-note">
+    <div class="text-note-label">RECALL · L13 · L05 — 낯익은 사람들, 낯익은 고발</div>
+    <div class="text-note-body"><strong>아시아에서 온 유대인들</strong>이어서 에베소 사람 드로비모(20:4)를 알아보았다. <strong>고발의 내용</strong>은 스데반이 받았던 것(6:13)과 거의 같다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 8</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 9: BACKGROUND — 성전 구조
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg on">② 성전 소동</div><div class="sg">③ 체포</div><div class="sg">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <h2 class="section-heading">BACKGROUND — 왜 성전 출입 문제가 심각했을까?</h2>
+  <p class="lead">"헬라인을 데리고 성전에 들어갔다"는 말이 왜 온 성을 움직일 만한 고발이었는지 이해하려면 성전의 구조를 알아야 한다. 당시의 성전(헤롯 성전)은 바깥에서 안으로 들어갈수록 들어갈 수 있는 사람이 줄어드는 구조였다.</p>
+
+  <svg class="map-frame" viewBox="0 0 232 150" xmlns="http://www.w3.org/2000/svg" style="background:#fff;">
+    <!-- 영내 (요새) -->
+    <rect x="10" y="6" width="46" height="22" fill="#1e1e1e"/>
+    <text x="33" y="16" font-family="SCDream,sans-serif" font-size="5" font-weight="700" fill="#fff" text-anchor="middle">영내</text>
+    <text x="33" y="22.6" font-family="SCDream,sans-serif" font-size="3.4" fill="#fff" text-anchor="middle" opacity=".8">로마 군대 주둔지</text>
+    <!-- 성전 바깥 담 -->
+    <rect x="20" y="28" width="196" height="112" fill="#f4f0ea" stroke="#1e1e1e" stroke-width="1.6"/>
+    <g stroke="#1e1e1e" stroke-width=".8"><path d="M40,28 V40 M43,28 V40 M46,28 V40 M49,28 V40 M52,28 V40"/><path d="M38,40 H54" stroke-width="1.2"/></g>
+    <text x="58" y="37" font-family="SCDream,sans-serif" font-size="4" font-weight="700" fill="#1e1e1e">층대 (21:35, 40)</text>
+    <text x="118" y="132" font-family="SCDream,sans-serif" font-size="6" font-weight="700" fill="#4a4a4a" text-anchor="middle" letter-spacing="1.6">이방인의 뜰</text>
+    <text x="118" y="124.6" font-family="SCDream,sans-serif" font-size="3.8" fill="#888" text-anchor="middle">이방인도 들어올 수 있는 곳</text>
+    <!-- 출입 제한 경계 -->
+    <rect x="66" y="50" width="118" height="62" fill="#faf4f0" stroke="#b4552d" stroke-width="1.4" stroke-dasharray="3,2"/>
+    <text x="125" y="46.6" font-family="SCDream,sans-serif" font-size="4.4" font-weight="700" fill="#b4552d" text-anchor="middle">출입 제한 경계 — 이방인은 여기까지</text>
+    <!-- 안뜰들 -->
+    <rect x="72" y="56" width="106" height="50" fill="#fff" stroke="#1e1e1e" stroke-width="1"/>
+    <path d="M142,56 V106" stroke="#1e1e1e" stroke-width="1"/>
+    <text x="160" y="80" font-family="SCDream,sans-serif" font-size="4.6" font-weight="700" fill="#1e1e1e" text-anchor="middle">여인의 뜰</text>
+    <text x="160" y="86" font-family="SCDream,sans-serif" font-size="3.4" fill="#888" text-anchor="middle">유대인 남녀</text>
+    <text x="126" y="66" font-family="SCDream,sans-serif" font-size="4.2" font-weight="700" fill="#1e1e1e" text-anchor="middle">이스라엘의 뜰</text>
+    <text x="126" y="71.4" font-family="SCDream,sans-serif" font-size="3.4" fill="#888" text-anchor="middle">· 제사장의 뜰</text>
+    <!-- 성소 -->
+    <rect x="78" y="72" width="34" height="18" fill="#b4552d"/>
+    <text x="95" y="83.4" font-family="SCDream,sans-serif" font-size="5" font-weight="700" fill="#fff" text-anchor="middle">성소</text>
+    <!-- 방위 -->
+    <text x="222" y="14" font-family="SCDream,sans-serif" font-size="4.4" fill="#888" text-anchor="middle">북</text>
+    <path d="M222,26 V17 M220,20 L222,16.6 L224,20" stroke="#888" stroke-width=".7" fill="none"/>
+    <text x="24" y="146.6" font-family="SCDream,sans-serif" font-size="3.6" fill="#888">※ 위치 관계만 보인 개략도. 실제 크기 · 비율 · 세부 구조와는 다르다.</text>
+  </svg>
+
+  <table class="trip-table">
+    <thead><tr><th>구역</th><th>들어갈 수 있는 사람</th></tr></thead>
+    <tbody>
+      <tr><td>이방인의 뜰</td><td>누구나. 이방인도 들어올 수 있는 바깥뜰</td></tr>
+      <tr class="edge"><td>출입 제한 경계 안쪽</td><td>유대인만. 이방인은 넘을 수 없다</td></tr>
+      <tr><td>더 안쪽의 뜰과 성소</td><td>안으로 갈수록 이스라엘 남자, 제사장으로 좁아진다</td></tr>
+    </tbody>
+  </table>
+
+  <div class="two-col">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">역사적 배경 — 경고문</div>
+      <div class="background-box-body">경계에는 이방인의 출입을 금하는 경고문이 헬라어와 라틴어로 세워져 있었다고 전해진다. 넘어 들어오는 이방인은 죽음을 당해도 그 책임이 자신에게 있다는 내용이다. 이 경고문이 새겨진 돌이 실제로 발견되어 있다. 로마도 이 규정만큼은 유대인들의 뜻을 존중한 것으로 알려져 있다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">핵심</div>
+      <div class="background-box-body">그러므로 "이방인을 경계 안으로 데리고 들어왔다"는 고발은 당시 사형까지 거론될 수 있는 매우 무거운 것이었다. 무리가 바울을 죽이려 한 까닭이 여기 있다. 그러나 바울이 실제로 그 규정을 어겼다는 것은 본문 어디에서도 입증되지 않는다. 8쪽에서 본 대로 그것은 추측이었다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 9</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 10: SCENE 07 (21:31–36)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg done">② 성전 소동</div><div class="sg on">③ 체포</div><div class="sg">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘 · 성전 바깥뜰</span>
+    <span class="city-head-region">9쪽 그림의 왼쪽 위, 영내에서 군인들이 내려온다</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 7</span>
+      <span class="scene-title">로마 군대가 바울을 체포하다</span>
+      <span class="scene-ref">행 21:31–36</span>
+    </div>
+    <div class="scene-body">
+      <p>성전 문이 닫히고, 무리는 바울을 죽이려 한다. 그때 "온 예루살렘이 요란하다"는 소식이 군대의 천부장에게 들린다. 성전 뜰을 내려다보는 자리에 로마 군대가 주둔하고 있었다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">천부장이 군인들과 백부장들을 거느리고 달려 내려감 — 무리가 바울 치기를 그침</div></div><div class="flow-step-ref">21:32</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">천부장이 바울을 잡아 두 쇠사슬로 결박하라 명함</div></div><div class="flow-step-ref">21:33</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">"그가 누구이며 무슨 일을 하였느냐" — 무리의 말이 서로 달라 진상을 알 수 없어 영내로 데려가라 명함</div></div><div class="flow-step-ref">21:33–34</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">층대에 이르러서는 무리의 폭행 때문에 군사들에게 들려 감 — 무리는 "그를 없이하자" 외치며 따라옴</div></div><div class="flow-step-ref">21:35–36</div></div>
+  </div>
+
+  <div class="shift">
+    <div class="shift-col">
+      <div class="shift-label">아가보의 예언 · 21:11</div>
+      <div class="shift-text">"유대인들이 이 띠 임자를 <strong>결박하여 이방인의 손에</strong> 넘겨 주리라"</div>
+    </div>
+    <div class="shift-mid">→</div>
+    <div class="shift-col now">
+      <div class="shift-label">일어난 일 · 21:33</div>
+      <div class="shift-text">유대인 무리에게 붙잡힌 바울이 로마 천부장의 손에 들어가 <strong>두 쇠사슬</strong>에 묶임</div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:0;">
+    <div class="background-box-title">핵심 구분 — 로마 군대는 왜 바울을 잡았나</div>
+    <div class="background-box-body">천부장은 바울의 가르침을 심판하려고 온 것이 아니다. 그는 바울이 누구인지도 몰랐다. 그가 한 일은 두 가지다. <strong>소요를 진압</strong>하는 것, 그리고 <strong>무슨 일인지 알아내는</strong> 것. 그러므로 천부장이 처음부터 바울을 무죄로 여겨 구해 주었다고 읽어서는 안 된다. 결과적으로 이 체포가 바울의 목숨을 건졌을 뿐이다. 이때부터 바울은 사도행전이 끝날 때까지 갇힌 몸이다.</div>
+  </div>
+
+  <div class="text-note">
+    <div class="text-note-label">NEW CONCEPT · 천부장</div>
+    <div class="text-note-body">'천 명을 거느리는 지휘관'이라는 뜻의 로마군 장교로, 백부장 여럿을 거느린다. 예루살렘 주둔 부대의 책임자였다. 그의 이름은 20쪽의 편지에서 처음 나온다. 무리의 외침 "그를 없이하자"는 빌라도 앞에서 예수를 두고 외쳤던 말(눅 23:18)과 같다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 10</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 11: SCENE 08 (21:37–22:2)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg done">② 성전 소동</div><div class="sg done">③ 체포</div><div class="sg on">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘 · 층대 위</span>
+    <span class="city-head-region">군중 앞에서의 변호 · 1 / 4</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 8</span>
+      <span class="scene-title">바울이 군중 앞에서 말하다</span>
+      <span class="scene-ref">행 21:37–22:2</span>
+    </div>
+    <div class="scene-body">
+      <p>군사들에게 들려 영내 문 앞까지 온 바울이 천부장에게 말을 건다. 방금까지 맞고 있던 사람이, 자기를 죽이라고 외치는 무리에게 말할 기회를 청한다.</p>
+    </div>
+  </div>
+
+  <div class="dialog">
+    <div class="dl"><div class="dl-who">바울</div><div class="dl-say">"내가 당신에게 말할 수 있느냐"</div><div class="dl-ref">21:37</div></div>
+    <div class="dl a"><div class="dl-who">천부장</div><div class="dl-say">"네가 헬라 말을 아느냐 그러면 네가 이전에 소요를 일으켜 자객 사천 명을 거느리고 광야로 가던 애굽인이 아니냐"</div><div class="dl-ref">21:37–38</div></div>
+    <div class="dl"><div class="dl-who">바울</div><div class="dl-say">"나는 유대인이라 소읍이 아닌 길리기아 다소 시의 시민이니 청컨대 백성에게 말하기를 허락하라"</div><div class="dl-ref">21:39</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">천부장은 왜 놀랐을까?</div>
+      <div class="background-box-body">그는 바울을 전혀 다른 사람으로 짐작하고 있었다. 얼마 전 소요를 일으키고 달아난 애굽 사람이다. 그런 반란 지도자가 붙잡혔다고 여겼기에 쇠사슬 둘로 묶은 것이다. 그런데 이 사람이 교양 있는 헬라 말로 말을 걸어온다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">바울이 밝힌 것, 밝히지 않은 것</div>
+      <div class="background-box-body">바울은 <strong>유대인</strong>이라는 것과 <strong>다소 시의 시민</strong>이라는 것을 밝힌다. 다소는 "소읍이 아닌", 곧 이름난 도시였다. 그러나 여기서 그는 자신이 <strong>로마 시민</strong>이라는 말은 하지 않는다. 그 말은 15쪽에서, 꼭 필요한 순간에 나온다.</div>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">천부장이 허락함 — 바울이 층대 위에 서서 손짓하자 매우 조용해짐</div></div><div class="flow-step-ref">21:40</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">히브리 말로 말함 — "부형들아 내가 지금 여러분 앞에서 변명하는 말을 들으라". 무리가 더욱 조용해짐</div></div><div class="flow-step-ref">22:1–2</div></div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">바울은 한 자리에서 두 언어를 쓴다. 천부장에게는 헬라 말로, 무리에게는 히브리 말로. "헬라인을 성전에 들인 자"가 자기들의 말로 "부형들아" 하고 부르자 소란이 가라앉는다.</p>
+
+  <div class="text-note">
+    <div class="text-note-label">TEXT NOTE — '히브리 말'</div>
+    <div class="text-note-body">이 표현이 히브리어를 가리키는지, 당시 유대인들이 일상에서 쓰던 아람어를 가리키는지는 논의가 있다. 이 교재는 어느 쪽인지 단정하지 않는다. 분명한 것은 바울이 유대인 청중에게 가장 익숙한 말로 말했다는 점이다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 11</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 12: SCENE 09 (22:3–5)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg done">② 성전 소동</div><div class="sg done">③ 체포</div><div class="sg on">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘 · 층대 위</span>
+    <span class="city-head-region">군중 앞에서의 변호 · 2 / 4</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 9</span>
+      <span class="scene-title">바울은 자신의 과거를 어떻게 설명했을까?</span>
+      <span class="scene-ref">행 22:3–5</span>
+    </div>
+    <div class="scene-body">
+      <p>바울은 고발에 하나하나 반박하지 않는다. 드로비모 이야기도 꺼내지 않는다. 그는 자기가 어떤 사람이었는지에서부터 말을 시작한다.</p>
+    </div>
+  </div>
+
+  <dl class="profile-attrs">
+    <dt>민족</dt><dd>"나는 <strong>유대인</strong>으로"</dd><span>22:3</span>
+    <dt>출생</dt><dd>길리기아 다소에서 났고</dd><span>22:3</span>
+    <dt>성장</dt><dd><strong>이 성</strong>, 곧 예루살렘에서 자라</dd><span>22:3</span>
+    <dt>교육</dt><dd><strong>가말리엘</strong>의 문하에서 우리 조상들의 율법의 엄한 교훈을 받았고</dd><span>22:3</span>
+    <dt>열심</dt><dd>"오늘 너희 모든 사람처럼 하나님께 대하여 열심이 있는 자라"</dd><span>22:3</span>
+    <dt>과거 행동</dt><dd>이 도를 박해하여 사람을 죽이기까지 하고, 남녀를 결박하여 옥에 넘김</dd><span>22:4</span>
+    <dt>증인</dt><dd>대제사장과 모든 장로들. 그들에게서 다메섹으로 가는 공문을 받음</dd><span>22:5</span>
+  </dl>
+
+  <div class="chain" style="grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;">
+    <div class="ch"><b>유대인</b>예루살렘에서 자람</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>율법 교육</b>가말리엘 문하</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>열심</b>"너희 모든 사람처럼"</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch key"><b>교회 박해</b>그 열심이 향한 곳</div>
+  </div>
+
+  <p class="body-text">이 소개의 요점은 <strong>"나는 여러분과 같은 사람이었다"</strong>이다. 무리는 바울을 백성과 율법과 성전을 거스르는 자로 알고 있다. 바울은 자신이 이 성에서 자랐고, 가장 존경받는 선생에게 율법을 배웠으며, 지금 눈앞의 무리가 품은 것과 똑같은 열심으로 불탔다고 말한다. 그리고 그 열심이 자기를 어디로 데려갔는지를 숨기지 않는다. 지금 그들이 자기에게 하려는 일을, 그는 예전에 다른 사람들에게 했다.</p>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">가말리엘 <span class="recall-badge">RECALL · L04</span></div>
+      <div class="background-box-body">모든 백성에게 존경받는 율법 교사이자 바리새인. 공회가 사도들을 죽이려 할 때 "이 사람들을 상관하지 말고 버려 두라"고 말했던 사람이다(5:34–39). 바울이 그의 제자였다는 사실은 사도행전에서 여기에 처음 나온다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">세 번 기록된 회심 <span class="recall-badge">RECALL · L07</span></div>
+      <div class="background-box-body">사도행전은 바울의 회심을 세 번 적는다. 9장은 <strong>누가</strong>가 3인칭으로 서술했다. 22장은 <strong>바울 자신</strong>이 유대인 무리에게 1인칭으로 말한다. 세 번째는 26장, 아그립바 왕 앞에서다(Lesson 15). 다음 쪽에서 9장과 22장을 나란히 놓는다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 12</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 13: SCENE 10 (22:6–16)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg done">② 성전 소동</div><div class="sg done">③ 체포</div><div class="sg on">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘 · 층대 위</span>
+    <span class="city-head-region">군중 앞에서의 변호 · 3 / 4</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 10</span>
+      <span class="scene-title">다메섹으로 가는 길에서 일어난 일</span>
+      <span class="scene-ref">행 22:6–16</span>
+    </div>
+    <div class="scene-body">
+      <p>박해자였던 사람이 어떻게 달라졌는가. 바울은 그날 일을 직접 들려준다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">오정쯤 하늘에서 큰 빛이 비쳐 땅에 엎드러짐 — "사울아 사울아 네가 왜 나를 박해하느냐"</div><div class="flow-step-desc">"주님 누구시니이까" — "나는 네가 박해하는 나사렛 예수라"</div></div><div class="flow-step-ref">22:6–8</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">빛의 광채로 볼 수 없게 되어 손에 끌려 다메섹에 들어감 — 아나니아가 와서 "형제 사울아 다시 보라"</div></div><div class="flow-step-ref">22:11–13</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">"네가 그를 위하여 모든 사람 앞에서 네가 보고 들은 것에 증인이 되리라 … 일어나 주의 이름을 불러 세례를 받고"</div></div><div class="flow-step-ref">22:15–16</div></div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">9장과 22장 나란히 읽기 <span class="recall-badge">RECALL · L07</span></h3>
+  <table class="trip-table">
+    <thead><tr><th></th><th>행 9장</th><th>행 22장</th></tr></thead>
+    <tbody>
+      <tr><td>말하는 이 · 듣는 이</td><td>누가 → 독자</td><td>바울 자신 → 예루살렘의 유대인 무리</td></tr>
+      <tr><td>동행자들</td><td>소리만 듣고 아무도 보지 못함 (9:7)</td><td>빛은 보면서도 말씀하시는 이의 소리는 듣지 못함 (22:9)</td></tr>
+      <tr class="edge"><td>아나니아</td><td>"그 때에 다메섹에 … 제자가 있으니" (9:10)</td><td>"<strong>율법에 따라 경건한</strong> 사람으로 거기 사는 모든 유대인들에게 칭찬을 듣는" (22:12)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="background-box">
+    <div class="background-box-title">IMPORTANT — 같은 사건, 다른 서술</div>
+    <div class="background-box-body">두 기록은 같은 사건을 전한다. 달라지는 것은 강조다. 22장의 바울은 율법에 열심인 무리 앞에서 아나니아가 <strong>율법에 경건한 유대인</strong>이었고 자기를 부르신 분이 <strong>"우리 조상들의 하나님"</strong>(22:14)이심을 말한다. 표현이 다른 대목을 억지로 합치지 않는다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 13</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 14: SCENE 11 (22:17–23)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg done">② 성전 소동</div><div class="sg done">③ 체포</div><div class="sg on">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘 · 층대 위</span>
+    <span class="city-head-region">군중 앞에서의 변호 · 4 / 4</span>
+    <span class="city-head-next">다음 → 영내</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 11</span>
+      <span class="scene-title">군중이 다시 분노한 이유</span>
+      <span class="scene-ref">행 22:17–23</span>
+    </div>
+    <div class="scene-body">
+      <p>무리는 여기까지 조용히 듣고 있다. 바울은 이야기를 한 걸음 더 끌고 간다. 9장에는 없던 장면이다. 회심한 뒤 예루살렘으로 돌아와 <strong>성전에서 기도할 때</strong> 주를 뵈었다는 것이다.</p>
+    </div>
+  </div>
+
+  <div class="dialog">
+    <div class="dl a"><div class="dl-who">주</div><div class="dl-say">"속히 예루살렘에서 나가라 그들은 네가 내게 대하여 증언하는 말을 듣지 아니하리라"</div><div class="dl-ref">22:18</div></div>
+    <div class="dl"><div class="dl-who">바울</div><div class="dl-say">"주님 내가 주를 믿는 사람들을 가두고 … 주의 증인 스데반이 피를 흘릴 때에 내가 곁에 서서 찬성하고 그 죽이는 사람들의 옷을 지킨 줄 그들도 아나이다"</div><div class="dl-ref">22:19–20</div></div>
+    <div class="dl a"><div class="dl-who">주</div><div class="dl-say">"떠나가라 내가 너를 멀리 이방인에게로 보내리라"</div><div class="dl-ref">22:21</div></div>
+  </div>
+
+  <p class="body-text">바울의 대답은 변명이 아니라 반론이다. 내가 박해자였던 것을 그들이 다 아니, 그런 내가 변한 것을 보면 내 말을 들을 것이라는 뜻이다. 그는 예루살렘에 남아 동족에게 증언하고 싶어 했다. 이방인에게 간 것은 바울이 고른 길이 아니었다. 주께서 보내셨다.</p>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">"이 말 하는 것까지" 듣다가 소리 지름 — "이러한 자는 세상에서 없애 버리자"</div></div><div class="flow-step-ref">22:22</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">떠들며 옷을 벗어 던지고 티끌을 공중에 날림</div></div><div class="flow-step-ref">22:23</div></div>
+  </div>
+
+  <div class="shift">
+    <div class="shift-col">
+      <div class="shift-label">무리가 끝까지 들은 말</div>
+      <div class="shift-text">박해자였다 · 빛을 보았다 · <strong>예수</strong>가 말씀하셨다 · 세례를 받았다 · 성전에서 주를 뵈었다</div>
+    </div>
+    <div class="shift-mid">→</div>
+    <div class="shift-col now">
+      <div class="shift-label">무리가 듣지 못한 말</div>
+      <div class="shift-text">"내가 너를 멀리 <strong>이방인에게로</strong> 보내리라"</div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:0;">
+    <div class="background-box-title">핵심 — 무엇이 걸림돌이었나</div>
+    <div class="background-box-body">무리는 예수의 이름이 나와도 참고 들었다. 그들을 폭발시킨 한 낱말은 <strong>이방인</strong>이다. 하나님이 이 사람을 이스라엘 밖으로 보내셨다는 말, 그것도 이 성전에서 그렇게 말씀하셨다는 말을 그들은 견디지 못했다. 예루살렘에서 벌어진 이 갈등의 한가운데에 바울의 이방인 선교가 있었음이 여기서 드러난다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 14</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 15: SCENE 12 (22:24–29)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg done">② 성전 소동</div><div class="sg done">③ 체포</div><div class="sg on">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘 · 영내</span>
+    <span class="city-head-region">로마 군대의 주둔지 안</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 12</span>
+      <span class="scene-title">로마 시민권이 바울을 보호하다</span>
+      <span class="scene-ref">행 22:24–29</span>
+    </div>
+    <div class="scene-body">
+      <p>천부장은 여전히 아무것도 알아내지 못했다. 그는 바울을 영내로 들이고 채찍질하며 심문하라고 명한다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">가죽 줄로 매일 때 바울이 곁에 선 백부장에게 물음</div><div class="flow-step-desc">"너희가 로마 시민 된 자를 죄도 정하지 아니하고 채찍질할 수 있느냐"</div></div><div class="flow-step-ref">22:25</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">백부장이 천부장에게 알림 — 심문하려던 사람들이 물러가고, 천부장도 결박한 것 때문에 두려워함</div></div><div class="flow-step-ref">22:26–29</div></div>
+  </div>
+
+  <div class="duo">
+    <div class="duo-col">
+      <div class="duo-role">천부장 · 22:28</div>
+      <div class="duo-name">돈을 많이 들여</div>
+      <div class="duo-text">"나는 <b>돈을 많이 들여</b> 이 시민권을 얻었노라"</div>
+    </div>
+    <div class="duo-col">
+      <div class="duo-role">바울 · 22:28</div>
+      <div class="duo-name">나면서부터</div>
+      <div class="duo-text">"나는 <b>나면서부터</b>라" — 그 집안이 어떻게 시민권을 얻었는지는 본문에 나오지 않는다.</div>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-2);">두 번의 시민권 <span class="recall-badge">RECALL · L12</span></h3>
+  <table class="trip-table">
+    <thead><tr><th></th><th>빌립보 (16:22–39)</th><th>예루살렘 (22:24–29)</th></tr></thead>
+    <tbody>
+      <tr><td>언제 밝혔나</td><td>매를 맞고 옥에 갇힌 <strong>뒤</strong>, 이튿날</td><td>채찍질하기 <strong>직전</strong></td></tr>
+      <tr><td>관리의 반응</td><td>상관들이 두려워함</td><td>천부장이 두려워함</td></tr>
+      <tr class="edge"><td>결과</td><td>공개적으로 풀려나 떠남</td><td>채찍질을 피함. 그러나 풀려나지는 않음</td></tr>
+    </tbody>
+  </table>
+
+  <div class="background-box">
+    <div class="background-box-title">로마 시민권이 한 일과 하지 못한 일</div>
+    <div class="background-box-body">시민권은 재판 없이 채찍질하는 것을 막았다. 두 번 다 바울의 말은 같다. "<strong>죄도 정하지 아니하고</strong>." 그러나 시민권이 바울을 풀어 주지는 못했다. 달라진 것은 대우다. 이제 그는 법대로 다루어야 할 로마 시민이고, 이후의 호송과 재판은 이 사실 위에서 진행된다. 다만 이것을 오늘날 누구에게나 보장되는 권리와 같은 것으로 여겨서는 안 된다. 당시 시민권은 소수만 가진 신분이었다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 15</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 16: SCENE 13 (22:30–23:5)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg done">② 성전 소동</div><div class="sg done">③ 체포</div><div class="sg on">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘 · 공회</span>
+    <span class="city-head-region">이튿날 · 공회 앞에서의 변론 · 1 / 2</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 13</span>
+      <span class="scene-title">공회 앞에서 바울이 변론하다</span>
+      <span class="scene-ref">행 22:30–23:5</span>
+    </div>
+    <div class="scene-body">
+      <p>채찍으로 알아낼 수 없게 된 천부장은 다른 길을 택한다. 유대인들이 무슨 일로 이 사람을 고발하는지 그들의 최고 회의에 직접 묻는 것이다. 그는 바울의 결박을 풀고, 제사장들과 온 공회를 모으게 하여 바울을 그 앞에 세운다.</p>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:0;">
+    <div class="background-box-title">이 자리의 성격 <span class="recall-badge">RECALL · L04 · L05</span></div>
+    <div class="background-box-body">공회는 유대인의 가장 높은 종교적 · 사법적 회의체다. 베드로와 요한이 섰고(4장), 사도들이 섰고(5장), 스데반이 섰던(6–7장) 곳이다. 그런데 이번 모임은 공회가 연 재판이 아니다. <strong>로마의 천부장이 진상을 알려고 마련한 자리</strong>다. 바울은 자기를 고발하는 유대 지도자들 앞에서 말하고, 로마 군대가 그것을 지켜본다.</div>
+  </div>
+
+  <div class="dialog">
+    <div class="dl"><div class="dl-who">바울</div><div class="dl-say">"여러분 형제들아 오늘까지 나는 범사에 양심을 따라 하나님을 섬겼노라"</div><div class="dl-ref">23:1</div></div>
+    <div class="dl a"><div class="dl-who">아나니아</div><div class="dl-say">(곁에 선 사람들에게 바울의 입을 치라 명함)</div><div class="dl-ref">23:2</div></div>
+    <div class="dl"><div class="dl-who">바울</div><div class="dl-say">"회칠한 담이여 하나님이 너를 치시리로다 네가 나를 율법대로 심판한다고 앉아서 율법을 어기고 나를 치라 하느냐"</div><div class="dl-ref">23:3</div></div>
+    <div class="dl a"><div class="dl-who">곁에 선 사람들</div><div class="dl-say">"하나님의 대제사장을 네가 욕하느냐"</div><div class="dl-ref">23:4</div></div>
+    <div class="dl"><div class="dl-who">바울</div><div class="dl-say">"형제들아 나는 그가 대제사장인 줄 알지 못하였노라 기록하였으되 너의 백성의 관리를 비방하지 말라 하였느니라"</div><div class="dl-ref">23:5</div></div>
+  </div>
+
+  <p class="body-text">변론은 첫 문장에서 끊긴다. 바울은 고발 내용에 답할 기회조차 얻지 못한다. 그의 항의는 정확하다. 율법대로 심판한다는 사람이, 죄가 정해지기도 전에 치라고 명하여 율법을 어긴다는 것이다. 지적을 받자 바울은 성경(출 22:28)을 들어 스스로 물러선다. 율법을 거스른다고 고발당한 사람이 율법을 인용하여 자기 말을 거둔다.</p>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">세 명의 아나니아</div>
+      <div class="background-box-body">같은 이름이 세 번째다. 삽비라의 남편 아나니아(5장 · L04), 다메섹에서 사울에게 안수한 제자 아나니아(9장 · L07, 13쪽), 그리고 이 <strong>대제사장</strong> 아나니아. 모두 다르다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">"알지 못하였노라"</div>
+      <div class="background-box-body">바울이 왜 대제사장을 알아보지 못했는지 본문은 설명하지 않는다. 여러 견해가 있으나 이 교재는 어느 하나를 택하지 않는다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 16</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 17: SCENE 14 (23:6–10)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg done">② 성전 소동</div><div class="sg done">③ 체포</div><div class="sg on">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘 · 공회</span>
+    <span class="city-head-region">공회 앞에서의 변론 · 2 / 2</span>
+    <span class="city-head-next">다음 → 영내</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 14</span>
+      <span class="scene-title">부활 문제로 공회가 갈라지다</span>
+      <span class="scene-ref">행 23:6–10</span>
+    </div>
+    <div class="scene-body">
+      <p>바울은 공회가 한 덩어리가 아니라는 것을 안다. 일부는 사두개인이고 일부는 바리새인이다. 그는 공회 한가운데서 외친다.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"여러분 형제들아 나는 바리새인이요 또 바리새인의 아들이라 죽은 자의 소망 곧 부활로 말미암아 내가 심문을 받노라"</div>
+    <div class="scripture-ref">사도행전 23:6</div>
+  </div>
+
+  <div class="duo">
+    <div class="duo-col" style="background:var(--accent-pale);">
+      <div class="duo-role">23:8</div>
+      <div class="duo-name" style="color:var(--accent);">바리새인</div>
+      <div class="duo-text">부활이 <b>있다</b><br>천사도 <b>있다</b><br>영도 <b>있다</b></div>
+    </div>
+    <div class="duo-col" style="background:var(--white);">
+      <div class="duo-role">23:8</div>
+      <div class="duo-name" style="color:var(--ink);">사두개인</div>
+      <div class="duo-text">부활이 <b>없다</b><br>천사도 <b>없다</b><br>영도 <b>없다</b></div>
+    </div>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">다툼이 생겨 무리가 나뉨 — 바리새인 편의 서기관 몇이 "우리가 이 사람을 보니 악한 것이 없도다" 함</div></div><div class="flow-step-ref">23:7–9</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">큰 분쟁이 생기자 천부장이 바울이 찢겨질까 하여 군인들에게 그를 빼앗아 영내로 들어가라 명함</div></div><div class="flow-step-ref">23:10</div></div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">꾀였을까, 고백이었을까</div>
+    <div class="background-box-body">바울이 공회를 갈라놓으려고 이 말을 꺼냈다고 볼 수도 있다. 그러나 그 말은 거짓도, 딴 이야기도 아니다. 바울이 전해 온 것의 한가운데에는 <strong>예수의 부활</strong>이 있었고, 그는 그것을 이스라엘이 기다려 온 소망이 이루어진 것으로 전했다. 바울은 사건의 쟁점을 '성전을 더럽혔는가'에서 <strong>'부활이 있는가'</strong>로 옮겨 놓았고, 본문은 그 옮김을 꾸짖지 않는다.</div>
+  </div>
+
+  <div class="text-note">
+    <div class="text-note-label">RECALL · L04 — 두 종파, 그리고 천부장이 얻은 것</div>
+    <div class="text-note-body">사도들이 처음 붙잡힌 것도 사두개인들이 부활의 가르침을 싫어했기 때문이고(4:1–2), 그들을 변호한 가말리엘은 바리새인이었다(5:34). 진상을 알려던 천부장이 본 것은 유대인들끼리 교리 문제로 싸우는 모습이다. 이 인상은 20쪽의 편지에 그대로 적힌다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 17</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 18: SCENE 15 (23:11)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg done">② 성전 소동</div><div class="sg done">③ 체포</div><div class="sg on">④ 변호</div><div class="sg">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘 · 영내</span>
+    <span class="city-head-region">그날 밤</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 15</span>
+      <span class="scene-title">주님이 바울에게 말씀하시다</span>
+      <span class="scene-ref">행 23:11</span>
+    </div>
+    <div class="scene-body">
+      <p>이틀 사이에 바울은 성전에서 맞았고, 무리에게 죽으라는 외침을 들었고, 채찍질 직전까지 갔으며, 공회에서 찢길 뻔했다. 두 번의 변호는 모두 소란으로 끝났다. 그 밤, 영내에 갇힌 바울 곁에 주께서 서신다.</p>
+    </div>
+  </div>
+
+  <div class="key-verse-box">
+    <div class="key-verse-label">그날 밤에 주께서 바울 곁에 서서 이르시되</div>
+    <div class="key-verse-text" style="font-size:17pt;line-height:1.55;">"담대하라<br>네가 예루살렘에서 나의 일을 증언한 것 같이<br>로마에서도 증언하여야 하리라"</div>
+    <div class="key-verse-ref">사도행전 23:11</div>
+  </div>
+
+  <div class="shift" style="margin-top:var(--sp-3);">
+    <div class="shift-col">
+      <div class="shift-label">예루살렘</div>
+      <div class="shift-text">층대 위에서, 공회 앞에서 — <strong>증언했다</strong></div>
+    </div>
+    <div class="shift-mid">→</div>
+    <div class="shift-col now">
+      <div class="shift-label">로마</div>
+      <div class="shift-text">앞으로 — <strong>증언하여야 하리라</strong></div>
+    </div>
+  </div>
+
+  <p class="body-text">이 한 절에서 두 가지를 읽을 수 있다. 첫째는 <strong>평가</strong>다. 사람의 눈에 두 번의 변호는 실패였다. 그런데 주께서는 그것을 "나의 일을 증언한 것"이라 부르신다. 둘째는 <strong>방향</strong>이다. 바울은 여기서 죽지 않는다. 그는 로마에 간다. 그리고 거기서 할 일도 정해져 있다. 증언이다.</p>
+
+  <table class="trip-table">
+    <thead><tr><th>로마에 대한 말</th><th>누가</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>19:21 · 에베소</td><td>바울</td><td>"후에 로마도 <strong>보아야</strong> 하리라" — 바울의 계획 <span class="recall-badge" style="margin-left:0;">L13</span></td></tr>
+      <tr class="edge"><td>23:11 · 예루살렘</td><td>주</td><td>"로마에서도 <strong>증언하여야</strong> 하리라" — 주의 말씀</td></tr>
+    </tbody>
+  </table>
+
+  <div class="background-box">
+    <div class="background-box-title">IMPORTANT — 사도행전 후반부의 방향</div>
+    <div class="background-box-body">이 말씀은 남은 이야기 전체의 나침반이다. 바울이 로마에 가는 것은 한 사람의 여행 계획이 아니다. 주께서 "하여야 하리라"고 하신 일이다. 이제부터 음모와 재판, 긴 구금과 풍랑이 이어지지만 독자는 이 절을 알고 읽는다. 고린도의 밤(18:9–10)처럼, 이 말씀도 바울이 가장 몰려 있을 때 주어졌다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 18</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 19: SCENE 16 (23:12–22)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg done">② 성전 소동</div><div class="sg done">③ 체포</div><div class="sg done">④ 변호</div><div class="sg on">⑤ 음모</div><div class="sg">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘</span>
+    <span class="city-head-region">날이 새매</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 16</span>
+      <span class="scene-title">바울을 죽이려는 음모</span>
+      <span class="scene-ref">행 23:12–22</span>
+    </div>
+    <div class="scene-body">
+      <p>"로마에서도 증언하여야 하리라"는 말씀 바로 다음 날 아침, 유대인들이 당을 지어 맹세한다.</p>
+    </div>
+  </div>
+
+  <div class="nums">
+    <div class="nm sum"><b>40여 명</b><span>동맹한 사람들 (23:13)</span></div>
+    <div class="nm" style="grid-column:span 3;"><b style="font-size:var(--fs-body);line-height:1.6;">"바울을 죽이기 전에는 먹지도 아니하고 마시지도 아니하겠다"</b><span>그들의 맹세 (23:12)</span></div>
+  </div>
+
+  <h3 class="section-heading">계획 (23:14–15)</h3>
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">대제사장들과 장로들에게 가서, 공회가 더 자세히 물어보려는 척하며 천부장에게 바울을 데리고 내려오게 하라고 청함</div></div><div class="flow-step-ref">23:14–15</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">"우리는 그가 가까이 오기 전에 죽이기로 준비하였노라"</div></div><div class="flow-step-ref">23:15</div></div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">그런데 — 음모가 새어 나가다 (23:16–22)</h3>
+  <div class="story-flow">
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">바울의 생질(조카)이 매복 소식을 듣고 영내에 들어가 바울에게 알림</div></div><div class="flow-step-ref">23:16</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">바울이 백부장에게 부탁하여 청년을 천부장에게 보냄</div></div><div class="flow-step-ref">23:17</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">천부장이 청년의 손을 잡고 물러가 조용히 듣고, 아무에게도 말하지 말라 당부함</div></div><div class="flow-step-ref">23:19–22</div></div>
+  </div>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">IMPORTANT — 조카는 어떻게 알았을까?</div>
+      <div class="background-box-body">본문은 말하지 않는다. "듣고 와서"가 전부다. 바울의 누이와 그 아들은 여기에만 나온다. 이 교재는 그 빈칸을 채우지 않는다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">눈여겨볼 점</div>
+      <div class="background-box-body">이 장면에는 천사도 지진도 없다. 바울을 건진 것은 한 청년의 귀와, 갇힌 사람의 부탁을 들어준 백부장과, 그 말을 귀담아들은 천부장이다. 어젯밤의 말씀이 이렇게 평범한 길로 지켜진다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 19</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 20: SCENE 17 (23:23–35)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 예루살렘으로</div><div class="sg done">② 성전 소동</div><div class="sg done">③ 체포</div><div class="sg done">④ 변호</div><div class="sg done">⑤ 음모</div><div class="sg on">⑥ 이송</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-name">예루살렘 → 안디바드리 → 가이사랴</span>
+    <span class="city-head-region">밤 제삼 시에 출발</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 17</span>
+      <span class="scene-title">바울이 가이사랴로 이송되다</span>
+      <span class="scene-ref">행 23:23–35</span>
+    </div>
+    <div class="scene-body">
+      <p>천부장은 바로 움직인다. 그날 밤으로 바울을 예루살렘에서 빼내어 총독이 있는 가이사랴로 보내기로 한다.</p>
+    </div>
+  </div>
+
+  <div class="nums">
+    <div class="nm"><b>200</b><span>보병</span></div>
+    <div class="nm"><b>70</b><span>기병</span></div>
+    <div class="nm"><b>200</b><span>창병</span></div>
+    <div class="nm sum"><b>470</b><span>죄수 한 사람을 위한 호송 병력</span></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:54mm 1fr;gap:var(--sp-3);align-items:start;">
+    <div>
+      <svg class="map-frame" viewBox="278 226 44 38" xmlns="http://www.w3.org/2000/svg">
+        <use href="#basemap"/>
+        <path d="M304.4,255.5 L299,248.2" fill="none" stroke="#1e1e1e" stroke-width=".7" stroke-linecap="round"/>
+        <path d="M298.6,247.5 L298,239" fill="none" stroke="#b4552d" stroke-width=".7" stroke-linecap="round" marker-end="url(#mk-acc)"/>
+        <circle cx="304.4" cy="255.5" r=".9" fill="#1e1e1e"/>
+        <circle cx="298.6" cy="247.5" r=".7" fill="#fff" stroke="#1e1e1e" stroke-width=".4"/>
+        <circle cx="297.8" cy="237.5" r="1.8" fill="#b4552d" opacity=".2"/><circle cx="297.8" cy="237.5" r="1" fill="#b4552d"/>
+        <g font-family="SCDream,sans-serif" font-size="2.2" font-weight="700" fill="#1e1e1e">
+          <text x="306" y="256.4">예루살렘</text>
+          <text x="300.2" y="248.2">안디바드리</text>
+          <text x="300" y="237.2" fill="#b4552d">가이사랴</text>
+          <g font-size="1.6" font-weight="400" fill="#4a4a4a">
+            <text x="303" y="251.6">보병 · 기병 · 창병 (밤)</text>
+            <text x="299.6" y="243.4">기병만 (이튿날)</text>
+          </g>
+          <text x="284" y="246" font-size="2" font-weight="400" fill="#8aa5b6">지중해</text>
+        </g>
+      </svg>
+      <div class="map-note">해안선은 단순화했다.</div>
+    </div>
+    <div class="story-flow">
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">바울을 태울 짐승까지 준비시키고 밤에 출발시킴</div></div><div class="flow-step-ref">23:23–24</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">안디바드리에 이름 — 이튿날 보병은 영내로 돌아감</div></div><div class="flow-step-ref">23:31–32</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">기병들이 가이사랴에 들어가 편지와 바울을 총독에게 넘김</div></div><div class="flow-step-ref">23:33</div></div>
+    </div>
+  </div>
+
+  <div class="letter">
+    <div class="letter-line"><div class="letter-k">보내는 이</div><div class="letter-v"><strong>글라우디오 루시아</strong> — 천부장의 이름이 여기서 처음 나온다</div><div class="letter-r">23:26</div></div>
+    <div class="letter-line"><div class="letter-k">받는 이</div><div class="letter-v">총독 <strong>벨릭스</strong> 각하</div><div class="letter-r">23:26</div></div>
+    <div class="letter-line"><div class="letter-k">경위</div><div class="letter-v">유대인들에게 잡혀 죽게 된 사람을 "로마 사람인 줄 들어 알고" 군대를 거느리고 가서 구했다</div><div class="letter-r">23:27</div></div>
+    <div class="letter-line"><div class="letter-k">판단</div><div class="letter-v">고발은 그들의 율법 문제에 관한 것뿐이요 <strong>죽이거나 결박할 사유가 없음</strong></div><div class="letter-r">23:29</div></div>
+    <div class="letter-line"><div class="letter-k">이송 사유</div><div class="letter-v">해하려는 간계가 있어 곧 보내며, 고발하는 사람들도 총독 앞에서 말하게 함</div><div class="letter-r">23:30</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">편지와 실제 순서</div>
+      <div class="background-box-body">10쪽과 15쪽을 다시 보자. 천부장은 바울이 누구인지 모르고 쇠사슬로 묶었고, 로마 시민인 것은 채찍질하려다 알았다. 편지에는 그 순서가 바뀌어 있고 채찍질 이야기는 없다. 그렇다고 천부장이 처음부터 바울을 무죄로 여겼던 것은 아니다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">가이사랴에서 · 23:34–35</div>
+      <div class="background-box-body">벨릭스는 편지를 읽고 바울이 어느 영지 사람인지 묻는다. 길리기아라는 답을 듣고 말한다. "너를 고발하는 사람들이 오거든 네 말을 들으리라." 그리고 <strong>헤롯 궁</strong>에 그를 지키게 한다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 20</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 21: 관계도 · 핵심 질문의 답
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <h2 class="section-heading">바울을 둘러싼 사람들 — 인물 관계도</h2>
+  <div class="rel">
+    <div class="rel-side">
+      <div class="rel-head">유대 쪽</div>
+      <div class="rl help"><span><b>야고보와 장로들</b>보고를 듣고 영광을 돌림. 소문을 걱정하여 정결 의식을 제안</span><i>→</i></div>
+      <div class="rl hostile"><span><b>아시아에서 온 유대인들 · 군중</b>성전에서 고발하고 붙잡아 죽이려 함</span><i>→</i></div>
+      <div class="rl hostile"><span><b>대제사장 아나니아와 공회</b>입을 치게 함. 부활 문제로 둘로 갈라짐</span><i>→</i></div>
+      <div class="rl hostile"><span><b>맹세한 사십여 명</b>공회를 끌어들여 매복 살해를 꾀함</span><i>→</i></div>
+      <div class="rl help"><span><b>바울의 조카</b>음모를 듣고 알림</span><i>→</i></div>
+    </div>
+    <div class="rel-center">바울</div>
+    <div class="rel-side rome">
+      <div class="rel-head">로마 쪽</div>
+      <div class="rl"><i>←</i><span><b>천부장 글라우디오 루시아</b>소요를 진압하며 체포 → 채찍질하려다 멈춤 → 공회에 세움 → 두 번 빼내 옴 → 가이사랴로 이송</span></div>
+      <div class="rl"><i>←</i><span><b>백부장들</b>시민권을 천부장에게 알리고, 조카를 천부장에게 데려감</span></div>
+      <div class="rl"><i>←</i><span><b>호송 병력 470명</b>밤에 안디바드리를 거쳐 가이사랴까지</span></div>
+      <div class="rl"><i>←</i><span><b>총독 벨릭스</b>편지와 바울을 넘겨받아 헤롯 궁에 지키게 함</span></div>
+    </div>
+  </div>
+
+  <p class="body-text">이 그림에서 두 가지를 볼 수 있다. 첫째, 바울을 해치려 한 쪽도 도운 쪽도 <strong>유대인 가운데</strong> 있었다. 둘째, 로마 쪽은 바울의 편이 아니었다. 천부장은 질서를 지키려 했을 뿐이나, 그 결과로 바울은 세 번 죽음에서 건져졌다.</p>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">원인과 결과로 다시 읽기</h3>
+  <table class="trip-table">
+    <thead><tr><th>단계</th><th>일어난 일</th><th>그 원인</th></tr></thead>
+    <tbody>
+      <tr><td>① 예루살렘으로</td><td>만류에도 올라감. 정결 의식에 참여</td><td class="ref">바울에 관한 <strong>소문</strong> (21:21)</td></tr>
+      <tr><td>② 성전 소동</td><td>붙잡혀 성전 밖으로 끌려 나감</td><td class="ref">드로비모에 관한 <strong>추측</strong> (21:29)</td></tr>
+      <tr><td>③ 체포</td><td>두 쇠사슬에 묶여 영내로</td><td class="ref">온 성의 <strong>소요</strong> (21:31)</td></tr>
+      <tr><td>④ 변호</td><td>층대 위에서, 공회 앞에서 말함</td><td class="ref">진상을 알려는 <strong>천부장</strong> (21:34, 22:30)</td></tr>
+      <tr><td>⑤ 음모</td><td>사십여 명의 맹세</td><td class="ref">공회에서도 결론이 나지 않음 (23:10)</td></tr>
+      <tr class="edge"><td>⑥ 이송</td><td>470명의 호송으로 가이사랴에</td><td class="ref">새어 나간 <strong>음모</strong> (23:16)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="background-box">
+    <div class="background-box-title">핵심 질문에 대한 답</div>
+    <div class="background-box-body">바울은 성전과 율법에 관한 고발로 예루살렘에서 소동에 휘말렸고, 로마 군대는 이를 진압하는 과정에서 그를 체포했다. 바울은 자신의 유대인 배경과 예수를 만난 경험을 설명했으며, 로마 시민권으로 부당한 채찍질을 피했다. 이후 공회에서의 논쟁과 살해 음모가 이어지자 로마 천부장은 그를 보호하기 위해 가이사랴로 이송했다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 21</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 22: LESSON SUMMARY
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 14</span>
+    <span class="page-header-title">예루살렘에서 체포된 바울</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);margin-bottom:var(--sp-2);">
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);">한눈에 보는 LESSON 14</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">사도행전 21:1–23:35</div>
+  </div>
+
+  <div class="summary-grid">
+
+    <div class="summary-block full">
+      <div class="summary-block-label">핵심 사건</div>
+      <div class="summary-block-content">
+        예루살렘으로 향함 → 아가보의 예언 → 야고보와 장로들을 만남 → <strong>성전에서 소동</strong> → <strong>로마 군대에 체포</strong> → 군중 앞에서 회심을 증언 → 로마 시민권 확인 → 공회에서 변론 → 부활 문제로 논쟁 → 주님의 격려 → 바울 살해 음모 → <strong>가이사랴 이송</strong>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">주요 인물</div>
+      <div class="summary-block-content">
+        <strong>바울</strong> — 예루살렘에서 체포되어 가이사랴로 이송됨<br>
+        <strong>아가보</strong> — 바울이 결박당할 것을 예언한 선지자<br>
+        <strong>야고보</strong> — 예루살렘 교회의 주요 지도자<br>
+        <strong>글라우디오 루시아</strong> — 바울을 체포하고 보호한 천부장<br>
+        <strong>아나니아</strong> — 공회에서 바울의 입을 치게 한 대제사장<br>
+        <strong>바울의 조카</strong> — 살해 음모를 알린 청년<br>
+        <strong>벨릭스</strong> — 가이사랴에서 바울을 넘겨받은 총독
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">헷갈리지 말 것</div>
+      <div class="summary-block-content">
+        <strong>21:21</strong> — 바울에 관한 '소문'이다. 사실로 적히지 않았다<br>
+        <strong>드로비모</strong> — 성전에 들어갔다는 것은 추측이었다<br>
+        <strong>만류</strong> — 바울이 성령께 불순종했다고 단정하지 않는다<br>
+        <strong>천부장</strong> — 처음부터 바울을 무죄로 본 것이 아니다<br>
+        <strong>아나니아</strong> — 5장, 9장, 23장의 세 사람은 모두 다르다<br>
+        <strong>조카</strong> — 어떻게 알았는지는 기록되지 않았다
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">핵심 개념 · 숫자</div>
+      <div class="summary-block-content" style="display:grid;grid-template-columns:1fr 1fr;gap:0 var(--sp-3);">
+        <div><strong>성전</strong> — 유대인의 종교적 중심지. 이방인의 출입이 제한된 경계가 있었다</div>
+        <div><strong>공회</strong> — 유대인의 주요 종교적 · 사법적 회의체</div>
+        <div><strong>바리새인</strong> — 부활과 천사와 영이 있다고 한 종파</div>
+        <div><strong>사두개인</strong> — 부활도 천사도 영도 없다고 한 종파</div>
+        <div><strong>로마 시민권</strong> — 일정한 법적 보호를 받는 신분</div>
+        <div><strong>천부장</strong> — 백부장들을 거느리는 로마군 장교</div>
+        <div><strong>사십여 명</strong> — 바울을 죽이기로 맹세한 사람들</div>
+        <div><strong>470명</strong> — 가이사랴로 가는 호송 병력</div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        소문과 추측에서 시작된 성전 소동으로 바울은 로마 군대에 체포되었고, 군중과 공회 앞에서 예수를 증언한 뒤 살해 음모를 피해 가이사랴로 옮겨졌으며, 그 한가운데서 로마에서도 증언하리라는 주의 말씀을 들었다.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="next-box">
+    <div class="next-part">NEXT · LESSON 15</div>
+    <div class="next-title">로마 총독과 왕 앞에 선 바울</div>
+    <div class="next-ref">사도행전 24–26장</div>
+    <div class="next-text">바울은 가이사랴에서 벨릭스, 베스도, 아그립바 왕 앞에 서게 된다. 여러 재판 장면을 비교하면서 바울이 무슨 이유로 고발당했고, 어떻게 변호했으며, 왜 결국 로마 황제에게 상소하게 되었는지 공부한다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 14 · 22</span>
+  </div>
+</section>
+
+
+</body>
+</html>

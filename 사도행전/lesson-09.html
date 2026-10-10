@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 09 — 안디옥 교회의 등장</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 09 전용 스타일 ── */
+
+    .story-connection { margin-top:auto; border-top:1px solid var(--rule); padding-top:var(--sp-3); display:flex; gap:var(--sp-2); align-items:stretch; }
+    .sc-col { flex:1; padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; display:flex; flex-direction:column; gap:1.5mm; }
+    .sc-col.current { border-color:var(--accent); background:var(--accent-pale); }
+    .sc-col-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.08em; }
+    .sc-col.current .sc-col-label { color:var(--accent); }
+    .sc-col-title { font-size:var(--fs-small); font-weight:700; color:var(--ink); line-height:1.3; }
+    .sc-col.current .sc-col-title { color:var(--accent); }
+    .sc-flow-text { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.7; }
+    .sc-arrow { display:flex; align-items:center; font-size:14pt; color:var(--accent); padding:0 1mm; }
+
+    .recall-badge { display:inline-flex; align-items:center; padding:.5mm 2mm; background:var(--page-bg); border:1px solid var(--rule); border-radius:3px; font-size:6.5pt; color:var(--ink-faint); font-weight:700; letter-spacing:.05em; vertical-align:middle; margin-left:2mm; }
+    .new-concept { display:inline-block; padding:1.5mm 3mm; background:var(--accent); border-radius:3px; font-size:6.5pt; font-weight:700; color:var(--white); letter-spacing:.08em; margin-right:2mm; vertical-align:middle; }
+    .lead { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.7; margin-bottom:var(--sp-2); }
+    .body-text { font-size:var(--fs-body); color:var(--ink); line-height:1.75; }
+    .body-text + .body-text { margin-top:var(--sp-1); }
+
+    .acts18-bar { display:flex; align-items:center; gap:0; margin:var(--sp-1) 0; }
+    .a18-node { display:flex; flex-direction:column; align-items:center; gap:1.5mm; }
+    .a18-circle { width:9mm; height:9mm; border-radius:50%; border:2px solid var(--rule); background:var(--white); display:flex; align-items:center; justify-content:center; font-size:7pt; flex-shrink:0; }
+    .a18-circle.done { background:var(--accent); border-color:var(--accent); color:var(--white); font-weight:700; }
+    .a18-circle.going { border-color:var(--accent); background:var(--accent-pale); color:var(--accent); font-weight:700; }
+    .a18-label { font-size:6.5pt; font-weight:700; color:var(--ink-faint); text-align:center; line-height:1.2; max-width:16mm; }
+    .a18-node.done .a18-label, .a18-node.going .a18-label { color:var(--accent); }
+    .a18-line { flex:1; height:1.5px; background:var(--rule); margin-bottom:4mm; }
+    .a18-line.done { background:var(--accent); }
+
+    /* 두 도시 (Opening) */
+    .two-city { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); align-items:stretch; margin-top:var(--sp-2); }
+    .tcity { padding:var(--sp-2) var(--sp-3); border-radius:4px; text-align:center; }
+    .tcity.jerusalem { background:var(--ink); }
+    .tcity.antioch { background:var(--accent); }
+    .tcity-name { font-size:var(--fs-h2); font-weight:700; color:var(--white); }
+    .tcity-note { font-size:var(--fs-caption); color:rgba(255,255,255,.8); margin-top:1mm; }
+    .tcity-mid { display:flex; align-items:center; font-size:14pt; color:var(--rule-mid); }
+    .tcity-line { margin-top:var(--sp-1); text-align:center; font-family:var(--ff-hand); font-size:13pt; color:var(--accent); }
+
+    /* 병렬 Track */
+    .dual-track { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-3); margin:var(--sp-2) 0 0; }
+    .dt-col { display:flex; flex-direction:column; }
+    .dt-head { padding:2mm 3mm; border-radius:4px 4px 0 0; font-size:var(--fs-caption); font-weight:700; letter-spacing:.1em; color:var(--white); }
+    .dt-col.a .dt-head { background:var(--accent); }
+    .dt-col.b .dt-head { background:var(--ink); }
+    .dt-head small { display:block; font-size:var(--fs-small); letter-spacing:0; margin-top:.5mm; }
+    .dt-step { display:flex; gap:3mm; align-items:baseline; padding:2.2mm 3mm; border:1px solid var(--rule); border-top:none; font-size:var(--fs-small); color:var(--ink); line-height:1.45; }
+    .dt-col.a .dt-step { background:var(--accent-pale); border-color:var(--accent-soft); }
+    .dt-step:last-child { border-radius:0 0 4px 4px; }
+    .dt-ref { flex-shrink:0; min-width:15mm; font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); }
+    .dt-col.a .dt-ref { color:var(--accent); }
+    .dt-join { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-3); height:7mm; }
+    .dt-join span { justify-self:center; width:1.5px; background:var(--rule-mid); }
+    .dt-result { padding:var(--sp-2) var(--sp-3); border:2px solid var(--accent); border-radius:4px; text-align:center; }
+    .dt-result-ref { font-size:var(--fs-caption); font-weight:700; color:var(--accent); letter-spacing:.08em; }
+    .dt-result-text { font-family:var(--ff-hand); font-size:18pt; color:var(--accent); line-height:1.4; margin-top:1mm; }
+
+    .q-list { margin:var(--sp-1) 0 0; padding:0; list-style:none; counter-reset:q; }
+    .q-list li { counter-increment:q; display:flex; gap:3mm; padding:1.6mm 0; border-bottom:1px dotted var(--rule); font-size:var(--fs-small); color:var(--ink); }
+    .q-list li::before { content:"Q" counter(q); font-weight:700; color:var(--accent); min-width:6mm; }
+
+    /* 지도 */
+    .map-frame { border:1px solid var(--rule); border-radius:4px; background:#e3ecf1; display:block; width:100%; }
+    .map-legend { display:flex; flex-wrap:wrap; gap:1.5mm 5mm; margin-top:var(--sp-1); font-size:var(--fs-caption); color:var(--ink-soft); }
+    .map-legend b { color:var(--ink); }
+
+    /* 대상의 변화 */
+    .shift { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); align-items:stretch; margin:var(--sp-2) 0; }
+    .shift-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; background:var(--page-bg); }
+    .shift-col.now { background:var(--accent-pale); border:1.5px solid var(--accent-soft); }
+    .shift-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.06em; margin-bottom:1mm; }
+    .shift-col.now .shift-label { color:var(--accent); }
+    .shift-text { font-size:var(--fs-small); color:var(--ink); line-height:1.55; }
+    .shift-mid { display:flex; align-items:center; font-size:13pt; color:var(--accent); }
+
+    .recall-pair { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-2); margin:var(--sp-2) 0; }
+    .recall-card { padding:var(--sp-2); border:1px dashed var(--rule-mid); border-radius:4px; }
+    .recall-card-label { font-size:6.5pt; font-weight:700; color:var(--ink-faint); letter-spacing:.08em; margin-bottom:1mm; }
+    .recall-card-text { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.6; }
+
+    /* 도시 비교표 */
+    .city-table { width:100%; border-collapse:collapse; margin:var(--sp-2) 0; font-size:var(--fs-small); }
+    .city-table th { padding:2.5mm 3mm; text-align:left; font-size:var(--fs-body); color:var(--white); }
+    .city-table th:first-child { background:var(--ink); border-radius:4px 0 0 0; }
+    .city-table th:last-child { background:var(--accent); border-radius:0 4px 0 0; }
+    .city-table td { padding:2.5mm 3mm; border:1px solid var(--rule); color:var(--ink-soft); width:50%; line-height:1.5; }
+    .city-table td:last-child { background:var(--accent-pale); color:var(--ink); }
+
+    /* Character Timeline (다음 Lesson에서도 재사용) */
+    .char-timeline { margin:var(--sp-2) 0; }
+    .ct-item { display:grid; grid-template-columns:7mm 24mm 1fr; align-items:stretch; }
+    .ct-left { display:flex; flex-direction:column; align-items:center; }
+    .ct-dot { width:3.4mm; height:3.4mm; border-radius:50%; background:var(--rule-mid); margin-top:1.6mm; flex-shrink:0; }
+    .ct-dot.current { background:var(--accent); box-shadow:0 0 0 1.2mm var(--accent-soft); }
+    .ct-dot.future { background:var(--white); border:1.5px dashed var(--accent); }
+    .ct-line { flex:1; width:1.5px; background:var(--rule); }
+    .ct-line.future { background:none; border-left:1.5px dashed var(--rule-mid); }
+    .ct-lesson { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); padding-top:1mm; }
+    .ct-text { font-size:var(--fs-small); color:var(--ink-soft); padding:.6mm 0 3.5mm; line-height:1.5; }
+    .ct-item.current .ct-lesson { color:var(--accent); }
+    .ct-item.current .ct-text { color:var(--ink); font-weight:700; }
+
+    /* 두 이야기의 합류 */
+    .merge { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); align-items:center; margin:var(--sp-2) 0; }
+    .merge-side { display:flex; flex-direction:column; gap:var(--sp-2); }
+    .merge-card { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; }
+    .merge-card-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); }
+    .merge-card-text { font-size:var(--fs-small); color:var(--ink); margin-top:.5mm; }
+    .merge-arrows { display:flex; flex-direction:column; justify-content:space-around; height:100%; font-size:13pt; color:var(--accent); }
+    .merge-result { padding:var(--sp-3) var(--sp-2); background:var(--accent); border-radius:4px; text-align:center; color:var(--white); }
+    .merge-result b { display:block; font-size:var(--fs-h2); }
+    .merge-result span { font-size:var(--fs-caption); opacity:.85; }
+
+    /* 이름의 변화 */
+    .name-big { text-align:center; padding:var(--sp-3) 0; border-top:2px solid var(--accent); border-bottom:2px solid var(--accent); margin:var(--sp-2) 0; }
+    .name-big-ko { font-size:30pt; font-weight:700; color:var(--accent); line-height:1.2; }
+    .name-big-en { font-size:var(--fs-small); color:var(--ink-faint); letter-spacing:.3em; margin-top:1mm; }
+    .name-list { margin:var(--sp-1) 0; }
+    .name-row { display:grid; grid-template-columns:44mm 1fr; padding:2mm 3mm; border-bottom:1px solid var(--rule); font-size:var(--fs-small); align-items:baseline; }
+    .name-row b { color:var(--ink); }
+    .name-row span { color:var(--ink-soft); font-size:var(--fs-caption); }
+    .name-row.now { background:var(--accent-pale); border-bottom-color:var(--accent-soft); }
+    .name-row.now b { color:var(--accent); }
+
+    /* 상호 지원 */
+    .mutual { display:grid; grid-template-columns:34mm 1fr 34mm; gap:var(--sp-2); align-items:center; margin:var(--sp-2) 0; }
+    .mutual-city { padding:var(--sp-3) var(--sp-1); border-radius:4px; text-align:center; font-weight:700; color:var(--white); font-size:var(--fs-body); }
+    .mutual-city.j { background:var(--ink); }
+    .mutual-city.a { background:var(--accent); }
+    .mutual-lanes { display:flex; flex-direction:column; gap:var(--sp-1); }
+    .mutual-lane { padding:2mm 3mm; border-radius:3px; font-size:var(--fs-caption); line-height:1.5; }
+    .mutual-lane.to-a { background:var(--page-bg); border:1px solid var(--rule); color:var(--ink-soft); }
+    .mutual-lane.to-j { background:var(--accent-pale); border:1px solid var(--accent-soft); color:var(--ink); text-align:right; }
+    .mutual-lane b { display:block; font-size:var(--fs-small); }
+
+    /* 헤롯 가계 */
+    .herod-tree { margin:var(--sp-1) 0 0; }
+    .ht-row { display:grid; grid-template-columns:8mm 1fr; align-items:stretch; }
+    .ht-rail { display:flex; flex-direction:column; align-items:center; }
+    .ht-rail i { width:2.6mm; height:2.6mm; border-radius:50%; background:var(--rule-mid); margin-top:1.4mm; flex-shrink:0; }
+    .ht-rail u { flex:1; width:1.5px; background:var(--rule); }
+    .ht-row.now .ht-rail i { background:var(--accent); }
+    .ht-body { padding-bottom:2mm; font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.5; }
+    .ht-body b { font-size:var(--fs-small); color:var(--ink); }
+    .ht-row.now .ht-body b { color:var(--accent); }
+    .ht-gen { font-size:6.5pt; color:var(--ink-faint); font-weight:700; letter-spacing:.06em; }
+
+    .two-james { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-2); margin-top:var(--sp-1); }
+    .tj { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; }
+    .tj.now { border:1.5px solid var(--accent); background:var(--accent-pale); }
+    .tj-name { font-size:var(--fs-small); font-weight:700; color:var(--ink); }
+    .tj.now .tj-name { color:var(--accent); }
+    .tj-text { font-size:var(--fs-caption); color:var(--ink-soft); margin-top:.5mm; line-height:1.5; }
+
+    /* 감옥 */
+    .prison { border:2px solid var(--ink); border-radius:4px; padding:var(--sp-2); background:repeating-linear-gradient(90deg, transparent 0 11mm, rgba(30,30,30,.07) 11mm 11.6mm); }
+    .prison-title { font-size:var(--fs-caption); font-weight:700; letter-spacing:.1em; color:var(--ink); margin-bottom:var(--sp-1); }
+    .prison-row { display:flex; justify-content:center; align-items:center; gap:2mm; margin:1.5mm 0; }
+    .p-unit { padding:1.6mm 3mm; border-radius:3px; font-size:var(--fs-caption); font-weight:700; background:var(--white); border:1px solid var(--rule-mid); color:var(--ink-soft); }
+    .p-unit.peter { background:var(--accent); border-color:var(--accent); color:var(--white); }
+    .p-chain { font-size:var(--fs-caption); color:var(--ink-faint); letter-spacing:.1em; }
+    .p-door { border-top:1.5px dashed var(--ink); margin-top:2mm; padding-top:2mm; }
+    .contrast { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); align-items:stretch; margin:var(--sp-2) 0; }
+    .contrast-col { padding:var(--sp-2) var(--sp-3); border-radius:4px; }
+    .contrast-col.dark { background:var(--ink); color:var(--white); }
+    .contrast-col.light { background:var(--accent-pale); border:1.5px solid var(--accent); }
+    .contrast-label { font-size:var(--fs-caption); font-weight:700; letter-spacing:.08em; opacity:.75; }
+    .contrast-col.light .contrast-label { color:var(--accent); opacity:1; }
+    .contrast-text { font-size:var(--fs-body); font-weight:700; margin-top:1mm; line-height:1.45; }
+    .contrast-col.light .contrast-text { color:var(--accent); }
+    .contrast-mid { display:flex; align-items:center; font-size:12pt; color:var(--rule-mid); }
+
+    /* 탈출 Sequence */
+    .escape-seq { display:grid; grid-template-columns:1fr 1fr; grid-auto-flow:column; grid-template-rows:repeat(5,auto); gap:1.6mm var(--sp-3); margin:var(--sp-2) 0; }
+    .es { display:grid; grid-template-columns:8mm 1fr; gap:2mm; align-items:start; padding:2.2mm 2.5mm; border:1px solid var(--rule); border-radius:4px; }
+    .es-num { width:7mm; height:7mm; border-radius:50%; background:var(--ink); color:var(--white); font-size:var(--fs-caption); font-weight:700; display:flex; align-items:center; justify-content:center; }
+    .es-title { font-size:var(--fs-small); font-weight:700; color:var(--ink); line-height:1.35; }
+    .es-desc { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.5; margin-top:.4mm; }
+    .es.out { background:var(--accent-pale); border-color:var(--accent-soft); }
+    .es.out .es-num { background:var(--accent); }
+    .es-zone { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-3); font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .es-zone span:last-child { color:var(--accent); }
+
+    /* 역설 */
+    .door-scene { display:grid; grid-template-columns:1fr 9mm 1fr; margin:var(--sp-2) 0; border:1px solid var(--rule); border-radius:4px; overflow:hidden; }
+    .door-side { padding:var(--sp-2); }
+    .door-side.inside { background:var(--page-bg); }
+    .door-side-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); margin-bottom:1mm; }
+    .door-line { font-size:var(--fs-small); color:var(--ink); padding:1.2mm 0; line-height:1.45; }
+    .door-line small { color:var(--ink-faint); font-size:var(--fs-caption); }
+    .door-wall { background:var(--ink); display:flex; align-items:center; justify-content:center; color:var(--white); font-size:6.5pt; font-weight:700; writing-mode:vertical-rl; letter-spacing:.2em; }
+    .door-side.outside .door-line { color:var(--accent); font-weight:700; }
+
+    /* PART 복습 */
+    .part-review { margin:var(--sp-2) 0; }
+    .pr-item { display:grid; grid-template-columns:22mm 1fr; gap:var(--sp-2); padding:var(--sp-2) 0; border-bottom:1px solid var(--rule); align-items:baseline; }
+    .pr-num { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.06em; }
+    .pr-title { font-size:var(--fs-body); font-weight:700; color:var(--ink); }
+    .pr-text { font-size:var(--fs-small); color:var(--ink-soft); margin-top:.5mm; line-height:1.55; }
+    .pr-item.now .pr-num, .pr-item.now .pr-title { color:var(--accent); }
+    .next-box { margin-top:var(--sp-3); padding:var(--sp-3); background:var(--ink); border-radius:4px; color:var(--white); }
+    .next-part { font-size:var(--fs-caption); font-weight:700; letter-spacing:.12em; opacity:.7; }
+    .next-title { font-size:var(--fs-title); font-weight:700; margin-top:1mm; }
+    .next-ref { font-size:var(--fs-caption); opacity:.7; margin-top:.5mm; }
+    .next-text { font-size:var(--fs-small); line-height:1.7; margin-top:var(--sp-2); opacity:.92; }
+    .mode-shift { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); margin-top:var(--sp-2); align-items:stretch; }
+    .mode { padding:var(--sp-2); border-radius:4px; border:1px solid rgba(255,255,255,.3); font-size:var(--fs-caption); line-height:1.55; }
+    .mode b { display:block; font-size:var(--fs-small); margin-bottom:.5mm; }
+    .mode.next { background:var(--accent); border-color:var(--accent); }
+    .mode-arrow { display:flex; align-items:center; font-size:12pt; opacity:.7; }
+
+    .text-note { margin:var(--sp-2) 0 0; padding:var(--sp-2) var(--sp-3); border-left:3px solid var(--rule-mid); background:var(--page-bg); border-radius:0 3px 3px 0; }
+    .text-note-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); margin-bottom:1mm; }
+    .text-note-body { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.65; }
+  </style>
+</head>
+<body>
+
+
+<!-- ════════════════════════════════════
+     PAGE 1: LESSON OPENING
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">09</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 3 — 복음이 경계를 넘다 · 마지막 Lesson</div>
+      <h1 class="opening-title">안디옥 교회의 등장</h1>
+      <div class="opening-scripture">사도행전 11:19–12:25</div>
+    </div>
+  </div>
+
+  <div class="lesson-summary-line">
+    스데반의 죽음 이후 흩어진 신자들이 안디옥에서도 복음을 전하면서 새로운 교회가 성장하고, 바나바와 사울이 그곳에서 함께 사역하는 동안 예루살렘에서는 헤롯의 박해가 계속되지만 하나님의 말씀은 더욱 확산된다.
+  </div>
+
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">바나바 · 사울 · 아가보 · 헤롯 아그립바 1세 · 야고보 · 베드로 · 마리아 · 로데</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">예루살렘 · 베니게 · 구브로 · 수리아 안디옥 · 가이사랴</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">핵심 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2mm;margin-top:1.5mm;">
+        <span class="tag">흩어짐</span><span class="tag">안디옥</span><span class="tag">이방인</span>
+        <span class="tag">바나바</span><span class="tag">사울</span><span class="tag">그리스도인</span>
+        <span class="tag">구제</span><span class="tag">박해</span><span class="tag">기도</span>
+      </div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">Acts 1:8 진행</div>
+      <div class="acts18-bar">
+        <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">예루살렘</div></div>
+        <div class="a18-line done"></div>
+        <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">유대</div></div>
+        <div class="a18-line done"></div>
+        <div class="a18-node done"><div class="a18-circle done">✓</div><div class="a18-label">사마리아</div></div>
+        <div class="a18-line done"></div>
+        <div class="a18-node going"><div class="a18-circle going">→</div><div class="a18-label">땅끝</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-city">
+    <div class="tcity jerusalem">
+      <div class="tcity-name">예루살렘</div>
+      <div class="tcity-note">박해와 투옥</div>
+    </div>
+    <div class="tcity-mid">↔</div>
+    <div class="tcity antioch">
+      <div class="tcity-name">안디옥</div>
+      <div class="tcity-note">새로운 교회의 성장</div>
+    </div>
+  </div>
+  <div class="tcity-line">박해는 계속되었지만, 복음의 확산도 멈추지 않았다.</div>
+
+  <div class="story-connection">
+    <div class="sc-col">
+      <div class="sc-col-label">LESSON 08</div>
+      <div class="sc-col-title">이방인에게도 성령이 임함</div>
+      <div class="sc-flow-text">고넬료 사건 → 예루살렘 교회가 "하나님께서 이방인에게도 생명 얻는 회개를 주셨다"고 인정</div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-col current">
+      <div class="sc-col-label">LESSON 09</div>
+      <div class="sc-col-title">이방인을 포함한 교회가 실제로 세워진다</div>
+      <div class="sc-flow-text">한 가정에서 확인된 일이 안디옥이라는 큰 도시에서 하나의 공동체로 자라난다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 1</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 2: BIG PICTURE
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <h2 class="section-heading">이번에는 두 도시에서 이야기가 진행된다</h2>
+  <p class="lead">이번 본문은 하나의 긴 사건 목록이 아니다. 누가는 안디옥의 이야기를 먼저 들려준 뒤, "그 무렵에"(12:1)라는 말로 장소를 예루살렘으로 옮긴다. 두 줄기를 나란히 놓고 읽어야 마지막 한 문장의 무게가 보인다.</p>
+
+  <div class="dual-track">
+    <div class="dt-col a">
+      <div class="dt-head">TRACK A<small>안디옥 · 11:19–30</small></div>
+      <div class="dt-step"><span class="dt-ref">11:19–21</span><span>흩어진 신자들이 복음을 전함</span></div>
+      <div class="dt-step"><span class="dt-ref">11:22–24</span><span>바나바가 안디옥으로 파견됨</span></div>
+      <div class="dt-step"><span class="dt-ref">11:25–26</span><span>사울을 데려와 함께 가르침</span></div>
+      <div class="dt-step"><span class="dt-ref">11:27–30</span><span>예루살렘을 위한 구제</span></div>
+    </div>
+    <div class="dt-col b">
+      <div class="dt-head">TRACK B<small>예루살렘 · 12:1–23</small></div>
+      <div class="dt-step"><span class="dt-ref">12:1–2</span><span>헤롯이 야고보를 죽임</span></div>
+      <div class="dt-step"><span class="dt-ref">12:3–5</span><span>베드로를 체포하고 투옥함</span></div>
+      <div class="dt-step"><span class="dt-ref">12:6–19</span><span>천사의 도움으로 베드로가 탈출함</span></div>
+      <div class="dt-step"><span class="dt-ref">12:20–23</span><span>헤롯의 죽음</span></div>
+    </div>
+  </div>
+  <div class="dt-join"><span></span><span></span></div>
+  <div class="dt-result">
+    <div class="dt-result-ref">두 이야기의 결론 · 사도행전 12:24</div>
+    <div class="dt-result-text">"하나님의 말씀은 흥왕하여 더하더라."</div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">핵심 학습 질문</h3>
+  <ol class="q-list">
+    <li>안디옥 교회는 어떻게 시작되었는가?</li>
+    <li>바나바와 사울은 어떻게 함께 사역하게 되었는가?</li>
+    <li>예루살렘의 박해는 어떻게 진행되었는가?</li>
+    <li>이 두 이야기를 함께 기록한 이유는 무엇인가?</li>
+  </ol>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 3: MAP
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <h2 class="section-heading">예루살렘 밖에 새로운 중심지가 생기다 — 학습용 지도</h2>
+  <p class="lead">지금까지의 지도는 유대와 사마리아 안에 머물렀다. 이번 Lesson부터는 지중해 동부 전체를 보아야 한다.</p>
+
+  <svg class="map-frame" viewBox="0 0 200 128" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr9" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#b4552d"/></marker>
+    </defs>
+    <!-- 육지 -->
+    <path d="M0,0 H200 V128 H152 L148,112 L151,96 L154,80 L157,62 L154,48 L144,38 L128,36 L112,42 L94,44 L78,39 L60,46 L42,41 L22,47 L0,43 Z" fill="#f4f0ea" stroke="#d8d4ce" stroke-width=".6"/>
+    <!-- 구브로 -->
+    <path d="M94,66 Q104,58 118,62 L132,57 L122,66 Q112,74 98,71 Z" fill="#f4f0ea" stroke="#d8d4ce" stroke-width=".6"/>
+    <text x="108" y="68" font-size="4.6" fill="#4a4a4a" text-anchor="middle" font-family="SCDream,sans-serif" font-weight="700">구브로</text>
+    <text x="108" y="79" font-size="3.4" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">(키프로스)</text>
+
+    <text x="60" y="92" font-size="6" fill="#8aa5b6" text-anchor="middle" font-family="SCDream,sans-serif" letter-spacing="3">지 중 해</text>
+    <text x="70" y="14" font-size="4.5" fill="#b0aa9f" text-anchor="middle" font-family="SCDream,sans-serif" letter-spacing="2">소 아 시 아</text>
+    <text x="184" y="34" font-size="4.5" fill="#b0aa9f" text-anchor="middle" font-family="SCDream,sans-serif" letter-spacing="1">수리아</text>
+    <text x="184" y="118" font-size="4.5" fill="#b0aa9f" text-anchor="middle" font-family="SCDream,sans-serif" letter-spacing="1">유대</text>
+
+    <!-- 흩어짐의 흐름 -->
+    <path d="M160,112 Q166,100 160,90" stroke="#b4552d" stroke-width="1" fill="none" stroke-dasharray="2.5,1.8" marker-end="url(#arr9)"/>
+    <path d="M150,106 Q136,88 124,70" stroke="#b4552d" stroke-width="1" fill="none" stroke-dasharray="2.5,1.8" marker-end="url(#arr9)"/>
+    <path d="M166,110 Q180,78 166,50" stroke="#b4552d" stroke-width="1.3" fill="none" stroke-dasharray="2.5,1.8" marker-end="url(#arr9)"/>
+
+    <!-- 예루살렘 -->
+    <circle cx="162" cy="116" r="2.6" fill="#1e1e1e"/>
+    <text x="167" y="124" font-size="4.6" fill="#1e1e1e" font-family="SCDream,sans-serif" font-weight="700">예루살렘</text>
+    <!-- 가이사랴 -->
+    <circle cx="150" cy="104" r="1.8" fill="#888"/>
+    <text x="146" y="103" font-size="4" fill="#4a4a4a" text-anchor="end" font-family="SCDream,sans-serif">가이사랴</text>
+    <!-- 베니게 -->
+    <circle cx="153" cy="88" r="1.3" fill="#888"/><circle cx="155" cy="80" r="1.3" fill="#888"/>
+    <text x="149" y="90" font-size="3.4" fill="#888" text-anchor="end" font-family="SCDream,sans-serif">두로</text>
+    <text x="151" y="80" font-size="3.4" fill="#888" text-anchor="end" font-family="SCDream,sans-serif">시돈</text>
+    <text x="170" y="84" font-size="4.4" fill="#4a4a4a" font-family="SCDream,sans-serif" font-weight="700">베니게</text>
+    <text x="170" y="89" font-size="3.2" fill="#888" font-family="SCDream,sans-serif">(페니키아)</text>
+    <!-- 수리아 안디옥 -->
+    <circle cx="163" cy="46" r="6" fill="#b4552d" opacity=".18"/>
+    <circle cx="163" cy="46" r="3.2" fill="#b4552d"/>
+    <text x="170" y="45" font-size="5" fill="#b4552d" font-family="SCDream,sans-serif" font-weight="700">수리아</text>
+    <text x="170" y="51" font-size="5" fill="#b4552d" font-family="SCDream,sans-serif" font-weight="700">안디옥</text>
+    <!-- 다소 -->
+    <circle cx="134" cy="30" r="2" fill="#1e1e1e"/>
+    <text x="134" y="25" font-size="4.4" fill="#1e1e1e" text-anchor="middle" font-family="SCDream,sans-serif" font-weight="700">다소</text>
+    <!-- 비시디아 안디옥 -->
+    <circle cx="58" cy="24" r="2.2" fill="none" stroke="#888" stroke-width=".8" stroke-dasharray="1.2,.8"/>
+    <text x="58" y="33" font-size="3.8" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">비시디아 안디옥</text>
+    <text x="58" y="37.5" font-size="3" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">(Lesson 10에서 등장)</text>
+
+    <text x="8" y="122" font-size="3.4" fill="#888" font-family="SCDream,sans-serif">※ 위치와 거리는 학습용으로 단순화함</text>
+  </svg>
+
+  <div class="map-legend">
+    <span><b>예루살렘</b> 최초 교회의 중심</span>
+    <span><b>베니게</b> 지중해 동부 해안 지역</span>
+    <span><b>구브로</b> 지중해의 섬</span>
+    <span><b>수리아 안디옥</b> 새로운 교회의 중심</span>
+    <span><b>다소</b> 사울의 출신 도시</span>
+    <span><b>가이사랴</b> 유대 지역의 주요 항구 도시</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin-top:var(--sp-2);align-items:start;">
+    <div class="story-flow">
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">스데반의 죽음 이후 박해</div></div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">예루살렘에서 신자들이 흩어짐</div></div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">베니게 · 구브로 · 안디옥</div></div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">안디옥에서 새로운 교회가 성장</div></div></div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">BACKGROUND — 어느 안디옥인가?</div>
+      <div class="background-box-body">
+        고대에는 '안디옥'이라는 이름의 도시가 여러 곳 있었다. 이번 Lesson의 안디옥은 <strong>수리아 안디옥</strong>이다.<br><br>
+        1차 선교여행(Lesson 10)에 등장하는 <strong>비시디아 안디옥</strong>은 소아시아 내륙에 있는 전혀 다른 도시다. 지도 왼쪽 위의 점선 원이 그곳이다.
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 4: SCENE 01 (11:19–21)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">스데반의 박해가 안디옥까지 이어지다</span>
+      <span class="scene-ref">행 11:19–21</span>
+    </div>
+    <div class="scene-body">
+      <p>누가는 이 장면을 "스데반의 일로 일어난 환난으로 말미암아 흩어진 자들이"라는 말로 시작한다. 이야기의 시계를 8장으로 되돌려, 그때 흩어진 사람들의 또 다른 갈래를 따라가는 것이다.</p>
+    </div>
+  </div>
+
+  <div class="recall-pair">
+    <div class="recall-card">
+      <div class="recall-card-label">RECALL · LESSON 05</div>
+      <div class="recall-card-text">스데반의 순교 → 큰 박해 → 신자들이 흩어짐</div>
+    </div>
+    <div class="recall-card">
+      <div class="recall-card-label">RECALL · LESSON 06</div>
+      <div class="recall-card-text">흩어진 사람들이 복음을 전함 → 빌립의 사마리아 선교</div>
+    </div>
+  </div>
+
+  <p class="body-text">그리고 지금, 흩어진 사람들은 더 먼 곳까지 이동한다. <strong>베니게, 구브로, 안디옥</strong>에 이르렀고, 처음에는 유대인에게만 말씀을 전했다. 그런데 그들 가운데 구브로와 구레네 출신의 몇 사람이 안디옥에 이르러 헬라인에게도 주 예수를 전하기 시작한다.</p>
+
+  <div class="shift">
+    <div class="shift-col">
+      <div class="shift-label">처음 · 11:19</div>
+      <div class="shift-text">유대인에게만 말씀을 전함</div>
+    </div>
+    <div class="shift-mid">→</div>
+    <div class="shift-col now">
+      <div class="shift-label">안디옥 · 11:20</div>
+      <div class="shift-text"><strong>헬라인에게도</strong> 주 예수를 전함</div>
+    </div>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step key-step">
+      <div class="flow-step-content"><div class="flow-step-title">주의 손이 그들과 함께함</div></div>
+      <div class="flow-step-ref">11:21</div>
+    </div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step">
+      <div class="flow-step-content"><div class="flow-step-title">수많은 사람이 믿고 주께 돌아옴</div></div>
+      <div class="flow-step-ref">11:21</div>
+    </div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">이 일을 시작한 사람들의 이름은 기록되어 있지 않다. 사도도, 일곱 사람도 아닌 이름 없는 신자들이 안디옥 교회의 출발점이었다.</p>
+
+  <div class="text-note">
+    <div class="text-note-label">TEXT NOTE · 행 11:20</div>
+    <div class="text-note-body">이 구절에서 복음을 들은 대상은 사본과 번역에 따라 '헬라인'으로도, '헬라파 사람'으로도 전해진다. 다만 19절의 "유대인에게만"과 대비되는 문맥이므로, 안디옥에서 유대인이 아닌 사람들에게도 복음이 전해졌다고 이해하는 것이 일반적이다. Lesson 05의 '헬라파 유대인'과 같은 집단이라고 단정하지 않는다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 5: BACKGROUND — 안디옥
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <h2 class="section-heading">왜 안디옥이 중요한 도시였을까?</h2>
+
+  <p class="body-text">안디옥은 작은 마을이 아니었다. 로마 제국 수리아 속주의 중요한 행정·상업 중심지였고, 여러 언어와 문화적 배경을 가진 사람들이 함께 살던 대도시였다. 유대인 공동체도 있었지만 도시 주민의 대다수는 유대인이 아니었다.</p>
+  <p class="body-text">그런 도시에서 복음이 전해졌다는 것은, 예루살렘에서는 겪지 않았던 환경에 교회가 놓였다는 뜻이다. 성전도 없고, 주변 사람들 대부분이 구약 성경을 알지 못하는 곳이었다.</p>
+
+  <table class="city-table">
+    <thead>
+      <tr><th>예루살렘</th><th>안디옥</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>유대 지역의 종교적 중심</td><td>수리아의 주요 도시</td></tr>
+      <tr><td>초기 교회의 출발점</td><td>새로운 선교 중심지로 성장</td></tr>
+      <tr><td>유대인 신자 중심으로 시작</td><td>유대인과 이방인이 함께하는 공동체로 성장</td></tr>
+      <tr><td>사도들의 초기 사역</td><td>바나바와 사울의 사역</td></tr>
+    </tbody>
+  </table>
+
+  <div style="display:flex;align-items:center;justify-content:center;gap:var(--sp-3);margin:var(--sp-3) 0 var(--sp-2);">
+    <div style="padding:2.5mm 6mm;background:var(--ink);color:var(--white);border-radius:4px;font-weight:700;font-size:var(--fs-body);">예루살렘</div>
+    <div style="flex:1;max-width:60mm;border-top:1.5px dashed var(--accent);position:relative;">
+      <span style="position:absolute;right:-1mm;top:-3.4mm;color:var(--accent);font-size:11pt;">▸</span>
+      <span style="position:absolute;left:50%;top:-6mm;transform:translateX(-50%);font-size:var(--fs-caption);color:var(--accent);font-weight:700;white-space:nowrap;">새로운 언어 · 문화 환경으로</span>
+    </div>
+    <div style="padding:2.5mm 6mm;background:var(--accent);color:var(--white);border-radius:4px;font-weight:700;font-size:var(--fs-body);">안디옥</div>
+  </div>
+
+  <p class="body-text">이 이동은 단순히 도시 하나가 추가된 것이 아니다. 복음이 새로운 언어·문화적 환경으로 들어가는 중요한 변화다.</p>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">주의 — '대체'가 아니라 '연결'</div>
+    <div class="background-box-body">안디옥 교회가 예루살렘 교회를 대체했다고 이해해서는 안 된다. 두 공동체는 계속 연결되어 있다. 예루살렘은 안디옥에 사람을 보내고(SCENE 2), 안디옥은 유대의 형제들에게 구제금을 보낸다(SCENE 4). 이후 Lesson 11의 예루살렘 회의에서도 두 교회는 함께 문제를 다룬다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 6: SCENE 02 (11:22–24)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 2</span>
+      <span class="scene-title">예루살렘 교회가 바나바를 보내다</span>
+      <span class="scene-ref">행 11:22–24</span>
+    </div>
+    <div class="scene-body">
+      <p>안디옥에서 일어난 일의 소식이 예루살렘 교회에 전해진다. 예루살렘 교회는 한 사람을 안디옥으로 보낸다. 이미 두 번 만난 인물, <strong>바나바</strong>다.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin-top:var(--sp-2);align-items:start;">
+    <div>
+      <h3 class="section-heading">안디옥에서 바나바가 한 일</h3>
+      <div class="story-flow">
+        <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">안디옥에 도착함</div></div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">하나님의 은혜를 봄</div></div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">기뻐함</div></div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">"굳건한 마음으로 주와 함께 머물러 있으라"고 모든 사람에게 권함</div></div><div class="flow-step-ref">11:23</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">큰 무리가 주께 더해짐</div></div><div class="flow-step-ref">11:24</div></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="section-heading">CHARACTER TIMELINE — 바나바</h3>
+      <div class="char-timeline">
+        <div class="ct-item">
+          <div class="ct-left"><div class="ct-dot"></div><div class="ct-line"></div></div>
+          <div class="ct-lesson">LESSON 04</div>
+          <div class="ct-text">자신의 밭을 팔아 공동체를 위해 내놓음 (4:36–37)</div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-left"><div class="ct-dot"></div><div class="ct-line"></div></div>
+          <div class="ct-lesson">LESSON 07</div>
+          <div class="ct-text">회심한 사울을 사도들에게 소개함 (9:27)</div>
+        </div>
+        <div class="ct-item current">
+          <div class="ct-left"><div class="ct-dot current"></div><div class="ct-line future"></div></div>
+          <div class="ct-lesson">LESSON 09</div>
+          <div class="ct-text">안디옥 교회를 격려하고, 사울을 데려와 함께 가르침</div>
+        </div>
+        <div class="ct-item">
+          <div class="ct-left"><div class="ct-dot future"></div></div>
+          <div class="ct-lesson">FUTURE</div>
+          <div class="ct-text">사울과 함께 선교여행 (Lesson 10)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-2);">
+    <div class="scripture-text">"바나바는 착한 사람이요 성령과 믿음이 충만한 사람이라 이에 큰 무리가 주께 더하여지더라"</div>
+    <div class="scripture-ref">사도행전 11:24</div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">바나바는 새로 생긴 공동체를 검열하거나 고치려 하지 않았다. 본문이 기록하는 그의 첫 반응은 <strong>보고, 기뻐하고, 권한</strong> 것이다. '위로의 아들'이라는 별명(4:36)에 어울리는 모습이 세 번째로 반복된다.</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 7: SCENE 03 (11:25–26)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">바나바는 왜 사울을 찾아갔을까?</span>
+      <span class="scene-ref">행 11:25–26</span>
+    </div>
+    <div class="scene-body">
+      <p>안디옥 교회는 계속 성장하고 있었다. 그때 바나바는 안디옥을 떠나 <strong>다소</strong>로 간다. 목적은 하나, 사울을 찾기 위해서다.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:70mm 1fr;gap:var(--sp-3);margin-top:var(--sp-2);align-items:start;">
+    <svg class="map-frame" viewBox="0 0 100 78" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr9b" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#b4552d"/></marker>
+        <marker id="arr9c" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 z" fill="#1e1e1e"/></marker>
+      </defs>
+      <path d="M0,0 H100 V78 H74 L70,62 L64,48 L50,40 L30,42 L12,38 L0,42 Z" fill="#f4f0ea" stroke="#d8d4ce" stroke-width=".6"/>
+      <path d="M8,66 Q20,58 36,62 L48,58 L40,67 Q26,74 12,71 Z" fill="#f4f0ea" stroke="#d8d4ce" stroke-width=".6"/>
+      <text x="25" y="68" font-size="4" fill="#888" text-anchor="middle" font-family="SCDream,sans-serif">구브로</text>
+      <text x="20" y="20" font-size="4" fill="#b0aa9f" font-family="SCDream,sans-serif" letter-spacing="1">길리기아</text>
+      <path d="M76,50 Q66,30 50,26" stroke="#1e1e1e" stroke-width="1" fill="none" marker-end="url(#arr9c)"/>
+      <path d="M48,32 Q62,38 73,54" stroke="#b4552d" stroke-width="1.3" fill="none" stroke-dasharray="2.5,1.6" marker-end="url(#arr9b)"/>
+      <circle cx="46" cy="28" r="2.4" fill="#1e1e1e"/>
+      <text x="42" y="24" font-size="5" fill="#1e1e1e" text-anchor="end" font-family="SCDream,sans-serif" font-weight="700">다소</text>
+      <circle cx="78" cy="56" r="5" fill="#b4552d" opacity=".18"/>
+      <circle cx="78" cy="56" r="3" fill="#b4552d"/>
+      <text x="84" y="68" font-size="5" fill="#b4552d" text-anchor="middle" font-family="SCDream,sans-serif" font-weight="700">안디옥</text>
+      <text x="70" y="26" font-size="3.4" fill="#1e1e1e" font-family="SCDream,sans-serif">① 바나바가 감</text>
+      <text x="36" y="50" font-size="3.4" fill="#b4552d" font-family="SCDream,sans-serif">② 둘이 돌아옴</text>
+    </svg>
+
+    <div class="story-flow">
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">바나바가 다소로 감</div></div><div class="flow-step-ref">11:25</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">사울을 찾음</div></div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">만나서 안디옥으로 데려옴</div></div><div class="flow-step-ref">11:26</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">1년 동안 교회에 함께 모여 큰 무리를 가르침</div></div><div class="flow-step-ref">11:26</div></div>
+    </div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">Lesson 07의 끝에서 사울은 예루살렘에서 살해 위협을 받고 다소로 보내졌다(9:30). 그 뒤로 사도행전은 사울에 대해 침묵해 왔다. 그 침묵을 깨는 사람이, 예전에 그를 사도들에게 데려갔던 바로 그 바나바다.</p>
+
+  <div class="merge">
+    <div class="merge-side">
+      <div class="merge-card">
+        <div class="merge-card-label">바나바의 이야기</div>
+        <div class="merge-card-text">안디옥에서 사역하고 있었다</div>
+      </div>
+      <div class="merge-card">
+        <div class="merge-card-label">사울의 이야기</div>
+        <div class="merge-card-text">다소에 머물고 있었다</div>
+      </div>
+    </div>
+    <div class="merge-arrows"><span>↘</span><span>↗</span></div>
+    <div class="merge-result">
+      <b>함께 가르침</b>
+      <span>안디옥 · 1년</span>
+    </div>
+  </div>
+
+  <p class="body-text"><strong>사울의 이야기와 안디옥 교회의 이야기가 하나로 합쳐지는 순간</strong>이다. 본문은 바나바가 왜 사울을 떠올렸는지 설명하지 않는다. 다만 그가 직접 찾아가 데려왔다는 사실만을 기록한다.</p>
+
+  <div class="text-note">
+    <div class="text-note-label">FUTURE PREVIEW</div>
+    <div class="text-note-body">이 두 사람은 곧 안디옥 교회에서 선교사로 파송된다. (Lesson 10 · 행 13:1–3)</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 7</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 8: CONCEPT FOCUS — 그리스도인
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <h2 class="section-heading"><span class="new-concept">NEW CONCEPT</span>제자들이 처음으로 '그리스도인'이라 불리다</h2>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"제자들이 안디옥에서 비로소 그리스도인이라 일컬음을 받게 되었더라"</div>
+    <div class="scripture-ref">사도행전 11:26</div>
+  </div>
+
+  <div class="name-big">
+    <div class="name-big-ko">그리스도인</div>
+    <div class="name-big-en">CHRISTIAN</div>
+  </div>
+
+  <h3 class="section-heading">이름의 변화 — 사도행전은 예수를 따르는 사람들을 어떻게 불렀나</h3>
+  <div class="name-list">
+    <div class="name-row"><b>제자들</b><span>가장 자주 쓰이는 표현. 배우고 따르는 사람들 (6:1, 9:1 등)</span></div>
+    <div class="name-row"><b>형제들</b><span>공동체 안에서 서로를 부르는 말 (1:15, 9:30 등)</span></div>
+    <div class="name-row"><b>성도들</b><span>Lesson 08 — 룻다에 사는 성도들 (9:32)</span></div>
+    <div class="name-row"><b>그 도를 따르는 사람들</b><span>Lesson 07 — 사울이 잡으려 했던 사람들 (9:2) <span class="recall-badge">RECALL · L07</span></span></div>
+    <div class="name-row now"><b>그리스도인</b><span>안디옥에서 처음 불린 이름 (11:26)</span></div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">'그리스도인'은 '그리스도에게 속한 사람', '그리스도와 연결된 사람'이라는 뜻을 가진 명칭이다. 앞의 이름들이 주로 공동체 <strong>안에서</strong> 서로를 부르던 말이라면, 이 이름은 "일컬음을 받았다"는 표현에서 보이듯 <strong>불린</strong> 이름이다.</p>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">어디까지 말할 수 있을까?</div>
+    <div class="background-box-body">
+      이 명칭을 누가 처음 사용했는지, 호의적인 표현이었는지 조롱이었는지는 본문만으로 확정할 수 없다. 그래서 이 교재는 본문이 말하는 사실에만 집중한다.<br><br>
+      <strong>예수를 따르는 공동체가 안디옥에서 '그리스도인'이라는 이름으로 불리기 시작했다.</strong><br><br>
+      참고로 신약 성경 전체에서 이 단어는 세 번만 나온다 (행 11:26, 행 26:28, 벧전 4:16).
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 8</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 9: SCENE 04 (11:27–30)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">안디옥 교회가 예루살렘을 돕다</span>
+      <span class="scene-ref">행 11:27–30</span>
+    </div>
+    <div class="scene-body">
+      <p>예루살렘에서 선지자들이 안디옥으로 내려온다. 그중 <strong>아가보</strong>라는 사람이 일어나 성령으로 말한다. 천하에 큰 흉년이 들 것이라는 예언이다. 누가는 이 일이 글라우디오 황제 때에 실제로 일어났다고 덧붙인다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">흉년 예언을 들음</div></div><div class="flow-step-ref">11:28</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">제자들이 각자 형편에 따라 구제금을 마련하기로 결정함</div></div><div class="flow-step-ref">11:29</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">유대에 사는 형제들에게 보내기로 함</div></div><div class="flow-step-ref">11:29</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">바나바와 사울의 손으로 장로들에게 전달함</div></div><div class="flow-step-ref">11:30</div></div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">도움의 방향</h3>
+  <div class="mutual">
+    <div class="mutual-city j">예루살렘</div>
+    <div class="mutual-lanes">
+      <div class="mutual-lane to-a"><b>복음과 사람 ──▶</b>흩어진 신자들 · 바나바 · 선지자들</div>
+      <div class="mutual-lane to-j"><b>◀── 경제적인 도움</b>흉년을 대비한 구제금</div>
+    </div>
+    <div class="mutual-city a">안디옥</div>
+  </div>
+
+  <p class="body-text">두 교회는 한쪽이 주기만 하고 다른 쪽이 받기만 하는 관계가 아니다. 예루살렘은 안디옥의 성장을 확인하고 바나바를 보냈고, 안디옥은 어려움을 겪을 유대의 신자들을 돕는다. <strong>복음으로 연결된 공동체가 서로의 필요를 돌보는 모습</strong>이다.</p>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">눈여겨볼 점 <span class="recall-badge">RECALL · L02 · L04</span></div>
+    <div class="background-box-body">예루살렘 교회 안에서 이루어지던 나눔(2:44–45, 4:32–35)이 이제 <strong>도시와 도시 사이</strong>에서 일어난다. 더구나 이방인이 포함된 교회가 유대의 신자들을 '형제'라 부르며 돕는다. 구제의 범위가 한 공동체의 울타리를 넘은 첫 장면이다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 9</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 10: TRANSITION (12:1–5)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <div style="padding:var(--sp-2) var(--sp-3);background:var(--ink);border-radius:4px;display:flex;justify-content:space-between;align-items:baseline;">
+    <span style="font-size:var(--fs-caption);font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.65);">TRACK B · JERUSALEM</span>
+    <span style="font-family:var(--ff-hand);font-size:16pt;color:var(--white);">한편 예루살렘에서는…</span>
+    <span style="font-size:var(--fs-caption);color:rgba(255,255,255,.65);">행 12:1–5</span>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">이야기의 장소가 다시 예루살렘으로 이동한다. 안디옥에서는 교회가 성장하고 있었다. 그러나 예루살렘에서는 박해가 계속된다. 이번에는 종교 지도자들이 아니라 <strong>왕</strong>이 직접 손을 댄다.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin-top:var(--sp-2);align-items:start;">
+    <div class="story-flow">
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">헤롯 왕이 교회 중 몇 사람을 해하려 함</div></div><div class="flow-step-ref">12:1</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">요한의 형제 야고보를 칼로 죽임</div></div><div class="flow-step-ref">12:2</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">유대인들이 이 일을 기뻐하는 것을 봄</div></div><div class="flow-step-ref">12:3</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">베드로도 체포함</div></div><div class="flow-step-ref">12:3</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">무교절 기간이라 감옥에 가두어 둠</div><div class="flow-step-desc">유월절 후에 백성 앞에 끌어내려는 계획</div></div><div class="flow-step-ref">12:4</div></div>
+    </div>
+
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">BACKGROUND — 성경의 여러 헤롯</div>
+      <div class="background-box-body">
+        '헤롯'은 한 사람의 이름이 아니라 한 왕가에서 여러 사람이 쓴 이름이다.
+        <div class="herod-tree">
+          <div class="ht-row">
+            <div class="ht-rail"><i></i><u></u></div>
+            <div class="ht-body"><div class="ht-gen">1세대</div><b>헤롯 대왕</b><br>예수 탄생 시기의 왕 (마 2장)</div>
+          </div>
+          <div class="ht-row">
+            <div class="ht-rail"><i></i><u></u></div>
+            <div class="ht-body"><div class="ht-gen">2세대 · 아들</div><b>헤롯 안디바</b><br>세례 요한을 죽인 분봉왕 (눅 3:19–20, 9:9)</div>
+          </div>
+          <div class="ht-row now">
+            <div class="ht-rail"><i></i><u></u></div>
+            <div class="ht-body"><div class="ht-gen">3세대 · 손자</div><b>헤롯 아그립바 1세</b><br>이번 본문의 '헤롯 왕' (행 12장)</div>
+          </div>
+          <div class="ht-row">
+            <div class="ht-rail"><i></i></div>
+            <div class="ht-body"><div class="ht-gen">4세대 · 증손자</div><b>아그립바 2세</b><br>바울의 변론을 들은 왕 (행 25–26장)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">IMPORTANT — 두 명의 야고보</h3>
+  <div class="two-james">
+    <div class="tj now">
+      <div class="tj-name">요한의 형제 야고보</div>
+      <div class="tj-text">세베대의 아들, 열두 사도 중 한 사람. <strong>이번 본문(12:2)에서 처형됨.</strong> 열두 사도 가운데 사도행전이 죽음을 기록한 유일한 인물이다.</div>
+    </div>
+    <div class="tj">
+      <div class="tj-name">예수의 형제 야고보</div>
+      <div class="tj-text">이후 예루살렘 교회의 지도자로 등장. 12:17에서 이름이 언급되고, 사도행전 15장(Lesson 11)에서 중요한 역할을 한다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 10</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 11: SCENE 05 (12:3–6)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 5</span>
+      <span class="scene-title">베드로가 감옥에 갇히다</span>
+      <span class="scene-ref">행 12:3–6</span>
+    </div>
+    <div class="scene-body">
+      <p>헤롯은 베드로를 체포한 뒤 감옥에 가두고, <strong>군인 네 패</strong>에게 맡겨 지키게 한다. 한 패는 네 명이다. 모두 열여섯 명이 교대로 한 사람을 지킨 셈이다.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin-top:var(--sp-2);align-items:start;">
+    <div class="prison">
+      <div class="prison-title">PRISON · 행 12:6</div>
+      <div class="prison-row">
+        <span class="p-unit">군인</span>
+        <span class="p-chain">⛓</span>
+        <span class="p-unit peter">베드로 (잠듦)</span>
+        <span class="p-chain">⛓</span>
+        <span class="p-unit">군인</span>
+      </div>
+      <div style="text-align:center;font-size:var(--fs-caption);color:var(--ink-soft);">두 군인 사이 · 두 쇠사슬</div>
+      <div class="p-door">
+        <div class="prison-row">
+          <span class="p-unit">파수꾼</span>
+          <span style="font-size:var(--fs-caption);color:var(--ink);font-weight:700;">▏문▕</span>
+          <span class="p-unit">파수꾼</span>
+        </div>
+        <div style="text-align:center;font-size:var(--fs-caption);color:var(--ink-soft);">문 밖에서 옥을 지킴</div>
+      </div>
+    </div>
+
+    <div>
+      <p class="body-text">Lesson 04에서 사도들은 이미 한 번 옥에서 풀려난 적이 있다(5:19). 이번 경비가 유난히 삼엄한 것은 그 일과 무관하지 않을 것이다.</p>
+      <p class="body-text">그런데 본문이 그리는 베드로는 불안에 떨고 있지 않다. 처형이 예정된 바로 전날 밤, 그는 <strong>자고 있다.</strong></p>
+      <div class="number-row" style="margin-top:var(--sp-2);">
+        <div class="num-item"><div class="num-big">4×4</div><div class="num-label">네 패,<br>각 패 네 명</div></div>
+        <div class="num-item"><div class="num-big">2</div><div class="num-label">쇠사슬</div></div>
+        <div class="num-item"><div class="num-big">전날 밤</div><div class="num-label">끌어내기로<br>한 날의</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">그리고 교회는?</h3>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"이에 베드로는 옥에 갇혔고 교회는 그를 위하여 간절히 하나님께 기도하더라"</div>
+    <div class="scripture-ref">사도행전 12:5</div>
+  </div>
+
+  <div class="contrast">
+    <div class="contrast-col dark">
+      <div class="contrast-label">감옥</div>
+      <div class="contrast-text">베드로가 결박되어 있다</div>
+    </div>
+    <div class="contrast-mid">↔</div>
+    <div class="contrast-col light">
+      <div class="contrast-label">교회</div>
+      <div class="contrast-text">하나님께 간절히 기도한다</div>
+    </div>
+  </div>
+
+  <p class="body-text">한 문장 안에 두 장면이 나란히 놓여 있다. 헤롯에게는 군인 열여섯 명과 쇠사슬이 있고, 교회에는 기도밖에 없다. 야고보는 이미 죽었고, 날이 밝으면 베드로가 끌려 나올 것이다. 이야기는 그 밤에서 시작된다.</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 11</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 12: SCENE 06 (12:6–11)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 6</span>
+      <span class="scene-title">감옥 문이 열리다</span>
+      <span class="scene-ref">행 12:6–11</span>
+    </div>
+    <div class="scene-body">
+      <p>이 장면은 순서가 중요하다. 안쪽에서 바깥쪽으로, 한 겹씩 벗어나는 과정을 따라가 보자.</p>
+    </div>
+  </div>
+
+  <div class="es-zone" style="margin-top:var(--sp-2);"><span>감옥 안</span><span>감옥 밖으로</span></div>
+  <div class="escape-seq" style="margin-top:1mm;">
+    <div class="es"><div class="es-num">1</div><div><div class="es-title">주의 사자가 나타남</div><div class="es-desc">옥중에 빛이 비침</div></div></div>
+    <div class="es"><div class="es-num">2</div><div><div class="es-title">베드로를 깨움</div><div class="es-desc">옆구리를 쳐 깨우며 "급히 일어나라."</div></div></div>
+    <div class="es"><div class="es-num">3</div><div><div class="es-title">쇠사슬이 벗겨짐</div><div class="es-desc">손에서 저절로 풀려 떨어짐</div></div></div>
+    <div class="es"><div class="es-num">4</div><div><div class="es-title">옷을 입고 따라오라는 명령</div><div class="es-desc">"띠를 띠고 신을 신으라… 겉옷을 입고 따라오라."</div></div></div>
+    <div class="es"><div class="es-num">5</div><div><div class="es-title">첫째와 둘째 파수를 지나감</div><div class="es-desc">베드로는 환상을 보는 줄로 생각함</div></div></div>
+    <div class="es out"><div class="es-num">6</div><div><div class="es-title">철문에 도착</div><div class="es-desc">시내로 통하는 쇠문</div></div></div>
+    <div class="es out"><div class="es-num">7</div><div><div class="es-title">문이 저절로 열림</div></div></div>
+    <div class="es out"><div class="es-num">8</div><div><div class="es-title">거리로 나옴</div><div class="es-desc">한 거리를 지남</div></div></div>
+    <div class="es out"><div class="es-num">9</div><div><div class="es-title">천사가 떠남</div></div></div>
+    <div class="es out"><div class="es-num">10</div><div><div class="es-title">베드로가 정신이 들어 깨달음</div><div class="es-desc">자신에게 실제로 일어난 일임을 앎</div></div></div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">IMPORTANT — 베드로는 언제 알았을까?</div>
+    <div class="background-box-body">베드로는 감옥을 걸어 나오는 동안 이것이 실제로 일어나는 일인 줄 알지 못하고 환상을 보는 것으로 생각했다(12:9). 거리에 홀로 남겨진 뒤에야 비로소 깨닫는다. 이 탈출에서 베드로가 스스로 계획하거나 해낸 일은 하나도 없다. 그는 일어나라는 대로 일어나고, 따라오라는 대로 따라갔을 뿐이다.</div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-2);">
+    <div class="scripture-text">"내가 이제야 참으로 주께서 그의 천사를 보내어 나를 헤롯의 손과 유대 백성의 모든 기대에서 벗어나게 하신 줄 알겠노라"</div>
+    <div class="scripture-ref">사도행전 12:11 — 베드로</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 12</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 13: SCENE 07 (12:12–17)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 7</span>
+      <span class="scene-title">기도하던 사람들은 왜 믿지 못했을까?</span>
+      <span class="scene-ref">행 12:12–17</span>
+    </div>
+    <div class="scene-body">
+      <p>베드로는 마가라 하는 요한의 어머니 <strong>마리아의 집</strong>으로 간다. 그곳에는 여러 사람이 모여 기도하고 있었다. 감옥의 철문은 저절로 열렸는데, 이 집의 대문은 좀처럼 열리지 않는다.</p>
+    </div>
+  </div>
+
+  <div class="door-scene">
+    <div class="door-side inside">
+      <div class="door-side-label">집 안 — 기도하던 사람들</div>
+      <div class="door-line">베드로를 위해 기도하고 있음</div>
+      <div class="door-line">로데: "베드로가 대문 밖에 서 있어요!" <small>(12:14)</small></div>
+      <div class="door-line">"네가 미쳤다." <small>(12:15)</small></div>
+      <div class="door-line">로데가 계속 참말이라고 함</div>
+      <div class="door-line">"그러면 그의 천사라." <small>(12:15)</small></div>
+      <div class="door-line">문을 열어 보고 <strong>놀람</strong> <small>(12:16)</small></div>
+    </div>
+    <div class="door-wall">대 문</div>
+    <div class="door-side outside">
+      <div class="door-side-label">문 밖 — 베드로</div>
+      <div class="door-line">대문을 두드림</div>
+      <div class="door-line">여종 로데가 음성을 알아들음 — 너무 기뻐 문을 열지 못하고 안으로 달려감</div>
+      <div class="door-line">계속 서 있음</div>
+      <div class="door-line">계속 문을 두드림</div>
+    </div>
+  </div>
+
+  <p class="body-text">이 장면에는 뜻밖의 웃음기가 있다. 그렇다고 누가가 이들의 믿음 없음을 꾸짖는 것은 아니다. 본문은 평가 없이 일어난 일을 그대로 적는다. 간절히 기도하던 사람들조차 예상하지 못할 만큼, 일어난 일이 그들의 기대를 넘어섰다는 점이 드러날 뿐이다.</p>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-2);">이후</h3>
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">베드로가 손짓하여 조용하게 하고, 주께서 자신을 옥에서 이끌어 내신 일을 설명함</div></div><div class="flow-step-ref">12:17</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">"야고보와 형제들에게 이 말을 전하라."</div></div><div class="flow-step-ref">12:17</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">다른 곳으로 떠남</div><div class="flow-step-desc">본문은 어디인지 밝히지 않는다</div></div><div class="flow-step-ref">12:17</div></div>
+  </div>
+
+  <div class="text-note">
+    <div class="text-note-label">여기서의 야고보는?</div>
+    <div class="text-note-body">요한의 형제 야고보는 이미 12:2에서 처형되었다. 따라서 12:17의 야고보는 다른 사람이며, 일반적으로 <strong>예수의 형제 야고보</strong>로 이해된다. 베드로가 떠나면서 그의 이름을 따로 언급한다는 점에서, 그가 이미 예루살렘 교회에서 중요한 위치에 있었음을 짐작할 수 있다. 또한 이 집의 아들 <strong>마가라 하는 요한</strong>은 12:25와 Lesson 10에서 다시 등장한다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 13</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 14: SCENE 08 (12:18–23)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 8</span>
+      <span class="scene-title">헤롯에게 무슨 일이 일어났을까?</span>
+      <span class="scene-ref">행 12:18–23</span>
+    </div>
+    <div class="scene-body">
+      <p>날이 새자 군인들 사이에 큰 소동이 일어난다. 헤롯은 베드로를 찾았으나 발견하지 못하고, 파수꾼들을 심문한 뒤 처형하도록 명령한다. 그 후 헤롯은 유대를 떠나 <strong>가이사랴</strong>로 내려가 머문다.</p>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-2);">가이사랴에서</h3>
+
+  <p class="body-text">헤롯은 두로와 시돈 사람들에게 크게 노여워하고 있었다. 그 지방은 왕의 영토에서 양식을 공급받고 있었기 때문에, 그들은 왕의 침소를 맡은 신하 블라스도를 설득하여 화해를 청한다.</p>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">정해진 날, 헤롯이 왕복을 입고 단상에 앉아 연설함</div></div><div class="flow-step-ref">12:21</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">백성이 외침: "이것은 신의 소리요 사람의 소리가 아니라."</div></div><div class="flow-step-ref">12:22</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">헤롯이 영광을 하나님께 돌리지 않음</div></div><div class="flow-step-ref">12:23</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">주의 사자가 곧 그를 침</div></div><div class="flow-step-ref">12:23</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">벌레에게 먹혀 죽음</div></div><div class="flow-step-ref">12:23</div></div>
+  </div>
+
+  <div class="contrast" style="margin-top:var(--sp-2);">
+    <div class="contrast-col light">
+      <div class="contrast-label">LESSON 08 · 가이사랴 · 10:26</div>
+      <div class="contrast-text" style="font-size:var(--fs-small);">고넬료가 엎드려 절하자 베드로: "일어서라. 나도 사람이라."</div>
+    </div>
+    <div class="contrast-mid">↔</div>
+    <div class="contrast-col dark">
+      <div class="contrast-label">LESSON 09 · 가이사랴 · 12:22–23</div>
+      <div class="contrast-text" style="font-size:var(--fs-small);">"신의 소리"라는 환호를 헤롯은 그대로 받아들임</div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">BACKGROUND — 성경 밖의 기록</div>
+    <div class="background-box-body">
+      유대 역사가 요세푸스도 헤롯 아그립바 1세가 가이사랴의 공개 행사 중에 갑작스러운 병을 얻어 며칠 뒤 사망한 일을 기록한다. 큰 줄기는 서로 통하지만, 두 기록은 세부 묘사와 해석이 다르므로 하나의 설명으로 뒤섞어 읽지 않는다.<br><br>
+      그의 죽음은 일반적으로 <strong>서기 44년</strong>으로 연대가 잡힌다. 사도행전에서 성경 밖 자료로 시기를 가늠할 수 있는 몇 안 되는 지점 가운데 하나다.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 14</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 15: VISUAL EXPLAINER — 두 이야기의 결말
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <h2 class="section-heading">두 이야기의 결말을 비교하다</h2>
+  <p class="lead">2쪽의 큰 그림으로 돌아가자. 이제 각 단계의 내용을 알고 있으니, 두 흐름이 어디로 모이는지 다시 확인한다.</p>
+
+  <div class="dual-track">
+    <div class="dt-col a">
+      <div class="dt-head">TRACK A<small>안디옥</small></div>
+      <div class="dt-step"><span>흩어진 신자들</span></div>
+      <div class="dt-step"><span>복음 전파 — 헬라인에게도</span></div>
+      <div class="dt-step"><span>많은 사람이 믿음</span></div>
+      <div class="dt-step"><span>바나바 파견</span></div>
+      <div class="dt-step"><span>사울 합류 · 1년간 가르침</span></div>
+      <div class="dt-step"><span>'그리스도인'이라 불림</span></div>
+      <div class="dt-step"><span>예루살렘 구제</span></div>
+    </div>
+    <div class="dt-col b">
+      <div class="dt-head">TRACK B<small>예루살렘</small></div>
+      <div class="dt-step"><span>헤롯의 박해</span></div>
+      <div class="dt-step"><span>야고보 처형</span></div>
+      <div class="dt-step"><span>베드로 투옥</span></div>
+      <div class="dt-step"><span>교회의 기도</span></div>
+      <div class="dt-step"><span>베드로 구출</span></div>
+      <div class="dt-step"><span>마리아의 집 · 베드로가 떠남</span></div>
+      <div class="dt-step"><span>헤롯의 죽음</span></div>
+    </div>
+  </div>
+  <div class="dt-join"><span></span><span></span></div>
+  <div class="dt-result">
+    <div class="dt-result-ref">사도행전 12:24</div>
+    <div class="dt-result-text" style="font-size:22pt;">"하나님의 말씀은 흥왕하여 더하더라."</div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">해석의 핵심</h3>
+  <p class="body-text">안디옥에서는 복음이 새로운 공동체를 이루며 자랐다. 예루살렘에서는 사도가 처형될 만큼 심각한 박해가 일어났다. 형편이 전혀 다른 두 이야기의 끝에 누가는 같은 결론을 놓는다. 교회를 치던 왕은 사라졌고, 말씀은 계속 퍼져 나갔다.</p>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">조심해서 읽어야 할 부분</div>
+    <div class="background-box-body">같은 장에서 야고보는 죽고 베드로는 구출된다. 본문은 왜 그런 차이가 있었는지 설명하지 않는다. 따라서 "신실한 사람은 반드시 기적으로 구조된다"거나 "기도가 부족해서 야고보가 죽었다"는 식의 결론은 본문에서 나오지 않는다. 12:24가 말하는 것은 개인의 안전이 아니라 <strong>말씀의 확산</strong>이다.</div>
+  </div>
+
+  <div class="text-note">
+    <div class="text-note-label">TEXT NOTE · 행 12:25</div>
+    <div class="text-note-body">이 단락은 바나바와 사울이 구제의 임무를 마치고 <strong>마가라 하는 요한</strong>을 데리고 갔다는 말로 끝난다. 다만 이 구절은 사본과 번역에 따라 이동 방향의 표현에 차이가 있어, 이 교재에서는 구체적인 이동 경로와 시점을 단정하지 않는다. 분명한 것은 13:1에서 두 사람이 안디옥에 있다는 사실이다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 15</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 16: LESSON SUMMARY
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);margin-bottom:var(--sp-2);">
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);">한눈에 보는 LESSON 09</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">사도행전 11:19–12:25</div>
+  </div>
+
+  <div class="summary-grid">
+
+    <div class="summary-block full">
+      <div class="summary-block-label">사건 흐름</div>
+      <div class="summary-block-content">
+        스데반 이후 흩어진 신자들 → 안디옥에서 복음 전파 → 바나바 파견 → 사울 합류 →
+        제자들이 처음으로 그리스도인이라 불림 → 안디옥 교회의 구제 →
+        헤롯의 박해 → 야고보 처형 → 베드로 투옥 → 베드로 구출 → 헤롯의 죽음 →
+        <strong>하나님의 말씀은 더욱 확산됨</strong>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">주요 인물</div>
+      <div class="summary-block-content">
+        <strong>바나바</strong> — 안디옥 교회를 격려하고 사울을 데려옴<br>
+        <strong>사울</strong> — 바나바와 함께 안디옥에서 1년 동안 가르침<br>
+        <strong>아가보</strong> — 큰 흉년을 예언한 선지자<br>
+        <strong>헤롯 아그립바 1세</strong> — 야고보를 죽이고 베드로를 투옥한 왕<br>
+        <strong>베드로</strong> — 투옥되었으나 천사의 인도로 감옥에서 나옴<br>
+        <strong>로데</strong> — 베드로의 목소리를 알아듣고 기뻐한 여종
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">주요 장소</div>
+      <div class="summary-block-content">
+        <strong>예루살렘</strong> — 초기 교회의 중심, 헤롯의 박해<br>
+        <strong>수리아 안디옥</strong> — 성장하는 교회, 새로운 선교 중심지<br>
+        <strong>다소</strong> — 바나바가 사울을 찾아간 도시<br>
+        <strong>가이사랴</strong> — 헤롯의 죽음이 기록된 장소
+      </div>
+      <div class="summary-block-label" style="margin-top:var(--sp-2);">숫자로 기억하기</div>
+      <div class="number-row">
+        <div class="num-item"><div class="num-big">1년</div><div class="num-label">안디옥에서<br>함께 가르침</div></div>
+        <div class="num-item"><div class="num-big">4×4</div><div class="num-label">베드로를<br>지킨 군인</div></div>
+        <div class="num-item"><div class="num-big">44년경</div><div class="num-label">헤롯 아그립바<br>1세의 사망</div></div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">핵심 개념</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--sp-1);">
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">그리스도인</div>
+          <div class="background-box-body">안디옥에서 제자들이 처음으로 불린 명칭. 누가 어떤 뜻으로 불렀는지는 단정하지 않는다.</div>
+        </div>
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">수리아 안디옥</div>
+          <div class="background-box-body">이후 바울 선교여행의 출발지가 되는 도시. 비시디아 안디옥과 구분한다.</div>
+        </div>
+        <div class="background-box" style="margin:0;">
+          <div class="background-box-title">교회 간 구제</div>
+          <div class="background-box-body">서로 다른 지역의 신자들이 경제적인 필요를 함께 돌봄.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">헷갈리지 말 것</div>
+      <div class="summary-block-content">
+        <strong>헤롯</strong> — 이번 본문은 헤롯 대왕의 손자 <em>아그립바 1세</em>.&nbsp;&nbsp;|&nbsp;&nbsp;
+        <strong>야고보</strong> — 12:2는 <em>요한의 형제</em>, 12:17은 <em>예수의 형제</em>.&nbsp;&nbsp;|&nbsp;&nbsp;
+        <strong>사울</strong> — 아직 '바울'이라 부르지 않는다 (13:9부터).
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        흩어진 신자들을 통해 안디옥에 이방인을 포함한 교회가 세워져 바나바와 사울이 함께 사역하게 되었고, 예루살렘에서는 헤롯의 박해가 이어졌지만 하나님의 말씀은 계속 자라고 퍼져 나갔다.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 16</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 17: PART 3 복습 + NEXT
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 09</span>
+    <span class="page-header-title">안디옥 교회의 등장</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);letter-spacing:.12em;">PART 3 REVIEW</div>
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);margin-top:.5mm;">복음이 경계를 넘다 — 네 Lesson을 한 줄로 잇기</div>
+  </div>
+
+  <div class="part-review">
+    <div class="pr-item">
+      <div class="pr-num">LESSON 06</div>
+      <div><div class="pr-title">복음이 사마리아로</div><div class="pr-text">빌립을 통해 복음이 사마리아와 에티오피아 관리에게 전해짐</div></div>
+    </div>
+    <div class="pr-item">
+      <div class="pr-num">LESSON 07</div>
+      <div><div class="pr-title">박해자 사울의 회심</div><div class="pr-text">교회를 박해하던 사울이 복음의 증인이 됨</div></div>
+    </div>
+    <div class="pr-item">
+      <div class="pr-num">LESSON 08</div>
+      <div><div class="pr-title">이방인에게 열린 복음</div><div class="pr-text">고넬료 사건을 통해 이방인에게도 성령이 주어짐을 확인</div></div>
+    </div>
+    <div class="pr-item now">
+      <div class="pr-num">LESSON 09</div>
+      <div><div class="pr-title">안디옥 교회의 등장</div><div class="pr-text">이방인을 포함한 새로운 교회가 성장하고 바나바와 사울이 함께 사역함</div></div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">넓어진 것 ① — 대상</div>
+      <div class="background-box-body">유대인 → 사마리아인 → 에티오피아 관리 → 이방인 고넬료의 집 → 안디옥의 헬라인들</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">넓어진 것 ② — 지리</div>
+      <div class="background-box-body">예루살렘 → 유대와 사마리아 → 다메섹 → 가이사랴 → 베니게 · 구브로 · 수리아 안디옥</div>
+    </div>
+  </div>
+
+  <div class="next-box">
+    <div class="next-part">NEXT · PART 4 — 이방 선교의 시작</div>
+    <div class="next-title">LESSON 10 · 1차 선교여행</div>
+    <div class="next-ref">사도행전 13:1–14:28</div>
+    <div class="next-text">안디옥 교회가 바나바와 사울을 파송한다.</div>
+    <div class="mode-shift">
+      <div class="mode">
+        <b>지금까지 · PART 3</b>
+        박해로 흩어진 사람들이 이르는 곳마다 복음을 전함
+      </div>
+      <div class="mode-arrow">→</div>
+      <div class="mode next">
+        <b>이제부터 · PART 4</b>
+        교회가 사람을 의도적으로 파송하여 여러 도시를 순회하며 복음을 전함
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 09 · 17</span>
+  </div>
+</section>
+
+
+</body>
+</html>

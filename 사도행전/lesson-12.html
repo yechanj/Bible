@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 12 — 바울의 2차 선교여행</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 12 전용 스타일 ── */
+
+    .recall-badge { display:inline-flex; align-items:center; padding:.5mm 2mm; background:var(--page-bg); border:1px solid var(--rule); border-radius:3px; font-size:6.5pt; color:var(--ink-faint); font-weight:700; letter-spacing:.05em; vertical-align:middle; margin-left:2mm; }
+    .new-concept { display:inline-block; padding:1.5mm 3mm; background:var(--accent); border-radius:3px; font-size:6.5pt; font-weight:700; color:var(--white); letter-spacing:.08em; margin-right:2mm; vertical-align:middle; }
+    .lead { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.7; margin-bottom:var(--sp-2); }
+    .body-text { font-size:var(--fs-body); color:var(--ink); line-height:1.75; }
+    .body-text + .body-text { margin-top:var(--sp-1); }
+    .text-note { margin:var(--sp-2) 0 0; padding:var(--sp-2) var(--sp-3); border-left:3px solid var(--rule-mid); background:var(--page-bg); border-radius:0 3px 3px 0; }
+    .text-note-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); margin-bottom:1mm; }
+    .text-note-body { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.65; }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-3); align-items:start; }
+
+    .acts18-bar { display:flex; align-items:center; gap:0; margin:var(--sp-1) 0; }
+    .a18-node { display:flex; flex-direction:column; align-items:center; gap:1.5mm; }
+    .a18-circle { width:9mm; height:9mm; border-radius:50%; border:2px solid var(--rule); background:var(--white); display:flex; align-items:center; justify-content:center; font-size:7pt; flex-shrink:0; }
+    .a18-circle.done { background:var(--accent); border-color:var(--accent); color:var(--white); font-weight:700; }
+    .a18-circle.going { border-color:var(--accent); background:var(--accent-pale); color:var(--accent); font-weight:700; }
+    .a18-label { font-size:6.5pt; font-weight:700; color:var(--accent); text-align:center; line-height:1.2; max-width:16mm; }
+    .a18-line { flex:1; height:1.5px; background:var(--accent); margin-bottom:4mm; }
+
+    /* 지도 */
+    .map-frame { border:1px solid var(--rule); border-radius:4px; background:#e3ecf1; display:block; width:100%; }
+    .map-caption { text-align:center; font-family:var(--ff-hand); font-size:13pt; color:var(--accent); margin-top:var(--sp-1); }
+    .map-legend { display:flex; flex-wrap:wrap; gap:1.5mm 6mm; margin-top:var(--sp-1); font-size:var(--fs-caption); color:var(--ink-soft); align-items:center; }
+    .map-legend i { display:inline-block; width:9mm; height:0; vertical-align:middle; margin-right:1.5mm; }
+    .lg-out { border-top:2.2px solid var(--accent); }
+    .lg-back { border-top:1.6px solid var(--ink); }
+    .lg-sea { border-top:1.6px dashed var(--ink-faint); }
+    .lg-j1 { border-top:1.4px dotted var(--rule-mid); }
+    .map-note { font-size:var(--fs-caption); color:var(--ink-faint); line-height:1.55; margin-top:1mm; }
+    .route-chain { display:flex; flex-wrap:wrap; align-items:center; gap:.8mm 1.4mm; font-size:var(--fs-small); line-height:1.5; }
+    .route-chain b { font-size:var(--fs-caption); letter-spacing:.06em; min-width:17mm; color:var(--ink-faint); }
+    .route-chain.out b { color:var(--accent); }
+    .route-chain span { color:var(--ink); }
+    .route-chain span.minor { color:var(--ink-faint); font-size:var(--fs-caption); }
+    .route-chain em { font-style:normal; color:var(--rule-mid); }
+    .route-chain .sea { color:var(--ink-faint); font-size:var(--fs-caption); }
+
+    /* 도시 머리띠 */
+    .city-head { display:flex; align-items:baseline; gap:3mm; padding:1.6mm 0; border-top:2px solid var(--ink); border-bottom:1px solid var(--rule); margin-bottom:var(--sp-2); }
+    .city-head-num { font-size:var(--fs-caption); font-weight:700; color:var(--accent); letter-spacing:.08em; }
+    .city-head-name { font-size:var(--fs-h2); font-weight:700; color:var(--ink); }
+    .city-head-region { font-size:var(--fs-caption); color:var(--ink-faint); }
+    .city-head-next { margin-left:auto; font-size:var(--fs-caption); color:var(--ink-faint); }
+
+    /* Before / After */
+    .shift { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); align-items:stretch; margin:var(--sp-2) 0; }
+    .shift-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; background:var(--page-bg); }
+    .shift-col.now { background:var(--accent-pale); border:1.5px solid var(--accent-soft); }
+    .shift-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.06em; margin-bottom:1mm; }
+    .shift-col.now .shift-label { color:var(--accent); }
+    .shift-text { font-size:var(--fs-small); color:var(--ink); line-height:1.6; }
+    .shift-mid { display:flex; align-items:center; font-size:13pt; color:var(--accent); }
+
+    /* 팀의 분리 */
+    .team-split { margin:var(--sp-2) 0; }
+    .ts-top { width:76mm; margin:0 auto; padding:2mm; text-align:center; border:1px solid var(--rule); border-radius:4px; background:var(--page-bg); }
+    .ts-top small { display:block; font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .ts-top b { font-size:var(--fs-body); color:var(--ink); }
+    .ts-break { text-align:center; font-size:var(--fs-caption); font-weight:700; color:var(--accent); padding:1.5mm 0; letter-spacing:.06em; }
+    .ts-cols { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); align-items:stretch; }
+    .ts-col { padding:var(--sp-2) var(--sp-3); border:1.5px solid var(--ink); border-radius:4px; }
+    .ts-col.main { border-color:var(--accent); background:var(--accent-pale); }
+    .ts-col small { display:block; font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .ts-col.main small { color:var(--accent); }
+    .ts-col b { display:block; font-size:var(--fs-body); color:var(--ink); margin:.5mm 0; }
+    .ts-col span { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.55; display:block; }
+    .ts-mid { display:flex; align-items:center; color:var(--rule-mid); font-size:13pt; }
+
+    /* 인물 소개 줄 */
+    .profile { display:grid; grid-template-columns:auto 1fr; gap:var(--sp-3); align-items:center; padding:var(--sp-2) 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); margin:var(--sp-2) 0; }
+    .profile-name { font-size:20pt; font-weight:700; color:var(--accent); line-height:1.1; }
+    .profile-name small { display:block; font-size:6.5pt; letter-spacing:.14em; color:var(--ink-faint); margin-bottom:1mm; }
+    .profile-attrs { display:grid; grid-template-columns:20mm 1fr; gap:.8mm 2mm; font-size:var(--fs-small); }
+    .profile-attrs dt { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); }
+    .profile-attrs dd { margin:0; color:var(--ink); }
+
+    /* 두 가지 구분 */
+    .neq { display:grid; grid-template-columns:1fr 12mm 1fr; align-items:stretch; margin:var(--sp-2) 0; }
+    .neq-col { padding:var(--sp-2) var(--sp-3); border:1.5px solid var(--ink); }
+    .neq-col.a { border-right:none; border-radius:4px 0 0 4px; }
+    .neq-col.b { border-left:none; border-radius:0 4px 4px 0; border-color:var(--accent); background:var(--accent-pale); }
+    .neq-kind { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .neq-col.b .neq-kind { color:var(--accent); }
+    .neq-title { font-size:var(--fs-body); font-weight:700; color:var(--ink); margin:.5mm 0 1mm; line-height:1.45; }
+    .neq-text { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.6; }
+    .neq-mid { display:flex; align-items:center; justify-content:center; background:var(--ink); color:var(--white); font-size:16pt; font-weight:700; }
+
+    /* 원인 사슬 */
+    .chain { display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr; gap:1mm; align-items:stretch; margin:var(--sp-2) 0; }
+    .ch { padding:2.2mm 1.5mm; border:1px solid var(--rule); border-radius:4px; text-align:center; font-size:var(--fs-caption); color:var(--ink-soft); display:flex; flex-direction:column; justify-content:center; gap:.6mm; line-height:1.4; }
+    .ch b { font-size:var(--fs-small); color:var(--ink); }
+    .ch.key { border-color:var(--accent); background:var(--accent-pale); }
+    .ch.key b { color:var(--accent); }
+    .ch-arrow { display:flex; align-items:center; color:var(--accent); font-size:10pt; }
+
+    /* 감옥의 밤 */
+    .night { border:1.5px solid var(--ink); border-radius:4px; overflow:hidden; margin:var(--sp-2) 0; }
+    .night-head { background:var(--ink); color:var(--white); padding:1.6mm var(--sp-3); font-size:var(--fs-caption); font-weight:700; letter-spacing:.1em; display:flex; justify-content:space-between; }
+    .night-body { display:grid; grid-template-columns:1fr 1fr; }
+    .night-col { padding:var(--sp-2) var(--sp-3); }
+    .night-col + .night-col { border-left:1px solid var(--rule); background:var(--page-bg); }
+    .night-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--accent); margin-bottom:1mm; }
+    .night-line { display:grid; grid-template-columns:1fr 10mm; padding:1.3mm 0; border-bottom:1px dotted var(--rule); font-size:var(--fs-small); color:var(--ink); line-height:1.45; }
+    .night-line:last-child { border-bottom:none; }
+    .night-line span { font-size:var(--fs-caption); color:var(--ink-faint); text-align:right; }
+    .qa-big { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); align-items:stretch; margin:var(--sp-2) 0; }
+    .qa-q, .qa-a { padding:var(--sp-2) var(--sp-3); border-radius:4px; }
+    .qa-q { border:1.5px solid var(--ink); }
+    .qa-a { background:var(--accent); color:var(--white); }
+    .qa-who { font-size:6.5pt; font-weight:700; letter-spacing:.1em; opacity:.7; }
+    .qa-text { font-family:var(--ff-hand); font-size:14pt; line-height:1.45; margin-top:.5mm; }
+    .qa-mid { display:flex; align-items:center; color:var(--accent); font-size:13pt; }
+
+    /* 두 도시 / 두 학파 비교 */
+    .duo { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--rule); border-radius:4px; overflow:hidden; margin:var(--sp-2) 0; }
+    .duo-col { padding:var(--sp-2) var(--sp-3); }
+    .duo-col + .duo-col { border-left:1px solid var(--rule); background:var(--accent-pale); }
+    .duo-role { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .duo-name { font-size:var(--fs-h2); font-weight:700; color:var(--ink); margin:.5mm 0 1mm; }
+    .duo-col + .duo-col .duo-name { color:var(--accent); }
+    .duo-text { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.65; }
+    .duo-text b { color:var(--ink); }
+    .duo-step { padding:1.2mm 0; border-top:1px dotted var(--rule-mid); font-size:var(--fs-small); color:var(--ink); }
+    .duo-step:first-of-type { border-top:none; }
+
+    /* 설교 구조 */
+    .sermon-steps { margin:var(--sp-2) 0; counter-reset:ss; }
+    .ss { counter-increment:ss; display:grid; grid-template-columns:8mm 44mm 1fr 14mm; gap:2mm; align-items:baseline; padding:1.9mm 0; border-bottom:1px solid var(--rule); }
+    .ss::before { content:counter(ss); width:5.5mm; height:5.5mm; border-radius:50%; background:var(--ink); color:var(--white); font-size:var(--fs-caption); font-weight:700; display:flex; align-items:center; justify-content:center; align-self:center; }
+    .ss-title { font-size:var(--fs-small); font-weight:700; color:var(--ink); }
+    .ss-text { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.5; }
+    .ss-ref { font-size:var(--fs-caption); color:var(--ink-faint); text-align:right; }
+    .ss.key::before { background:var(--accent); }
+    .ss.key .ss-title { color:var(--accent); }
+    .ss-zone { font-size:6.5pt; font-weight:700; letter-spacing:.12em; color:var(--ink-faint); padding:2mm 0 .5mm; }
+
+    /* 설교 3자 비교 */
+    .cmp3 { display:grid; grid-template-columns:18mm 1fr 1fr 1fr; margin:var(--sp-2) 0; border-top:2px solid var(--ink); }
+    .cmp3 > div { padding:2.4mm 2.6mm; border-bottom:1px solid var(--rule); font-size:var(--fs-small); line-height:1.55; color:var(--ink); }
+    .cmp3 .l { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); padding-left:0; }
+    .cmp3 .h { font-weight:700; font-size:var(--fs-body); }
+    .cmp3 .h small { display:block; font-weight:400; font-size:var(--fs-caption); color:var(--ink-faint); }
+    .cmp3 .now { background:var(--accent-pale); }
+    .cmp3 .h.now { color:var(--accent); }
+    .same-gospel { margin-top:var(--sp-2); padding:var(--sp-2) var(--sp-3); border:2px solid var(--accent); border-radius:4px; text-align:center; }
+    .same-gospel-en { font-size:var(--fs-caption); font-weight:700; letter-spacing:.14em; color:var(--accent); }
+    .same-gospel-ko { font-family:var(--ff-hand); font-size:14pt; color:var(--accent); line-height:1.5; margin-top:.5mm; }
+    .react3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:var(--sp-2); margin:var(--sp-1) 0; }
+    .rc { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; }
+    .rc.yes { border:1.5px solid var(--accent); background:var(--accent-pale); }
+    .rc b { display:block; font-size:var(--fs-body); color:var(--ink); }
+    .rc.yes b { color:var(--accent); }
+    .rc span { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.55; display:block; margin-top:.5mm; }
+    .react-top { width:60mm; margin:0 auto; padding:1.5mm 2mm; text-align:center; background:var(--ink); color:var(--white); font-weight:700; font-size:var(--fs-small); border-radius:4px; }
+
+    /* 숫자 강조 */
+    .stay { display:grid; grid-template-columns:auto 1fr; gap:var(--sp-3); align-items:center; padding:var(--sp-2) var(--sp-3); border:2px solid var(--accent); border-radius:4px; margin:var(--sp-2) 0; }
+    .stay-num { font-size:24pt; font-weight:700; color:var(--accent); line-height:1; white-space:nowrap; }
+    .stay-text { font-size:var(--fs-small); color:var(--ink); line-height:1.65; }
+
+    /* 요약 표 */
+    .trip-table { width:100%; border-collapse:collapse; font-size:var(--fs-small); margin:var(--sp-2) 0; }
+    .trip-table th { text-align:left; padding:1.8mm 2.5mm; font-size:var(--fs-caption); letter-spacing:.06em; color:var(--white); background:var(--ink); }
+    .trip-table td { padding:1.7mm 2.5mm; border-bottom:1px solid var(--rule); color:var(--ink-soft); line-height:1.45; vertical-align:top; }
+    .trip-table td:first-child { font-weight:700; color:var(--ink); white-space:nowrap; }
+    .trip-table td:nth-child(2) { color:var(--ink-faint); font-size:var(--fs-caption); white-space:nowrap; }
+    .trip-table tr.edge td { background:var(--accent-pale); }
+    .trip-table tr.edge td:first-child { color:var(--accent); }
+
+    /* 팀의 변화 */
+    .team-line { display:grid; grid-template-columns:repeat(5,1fr); margin:var(--sp-2) 0 0; position:relative; }
+    .team-line::before { content:""; position:absolute; left:1.7mm; right:18%; top:1.7mm; height:1.5px; background:var(--rule-mid); }
+    .tl { position:relative; padding-right:2.5mm; }
+    .tl i { display:block; width:3.4mm; height:3.4mm; border-radius:50%; background:var(--ink); margin-bottom:1.2mm; position:relative; }
+    .tl.out i { background:var(--white); border:1.5px solid var(--rule-mid); }
+    .tl.in i { background:var(--accent); }
+    .tl b { display:block; font-size:var(--fs-caption); color:var(--ink); line-height:1.4; }
+    .tl span { font-size:6.5pt; color:var(--ink-faint); line-height:1.45; display:block; }
+    .tl.in b { color:var(--accent); }
+    .feat { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-1) var(--sp-3); margin-top:var(--sp-1); }
+    .feat div { padding:1.6mm 0; border-bottom:1px dotted var(--rule); font-size:var(--fs-small); color:var(--ink-soft); line-height:1.55; }
+    .feat b { display:block; color:var(--ink); }
+
+    /* 요약 */
+    .pcn { display:grid; grid-template-columns:1fr auto 1fr auto 1.25fr; gap:var(--sp-1); align-items:stretch; }
+    .pcn-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; }
+    .pcn-col.cur { border-color:var(--accent); background:var(--accent-pale); }
+    .pcn-col.next { background:var(--ink); border-color:var(--ink); color:var(--white); }
+    .pcn-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .pcn-col.cur .pcn-label { color:var(--accent); }
+    .pcn-col.next .pcn-label { color:rgba(255,255,255,.65); }
+    .pcn-title { font-size:var(--fs-small); font-weight:700; margin-top:.5mm; line-height:1.45; }
+    .pcn-text { font-size:var(--fs-caption); margin-top:1mm; line-height:1.55; opacity:.9; }
+    .pcn-arrow { display:flex; align-items:center; color:var(--accent); font-size:11pt; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     선교여행 공통 지도 — 좌표계와 규칙은 DESIGN.md "선교여행 지도 시스템" 참고
+     x = (경도 − 20) × 20,  y = (42 − 위도) × 25
+     2차 여행 전체: viewBox="2 8 352 256"
+
+     2차 여행 도시 좌표 (x, y)
+       수리아 안디옥 323.2,145   더베 267.6,116.3   루스드라 246.8,110.5   드로아 123.4,56.3
+       사모드라게 112,38.3       네압볼리 88.2,26.5  빌립보 84.8,23.6       암비볼리 77,29.5
+       아볼로니아 69.6,34.3      데살로니가 59,34    베뢰아 44,37           아테네 74.6,100.5
+       고린도 57.6,102.3        겐그레아 59.8,103.4  에베소 146.8,101.5     가이사랴 297.8,237.5
+       예루살렘 304.4,255.5
+     ════════════════════════════════════════════════════════════ -->
+<svg id="map-defs" width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <marker id="mk-acc" markerWidth="4" markerHeight="4" refX="3.2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#b4552d"/></marker>
+    <marker id="mk-ink" markerWidth="4" markerHeight="4" refX="3.2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#1e1e1e"/></marker>
+    <marker id="mk-gray" markerWidth="4" markerHeight="4" refX="3.2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#888888"/></marker>
+    <g id="basemap" fill="#f4f0ea" stroke="#d2cdc5" stroke-width=".45" stroke-linejoin="round">
+      <!-- 아시아(소아시아·수리아·유대)와 아프리카 북안 -->
+      <path d="M181,24.5 L198,31.3 L182,38.8 L160,40.5 L146,40 L134,40.5 L130,47 L126,51.5 L123,56.3 L121.4,63 L139,61.3 L134,67.5 L137,77.5 L135,83.3 L142,89.5 L126,92.5 L132,97.5 L145.2,103.5 L144,112.5 L146,124.3 L160,125 L148,133 L165,130 L172,135 L182,133.8 L186,143.8 L192.8,145 L203,142.5 L208,145 L211.4,135 L214,128 L227.8,130.8 L240,136.5 L246,143.3 L256.6,149.5 L266,146.5 L279,142.5 L292.6,130 L298,131.3 L307.6,135.8 L315.8,130.8 L324,127.5 L323.4,135.5 L315.6,142 L318.6,148.3 L315.6,162 L317.6,177.8 L316.6,189 L310,202.5 L307.4,211 L304,218.3 L300,229.5 L297.8,237.5 L295,248.8 L289,262.5 L264,272.5 L246,268.8 L220,261.3 L198,270 L178,277.5 L144,266.3 L102,260 L80,248.8 L64,245 L52,230 L34,227.5 L12,235 L0,245 L0,290 L360,290 L360,0 L272,0 L246,6.3 L228,22.5 L182,20 Z"/>
+      <!-- 유럽(마게도냐·아가야) -->
+      <path d="M0,53.8 L5,62.5 L15,76.3 L22,91.3 L34.6,93.8 L26,108.8 L33.4,118.8 L33,126.3 L37.6,132 L42,124.5 L49.6,140 L51.4,131.3 L64,139 L58,121.3 L56,111.3 L70,116.3 L64,110 L60,102 L72.6,101.5 L80.6,108.8 L80,96.3 L72,85 L52,77.5 L67,71.3 L58,60 L52,43.8 L59,34.5 L68,43.8 L75,52 L79.6,51.3 L88,46.8 L75,31.3 L88,26.8 L117.4,28.8 L121,32 L134,33.5 L121,47.5 L126,45 L132,39 L142,36.5 L150,25.8 L160,25 L179,24.5 L180,18.8 L160,2.5 L160,0 L0,0 Z"/>
+      <!-- 고린도만 -->
+      <path d="M26,92 L35,92.5 L48,91.3 L59,100 L58,101.8 L46,97.5 L36,95.3 L28,95.5 Z" fill="#e3ecf1" stroke="none"/>
+      <!-- 그레데 · 로도 · 구브로 -->
+      <path d="M71,162.5 L80,162 L102.6,166.5 L126,168.8 L122,175 L95,176.8 L72,169.3 Z"/>
+      <path d="M164,138.8 L155,147.5 L161,152.5 Z"/>
+      <path d="M245.4,172.5 L248,181.3 L259,185.8 L272.6,177.5 L281.6,176 L279,171.8 L291.6,157.8 L266.4,166.5 L258.4,165 L258,170.5 L251,170.8 Z"/>
+    </g>
+
+    <!-- 에게해의 섬 (단순화) -->
+    <g id="islands" fill="#f4f0ea" stroke="#d2cdc5" stroke-width=".45">
+      <ellipse cx="112" cy="38.3" rx="2.6" ry="1.7"/>
+      <ellipse cx="95" cy="32.6" rx="2.6" ry="2.2"/>
+      <ellipse cx="104" cy="52.5" rx="4" ry="2.4"/>
+      <ellipse cx="126.5" cy="72" rx="4" ry="2.6"/>
+      <ellipse cx="120" cy="90" rx="2" ry="3.2"/>
+      <ellipse cx="136.5" cy="107.2" rx="3.4" ry="1.9"/>
+    </g>
+
+    <!-- 1차 여행 (비교용, 출발 경로만) -->
+    <path id="j1-ref" d="M323.2,145 L318.4,147 Q300,166 278,170.5 Q262,171 248.2,181 Q228,160 216.2,129.6 L217,126 L223.8,92.5 L249.8,103.3 L246.8,110.5 L267.6,116.3" fill="none" stroke="#a39d92" stroke-width="1.2" stroke-dasharray=".6,2.2" stroke-linecap="round"/>
+
+    <!-- 2차 여행: 출발 경로 -->
+    <g id="j2-out" fill="none" stroke="#b4552d" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M323.2,145 L328,136 L327,124.5 L300,124 L267.6,116.3 L246.8,110.5"/>
+      <path d="M246.8,110.5 C236,96 210,84 190,76 S150,60 124.8,56.6"/>
+      <path d="M123.4,56.3 L112.6,39.6 L89,27.2" stroke-dasharray="3.6,2.6"/>
+      <path d="M88.2,26.5 L84.8,23.6 L77,29.5 L69.6,34.3 L59,34 L44,37 L51.5,43"/>
+      <path d="M51.5,43 C60,52 74,62 82,76 S92,104 84,112 Q78,112 75.6,103" stroke-dasharray="3.6,2.6"/>
+      <path d="M74.6,100.5 Q66,98.4 59,101.4" marker-end="url(#mk-acc)"/>
+    </g>
+    <!-- 2차 여행: 귀환 경로 -->
+    <g id="j2-back" fill="none" stroke="#1e1e1e" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M60.4,103.8 Q68,106 76,112.5 T92,113 Q118,99 145.4,101.4" stroke-dasharray="3.6,2.6"/>
+      <path d="M145.6,103.4 C136,120 138,145 160,160 S262,208 296.4,236.4" stroke-dasharray="3.6,2.6"/>
+      <path d="M297.8,237.5 L306,231 L312,218 L317.4,204 L322.6,191 L324.4,178 L324,163 L323.4,149.4" marker-end="url(#mk-ink)"/>
+      <path d="M298.8,239 L303.6,253.4" stroke-width="1" stroke-dasharray=".8,1.8"/>
+    </g>
+    <!-- 2차 여행: 도시 점 -->
+    <g id="j2-dots">
+      <circle cx="323.2" cy="145" r="6" fill="#b4552d" opacity=".18"/>
+      <circle cx="323.2" cy="145" r="3" fill="#b4552d"/>
+      <g fill="#ffffff" stroke="#1e1e1e" stroke-width="1">
+        <circle cx="267.6" cy="116.3" r="1.9"/><circle cx="246.8" cy="110.5" r="1.9"/><circle cx="123.4" cy="56.3" r="1.9"/>
+        <circle cx="84.8" cy="23.6" r="1.9"/><circle cx="59" cy="34" r="1.9"/><circle cx="44" cy="37" r="1.9"/>
+        <circle cx="74.6" cy="100.5" r="1.9"/><circle cx="57.6" cy="102.3" r="1.9"/><circle cx="146.8" cy="101.5" r="1.9"/>
+        <circle cx="297.8" cy="237.5" r="1.9"/>
+      </g>
+      <g fill="#1e1e1e">
+        <circle cx="112" cy="38.3" r=".9"/><circle cx="88.2" cy="26.5" r=".9"/><circle cx="77" cy="29.5" r=".9"/><circle cx="69.6" cy="34.3" r=".9"/><circle cx="60.2" cy="103.8" r=".8"/>
+      </g>
+      <circle cx="304.4" cy="255.5" r="1.9" fill="#ffffff" stroke="#888" stroke-width=".9" stroke-dasharray="1.2,1"/>
+    </g>
+    <!-- 2차 여행: 지역 이름 -->
+    <g id="j2-regions" font-family="SCDream,sans-serif" font-size="4.6" fill="#a39d92" text-anchor="middle" letter-spacing=".8">
+      <text x="230" y="70">갈라디아</text>
+      <text x="200" y="98">브루기아</text>
+      <text x="163" y="50">무시아</text>
+      <text x="208" y="36">비두니아</text>
+      <text x="296" y="116">길리기아</text>
+      <text x="338" y="170">수리아</text>
+      <text x="322" y="262" font-size="4">유대</text>
+      <text x="270" y="181" font-size="4">구브로</text>
+      <text x="100" y="170.6" font-size="4">그레데</text>
+      <g font-size="6.4" font-weight="700" letter-spacing="2.6">
+        <text x="40" y="16" fill="#b4552d">마게도냐</text>
+        <text x="30" y="126" fill="#b4552d">아가야</text>
+        <text x="182" y="116" fill="#8c867c">아시아</text>
+      </g>
+      <g fill="#8aa5b6" font-size="5.4" letter-spacing="3">
+        <text x="108" y="84">에게해</text>
+        <text x="200" y="216">지 중 해</text>
+      </g>
+    </g>
+    <!-- 2차 여행: 도시 번호와 이름 -->
+    <g id="j2-labels" font-family="SCDream,sans-serif" font-size="5.4" fill="#1e1e1e" font-weight="700">
+      <text x="329" y="150.6" fill="#b4552d">① 안디옥</text>
+      <text x="257" y="123.8" text-anchor="middle">② 더베 · 루스드라</text>
+      <text x="127.4" y="60.6">③ 드로아</text>
+      <text x="88" y="19.4">④ 빌립보</text>
+      <text x="63" y="43.6">⑤ 데살로니가</text>
+      <text x="40.6" y="34.6" text-anchor="end">⑥ 베뢰아</text>
+      <text x="71" y="96.4" text-anchor="end">⑦ 아테네</text>
+      <text x="54.4" y="110.4" text-anchor="end">⑧ 고린도</text>
+      <text x="150.6" y="100">⑨ 에베소</text>
+      <text x="294" y="239.4" text-anchor="end">⑩ 가이사랴</text>
+      <text x="308.4" y="257.4" font-size="4.2" font-weight="400" fill="#4a4a4a">예루살렘 *</text>
+    </g>
+
+    <!-- 마게도냐 확대 지도용 이름 -->
+    <g id="mac-labels" font-family="SCDream,sans-serif" font-size="2.9" fill="#1e1e1e" font-weight="700">
+      <text x="126" y="58.4">드로아</text>
+      <text x="114.6" y="37.2" font-weight="400" fill="#4a4a4a">사모드라게</text>
+      <text x="90.6" y="24.6" font-weight="400" fill="#4a4a4a">네압볼리</text>
+      <text x="84.8" y="20.6" text-anchor="middle">빌립보</text>
+      <text x="76" y="26.6" text-anchor="end" font-weight="400" fill="#4a4a4a">암비볼리</text>
+      <text x="71" y="38.6" font-weight="400" fill="#4a4a4a">아볼로니아</text>
+      <text x="58" y="31" text-anchor="end">데살로니가</text>
+      <text x="42" y="40.8" text-anchor="end">베뢰아</text>
+      <g font-weight="400" fill="#a39d92" letter-spacing=".5">
+        <text x="56" y="14" font-size="3.6" font-weight="700" fill="#b4552d" letter-spacing="1.6" text-anchor="middle">마게도냐</text>
+        <text x="150" y="52">무시아</text>
+        <text x="100" y="62" fill="#8aa5b6" letter-spacing="1.6">에게해</text>
+      </g>
+    </g>
+  </defs>
+</svg>
+
+
+<!-- ════════════════════════════════════
+     PAGE 1: LESSON OPENING
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">12</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 5 — 복음이 로마 세계로 · 첫 Lesson</div>
+      <h1 class="opening-title">바울의 2차 선교여행</h1>
+      <div class="opening-scripture">사도행전 15:36–18:22</div>
+    </div>
+  </div>
+
+  <div class="lesson-summary-line">
+    바울은 바나바와 헤어진 뒤 실라와 함께 다시 선교여행을 시작하고, 디모데와 합류하여 마게도냐와 그리스 지역의 여러 도시에서 복음을 전한다. 각 도시에서 다양한 반응과 박해를 경험하지만 새로운 신자들과 공동체가 형성된다.
+  </div>
+
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">바울 · 바나바 · 실라 · 디모데 · 루디아 · 빌립보 간수 · 야손 · 브리스길라 · 아굴라 · 갈리오</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">수리아 안디옥 · 더베 · 루스드라 · 드로아 · 빌립보 · 데살로니가 · 베뢰아 · 아테네 · 고린도 · 에베소</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">핵심 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2mm;margin-top:1.5mm;">
+        <span class="tag">2차 선교여행</span><span class="tag">마게도냐 환상</span><span class="tag">루디아</span><span class="tag">감옥</span>
+        <span class="tag">아레오바고</span><span class="tag">우상숭배</span><span class="tag">고린도</span><span class="tag">브리스길라와 아굴라</span>
+      </div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">Acts 1:8 진행</div>
+      <div class="acts18-bar">
+        <div class="a18-node"><div class="a18-circle done">✓</div><div class="a18-label">예루살렘</div></div>
+        <div class="a18-line"></div>
+        <div class="a18-node"><div class="a18-circle done">✓</div><div class="a18-label">유대</div></div>
+        <div class="a18-line"></div>
+        <div class="a18-node"><div class="a18-circle done">✓</div><div class="a18-label">사마리아</div></div>
+        <div class="a18-line"></div>
+        <div class="a18-node"><div class="a18-circle going">→</div><div class="a18-label">땅끝</div></div>
+      </div>
+    </div>
+  </div>
+
+  <svg class="map-frame" viewBox="2 8 352 172" xmlns="http://www.w3.org/2000/svg" style="margin-top:var(--sp-2);">
+    <use href="#basemap"/><use href="#islands"/>
+    <use href="#j2-regions"/>
+    <use href="#j2-back"/>
+    <use href="#j2-out"/>
+    <use href="#j2-dots"/>
+    <text x="329" y="150.6" font-family="SCDream,sans-serif" font-size="5.4" font-weight="700" fill="#b4552d">안디옥</text>
+    <text x="258" y="92" font-family="SCDream,sans-serif" font-size="6.4" font-weight="700" fill="#8c867c" letter-spacing="2.6" text-anchor="middle">소아시아</text>
+  </svg>
+  <div class="map-caption">복음이 에게해를 건너 마게도냐와 그리스 지역으로 확장된다.</div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 1</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 2: BIG PICTURE — 전체 지도
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <h2 class="section-heading">2차 선교여행 전체 지도</h2>
+  <p class="lead">이번 Lesson의 기준 지도다. 각 장면 머리에 붙은 번호가 이 지도의 번호다. 1차 여행(옅은 점선)과 견주어 보면 이번 여행이 얼마나 서쪽으로 멀리 나아갔는지 보인다.</p>
+
+  <svg class="map-frame" viewBox="2 8 352 256" xmlns="http://www.w3.org/2000/svg">
+    <use href="#basemap"/><use href="#islands"/>
+    <use href="#j2-regions"/>
+    <use href="#j1-ref"/>
+    <use href="#j2-back"/>
+    <use href="#j2-out"/>
+    <use href="#j2-dots"/>
+    <use href="#j2-labels"/>
+    <text x="266" y="150" font-family="SCDream,sans-serif" font-size="3.8" fill="#a39d92" text-anchor="middle">1차 여행</text>
+    <g font-family="SCDream,sans-serif" font-size="4.4" fill="#888">
+      <text x="9" y="252">N</text>
+      <path d="M10.6,262 L10.6,254.6 M8.6,257.4 L10.6,254.4 L12.6,257.4" stroke="#888" stroke-width=".7" fill="none"/>
+    </g>
+  </svg>
+
+  <div class="map-legend">
+    <span><i class="lg-out"></i>출발 경로</span>
+    <span><i class="lg-back"></i>귀환 경로</span>
+    <span><i class="lg-sea"></i>점선은 바닷길</span>
+    <span><i class="lg-j1"></i>1차 여행</span>
+    <span>○ 주요 도시 &nbsp;· 지나간 곳</span>
+  </div>
+  <div class="map-note">* 18:22는 바울이 가이사랴에 상륙하여 "올라가 교회의 안부를 물은 후에" 안디옥으로 내려갔다고 기록한다. 일반적으로 예루살렘 방문으로 이해되지만 본문에 '예루살렘'이라는 지명은 나오지 않으므로 점선으로 표시했다. 도시 위치는 실제 경위도 기준이며, 선은 이동 순서를 나타낸다.</div>
+
+  <div style="margin-top:var(--sp-2);padding-top:var(--sp-2);border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:1mm;">
+    <div class="route-chain out"><b>출발</b><span>① 수리아 안디옥</span><em>→</em><span class="minor">수리아 · 길리기아</span><em>→</em><span>② 더베 · 루스드라</span><em>→</em><span class="minor">브루기아 · 갈라디아 · 무시아</span><em>→</em><span>③ 드로아</span></div>
+    <div class="route-chain out"><b>마게도냐</b><span>③ 드로아</span><em class="sea">⋯배⋯</em><span class="minor">사모드라게 · 네압볼리</span><em>→</em><span>④ 빌립보</span><em>→</em><span class="minor">암비볼리 · 아볼로니아</span><em>→</em><span>⑤ 데살로니가</span><em>→</em><span>⑥ 베뢰아</span></div>
+    <div class="route-chain out"><b>아가야</b><span>⑥ 베뢰아</span><em class="sea">⋯바다 쪽으로⋯</em><span>⑦ 아테네</span><em>→</em><span>⑧ 고린도</span></div>
+    <div class="route-chain"><b>귀환</b><span>⑧ 고린도</span><em>→</em><span class="minor">겐그레아</span><em class="sea">⋯배⋯</em><span>⑨ 에베소</span><em class="sea">⋯배⋯</em><span>⑩ 가이사랴</span><em>→</em><span class="minor">"올라가" *</span><em>→</em><span>① 수리아 안디옥</span></div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 3: SCENE 01 (15:36–41)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">①</span>
+    <span class="city-head-name">수리아 안디옥</span>
+    <span class="city-head-region">출발지</span>
+    <span class="city-head-next">다음 → 수리아 · 길리기아 · 더베 · 루스드라</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">바울과 바나바가 갈라서다</span>
+      <span class="scene-ref">행 15:36–41</span>
+    </div>
+    <div class="scene-body">
+      <p>예루살렘 회의가 끝나고 얼마 뒤, 바울이 바나바에게 제안한다. "우리가 주의 말씀을 전한 각 성으로 다시 가서 형제들이 어떠한가 방문하자." 2차 여행은 새로운 곳을 개척하려는 계획이 아니라 <strong>1차 여행의 교회들을 다시 돌아보려는 뜻</strong>에서 시작되었다.</p>
+    </div>
+  </div>
+
+  <div class="text-note" style="margin-top:0;">
+    <div class="text-note-label">RECALL · L10 — 버가에서 있었던 일</div>
+    <div class="text-note-body">1차 여행 때 마가 요한은 버가에서 일행을 떠나 예루살렘으로 돌아갔다(13:13). 그때 이 교재는 "떠났다는 사실만 기억해 두자"고 했다. 그 일이 여기서 다시 등장한다.</div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">바나바는 마가라 하는 요한도 데리고 가고자 함</div></div><div class="flow-step-ref">15:37</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">바울은 밤빌리아에서 떠나 함께 일하러 가지 않은 사람을 데려가는 것이 옳지 않다고 봄</div></div><div class="flow-step-ref">15:38</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">서로 심히 다투어 피차 갈라섬</div></div><div class="flow-step-ref">15:39</div></div>
+  </div>
+
+  <div class="team-split">
+    <div class="ts-top"><small>1차 선교여행</small><b>바나바 · 바울 · (마가 요한)</b></div>
+    <div class="ts-break">↓ 의견 충돌 ↓</div>
+    <div class="ts-cols">
+      <div class="ts-col">
+        <small>한 팀</small>
+        <b>바나바 + 마가 요한</b>
+        <span>배를 타고 <strong>구브로</strong>로 감 (15:39). 바나바의 고향이자 1차 여행의 첫 목적지다.</span>
+      </div>
+      <div class="ts-mid">↔</div>
+      <div class="ts-col main">
+        <small>다른 한 팀 — 사도행전이 따라가는 쪽</small>
+        <b>바울 + 실라</b>
+        <span>형제들에게 주의 은혜에 부탁함을 받고 <strong>수리아와 길리기아</strong>로 감 (15:40–41). 이번에는 육로다.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">IMPORTANT — 본문이 하지 않는 일</div>
+      <div class="background-box-body">누가는 두 사람이 "심히 다투었다"고 숨기지 않고 적는다. 그러나 누가 옳았는지 판정하지 않는다. 두 사람이 끝내 화해하지 못했다고도 말하지 않는다. 이 교재도 한쪽 편을 들지 않는다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">바나바의 마지막 장면 <span class="recall-badge">L04 · L07 · L09 · L10</span></div>
+      <div class="background-box-body">밭을 팔아 내놓고, 사울을 사도들에게 소개하고, 안디옥으로 데려와 함께 가르치고, 함께 파송되었던 바나바는 이 장면 이후 사도행전에 다시 나오지 않는다. 그의 마지막 행동은 한 번 떠났던 사람에게 다시 기회를 주는 것이었다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 4: SCENE 02 (16:1–5)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">②</span>
+    <span class="city-head-name">더베 · 루스드라</span>
+    <span class="city-head-region">루가오니아 · 1차 여행 때 방문한 곳</span>
+    <span class="city-head-next">다음 → 브루기아 · 갈라디아</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 2</span>
+      <span class="scene-title">디모데가 합류하다</span>
+      <span class="scene-ref">행 16:1–5</span>
+    </div>
+    <div class="scene-body">
+      <p>바울과 실라는 길리기아를 지나 더베와 루스드라에 이른다. 1차 여행 때와는 반대 방향에서 들어온 셈이다. 루스드라는 바울이 돌에 맞아 성 밖으로 끌려 나갔던 곳이다(14:19). 그 도시에 제자들이 남아 있었고, 그 가운데 한 사람이 이번 여행에 합류한다.</p>
+    </div>
+  </div>
+
+  <div class="profile">
+    <div class="profile-name"><small>NEW CHARACTER</small>디모데</div>
+    <dl class="profile-attrs">
+      <dt>어머니</dt><dd>믿는 유대 여자</dd>
+      <dt>아버지</dt><dd>헬라인</dd>
+      <dt>평판</dt><dd>루스드라와 이고니온의 형제들에게 칭찬받는 제자</dd>
+    </dl>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">바울이 디모데를 데리고 떠나고자 함</div></div><div class="flow-step-ref">16:3</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">그 지역에 있는 유대인으로 말미암아 그에게 할례를 행함</div><div class="flow-step-desc">"이는 그 사람들이 그의 아버지는 헬라인인 줄 다 앎이러라"</div></div><div class="flow-step-ref">16:3</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">여러 성을 다니며 예루살렘의 사도와 장로들이 작정한 규례를 전해 줌</div></div><div class="flow-step-ref">16:4</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">여러 교회가 믿음이 더 굳건해지고 수가 날마다 늘어감</div></div><div class="flow-step-ref">16:5</div></div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">예루살렘 회의에서는 할례가 필요 없다고 했는데, 왜 디모데는 할례를 받았을까?</h3>
+
+  <p class="body-text">3절과 4절이 나란히 놓여 있다는 점이 중요하다. 바울은 디모데에게 할례를 행하고, 바로 그 길에서 "이방인에게 할례를 요구하지 않는다"는 회의의 결정을 들고 다니며 전한다. 누가는 이 둘을 모순으로 여기지 않는다. <span class="recall-badge">RECALL · L11</span></p>
+
+  <div class="neq">
+    <div class="neq-col a">
+      <div class="neq-kind">LESSON 11 · 행 15:1</div>
+      <div class="neq-title">구원의 조건으로 강요하는 할례</div>
+      <div class="neq-text">"할례를 받지 아니하면 능히 구원을 받지 못하리라." 회의가 거부한 것은 이것이다.</div>
+    </div>
+    <div class="neq-mid">≠</div>
+    <div class="neq-col b">
+      <div class="neq-kind">LESSON 12 · 행 16:3</div>
+      <div class="neq-title">선교 과정에서 상황을 고려한 할례</div>
+      <div class="neq-text">본문이 밝히는 이유는 "그 지역에 있는 유대인으로 말미암아"이다. 구원이 아니라 그 지역 유대인들 앞에서의 사역을 위한 결정이며, 회의의 결정을 취소한 것이 아니다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 5: SCENE 03 (16:6–8)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">바울의 계획과 다른 방향으로</span>
+      <span class="scene-ref">행 16:6–8</span>
+    </div>
+    <div class="scene-body">
+      <p>여기까지는 계획대로였다. 1차 여행의 교회들을 다시 돌아보았다. 문제는 그다음이다. 일행은 더 나아가 말씀을 전하려 하지만, 가려는 길이 두 번 연달아 막힌다.</p>
+    </div>
+  </div>
+
+  <svg class="map-frame" viewBox="96 22 196 104" xmlns="http://www.w3.org/2000/svg" style="margin-top:var(--sp-2);">
+    <use href="#basemap"/><use href="#islands"/>
+    <!-- 실제 이동 -->
+    <path d="M246.8,110.5 C236,96 210,84 190,76 S150,60 125.6,56.8" fill="none" stroke="#b4552d" stroke-width="1.6" stroke-linecap="round" marker-end="url(#mk-acc)"/>
+    <!-- 막힌 방향 -->
+    <path d="M204,82 Q184,92 160,98" fill="none" stroke="#888" stroke-width="1.1" stroke-dasharray="1.6,1.8" marker-end="url(#mk-gray)"/>
+    <path d="M166,64 Q176,50 192,40" fill="none" stroke="#888" stroke-width="1.1" stroke-dasharray="1.6,1.8" marker-end="url(#mk-gray)"/>
+    <g font-family="SCDream,sans-serif" font-weight="700" font-size="5" fill="#1e1e1e" text-anchor="middle">
+      <text x="181" y="97">✕</text><text x="180" y="49">✕</text>
+    </g>
+    <circle cx="246.8" cy="110.5" r="1.7" fill="#fff" stroke="#1e1e1e" stroke-width=".9"/>
+    <circle cx="267.6" cy="116.3" r="1.7" fill="#fff" stroke="#1e1e1e" stroke-width=".9"/>
+    <circle cx="123.4" cy="56.3" r="1.7" fill="#fff" stroke="#1e1e1e" stroke-width=".9"/>
+    <circle cx="146.8" cy="101.5" r="1.1" fill="#a39d92"/>
+    <g font-family="SCDream,sans-serif" font-size="3.8" font-weight="700" fill="#1e1e1e">
+      <text x="250" y="109.4">루스드라</text>
+      <text x="271" y="120.6" font-weight="400" fill="#4a4a4a">더베</text>
+      <text x="120.6" y="52.6" text-anchor="end" fill="#b4552d">③ 드로아</text>
+      <text x="143.6" y="106.6" font-size="3" font-weight="400" fill="#888" text-anchor="end">에베소</text>
+      <g font-weight="400" fill="#a39d92" text-anchor="middle" letter-spacing=".6">
+        <text x="232" y="72">갈라디아</text>
+        <text x="214" y="97">브루기아</text>
+        <text x="150" y="50">무시아</text>
+      </g>
+      <g text-anchor="middle">
+        <text x="150" y="88" fill="#4a4a4a">아시아</text>
+        <text x="150" y="92.4" font-size="2.8" font-weight="400" fill="#888">성령이 말씀을 전하지 못하게 하심 (16:6)</text>
+        <text x="216" y="34" fill="#4a4a4a">비두니아</text>
+        <text x="216" y="38.4" font-size="2.8" font-weight="400" fill="#888">예수의 영이 허락하지 않으심 (16:7)</text>
+      </g>
+      <text x="108" y="84" font-size="3.4" font-weight="400" fill="#8aa5b6" letter-spacing="1.4">에게해</text>
+    </g>
+  </svg>
+  <div class="map-legend">
+    <span><i class="lg-out"></i>실제로 이동한 방향</span>
+    <span><i style="border-top:1.6px dotted var(--ink-faint);"></i>가려 했으나 막힌 방향</span>
+    <span style="color:var(--ink-faint);">※ 막힌 방향의 화살표는 대략의 방위만 나타낸다.</span>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">성령이 아시아에서 말씀을 전하지 못하게 하심 → 브루기아와 갈라디아 땅으로 다녀감</div></div><div class="flow-step-ref">16:6</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">무시아 앞에서 비두니아로 가고자 애쓰나 예수의 영이 허락하지 않으심</div></div><div class="flow-step-ref">16:7</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">무시아를 지나 드로아로 내려감</div></div><div class="flow-step-ref">16:8</div></div>
+  </div>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">여기서 '아시아'란?</div>
+      <div class="background-box-body">오늘날의 아시아 대륙이 아니다. 소아시아 서쪽에 있던 <strong>로마의 한 속주</strong> 이름이며, 그 중심 도시가 에베소다. 이 이름은 Lesson 13에서 다시 중요해진다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">핵심 — 계획이 막히는 이야기</div>
+      <div class="background-box-body">본문은 바울이 처음부터 갈 길을 다 알고 있었다고 말하지 않는다. 남서쪽이 막히고, 북쪽이 막혀, 남은 방향으로 가다 보니 바다 끝 항구에 닿았다. 어떤 방식으로 막혔는지는 기록되어 있지 않다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 6: SCENE 04 (16:9–10)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">③</span>
+    <span class="city-head-name">드로아</span>
+    <span class="city-head-region">소아시아 서북쪽 끝의 항구</span>
+    <span class="city-head-next">다음 → 사모드라게 · 네압볼리 · 빌립보</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">마게도냐 사람의 환상</span>
+      <span class="scene-ref">행 16:9–10</span>
+    </div>
+    <div class="scene-body">
+      <p>두 번 길이 막힌 끝에 닿은 드로아. 그 밤에 바울에게 환상이 보인다. 마게도냐 사람 하나가 서서 청한다.</p>
+    </div>
+  </div>
+
+  <div class="key-verse-box">
+    <div class="key-verse-label">드로아의 환상</div>
+    <div class="key-verse-text" style="font-size:18pt;">"마게도냐로 건너와서 우리를 도우라"</div>
+    <div class="key-verse-ref">사도행전 16:9</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 96mm;gap:var(--sp-3);margin-top:var(--sp-2);align-items:start;">
+    <div>
+      <div class="story-flow">
+        <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">밤에 바울이 환상을 봄</div></div><div class="flow-step-ref">16:9</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">마게도냐 사람의 요청</div></div><div class="flow-step-ref">16:9</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">하나님이 그들에게 복음을 전하라고 부르신 줄로 인정함</div></div><div class="flow-step-ref">16:10</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">곧 마게도냐로 떠나기를 힘씀</div></div><div class="flow-step-ref">16:10</div></div>
+      </div>
+    </div>
+    <div>
+      <svg class="map-frame" viewBox="30 8 112 58" xmlns="http://www.w3.org/2000/svg">
+        <use href="#basemap"/><use href="#islands"/>
+        <path d="M88.2,26.5 L84.8,23.6 L77,29.5 L69.6,34.3 L59,34 L44,37" fill="none" stroke="#b4552d" stroke-width="1" opacity=".28"/>
+        <path d="M123.4,56.3 L112.6,39.6 L89.6,27.4" fill="none" stroke="#b4552d" stroke-width="1.3" stroke-dasharray="2.4,1.7" stroke-linecap="round" marker-end="url(#mk-acc)"/>
+        <g fill="#fff" stroke="#1e1e1e" stroke-width=".7">
+          <circle cx="123.4" cy="56.3" r="1.2"/><circle cx="84.8" cy="23.6" r="1.2"/><circle cx="59" cy="34" r="1.2"/><circle cx="44" cy="37" r="1.2"/>
+        </g>
+        <g fill="#1e1e1e"><circle cx="112" cy="38.3" r=".7"/><circle cx="88.2" cy="26.5" r=".7"/><circle cx="77" cy="29.5" r=".7"/><circle cx="69.6" cy="34.3" r=".7"/></g>
+        <use href="#mac-labels"/>
+      </svg>
+      <div class="map-note">드로아에서 에게해를 건너 마게도냐로. 사모드라게로 직행하여 이튿날 네압볼리에 닿는다(16:11).</div>
+    </div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">10절의 표현을 눈여겨보자. 환상을 본 사람은 바울 한 사람이지만, 결론을 내린 주어는 복수다. 일행은 환상을 함께 헤아려 "인정했다". 그리고 앞의 두 번의 막힘이 이제야 뜻을 얻는다. 길이 막힌 것은 멈추라는 뜻이 아니라 다른 곳으로 가라는 뜻이었다.</p>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title"><span class="new-concept">NEW CONCEPT</span>'우리' 구절 (We Passages)</div>
+    <div class="background-box-body">
+      10절에서 서술이 갑자기 바뀐다. 8절까지는 "<strong>그들이</strong> 드로아로 내려갔는데"였는데, 10절은 "<strong>우리가</strong> 곧 마게도냐로 떠나기를 힘쓰니"이다. 사도행전에는 이렇게 서술자가 '우리'라고 말하는 구간이 몇 군데 있다. 첫 구간은 빌립보(16:17)에서 끊기고, Lesson 13의 20:5에서 다시 나타난다.<br><br>
+      이것이 저자가 그 구간에 직접 동행했음을 보여 준다는 것이 전통적인 이해다. 서술 방식에 관한 다른 학문적 논의도 있다. 어느 쪽이든 본문은 '우리'가 누구인지, 언제 어떻게 합류했는지 밝히지 않으므로 이 교재도 단정하지 않는다.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 7: SCENE 05 (16:11–15)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">④</span>
+    <span class="city-head-name">빌립보</span>
+    <span class="city-head-region">마게도냐 · 로마의 식민지 · 1 / 5</span>
+    <span class="city-head-next">다음 → 데살로니가</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 5</span>
+      <span class="scene-title">빌립보에 도착하다</span>
+      <span class="scene-ref">행 16:11–15</span>
+    </div>
+    <div class="scene-body">
+      <p>일행은 드로아에서 배를 타고 사모드라게를 거쳐 네압볼리에 내리고, 거기서 빌립보로 올라간다. 누가는 이 도시를 "마게도냐 지방의 첫 성이요 또 로마의 식민지"라고 소개한다.</p>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:0;">
+    <div class="background-box-title">BACKGROUND — 로마의 식민지란?</div>
+    <div class="background-box-body">로마가 제국 곳곳에 세운 특별한 지위의 도시다. 퇴역 군인을 비롯한 로마 시민들이 정착했고, 로마의 법과 관습에 따라 다스려졌으며, 주민들은 자신들이 로마인이라는 데 큰 자부심을 가졌다. 빌립보는 마게도냐 땅에 있지만 "작은 로마"처럼 움직이는 도시였다. 이 점이 9쪽과 11쪽의 사건을 이해하는 열쇠가 된다.</div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">안식일, 성문 밖 강가에서</h3>
+  <p class="body-text">지금까지 바울은 새 도시에 들어가면 회당부터 찾았다. 그런데 빌립보에서는 회당이 언급되지 않는다. 일행은 안식일에 "기도할 곳이 있을까 하여" 성문 밖 강가로 나가 거기 모인 여자들에게 말한다.</p>
+
+  <div class="profile">
+    <div class="profile-name"><small>NEW CHARACTER</small>루디아</div>
+    <dl class="profile-attrs">
+      <dt>출신</dt><dd>두아디라 시 — 바울이 들어가지 못한 '아시아'에 있는 도시</dd>
+      <dt>직업</dt><dd>자색 옷감 장사</dd>
+      <dt>신앙</dt><dd>하나님을 섬기는 사람</dd>
+    </dl>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">루디아가 말을 듣고 있을 때 주께서 그 마음을 열어 바울의 말을 따르게 하심</div></div><div class="flow-step-ref">16:14</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">루디아와 그 집이 다 세례를 받음</div></div><div class="flow-step-ref">16:15</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">"내 집에 들어와 유하라" — 강권하여 일행을 자기 집에 머물게 함</div></div><div class="flow-step-ref">16:15</div></div>
+  </div>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">눈여겨볼 점</div>
+      <div class="background-box-body">마음을 여신 분은 <strong>주</strong>이시다. 바울은 말했고, 루디아는 들었으며, 여신 분은 따로 계신다. 그리고 루디아의 집은 이 도시 신자들이 모이는 곳이 된다(16:40).</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">IMPORTANT</div>
+      <div class="background-box-body">루디아는 빌립보에서 처음 이름이 나오는 신자다. 그러나 본문은 그녀를 "유럽 최초의 그리스도인"이라 부르지 않으므로 이 교재도 그 표현을 쓰지 않는다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 7</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 8: SCENE 06 (16:16–18)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">④</span>
+    <span class="city-head-name">빌립보</span>
+    <span class="city-head-region">2 / 5</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 6</span>
+      <span class="scene-title">귀신 들린 여종과 바울</span>
+      <span class="scene-ref">행 16:16–18</span>
+    </div>
+    <div class="scene-body">
+      <p>일행이 기도하는 곳에 가다가 한 여종을 만난다. 점치는 귀신 들린 여종이었고, 그 점으로 주인들에게 큰 이익을 주고 있었다. 빌립보에서 만나는 두 번째 여인은 첫 번째와 처지가 전혀 다르다. 루디아는 자기 집과 사업을 가진 사람이었고, 이 여종은 남의 소유였다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">여종이 바울과 일행을 따라오며 소리 지름</div><div class="flow-step-desc">"이 사람들은 지극히 높은 하나님의 종으로서 구원의 길을 너희에게 전하는 자라"</div></div><div class="flow-step-ref">16:17</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">이같이 여러 날을 함 — 바울이 심히 괴로워함</div></div><div class="flow-step-ref">16:18</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">바울이 돌이켜 그 귀신에게 명함</div><div class="flow-step-desc">"예수 그리스도의 이름으로 내가 네게 명하노니 그에게서 나오라"</div></div><div class="flow-step-ref">16:18</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">귀신이 즉시 나옴</div></div><div class="flow-step-ref">16:18</div></div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">맞는 말인데 왜 괴로워했을까?</div>
+    <div class="background-box-body">여종이 외친 말은 내용만 보면 틀리지 않다. 그런데도 바울은 그것을 반기지 않았다. 본문은 그 이유를 설명하지 않는다. 다만 복음서에서도 귀신들이 예수가 누구인지 외칠 때 예수께서 잠잠하게 하신 장면이 여러 번 나온다(눅 4:34–35, 41).</div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">그런데 이 일이 왜 큰 갈등으로 번졌을까?</h3>
+
+  <div class="chain">
+    <div class="ch"><b>여종의 상태</b>점치는 귀신에 사로잡힘</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>주인들의 이익</b>점으로 얻는 큰 수입</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>바울의 행동</b>예수의 이름으로 귀신을 내쫓음</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>결과</b>수입원이 사라짐</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch key"><b>갈등</b>주인들이 바울과 실라를 붙잡음</div>
+  </div>
+
+  <p class="body-text">19절은 주인들의 동기를 숨기지 않는다. "자기 수익의 소망이 끊어진 것을 보고." 지금까지 사도행전에서 박해는 대개 종교적인 이유로 일어났다. 빌립보에서는 처음으로 <strong>돈</strong>이 박해의 직접적인 원인이 된다. 그리고 다음 쪽에서 보겠지만, 주인들은 법정에서 돈 이야기를 한마디도 하지 않는다.</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 8</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 9: SCENE 07 (16:19–24)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">④</span>
+    <span class="city-head-name">빌립보</span>
+    <span class="city-head-region">3 / 5</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 7</span>
+      <span class="scene-title">바울과 실라가 감옥에 갇히다</span>
+      <span class="scene-ref">행 16:19–24</span>
+    </div>
+    <div class="scene-body">
+      <p>여종의 주인들은 바울과 실라를 붙잡아 장터로 끌고 가 관리들 앞에 세운다. 그리고 고발한다.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"이 사람들이 유대인인데 우리 성을 심히 요란하게 하여 로마 사람인 우리가 받지도 못하고 행하지도 못할 풍속을 전한다"</div>
+    <div class="scripture-ref">사도행전 16:20–21 — 여종 주인들의 고발</div>
+  </div>
+
+  <div class="shift">
+    <div class="shift-col">
+      <div class="shift-label">실제 이유 · 16:19</div>
+      <div class="shift-text">"자기 수익의 소망이 끊어진 것을 보고"<br>→ <strong>돈</strong></div>
+    </div>
+    <div class="shift-mid">→</div>
+    <div class="shift-col now">
+      <div class="shift-label">법정에서 내세운 이유 · 16:20–21</div>
+      <div class="shift-text">"유대인인데 … 로마 사람인 우리가"<br>→ <strong>도시의 질서와 로마의 풍속</strong></div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:0;">
+    <div class="background-box-title">BACKGROUND — 이 고발이 왜 먹혔을까?</div>
+    <div class="background-box-body">7쪽에서 본 대로 빌립보는 로마의 식민지였다. 주인들은 사사로운 손해를 말하는 대신 이 도시가 가장 예민하게 여기는 것을 건드린다. <strong>"저들은 유대인, 우리는 로마 사람"</strong>이라는 구도를 세우고, 외지인이 로마답지 않은 풍속을 퍼뜨려 도시를 어지럽힌다고 말한 것이다. 고발의 내용은 구체적인 범죄가 아니었지만, 로마적 자부심이 강한 도시의 무리와 관리들을 움직이기에는 충분했다.</div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">무리가 일제히 일어나 고발함</div></div><div class="flow-step-ref">16:22</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">상관들이 옷을 찢어 벗기고 매로 치라고 명함 — 많이 침</div></div><div class="flow-step-ref">16:22–23</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">옥에 가두고 간수에게 든든히 지키라고 명함</div></div><div class="flow-step-ref">16:23</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">간수가 깊은 옥에 가두고 발을 차꼬에 든든히 채움</div></div><div class="flow-step-ref">16:24</div></div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">이 장면에는 재판이 없다. 심문도, 변론의 기회도 기록되어 있지 않다. 고발이 있었고, 무리가 들고일어났으며, 곧바로 매질과 투옥이 이어졌다. 이 사실은 11쪽에서 바울이 문제를 제기할 때 다시 쓰인다.</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 9</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 10: SCENE 08 (16:25–34)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">④</span>
+    <span class="city-head-name">빌립보</span>
+    <span class="city-head-region">4 / 5</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 8</span>
+      <span class="scene-title">한밤중에 일어난 일</span>
+      <span class="scene-ref">행 16:25–34</span>
+    </div>
+    <div class="scene-body">
+      <p>매를 많이 맞고, 가장 깊은 옥에, 발이 차꼬에 채워진 채로 맞는 밤이다.</p>
+    </div>
+  </div>
+
+  <div class="night">
+    <div class="night-head"><span>한밤중 · 빌립보의 옥</span><span>16:25–29</span></div>
+    <div class="night-body">
+      <div class="night-col">
+        <div class="night-label">옥 안에서</div>
+        <div class="night-line">바울과 실라가 기도하고 하나님을 찬송함<span>25</span></div>
+        <div class="night-line">죄수들이 들음<span>25</span></div>
+        <div class="night-line">갑자기 큰 지진이 남<span>26</span></div>
+        <div class="night-line">옥터가 움직이고 문이 곧 다 열림<span>26</span></div>
+        <div class="night-line">모든 사람의 매인 것이 다 벗어짐<span>26</span></div>
+      </div>
+      <div class="night-col">
+        <div class="night-label">간수의 반응</div>
+        <div class="night-line">자다가 깨어 옥문들이 열린 것을 봄<span>27</span></div>
+        <div class="night-line">죄수들이 도망한 줄 생각함<span>27</span></div>
+        <div class="night-line">칼을 빼어 스스로 목숨을 끊으려 함<span>27</span></div>
+        <div class="night-line"><strong>바울: "네 몸을 상하지 말라 우리가 다 여기 있노라"</strong><span>28</span></div>
+        <div class="night-line">등불을 달라 하여 뛰어 들어가 떨며 엎드림<span>29</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-big">
+    <div class="qa-q"><div class="qa-who">간수 · 16:30</div><div class="qa-text">"선생들이여 내가 어떻게 하여야 구원을 받으리이까"</div></div>
+    <div class="qa-mid">→</div>
+    <div class="qa-a"><div class="qa-who">바울과 실라 · 16:31 — RECALL · L11 · 15:11</div><div class="qa-text">"주 예수를 믿으라 그리하면 너와 네 집이 구원을 받으리라"</div></div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">주의 말씀을 간수와 그 집 모든 사람에게 전함 — 그 밤 그 시각에 간수가 두 사람의 맞은 자리를 씻어 줌</div></div><div class="flow-step-ref">16:32–33</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">간수와 온 가족이 다 세례를 받음</div></div><div class="flow-step-ref">16:33</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">집에 데려가 음식을 차려 주고, 온 집안이 하나님을 믿으므로 크게 기뻐함</div></div><div class="flow-step-ref">16:34</div></div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">세 번째 감옥 <span class="recall-badge">RECALL · L04 · L09</span></div>
+    <div class="background-box-body">사도들(5:19)과 베드로(12:7–10)는 옥문이 열리자 <strong>나갔다.</strong> 바울과 실라는 문이 열리고 사슬이 풀렸는데도 <strong>남아 있다.</strong> 이번에 옥에서 풀려난 사람은 죄수가 아니라 간수였다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 10</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 11: SCENE 09 (16:35–40)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">④</span>
+    <span class="city-head-name">빌립보</span>
+    <span class="city-head-region">5 / 5</span>
+    <span class="city-head-next">다음 → 암비볼리 · 아볼로니아 · 데살로니가</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 9</span>
+      <span class="scene-title">바울은 왜 조용히 떠나지 않았을까?</span>
+      <span class="scene-ref">행 16:35–40</span>
+    </div>
+    <div class="scene-body">
+      <p>날이 새자 상관들이 부하를 보내 "이 사람들을 놓으라"고 한다. 간수는 기쁜 소식으로 전한다. "평안히 가라." 그런데 바울이 받아들이지 않는다.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"로마 사람인 우리를 죄도 정하지 아니하고 공중 앞에서 때리고 옥에 가두었다가 이제는 가만히 내보내고자 하느냐 아니라 그들이 친히 와서 우리를 데리고 나가야 하리라"</div>
+    <div class="scripture-ref">사도행전 16:37 — 바울</div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-1);">바울의 말에는 세 가지 문제 제기가 들어 있다. ① <strong>죄를 정하지도 않고</strong> — 재판이 없었다. ② <strong>공중 앞에서 때렸다</strong> — 공개적인 모욕이었다. ③ <strong>이제는 가만히</strong> — 잘못은 드러내 놓고 하고 수습은 몰래 하려 한다. 그리고 이 모든 일을 당한 사람이 <strong>로마 사람</strong>이라는 것이다.</p>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">바울이 자신들이 로마 사람임을 밝힘</div></div><div class="flow-step-ref">16:37</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">상관들이 두려워하여 직접 와서 달래며 데리고 나가, 그 성에서 떠나기를 청함</div></div><div class="flow-step-ref">16:38–39</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">두 사람이 루디아의 집에 들어가 형제들을 만나 위로하고 떠남</div></div><div class="flow-step-ref">16:40</div></div>
+  </div>
+
+  <div class="shift">
+    <div class="shift-col">
+      <div class="shift-label">고발할 때 · 16:20–21</div>
+      <div class="shift-text">"이 사람들은 <strong>유대인</strong>인데 … <strong>로마 사람인 우리</strong>가"</div>
+    </div>
+    <div class="shift-mid">↔</div>
+    <div class="shift-col now">
+      <div class="shift-label">풀려날 때 · 16:37</div>
+      <div class="shift-text">"<strong>로마 사람인 우리</strong>를 죄도 정하지 아니하고"</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title"><span class="new-concept">NEW CONCEPT</span>로마 시민권</div>
+      <div class="background-box-body">로마 제국에서 일정한 법적 권리와 보호를 받을 수 있는 신분이다. 시민은 정식 재판 없이 매질 같은 형벌을 받지 않게 되어 있었다. 그래서 관리들이 두려워했다. 다만 이것을 오늘날의 보편적 인권과 같은 것으로 이해해서는 안 된다. 당시에는 일부 사람만 가진 특권이었다. 바울의 시민권은 Lesson 14 이후에 다시 중요해진다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">왜 그냥 나가지 않았을까?</div>
+      <div class="background-box-body">본문은 바울의 속뜻을 설명하지 않는다. 다만 결과는 볼 수 있다. 두 사람이 죄인처럼 몰래 쫓겨났다면 빌립보에 남는 신자들은 범죄자의 추종자로 보였을 것이다. 관리들이 직접 와서 데리고 나감으로써 그 혐의가 공개적으로 벗겨졌다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 11</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 12: SCENE 10 (17:1–9)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">⑤</span>
+    <span class="city-head-name">데살로니가</span>
+    <span class="city-head-region">마게도냐</span>
+    <span class="city-head-next">다음 → 베뢰아</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 10</span>
+      <span class="scene-title">데살로니가에서의 복음 전파</span>
+      <span class="scene-ref">행 17:1–9</span>
+    </div>
+    <div class="scene-body">
+      <p>일행은 암비볼리와 아볼로니아를 거쳐 데살로니가에 이른다. 누가는 이유를 덧붙인다. "거기 유대인의 회당이 있는지라." 바울은 "자기의 관례대로" 회당에 들어간다.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:92mm 1fr;gap:var(--sp-3);margin-top:var(--sp-2);align-items:start;">
+    <div>
+      <svg class="map-frame" viewBox="30 8 112 58" xmlns="http://www.w3.org/2000/svg">
+        <use href="#basemap"/><use href="#islands"/>
+        <path d="M123.4,56.3 L112.6,39.6 L89,27.2" fill="none" stroke="#b4552d" stroke-width="1" stroke-dasharray="2.4,1.7" opacity=".28"/>
+        <path d="M84.8,23.6 L77,29.5 L69.6,34.3 L60.6,34" fill="none" stroke="#b4552d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#mk-acc)"/>
+        <path d="M59,34 L44,37" fill="none" stroke="#b4552d" stroke-width="1" opacity=".4"/>
+        <g fill="#fff" stroke="#1e1e1e" stroke-width=".7">
+          <circle cx="123.4" cy="56.3" r="1.2"/><circle cx="84.8" cy="23.6" r="1.2"/><circle cx="59" cy="34" r="1.2"/><circle cx="44" cy="37" r="1.2"/>
+        </g>
+        <g fill="#1e1e1e"><circle cx="112" cy="38.3" r=".7"/><circle cx="88.2" cy="26.5" r=".7"/><circle cx="77" cy="29.5" r=".7"/><circle cx="69.6" cy="34.3" r=".7"/></g>
+        <use href="#mac-labels"/>
+      </svg>
+    </div>
+    <div class="story-flow">
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">세 안식일에 성경을 가지고 강론함</div></div><div class="flow-step-ref">17:2</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">그리스도가 해를 받고 죽은 자 가운데서 다시 살아나야 할 것을 풀어 증언함</div></div><div class="flow-step-ref">17:3</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">"내가 너희에게 전하는 이 예수가 곧 그리스도라"</div></div><div class="flow-step-ref">17:3</div></div>
+    </div>
+  </div>
+
+  <div class="duo">
+    <div class="duo-col" style="background:var(--accent-pale);">
+      <div class="duo-role">반응 ① · 17:4</div>
+      <div class="duo-name" style="color:var(--accent);">믿고 따름</div>
+      <div class="duo-text">유대인 중의 어떤 사람들, <b>경건한 헬라인의 큰 무리</b>, 적지 않은 귀부인들이 권함을 받고 바울과 실라를 따름</div>
+    </div>
+    <div class="duo-col" style="background:var(--white);">
+      <div class="duo-role">반응 ② · 17:5–9</div>
+      <div class="duo-name" style="color:var(--ink);">시기와 소동</div>
+      <div class="duo-text">시기한 유대인들이 장터의 불량한 사람들을 데리고 떼를 지어 성을 소동하게 함 → <b>야손의 집</b>에 침입하나 두 사람을 찾지 못함 → 야손과 형제 몇을 읍장들 앞에 끌고 감</div>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"천하를 어지럽게 하던 이 사람들이 여기도 이르매 … 이 사람들이 다 가이사의 명을 거역하여 말하되 다른 임금 곧 예수라 하는 이가 있다 하더이다"</div>
+    <div class="scripture-ref">사도행전 17:6–7 — 읍장들 앞에서의 고발</div>
+  </div>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">IMPORTANT — 고발의 내용이 달라졌다</div>
+      <div class="background-box-body">빌립보의 "풍속"에서 한 걸음 더 나아가 <strong>황제에 대한 충성</strong>이 문제가 된다. "예수가 그리스도(왕)"라는 선포가 "가이사 말고 다른 임금이 있다"는 정치적 반역의 말로 옮겨져 고발된 것이다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">야손과 보석금</div>
+      <div class="background-box-body">무리와 읍장들은 이 말에 동요했고, 야손과 나머지 사람들에게 보석금을 받고 놓아준다(17:9).</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 12</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 13: SCENE 11 (17:10–15)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">⑥</span>
+    <span class="city-head-name">베뢰아</span>
+    <span class="city-head-region">마게도냐</span>
+    <span class="city-head-next">다음 → 바다 쪽으로 · 아테네</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 11</span>
+      <span class="scene-title">베뢰아 사람들은 무엇이 달랐을까?</span>
+      <span class="scene-ref">행 17:10–15</span>
+    </div>
+    <div class="scene-body">
+      <p>형제들은 밤에 곧 바울과 실라를 베뢰아로 보낸다. 두 사람은 이번에도 회당에 들어간다.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"베뢰아에 있는 사람들은 데살로니가에 있는 사람들보다 더 너그러워서 간절한 마음으로 말씀을 받고 이것이 그러한가 하여 날마다 성경을 상고하므로"</div>
+    <div class="scripture-ref">사도행전 17:11</div>
+  </div>
+
+  <div class="duo">
+    <div class="duo-col">
+      <div class="duo-role">⑤ · 17:1–9</div>
+      <div class="duo-name">데살로니가</div>
+      <div class="duo-step">성경을 가지고 설명함</div>
+      <div class="duo-step">어떤 사람들이 믿음</div>
+      <div class="duo-step">시기 → 소동과 고발</div>
+      <div class="duo-step">밤에 떠남</div>
+    </div>
+    <div class="duo-col">
+      <div class="duo-role">⑥ · 17:10–15</div>
+      <div class="duo-name">베뢰아</div>
+      <div class="duo-step">성경을 가지고 설명함</div>
+      <div class="duo-step"><strong>날마다 성경을 상고함</strong></div>
+      <div class="duo-step">믿는 사람이 많음</div>
+      <div class="duo-step">박해가 <strong>밖에서</strong> 옴</div>
+    </div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">핵심 — '간절히 받음'과 '확인함'은 함께 있었다</div>
+    <div class="background-box-body">베뢰아 사람들은 바울의 말을 무조건 받아들이지 않고 "이것이 그러한가" 하여 <strong>날마다</strong> 성경을 펴서 맞추어 보았다. 본문은 이 태도를 불신으로 보지 않고 "더 너그럽다"고 평가한다. 열린 마음으로 듣는 것과 꼼꼼히 확인하는 것은 서로 부딪히지 않는다.</div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">그런데 — 데살로니가의 유대인들이 베뢰아까지 와서 무리를 움직여 소동하게 함</div></div><div class="flow-step-ref">17:13</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">형제들이 바울을 바다까지 내보냄. 실라와 디모데는 남고, 바울은 인도하는 사람들과 아테네까지 감</div></div><div class="flow-step-ref">17:14–15</div></div>
+  </div>
+
+  <div class="text-note">
+    <div class="text-note-label">RECALL · L10 — 쫓아오는 반대</div>
+    <div class="text-note-body">1차 여행 때도 반대자들이 다음 도시까지 쫓아왔다(14:19). 지도에서 베뢰아 → 아테네를 바닷길로 그린 것은 "바다까지" 갔다는 14절에 따른 것이며, 배를 탔다는 말이 직접 나오지는 않는다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 13</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 14: SCENE 12 (17:16–21)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">⑦</span>
+    <span class="city-head-name">아테네</span>
+    <span class="city-head-region">아가야 · 개역개정 표기는 '아덴' · 1 / 3</span>
+    <span class="city-head-next">다음 → 고린도</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 12</span>
+      <span class="scene-title">아테네에서 바울이 본 것</span>
+      <span class="scene-ref">행 17:16–21</span>
+    </div>
+    <div class="scene-body">
+      <p>아테네는 바울이 계획하고 온 선교지가 아니었다. 그는 쫓겨 왔고, 실라와 디모데를 <strong>기다리는</strong> 중이었다. 그런데 기다리는 동안 본 것이 그를 가만두지 않는다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">온 성에 우상이 가득한 것을 보고 마음에 격분함</div></div><div class="flow-step-ref">17:16</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">회당에서는 유대인과 경건한 사람들과, 장터에서는 날마다 만나는 사람들과 변론함</div></div><div class="flow-step-ref">17:17</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">에피쿠로스와 스토아 철학자들도 바울과 쟁론함</div></div><div class="flow-step-ref">17:18</div></div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">BACKGROUND — 아테네와 두 학파</h3>
+  <p class="body-text" style="font-size:var(--fs-small);color:var(--ink-soft);">아테네는 이때 정치적 힘은 예전 같지 않았지만 철학과 학문의 도시라는 명성은 그대로였다. 장터(아고라)는 사람들이 모여 소식과 생각을 나누던 광장이었고, 바울은 거기서 당시 널리 퍼진 두 학파를 마주친다.</p>
+  <div class="duo" style="margin-top:var(--sp-1);">
+    <div class="duo-col">
+      <div class="duo-role">학파 ①</div>
+      <div class="duo-name">에피쿠로스 학파</div>
+      <div class="duo-text">신들이 있더라도 인간의 일에 <b>관여하지 않는다</b>고 보았다. 죽으면 모든 것이 끝난다고 여겼고, 두려움과 고통에서 벗어난 <b>마음의 평안</b>을 좋은 삶으로 삼았다.</div>
+    </div>
+    <div class="duo-col" style="background:var(--white);">
+      <div class="duo-role">학파 ②</div>
+      <div class="duo-name" style="color:var(--ink);">스토아 학파</div>
+      <div class="duo-text">세계 전체에 <b>신적인 이성</b>이 깃들어 있다고 보았다. 그 이성과 자연의 질서에 맞추어 사는 것, 곧 <b>덕</b>을 좋은 삶으로 삼았다.</div>
+    </div>
+  </div>
+  <h3 class="section-heading" style="margin-top:var(--sp-2);">그들의 반응</h3>
+  <p class="body-text">어떤 사람들은 <strong>"이 말쟁이가 무슨 말을 하고자 하느냐"</strong> 하며 조롱했다. 여기저기서 주워들은 것을 늘어놓는 사람이라는 뜻이다. 다른 사람들은 <strong>"이방 신들을 전하는 사람인가 보다"</strong> 했다. 바울이 <strong>예수와 부활</strong>을 전했기 때문이다(17:18).</p>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">그들은 바울을 붙들어 <strong>아레오바고</strong>로 데려간다. 아레오바고는 아테네의 한 언덕이자 그 이름으로 불리던 유서 깊은 의회다. 이 자리가 정식 심문이었는지 설명을 듣는 자리였는지는 본문만으로 단정하기 어렵다. 누가는 한마디를 덧붙인다. 아테네 사람들은 "가장 새로운 것을 말하고 듣는 것 이외에는 달리 시간을 쓰지 않았다"(17:21).</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 14</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 15: SCENE 13 (17:22–31)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">⑦</span>
+    <span class="city-head-name">아테네</span>
+    <span class="city-head-region">2 / 3</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 13</span>
+      <span class="scene-title">아레오바고에서의 설교</span>
+      <span class="scene-ref">행 17:22–31</span>
+    </div>
+    <div class="scene-body">
+      <p>바울이 아레오바고 가운데 서서 말한다. 청중은 구약 성경도 이스라엘의 역사도 모르는 사람들이다. 바울은 그들이 날마다 지나다니던 것 하나에서 말을 시작한다.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"내가 두루 다니며 너희가 위하는 것들을 보다가 '알지 못하는 신에게'라고 새긴 단도 보았으니 그런즉 너희가 알지 못하고 위하는 그것을 내가 너희에게 알게 하리라"</div>
+    <div class="scripture-ref">사도행전 17:23</div>
+  </div>
+
+  <div class="sermon-steps">
+    <div class="ss-zone">하나님은 누구신가</div>
+    <div class="ss"><div class="ss-title">창조주 하나님</div><div class="ss-text">우주와 그 가운데 있는 만물을 지으신 천지의 주재</div><div class="ss-ref">17:24</div></div>
+    <div class="ss"><div class="ss-title">신전에 갇히지 않으심</div><div class="ss-text">손으로 지은 전에 계시지 않고, 사람의 섬김이 필요한 분도 아님</div><div class="ss-ref">17:24–25</div></div>
+    <div class="ss"><div class="ss-title">생명과 호흡을 주심</div><div class="ss-text">만민에게 생명과 호흡과 만물을 친히 주시는 분</div><div class="ss-ref">17:25</div></div>
+    <div class="ss-zone">사람은 누구인가</div>
+    <div class="ss"><div class="ss-title">모든 민족을 만드심</div><div class="ss-text">인류의 모든 족속을 한 혈통으로 만드시고, 연대와 거주의 경계를 정하심</div><div class="ss-ref">17:26</div></div>
+    <div class="ss"><div class="ss-title">하나님을 찾게 하심</div><div class="ss-text">더듬어 찾아 발견하게 하려 하심. 그는 각 사람에게서 멀리 계시지 않음</div><div class="ss-ref">17:27–29</div></div>
+    <div class="ss-zone">그러므로 지금</div>
+    <div class="ss key"><div class="ss-title">회개를 명하심</div><div class="ss-text">알지 못하던 시대는 간과하셨으나 이제는 어디든지 사람에게 다 회개하라 하심</div><div class="ss-ref">17:30</div></div>
+    <div class="ss"><div class="ss-title">세상을 심판하실 것</div><div class="ss-text">정하신 사람으로 천하를 공의로 심판할 날을 작정하심</div><div class="ss-ref">17:31</div></div>
+    <div class="ss key"><div class="ss-title">그를 죽은 자 가운데서 살리심</div><div class="ss-text">이것으로 모든 사람에게 믿을 만한 증거를 주심</div><div class="ss-ref">17:31</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">핵심 — 출발점</div>
+      <div class="background-box-body">바울은 아브라함도, 다윗도, 구약 인용도 꺼내지 않는다. 그들의 제단에서 시작하고, 설교 중에는 <strong>"너희 시인 중 어떤 사람들의 말"</strong>(17:28)까지 인용한다. 청중이 이미 아는 말에서 출발한 것이다. 그러나 맞장구만 치지는 않는다. 손으로 지은 전과 새긴 신상은 정면으로 부정한다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">도착점은 같다</div>
+      <div class="background-box-body">설교는 창조에서 시작해 <strong>회개, 심판, 부활</strong>로 끝난다. 이 본문 안에서 예수의 이름은 불리지 않고 "정하신 사람"이라고만 나오지만, 바울은 장터에서 이미 "예수와 부활"을 전하고 있었다(17:18).</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 15</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 16: VISUAL — 설교 방식 비교
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">⑦</span>
+    <span class="city-head-name">아테네</span>
+    <span class="city-head-region">3 / 3</span>
+  </div>
+
+  <h2 class="section-heading">바울의 설교 방식 비교 <span class="recall-badge">RECALL · L10</span></h2>
+  <div class="cmp3">
+    <div class="l"></div>
+    <div class="h">비시디아 안디옥<small>행 13:16–41 · 1차 여행</small></div>
+    <div class="h">루스드라<small>행 14:15–17 · 1차 여행</small></div>
+    <div class="h now">아테네<small>행 17:22–31 · 2차 여행</small></div>
+
+    <div class="l">청중</div>
+    <div>회당의 유대인과 경건한 사람들</div>
+    <div>여러 신을 섬기던 이방인들</div>
+    <div class="now">철학자들과 시민들</div>
+
+    <div class="l">출발점</div>
+    <div><strong>이스라엘의 역사</strong>와 다윗의 약속</div>
+    <div><strong>창조주 하나님</strong>과 비 · 결실기</div>
+    <div class="now"><strong>그들의 제단</strong>과 창조주 하나님</div>
+
+    <div class="l">끌어온 것</div>
+    <div>시편 · 이사야 · 하박국</div>
+    <div>누구나 겪는 자연의 은혜</div>
+    <div class="now">"알지 못하는 신에게" · 그들의 시인</div>
+
+    <div class="l">부정한 것</div>
+    <div>예수를 정죄한 판단</div>
+    <div>"이런 헛된 일" — 자신들에게 하려던 제사</div>
+    <div class="now">손으로 지은 전, 새긴 신상</div>
+
+    <div class="l">도착점</div>
+    <div>부활 → 죄 사함</div>
+    <div>살아 계신 하나님께 돌아오라 <span style="color:var(--ink-faint);">(급히 끊김)</span></div>
+    <div class="now">회개 → 심판 → 부활</div>
+  </div>
+
+  <div class="same-gospel">
+    <div class="same-gospel-en">SAME GOSPEL, DIFFERENT STARTING POINT</div>
+    <div class="same-gospel-ko">청중의 배경에 따라 출발점이 달라진다. 그러나 가려는 곳은 달라지지 않는다.<br>아테네에서도 바울은 부활을 빼지 않았다.</div>
+  </div>
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">아테네에서의 반응 — 행 17:32–34</h3>
+  <div class="react-top">죽은 자의 부활을 듣고</div>
+  <div class="react3">
+    <div class="rc"><b>조롱함</b><span>"어떤 사람은 조롱도 하고"</span></div>
+    <div class="rc"><b>미룸</b><span>"이 일에 대하여 네 말을 다시 듣겠다"</span></div>
+    <div class="rc yes"><b>믿음</b><span>아레오바고 관리 <strong>디오누시오</strong>, <strong>다마리</strong>라 하는 여자, 또 다른 사람들</span></div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">아테네 선교는 실패였을까?</div>
+    <div class="background-box-body">그렇게 단정할 근거는 본문에 없다. 믿은 사람이 다른 도시보다 적어 보이고 교회가 세워졌다는 말도 없지만, 누가는 믿은 사람들의 <strong>이름</strong>을 적어 두었고 그 가운데 하나는 바로 그 의회의 일원이었다. 조롱 · 미룸 · 믿음이라는 세 갈래 반응은 다른 도시들에서도 계속 보아 온 것이다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 16</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 17: SCENE 14 (18:1–4)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">⑧</span>
+    <span class="city-head-name">고린도</span>
+    <span class="city-head-region">아가야의 중심 도시 · 1 / 3</span>
+    <span class="city-head-next">다음 → 겐그레아 · 에베소</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 14</span>
+      <span class="scene-title">고린도에서 새로운 동역자를 만나다</span>
+      <span class="scene-ref">행 18:1–4</span>
+    </div>
+    <div class="scene-body">
+      <p>바울은 아테네를 떠나 고린도에 이른다. 여전히 혼자다. 실라와 디모데는 아직 마게도냐에 있다. 그 도시에서 바울은 뜻밖의 사람들을 만난다.</p>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:0;">
+    <div class="background-box-title">BACKGROUND — 고린도는 어떤 도시였나</div>
+    <div class="background-box-body">그리스 본토와 남쪽 반도를 잇는 좁은 땅목에 자리한 도시다. 서쪽과 동쪽 바다에 각각 항구를 두고 있어(동쪽 항구가 겐그레아다) 두 바다를 오가는 사람과 물자가 이곳을 지났다. 로마 속주 아가야의 중심지였고, 상업으로 번성하여 온갖 지역 사람들이 모여드는 도시였다. 학문의 도시 아테네와는 분위기가 전혀 달랐다.</div>
+  </div>
+
+  <div class="profile" style="grid-template-columns:auto 1fr;">
+    <div class="profile-name"><small>NEW CHARACTERS</small>아굴라<br>브리스길라</div>
+    <dl class="profile-attrs">
+      <dt>아굴라</dt><dd>본도에서 난 유대인</dd>
+      <dt>브리스길라</dt><dd>아굴라의 아내</dd>
+      <dt>온 곳</dt><dd>이달리야(이탈리아)에서 새로 옴</dd>
+      <dt>이유</dt><dd>글라우디오가 모든 유대인에게 로마에서 떠나라고 명했기 때문</dd>
+      <dt>생업</dt><dd>천막을 만드는 일 — 바울과 같음</dd>
+    </dl>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">바울이 아굴라와 브리스길라를 만나 그들에게 감</div></div><div class="flow-step-ref">18:2</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">생업이 같으므로 함께 살며 일함</div></div><div class="flow-step-ref">18:3</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">안식일마다 회당에서 강론하고 유대인과 헬라인을 권면함</div></div><div class="flow-step-ref">18:4</div></div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">이 시기의 바울은 평일에는 손으로 일하고 안식일에 회당에서 말했다. 본문은 그 이유를 설명하지 않지만, 바울이 스스로 일하여 생계를 꾸렸다는 사실은 그의 편지들에도 여러 번 나온다.</p>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">글라우디오 <span class="recall-badge">RECALL · L09</span></div>
+      <div class="background-box-body">Lesson 09에서 아가보가 예언한 흉년이 "글라우디오 때에" 있었다(11:28). 같은 황제다. 그가 유대인들을 로마에서 내보낸 일은 로마의 역사 기록에도 전해진다. 두 사람이 고린도에 오기 전부터 신자였는지는 본문에 나오지 않는다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">CHARACTER PREVIEW</div>
+      <div class="background-box-body">이 부부는 한 도시의 조연으로 끝나지 않는다. 21쪽에서 바울과 함께 에베소로 건너가고, Lesson 13에서는 에베소에서 중요한 역할을 한다. 누가는 두 사람을 부를 때 아내 <strong>브리스길라</strong>의 이름을 앞에 두는 경우가 더 많다(18:18, 18:26).</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 17</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 18: SCENE 15 (18:5–11)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">⑧</span>
+    <span class="city-head-name">고린도</span>
+    <span class="city-head-region">2 / 3</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 15</span>
+      <span class="scene-title">고린도에서 계속 복음을 전하다</span>
+      <span class="scene-ref">행 18:5–11</span>
+    </div>
+    <div class="scene-body">
+      <p>실라와 디모데가 마게도냐에서 내려온다. 베뢰아에서 헤어진 뒤 처음으로 일행이 다시 모였다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">바울이 하나님의 말씀에 붙잡혀 유대인들에게 예수는 그리스도라 밝히 증언함</div></div><div class="flow-step-ref">18:5</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">그들이 대적하여 비방하자 바울이 옷을 털며 말함 — "이 후에는 이방인에게로 가리라"</div></div><div class="flow-step-ref">18:6</div></div>
+  </div>
+
+  <div class="text-note">
+    <div class="text-note-label">RECALL · L10 — 두 번째로 듣는 말</div>
+    <div class="text-note-body">비시디아 안디옥에서도 같은 말을 했다(13:46). 이번에도 유대인을 영영 떠난다는 뜻이 아니다. 옮겨 간 곳은 회당 <strong>바로 옆집</strong>이었고, 곧 회당장이 믿는다.</div>
+  </div>
+
+  <div class="duo">
+    <div class="duo-col">
+      <div class="duo-role">옮겨 간 집 · 18:7</div>
+      <div class="duo-name">디도 유스도</div>
+      <div class="duo-text">하나님을 경외하는 사람. 그의 집은 <b>회당 옆</b>이었다.</div>
+    </div>
+    <div class="duo-col">
+      <div class="duo-role">믿은 사람 · 18:8</div>
+      <div class="duo-name">그리스보</div>
+      <div class="duo-text"><b>회당장.</b> 온 집안과 더불어 주를 믿음. 수많은 고린도 사람도 듣고 믿어 세례를 받음.</div>
+    </div>
+  </div>
+
+  <div class="key-verse-box">
+    <div class="key-verse-label">밤에 주께서 환상 가운데 바울에게</div>
+    <div class="key-verse-text" style="font-size:15pt;line-height:1.55;">"두려워하지 말며 침묵하지 말고 말하라<br>내가 너와 함께 있으매 … 이 성중에 내 백성이 많음이라"</div>
+    <div class="key-verse-ref">사도행전 18:9–10</div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">"두려워하지 말라"는 두려워하는 사람에게 하는 말이다. 매 맞고, 쫓겨나고, 조롱을 들은 바울이다. 고린도에서도 반대가 시작되었으니 떠날 때라고 여겼을 법하다. 주의 말씀은 반대였다. <strong>이 도시에서는 머물라.</strong></p>
+
+  <div class="stay">
+    <div class="stay-num">1년 6개월</div>
+    <div class="stay-text">바울이 고린도에 머물며 하나님의 말씀을 가르친 기간(18:11). 지금까지 한 도시에 머문 기간으로는 가장 길다. 드로아의 환상은 <strong>가라</strong>는 것이었고, 고린도의 환상은 <strong>머물라</strong>는 것이었다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 18</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 19: SCENE 16 (18:12–17)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">⑧</span>
+    <span class="city-head-name">고린도</span>
+    <span class="city-head-region">3 / 3</span>
+    <span class="city-head-next">다음 → 겐그레아 · 에베소</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 16</span>
+      <span class="scene-title">갈리오 앞에서 일어난 일</span>
+      <span class="scene-ref">행 18:12–17</span>
+    </div>
+    <div class="scene-body">
+      <p>갈리오가 아가야 총독이 되었을 때, 유대인들이 일제히 일어나 바울을 법정으로 끌고 간다. 18:10의 약속이 시험대에 오른다.</p>
+    </div>
+  </div>
+
+  <div class="duo">
+    <div class="duo-col" style="background:var(--white);">
+      <div class="duo-role">고발 · 18:13</div>
+      <div class="duo-name" style="color:var(--ink);">유대인들</div>
+      <div class="duo-text">"이 사람이 <b>율법을 어기면서</b> 하나님을 경외하라고 사람들을 권한다."</div>
+    </div>
+    <div class="duo-col">
+      <div class="duo-role">판단 · 18:14–15</div>
+      <div class="duo-name">갈리오</div>
+      <div class="duo-text">부정한 일이나 불량한 행동이라면 들어 주겠으나, <b>언어와 명칭과 너희 법</b>에 관한 문제라면 "너희가 스스로 처리하라."</div>
+    </div>
+  </div>
+
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">바울이 입을 열고자 할 때 갈리오가 먼저 말함 — 바울은 한마디도 변론하지 않음</div></div><div class="flow-step-ref">18:14</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">갈리오가 그들을 법정에서 쫓아냄</div></div><div class="flow-step-ref">18:16</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">모든 사람이 회당장 소스데네를 잡아 법정 앞에서 때리나 갈리오가 상관하지 않음</div><div class="flow-step-desc">본문은 '모든 사람'이 누구인지 밝히지 않는다</div></div><div class="flow-step-ref">18:17</div></div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">세 도시의 세 고발, 그리고 세 가지 결과</div>
+    <div class="background-box-body">
+      <strong>빌립보</strong> — "로마 사람이 받지 못할 풍속" → 재판 없이 매질과 투옥<br>
+      <strong>데살로니가</strong> — "가이사 말고 다른 임금" → 보석금을 받고 놓아줌<br>
+      <strong>고린도</strong> — "율법을 어긴다" → 총독이 사건 자체를 받지 않음<br>
+      로마의 고위 관리가 "이것은 범죄가 아니라 유대인들 사이의 종교 문제"라고 본 것이다. 갈리오가 바울 편을 든 것은 아니다. 그는 관심이 없었다. 그러나 그 무관심 덕분에 바울은 고린도에 "더 여러 날"(18:18) 머물 수 있었다.
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">BACKGROUND — 갈리오와 연대 <span class="recall-badge">RECALL · L09 · 서기 44년</span></div>
+    <div class="background-box-body">갈리오는 성경 밖 자료로 확인되는 로마 관리다. 그리스 델포이에서 발견된 비문을 근거로 그의 재임은 통상 <strong>서기 51–52년경</strong>으로 추정된다. 바울의 연대를 연구할 때 가장 중요한 기준점 가운데 하나다. 다만 이것으로 여행의 모든 날짜를 정확히 정할 수 있는 것은 아니다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 19</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 20: SCENE 17 (18:18–22)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">⑨ → ⑩ → ①</span>
+    <span class="city-head-name">에베소 · 가이사랴 · 수리아 안디옥</span>
+    <span class="city-head-region">귀환</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 17</span>
+      <span class="scene-title">다시 안디옥으로 돌아오다</span>
+      <span class="scene-ref">행 18:18–22</span>
+    </div>
+    <div class="scene-body">
+      <p>바울은 고린도에 더 여러 날 머문 뒤 형제들과 작별하고 배를 타고 수리아로 떠난다. 브리스길라와 아굴라가 함께한다. 누가는 이 긴 귀환을 다섯 절로 빠르게 적는다.</p>
+    </div>
+  </div>
+
+  <svg class="map-frame" viewBox="2 80 352 184" xmlns="http://www.w3.org/2000/svg" style="width:156mm;margin:var(--sp-2) auto 0;">
+    <use href="#basemap"/><use href="#islands"/>
+    <use href="#j2-regions"/>
+    <g opacity=".28"><use href="#j2-out"/></g>
+    <g stroke-width="2"><use href="#j2-back"/></g>
+    <use href="#j2-dots"/>
+    <g font-family="SCDream,sans-serif" font-size="5" fill="#1e1e1e" font-weight="700">
+      <text x="329" y="150.6" fill="#b4552d">① 안디옥</text>
+      <text x="54.4" y="110.4" text-anchor="end">⑧ 고린도</text>
+      <text x="63" y="120" font-size="4" font-weight="400" fill="#4a4a4a">겐그레아</text>
+      <text x="150.6" y="100">⑨ 에베소</text>
+      <text x="294" y="239.4" text-anchor="end">⑩ 가이사랴</text>
+      <text x="308.4" y="257.4" font-size="4.2" font-weight="400" fill="#4a4a4a">예루살렘 *</text>
+    </g>
+  </svg>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">고린도의 동쪽 항구 겐그레아에서 머리를 깎고 배를 탐 — 브리스길라와 아굴라가 동행</div></div><div class="flow-step-ref">18:18</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">에베소에 들러 회당에서 변론하고, 두 사람을 남겨 두고 떠남</div></div><div class="flow-step-ref">18:19–21</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">가이사랴에 상륙하여 올라가 교회의 안부를 묻고, 안디옥으로 내려감</div></div><div class="flow-step-ref">18:22</div></div>
+  </div>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">겐그레아에서 · 18:18</div>
+      <div class="background-box-body">바울은 "일찍이 서원이 있었으므로" 머리를 깎는다. 서원은 하나님께 무엇을 하겠다고, 또는 하지 않겠다고 약속하는 유대의 관습이다. 이 서원이 언제 무슨 일로 한 것인지 본문은 설명하지 않는다. 볼 수 있는 것은 하나다. 이방인의 사도 바울은 여전히 유대인으로서 살고 있었다. <span class="recall-badge" style="margin-left:0;">RECALL · L11</span></div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">가이사랴에서 · 18:22</div>
+      <div class="background-box-body">"가이사랴에 상륙하여 <strong>올라가</strong> 교회의 안부를 물은 후에 안디옥으로 내려가서." 지명은 없지만 '올라가다 · 내려가다'는 예루살렘을 오갈 때 흔히 쓰는 말이어서, 일반적으로 예루살렘 교회 방문으로 이해된다. 지도에는 점선으로만 표시했다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 20</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 21: 에베소 (18:19–21)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">⑨</span>
+    <span class="city-head-name">에베소</span>
+    <span class="city-head-region">아시아 속주의 중심 도시</span>
+    <span class="city-head-next">다음 → 가이사랴 · 수리아 안디옥</span>
+  </div>
+
+  <h2 class="section-heading">에베소 — 짧은 방문, 긴 예고</h2>
+  <p class="lead">귀환길의 다섯 절 가운데 세 절이 에베소에 쓰였다. 바울이 이 도시에 머문 시간은 짧았지만, 누가는 이 방문을 그냥 지나가는 경유지로 적지 않는다.</p>
+
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">에베소에 와서 브리스길라와 아굴라를 거기 머물게 함</div></div><div class="flow-step-ref">18:19</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">바울은 회당에 들어가 유대인들과 변론함</div></div><div class="flow-step-ref">18:19</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">여러 사람이 더 오래 있기를 청하나 허락하지 않음</div></div><div class="flow-step-ref">18:20</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">"만일 하나님의 뜻이면 너희에게 돌아오리라" 하고 배를 타고 떠남</div></div><div class="flow-step-ref">18:21</div></div>
+  </div>
+
+  <div class="shift">
+    <div class="shift-col">
+      <div class="shift-label">여행의 시작 · 16:6</div>
+      <div class="shift-text">성령이 <strong>아시아</strong>에서 말씀을 전하지 못하게 하심</div>
+    </div>
+    <div class="shift-mid">→</div>
+    <div class="shift-col now">
+      <div class="shift-label">여행의 끝 · 18:19–21</div>
+      <div class="shift-text">아시아의 중심 도시 <strong>에베소</strong>에서 더 머물러 달라는 청을 받음</div>
+    </div>
+  </div>
+  <p class="body-text">본문은 이 두 장면을 직접 이어 설명하지 않는다. 그러나 독자는 5쪽의 지도를 기억한다. 그때 막혔던 곳이 바로 에베소가 있는 땅이었다. 여행을 시작할 때는 들어갈 수 없었던 곳에, 여행을 마칠 때는 머물러 달라는 청을 받으며 서 있다.</p>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">남겨 둔 것 두 가지</div>
+      <div class="background-box-body">바울은 에베소에 두 가지를 남기고 떠난다. 하나는 사람이다. 고린도에서 함께 일한 <strong>브리스길라와 아굴라</strong>가 그곳에 머문다. 다른 하나는 약속이다. <strong>"하나님의 뜻이면 너희에게 돌아오리라."</strong> 이번에도 그는 자기 계획을 단정하지 않는다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">FUTURE PREVIEW · LESSON 13</div>
+      <div class="background-box-body">바울이 떠난 사이 에베소에서는 브리스길라와 아굴라가 한 사람을 만난다(18:24–26). 그리고 바울은 약속대로 돌아와, 고린도보다 더 오래 이 도시에 머문다. 에베소는 3차 선교여행의 중심 무대가 된다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 21</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 22: VISUAL — 한눈에
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <h2 class="section-heading">2차 선교여행을 한눈에</h2>
+  <table class="trip-table">
+    <thead><tr><th>도시</th><th>본문</th><th>주요 사건</th><th>기억할 인물</th><th>떠난 이유</th></tr></thead>
+    <tbody>
+      <tr class="edge"><td>① 수리아 안디옥</td><td>15:36–41</td><td>바울과 바나바의 결별, 실라와 출발</td><td>바나바 · 실라</td><td>교회들을 돌아보려고</td></tr>
+      <tr><td>② 루스드라</td><td>16:1–5</td><td>디모데 합류, 회의의 결정 전달</td><td>디모데</td><td>—</td></tr>
+      <tr><td>③ 드로아</td><td>16:6–10</td><td>두 번 길이 막힘, 마게도냐 환상</td><td>'우리'</td><td>환상</td></tr>
+      <tr><td>④ 빌립보</td><td>16:11–40</td><td>강가의 기도처, 여종 사건, 감옥과 지진</td><td>루디아 · 간수</td><td>관리들의 요청</td></tr>
+      <tr><td>⑤ 데살로니가</td><td>17:1–9</td><td>세 안식일 회당 강론, 소동</td><td>야손</td><td>소동 — 밤에 보냄</td></tr>
+      <tr><td>⑥ 베뢰아</td><td>17:10–15</td><td>날마다 성경을 상고함</td><td>베뢰아 사람들</td><td>쫓아온 반대자들</td></tr>
+      <tr><td>⑦ 아테네</td><td>17:16–34</td><td>장터의 변론, 아레오바고 설교</td><td>디오누시오 · 다마리</td><td>기록 없음</td></tr>
+      <tr><td>⑧ 고린도</td><td>18:1–18</td><td>천막 일, 1년 6개월 사역, 갈리오의 법정</td><td>브리스길라 · 아굴라 · 그리스보</td><td>스스로 작별함</td></tr>
+      <tr><td>⑨ 에베소</td><td>18:19–21</td><td>짧은 방문, "돌아오리라"</td><td>브리스길라 · 아굴라</td><td>스스로 떠남</td></tr>
+      <tr class="edge"><td>① 수리아 안디옥</td><td>18:22</td><td>가이사랴를 거쳐 귀환</td><td>바울</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-2);">선교팀의 변화</h3>
+  <div class="team-line">
+    <div class="tl out"><i></i><b>바나바 · 마가 요한</b><span>안디옥에서 갈라져 구브로로 (15:39)</span></div>
+    <div class="tl"><i></i><b>바울 + 실라</b><span>안디옥에서 출발 (15:40)</span></div>
+    <div class="tl in"><i></i><b>+ 디모데</b><span>루스드라에서 합류 (16:3)</span></div>
+    <div class="tl in"><i></i><b>+ '우리'</b><span>드로아에서 서술이 바뀜 (16:10)</span></div>
+    <div class="tl in"><i></i><b>+ 브리스길라 · 아굴라</b><span>고린도에서 만나 에베소까지 (18:2, 18)</span></div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">이번 여행의 특징</h3>
+  <div class="feat">
+    <div><b>① 선교 지역의 확장</b>소아시아 → 마게도냐 → 아가야. 에게해를 건넜다.</div>
+    <div><b>② 계획과 인도</b>계획은 막혔고(아시아 · 비두니아), 환상이 두 번 방향을 정했다(드로아 · 고린도).</div>
+    <div><b>③ 다양한 사람들</b>여성 상인, 여종, 간수, 철학자, 천막 만드는 부부, 회당장.</div>
+    <div><b>④ 다양한 자리</b>회당, 강가의 기도처, 감옥, 가정, 장터, 아레오바고, 일터.</div>
+    <div><b>⑤ 달라지는 고발</b>풍속(빌립보) → 황제에 대한 충성(데살로니가) → 율법(고린도).</div>
+    <div><b>⑥ 머무는 기간</b>대개 쫓겨서 짧게 머물렀으나, 고린도에서는 1년 6개월을 머물렀다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 22</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 23: LESSON SUMMARY
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 12</span>
+    <span class="page-header-title">바울의 2차 선교여행</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);margin-bottom:var(--sp-2);">
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);">한눈에 보는 LESSON 12</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">사도행전 15:36–18:22</div>
+  </div>
+
+  <div class="summary-grid">
+
+    <div class="summary-block full">
+      <div class="summary-block-label">전체 흐름</div>
+      <div class="summary-block-content">
+        바울과 바나바의 결별 → 실라와 출발 → 디모데 합류 → 길이 막힘 → 마게도냐 환상 → <strong>빌립보</strong> → <strong>데살로니가</strong> → <strong>베뢰아</strong> → <strong>아테네</strong> → <strong>고린도</strong> → 에베소 → 가이사랴 → 안디옥 귀환
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">주요 인물</div>
+      <div class="summary-block-content">
+        <strong>바울</strong> — 2차 선교여행의 중심 인물<br>
+        <strong>실라</strong> — 바울과 함께 출발한 동역자<br>
+        <strong>디모데</strong> — 루스드라에서 합류한 제자<br>
+        <strong>루디아</strong> — 빌립보에서 말씀을 듣고 세례받은 여인<br>
+        <strong>브리스길라와 아굴라</strong> — 고린도에서 바울과 함께 일한 동역자들<br>
+        <strong>갈리오</strong> — 바울에 대한 고발을 받지 않은 아가야 총독
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">헷갈리지 말 것</div>
+      <div class="summary-block-content">
+        <strong>디모데의 할례</strong> — 구원의 조건이 아니라 그 지역 유대인들을 고려한 결정<br>
+        <strong>아시아</strong> — 대륙이 아니라 에베소가 있는 로마의 속주<br>
+        <strong>루디아</strong> — 본문은 "유럽 최초의 그리스도인"이라 부르지 않는다<br>
+        <strong>아테네</strong> — 믿은 사람들이 있었다. 실패라고 단정하지 않는다<br>
+        <strong>18:22</strong> — '예루살렘'이라는 지명은 본문에 없다
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">새로 배운 개념 · 숫자</div>
+      <div class="summary-block-content" style="display:grid;grid-template-columns:1fr 1fr;gap:0 var(--sp-3);">
+        <div><strong>'우리' 구절</strong> — 서술자가 '우리'라고 말하는 구간 (16:10–17)</div>
+        <div><strong>로마의 식민지</strong> — 로마의 법과 관습으로 다스려진 도시 (빌립보)</div>
+        <div><strong>로마 시민권</strong> — 일정한 법적 보호를 받는 신분</div>
+        <div><strong>아레오바고</strong> — 아테네의 언덕이자 의회의 이름</div>
+        <div><strong>1년 6개월</strong> — 고린도에 머문 기간</div>
+        <div><strong>51–52년경</strong> — 갈리오의 재임 추정 시기</div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이번 Lesson의 핵심</div>
+      <div class="summary-block-content">
+        새로운 동역자들과 떠난 여행에서 계획이 바뀌어 마게도냐로 건너갔고, 도시마다 서로 다른 사람들과 상황을 만났다. 그 과정에서 복음은 다양한 사회적 · 문화적 배경의 사람들에게 전해졌고, 새로운 신자들과 공동체가 형성되었다.
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        바나바와 갈라선 바울은 실라와 디모데와 함께 길이 막히는 대로 이끌려 에게해를 건넜고, 마게도냐와 아가야의 도시들에서 매 맞고 쫓겨나면서도 복음을 전하여 곳곳에 신자들을 남기고 안디옥으로 돌아왔다.
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이야기 연결</div>
+      <div class="pcn">
+        <div class="pcn-col">
+          <div class="pcn-label">PREVIOUS · LESSON 11</div>
+          <div class="pcn-title">이방인에게 할례를 구원의 조건으로 요구하지 않기로 결정한다.</div>
+        </div>
+        <div class="pcn-arrow">→</div>
+        <div class="pcn-col cur">
+          <div class="pcn-label">CURRENT · LESSON 12</div>
+          <div class="pcn-title">2차 선교여행을 통해 복음이 마게도냐와 그리스 지역으로 확산된다.</div>
+        </div>
+        <div class="pcn-arrow">→</div>
+        <div class="pcn-col next">
+          <div class="pcn-label">NEXT · LESSON 13 · 행 18:23–20:38</div>
+          <div class="pcn-title">바울의 3차 선교여행</div>
+          <div class="pcn-text">바울은 다시 여러 지역을 방문하며 교회들을 굳게 하고, "돌아오리라" 했던 에베소에서 장기간 사역한다.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 12 · 23</span>
+  </div>
+</section>
+
+
+</body>
+</html>

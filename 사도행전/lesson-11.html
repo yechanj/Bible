@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 11 — 이방인도 유대인이 되어야 하는가?</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 11 전용 스타일 ── */
+
+    .recall-badge { display:inline-flex; align-items:center; padding:.5mm 2mm; background:var(--page-bg); border:1px solid var(--rule); border-radius:3px; font-size:6.5pt; color:var(--ink-faint); font-weight:700; letter-spacing:.05em; vertical-align:middle; margin-left:2mm; }
+    .new-concept { display:inline-block; padding:1.5mm 3mm; background:var(--accent); border-radius:3px; font-size:6.5pt; font-weight:700; color:var(--white); letter-spacing:.08em; margin-right:2mm; vertical-align:middle; }
+    .lead { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.7; margin-bottom:var(--sp-2); }
+    .body-text { font-size:var(--fs-body); color:var(--ink); line-height:1.75; }
+    .body-text + .body-text { margin-top:var(--sp-1); }
+    .text-note { margin:var(--sp-2) 0 0; padding:var(--sp-2) var(--sp-3); border-left:3px solid var(--rule-mid); background:var(--page-bg); border-radius:0 3px 3px 0; }
+    .text-note-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); margin-bottom:1mm; }
+    .text-note-body { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.65; }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-3); align-items:start; }
+    .map-frame { border:1px solid var(--rule); border-radius:4px; background:#e3ecf1; display:block; width:100%; }
+
+    .acts18-bar { display:flex; align-items:center; gap:0; margin:var(--sp-1) 0; }
+    .a18-node { display:flex; flex-direction:column; align-items:center; gap:1.5mm; }
+    .a18-circle { width:9mm; height:9mm; border-radius:50%; border:2px solid var(--rule); background:var(--white); display:flex; align-items:center; justify-content:center; font-size:7pt; flex-shrink:0; }
+    .a18-circle.done { background:var(--accent); border-color:var(--accent); color:var(--white); font-weight:700; }
+    .a18-circle.going { border-color:var(--accent); background:var(--accent-pale); color:var(--accent); font-weight:700; }
+    .a18-label { font-size:6.5pt; font-weight:700; color:var(--accent); text-align:center; line-height:1.2; max-width:16mm; }
+    .a18-line { flex:1; height:1.5px; background:var(--accent); margin-bottom:4mm; }
+
+    /* 큰 질문 */
+    .big-q { margin-top:var(--sp-3); padding:var(--sp-3) 0; border-top:2px solid var(--ink); border-bottom:2px solid var(--ink); text-align:center; }
+    .big-q-label { font-size:var(--fs-caption); font-weight:700; letter-spacing:.14em; color:var(--accent); }
+    .big-q-text { font-size:22pt; font-weight:700; color:var(--ink); line-height:1.4; margin-top:1mm; }
+    .positions { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); align-items:stretch; margin-top:var(--sp-2); }
+    .pos { padding:var(--sp-2) var(--sp-3); border:1.5px solid var(--ink); border-radius:4px; }
+    .pos.b { border-color:var(--accent); background:var(--accent-pale); }
+    .pos-label { font-size:6.5pt; font-weight:700; letter-spacing:.12em; color:var(--ink-faint); }
+    .pos.b .pos-label { color:var(--accent); }
+    .pos-text { font-size:var(--fs-body); font-weight:700; color:var(--ink); line-height:1.5; margin-top:1mm; }
+    .pos-mid { display:flex; align-items:center; color:var(--rule-mid); font-size:13pt; }
+    .big-q-foot { text-align:center; font-size:var(--fs-small); color:var(--ink-soft); margin-top:var(--sp-2); }
+
+    /* RECALL 누적 */
+    .recall-stack { margin:var(--sp-2) 0; }
+    .rs-row { display:grid; grid-template-columns:24mm 1fr 1fr; gap:var(--sp-2); padding:var(--sp-2) 0; border-bottom:1px solid var(--rule); align-items:baseline; }
+    .rs-row:first-child { border-top:2px solid var(--ink); }
+    .rs-lesson { font-size:var(--fs-caption); font-weight:700; letter-spacing:.06em; color:var(--ink-faint); }
+    .rs-title { font-size:var(--fs-body); font-weight:700; color:var(--ink); }
+    .rs-title small { display:block; font-weight:400; font-size:var(--fs-caption); color:var(--ink-faint); margin-top:.5mm; }
+    .rs-text { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.6; }
+    .now-q { margin-top:var(--sp-2); padding:var(--sp-3); background:var(--ink); border-radius:4px; text-align:center; }
+    .now-q-label { font-size:var(--fs-caption); font-weight:700; letter-spacing:.14em; color:rgba(255,255,255,.65); }
+    .now-q-text { font-size:15pt; font-weight:700; color:var(--white); line-height:1.5; margin-top:1mm; }
+
+    /* 할례 연결 고리 */
+    .chain { display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr; gap:1.5mm; align-items:stretch; margin:var(--sp-2) 0; }
+    .ch { padding:2.5mm 2mm; border:1px solid var(--rule); border-radius:4px; text-align:center; font-size:var(--fs-small); font-weight:700; color:var(--ink); display:flex; flex-direction:column; justify-content:center; gap:.6mm; }
+    .ch small { font-weight:400; font-size:var(--fs-caption); color:var(--ink-faint); }
+    .ch.key { border-color:var(--accent); background:var(--accent-pale); color:var(--accent); }
+    .ch-arrow { display:flex; align-items:center; color:var(--accent); font-size:11pt; }
+    .issue { margin-top:var(--sp-3); padding:var(--sp-3); border:2px solid var(--accent); border-radius:4px; text-align:center; }
+    .issue-label { font-size:var(--fs-caption); font-weight:700; letter-spacing:.12em; color:var(--accent); }
+    .issue-text { font-size:17pt; font-weight:700; color:var(--accent); margin-top:1mm; line-height:1.4; }
+    .issue-sub { font-size:var(--fs-small); color:var(--ink-soft); margin-top:1.5mm; line-height:1.6; }
+
+    /* 율법 체계 */
+    .era-line { display:grid; grid-template-columns:1fr 1fr; margin:var(--sp-2) 0; position:relative; }
+    .era-line::before { content:""; position:absolute; left:1.7mm; right:0; top:1.7mm; height:1.5px; background:var(--rule-mid); }
+    .era { position:relative; padding-right:var(--sp-3); }
+    .era i { display:block; width:3.4mm; height:3.4mm; border-radius:50%; background:var(--ink); margin-bottom:1.2mm; position:relative; }
+    .era.a i { background:var(--accent); box-shadow:0 0 0 1.2mm var(--accent-soft); }
+    .era b { display:block; font-size:var(--fs-small); color:var(--ink); }
+    .era.a b { color:var(--accent); }
+    .era span { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.5; display:block; }
+    .law-tree { margin:var(--sp-1) 0; }
+    .law-root { font-size:var(--fs-small); font-weight:700; color:var(--ink); padding-bottom:1mm; }
+    .law-branch { margin-left:2mm; border-left:1.5px solid var(--rule-mid); }
+    .law-item { position:relative; padding:1.3mm 0 1.3mm 6mm; font-size:var(--fs-small); color:var(--ink-soft); }
+    .law-item::before { content:""; position:absolute; left:0; top:50%; width:4mm; border-top:1.5px solid var(--rule-mid); }
+    .law-item.key { color:var(--accent); font-weight:700; }
+    .law-item.key small { font-weight:400; color:var(--ink-faint); font-size:var(--fs-caption); margin-left:2mm; }
+    .quote-compare { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-2); margin:var(--sp-2) 0; }
+    .qc { padding:var(--sp-2) var(--sp-3); border-left:3px solid var(--ink); background:var(--page-bg); border-radius:0 3px 3px 0; }
+    .qc-ref { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.04em; }
+    .qc-text { font-family:var(--ff-hand); font-size:12.5pt; color:var(--ink); line-height:1.5; margin:1mm 0; }
+    .qc-note { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.55; }
+
+    /* Before / After */
+    .shift { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); align-items:stretch; margin:var(--sp-2) 0; }
+    .shift-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; background:var(--page-bg); }
+    .shift-col.now { background:var(--accent-pale); border:1.5px solid var(--accent-soft); }
+    .shift-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.06em; margin-bottom:1mm; }
+    .shift-col.now .shift-label { color:var(--accent); }
+    .shift-text { font-size:var(--fs-small); color:var(--ink); line-height:1.6; }
+    .shift-mid { display:flex; align-items:center; font-size:13pt; color:var(--accent); }
+
+    /* 두 질문 */
+    .two-q { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1.5px solid var(--ink); border-radius:4px; overflow:hidden; margin:0 0 var(--sp-2); }
+    .tq { padding:var(--sp-3); }
+    .tq + .tq { border-left:1.5px solid var(--ink); background:var(--page-bg); }
+    .tq-num { font-size:var(--fs-caption); font-weight:700; letter-spacing:.14em; color:var(--accent); }
+    .tq-tag { display:inline-block; margin-left:2mm; padding:.5mm 2.5mm; border-radius:20px; background:var(--ink); color:var(--white); font-size:6.5pt; font-weight:700; letter-spacing:.04em; }
+    .tq-q { font-size:14pt; font-weight:700; color:var(--ink); line-height:1.4; margin:1.5mm 0 2mm; }
+    .tq-text { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.7; }
+    .tq-where { margin-top:var(--sp-2); padding-top:var(--sp-1); border-top:1px dotted var(--rule-mid); font-size:var(--fs-caption); color:var(--ink-faint); }
+    .council-top { width:50mm; margin:0 auto; padding:2mm; text-align:center; background:var(--ink); color:var(--white); font-weight:700; font-size:var(--fs-body); border-radius:4px 4px 0 0; }
+
+    /* 발언자 · 논증 */
+    .speaker { display:flex; align-items:baseline; gap:3mm; padding:1.6mm 0; border-top:2px solid var(--ink); border-bottom:1px solid var(--rule); margin-bottom:var(--sp-2); }
+    .speaker-order { font-size:var(--fs-caption); font-weight:700; color:var(--accent); letter-spacing:.08em; }
+    .speaker-name { font-size:var(--fs-h2); font-weight:700; color:var(--ink); }
+    .speaker-kind { margin-left:auto; font-size:var(--fs-caption); color:var(--ink-faint); }
+    .speaker-kind b { color:var(--ink); }
+    .arg { margin:var(--sp-2) 0; }
+    .arg-row { display:grid; grid-template-columns:17mm 1fr 14mm; gap:2mm; align-items:baseline; padding:2.4mm 0; border-bottom:1px solid var(--rule); }
+    .arg-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.04em; }
+    .arg-body { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.6; }
+    .arg-body b { display:block; font-size:var(--fs-body); color:var(--ink); }
+    .arg-ref { font-size:var(--fs-caption); color:var(--ink-faint); text-align:right; }
+    .arg-row.so .arg-label { color:var(--ink); }
+    .arg-row.concl { background:var(--accent-pale); border-bottom:none; border-left:3px solid var(--accent); padding-left:3mm; padding-right:2mm; margin-top:1mm; }
+    .arg-row.concl .arg-label { color:var(--accent); }
+    .arg-row.concl .arg-body b { color:var(--accent); font-family:var(--ff-hand); font-size:13pt; font-weight:400; line-height:1.5; }
+    .triad { display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:1.5mm; align-items:stretch; margin:var(--sp-2) 0; }
+    .tri { padding:2.5mm 3mm; border:1px solid var(--rule); border-radius:4px; }
+    .tri-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .tri-text { font-size:var(--fs-small); font-weight:700; color:var(--ink); margin-top:.6mm; line-height:1.45; }
+    .tri.end { border-color:var(--accent); background:var(--accent-pale); }
+    .tri.end .tri-label, .tri.end .tri-text { color:var(--accent); }
+    .tri-arrow { display:flex; align-items:center; color:var(--accent); font-size:11pt; }
+
+    /* 도시별 회상 */
+    .recall-table { width:100%; border-collapse:collapse; font-size:var(--fs-small); margin:var(--sp-1) 0; }
+    .recall-table td { padding:2mm 2.5mm; border-bottom:1px solid var(--rule); color:var(--ink-soft); line-height:1.45; }
+    .recall-table td:first-child { font-weight:700; color:var(--ink); white-space:nowrap; width:34mm; }
+    .recall-table td:last-child { color:var(--ink-faint); font-size:var(--fs-caption); text-align:right; white-space:nowrap; width:20mm; }
+
+    /* 사건 + 성경 */
+    .plus-eq { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); align-items:stretch; margin:var(--sp-2) 0 0; }
+    .pe { padding:var(--sp-2) var(--sp-3); border:1px solid var(--rule); border-radius:4px; }
+    .pe-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .pe-title { font-size:var(--fs-body); font-weight:700; color:var(--ink); margin:.5mm 0; }
+    .pe-text { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.6; }
+    .pe-plus { display:flex; align-items:center; font-size:15pt; font-weight:700; color:var(--accent); }
+    .pe-join { height:5mm; width:1.5px; background:var(--accent); margin:0 auto; }
+    .pe-result { padding:var(--sp-2) var(--sp-3); background:var(--accent); border-radius:4px; text-align:center; color:var(--white); }
+    .pe-result b { display:block; font-size:var(--fs-body); }
+    .pe-result span { font-size:var(--fs-caption); opacity:.85; }
+
+    /* 네 가지 */
+    .four { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--sp-1); margin:var(--sp-2) 0; counter-reset:f; }
+    .four div { counter-increment:f; padding:2.5mm 2mm 2.5mm; border-top:2px solid var(--ink); font-size:var(--fs-small); font-weight:700; color:var(--ink); line-height:1.4; }
+    .four div::before { content:counter(f); display:block; font-size:var(--fs-caption); color:var(--accent); margin-bottom:.5mm; }
+    .interp { margin:var(--sp-1) 0 0; padding:0; list-style:none; }
+    .interp li { display:grid; grid-template-columns:6mm 1fr; padding:1.6mm 0; border-bottom:1px dotted var(--rule); font-size:var(--fs-small); color:var(--ink-soft); line-height:1.55; }
+    .interp li::before { content:"·"; font-weight:700; color:var(--accent); text-align:center; }
+    .interp b { color:var(--ink); }
+
+    /* 구원의 조건 ≠ 생활 지침 */
+    .neq { display:grid; grid-template-columns:1fr 14mm 1fr; align-items:stretch; margin:var(--sp-2) 0; }
+    .neq-col { padding:var(--sp-3); border:1.5px solid var(--ink); }
+    .neq-col.a { border-right:none; border-radius:4px 0 0 4px; border-color:var(--accent); background:var(--accent-pale); }
+    .neq-col.b { border-left:none; border-radius:0 4px 4px 0; }
+    .neq-kind { font-size:var(--fs-caption); font-weight:700; letter-spacing:.12em; color:var(--ink-faint); }
+    .neq-col.a .neq-kind { color:var(--accent); }
+    .neq-title { font-size:var(--fs-title); font-weight:700; color:var(--ink); margin:.5mm 0 var(--sp-2); }
+    .neq-col.a .neq-title { color:var(--accent); }
+    .neq-row { padding:1.8mm 0; border-top:1px solid var(--rule); font-size:var(--fs-small); color:var(--ink); line-height:1.6; }
+    .neq-row small { display:block; font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .neq-row b { font-size:var(--fs-body); }
+    .neq-mid { display:flex; align-items:center; justify-content:center; background:var(--ink); color:var(--white); font-size:20pt; font-weight:700; }
+    .not-say { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-2); margin:var(--sp-2) 0; }
+    .ns { padding:var(--sp-2) var(--sp-3); border:1px dashed var(--rule-mid); border-radius:4px; }
+    .ns-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .ns-wrong { font-size:var(--fs-small); color:var(--ink-faint); text-decoration:line-through; text-decoration-color:var(--rule-mid); margin:1mm 0; line-height:1.55; }
+    .ns-why { font-size:var(--fs-caption); color:var(--ink); line-height:1.6; }
+
+    /* 편지 */
+    .letter { margin:var(--sp-2) 0; padding:var(--sp-3) var(--sp-4, 8mm); border:1px solid var(--rule-mid); border-radius:2px; background:var(--accent-pale); position:relative; }
+    .letter::before { content:"편지 · 행 15:23–29"; position:absolute; top:-2.4mm; left:6mm; padding:0 2mm; background:var(--white); font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .letter-line { display:grid; grid-template-columns:24mm 1fr 12mm; gap:2mm; padding:1.8mm 0; border-bottom:1px dotted var(--rule-mid); font-size:var(--fs-small); align-items:baseline; }
+    .letter-line:last-child { border-bottom:none; }
+    .letter-k { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); }
+    .letter-v { color:var(--ink); line-height:1.6; }
+    .letter-v em { font-style:normal; font-family:var(--ff-hand); font-size:13pt; color:var(--accent); }
+    .letter-r { font-size:var(--fs-caption); color:var(--ink-faint); text-align:right; }
+    .envoys { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-2); margin:var(--sp-1) 0; }
+    .envoy { padding:2mm 3mm; border:1px solid var(--rule); border-radius:4px; font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.5; }
+    .envoy b { display:block; font-size:var(--fs-body); color:var(--ink); }
+
+    /* 논증 지도 */
+    .am { display:flex; flex-direction:column; align-items:stretch; }
+    .am-box { padding:2.4mm 4mm; border:1px solid var(--rule); border-radius:4px; }
+    .am-kind { font-size:6.5pt; font-weight:700; letter-spacing:.12em; color:var(--ink-faint); }
+    .am-text { font-size:var(--fs-small); color:var(--ink); line-height:1.5; margin-top:.4mm; }
+    .am-text b { font-size:var(--fs-body); }
+    .am-box.problem { background:var(--ink); border-color:var(--ink); text-align:center; }
+    .am-box.problem .am-kind { color:rgba(255,255,255,.65); }
+    .am-box.problem .am-text { color:var(--white); font-size:13pt; font-weight:700; }
+    .am-box.concl { background:var(--accent); border-color:var(--accent); text-align:center; }
+    .am-box.concl .am-kind { color:rgba(255,255,255,.75); }
+    .am-box.concl .am-text { color:var(--white); font-size:13pt; font-weight:700; }
+    .am-box.soft { background:var(--accent-pale); border-color:var(--accent-soft); }
+    .am-down { height:4.5mm; width:1.5px; background:var(--rule-mid); margin:0 auto; }
+    .am-three { display:grid; grid-template-columns:1fr 1fr 1fr; gap:var(--sp-2); }
+    .am-three .am-box { border-top:2px solid var(--ink); border-radius:0 0 4px 4px; }
+    .am-three b { display:block; font-size:var(--fs-body); color:var(--ink); }
+    .am-three small { display:block; font-size:var(--fs-caption); color:var(--ink-faint); margin-top:.6mm; }
+    .am-bracket { height:4.5mm; margin:0 16.6%; border:1.5px solid var(--rule-mid); border-top:none; position:relative; }
+    .am-bracket::after { content:""; position:absolute; left:50%; top:0; height:100%; width:1.5px; background:var(--rule-mid); }
+    .am-two { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-2); }
+
+    /* 요약 */
+    .qa { display:grid; grid-template-columns:1fr 1fr; gap:0; border:1.5px solid var(--accent); border-radius:4px; overflow:hidden; }
+    .qa div { padding:var(--sp-2) var(--sp-3); }
+    .qa div + div { background:var(--accent); color:var(--white); }
+    .qa small { display:block; font-size:6.5pt; font-weight:700; letter-spacing:.12em; opacity:.75; }
+    .qa b { display:block; font-size:var(--fs-body); line-height:1.5; margin-top:.5mm; }
+    .qa span { font-size:var(--fs-caption); line-height:1.5; display:block; margin-top:.5mm; opacity:.9; }
+    .part-review { margin:var(--sp-2) 0; }
+    .pr-item { display:grid; grid-template-columns:22mm 1fr; gap:var(--sp-2); padding:var(--sp-2) 0; border-bottom:1px solid var(--rule); align-items:baseline; }
+    .pr-num { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.06em; }
+    .pr-title { font-size:var(--fs-body); font-weight:700; color:var(--ink); }
+    .pr-text { font-size:var(--fs-small); color:var(--ink-soft); margin-top:.5mm; line-height:1.6; }
+    .pr-item.now .pr-num, .pr-item.now .pr-title { color:var(--accent); }
+    .next-box { margin-top:var(--sp-3); padding:var(--sp-3); background:var(--ink); border-radius:4px; color:var(--white); }
+    .next-part { font-size:var(--fs-caption); font-weight:700; letter-spacing:.12em; opacity:.7; }
+    .next-title { font-size:var(--fs-title); font-weight:700; margin-top:1mm; }
+    .next-ref { font-size:var(--fs-caption); opacity:.7; margin-top:.5mm; }
+    .next-text { font-size:var(--fs-small); line-height:1.7; margin-top:var(--sp-2); opacity:.92; }
+  </style>
+</head>
+<body>
+
+<!-- 선교여행 공통 지도: lesson-10.html의 map-defs에서 기본 지도만 가져옴 (좌표계는 DESIGN.md 참고) -->
+<svg id="map-defs" width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <marker id="mk-acc" markerWidth="4" markerHeight="4" refX="3.2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#b4552d"/></marker>
+    <g id="basemap" fill="#f4f0ea" stroke="#d2cdc5" stroke-width=".45" stroke-linejoin="round">
+      <!-- 아시아(소아시아·수리아·유대)와 아프리카 북안 -->
+      <path d="M181,24.5 L198,31.3 L182,38.8 L160,40.5 L146,40 L134,40.5 L130,47 L126,51.5 L123,56.3 L121.4,63 L139,61.3 L134,67.5 L137,77.5 L135,83.3 L142,89.5 L126,92.5 L132,97.5 L145.2,103.5 L144,112.5 L146,124.3 L160,125 L148,133 L165,130 L172,135 L182,133.8 L186,143.8 L192.8,145 L203,142.5 L208,145 L211.4,135 L214,128 L227.8,130.8 L240,136.5 L246,143.3 L256.6,149.5 L266,146.5 L279,142.5 L292.6,130 L298,131.3 L307.6,135.8 L315.8,130.8 L324,127.5 L323.4,135.5 L315.6,142 L318.6,148.3 L315.6,162 L317.6,177.8 L316.6,189 L310,202.5 L307.4,211 L304,218.3 L300,229.5 L297.8,237.5 L295,248.8 L289,262.5 L264,272.5 L246,268.8 L220,261.3 L198,270 L178,277.5 L144,266.3 L102,260 L80,248.8 L64,245 L52,230 L34,227.5 L12,235 L0,245 L0,290 L360,290 L360,0 L272,0 L246,6.3 L228,22.5 L182,20 Z"/>
+      <!-- 유럽(마게도냐·아가야) -->
+      <path d="M0,53.8 L5,62.5 L15,76.3 L22,91.3 L34.6,93.8 L26,108.8 L33.4,118.8 L33,126.3 L37.6,132 L42,124.5 L49.6,140 L51.4,131.3 L64,139 L58,121.3 L56,111.3 L70,116.3 L64,110 L60,102 L72.6,101.5 L80.6,108.8 L80,96.3 L72,85 L52,77.5 L67,71.3 L58,60 L52,43.8 L59,34.5 L68,43.8 L75,52 L79.6,51.3 L88,46.8 L75,31.3 L88,26.8 L117.4,28.8 L121,32 L134,33.5 L121,47.5 L126,45 L132,39 L142,36.5 L150,25.8 L160,25 L179,24.5 L180,18.8 L160,2.5 L160,0 L0,0 Z"/>
+      <!-- 고린도만 -->
+      <path d="M26,92 L35,92.5 L48,91.3 L59,100 L58,101.8 L46,97.5 L36,95.3 L28,95.5 Z" fill="#e3ecf1" stroke="none"/>
+      <!-- 그레데 · 로도 · 구브로 -->
+      <path d="M71,162.5 L80,162 L102.6,166.5 L126,168.8 L122,175 L95,176.8 L72,169.3 Z"/>
+      <path d="M164,138.8 L155,147.5 L161,152.5 Z"/>
+      <path d="M245.4,172.5 L248,181.3 L259,185.8 L272.6,177.5 L281.6,176 L279,171.8 L291.6,157.8 L266.4,166.5 L258.4,165 L258,170.5 L251,170.8 Z"/>
+    </g>
+  </defs>
+</svg>
+
+
+<!-- ════════════════════════════════════
+     PAGE 1: LESSON OPENING
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">11</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 4 — 이방 선교의 시작 · 마지막 Lesson</div>
+      <h1 class="opening-title">이방인도 유대인이 되어야 하는가?</h1>
+      <div class="opening-scripture">사도행전 15:1–35</div>
+    </div>
+  </div>
+
+  <div class="lesson-summary-line">
+    이방인 신자들에게 할례와 모세의 율법을 요구해야 한다는 논쟁이 일어나자 예루살렘의 사도들과 장로들이 모여 논의했고, 하나님이 이방인에게도 믿음으로 구원을 주셨다는 사실을 확인하여 할례를 구원의 조건으로 요구하지 않기로 결정한다.
+  </div>
+
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">바울 · 바나바 · 베드로 · 야고보 · 유대 출신 신자들 · 유다(바사바) · 실라</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">수리아 안디옥 · 예루살렘</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">핵심 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2mm;margin-top:1.5mm;">
+        <span class="tag">할례</span><span class="tag">모세의 율법</span><span class="tag">구원</span><span class="tag">은혜</span>
+        <span class="tag">믿음</span><span class="tag">이방인</span><span class="tag">예루살렘 회의</span>
+      </div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">이번 Lesson의 구조</div>
+      <div class="lesson-meta-value" style="font-size:var(--fs-small);line-height:1.7;">문제 제기 → 논쟁 → 증언 → 성경적 근거 → 결정 → 전달<br><span style="color:var(--ink-faint);font-size:var(--fs-caption);">이번에는 이동 경로가 아니라 논증의 흐름을 따라간다.</span></div>
+    </div>
+  </div>
+
+  <div class="big-q">
+    <div class="big-q-label">OPENING QUESTION</div>
+    <div class="big-q-text">예수를 믿는 이방인은<br>할례도 받아야 할까?</div>
+  </div>
+
+  <div class="positions">
+    <div class="pos">
+      <div class="pos-label">입장 A</div>
+      <div class="pos-text">예수를 믿어도 모세의 율법에 따라 할례를 받아야 한다.</div>
+    </div>
+    <div class="pos-mid">↔</div>
+    <div class="pos b">
+      <div class="pos-label">입장 B</div>
+      <div class="pos-text">이방인도 주 예수의 은혜로 구원받는다.</div>
+    </div>
+  </div>
+  <div class="big-q-foot">이번 Lesson에서는 이 논쟁이 누구의 어떤 근거로, 어떻게 해결되는지 살펴본다.</div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 1</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 2: RECALL — 왜 이런 문제가 생겼을까?
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <h2 class="section-heading">왜 이런 문제가 생겼을까?</h2>
+  <p class="lead">이 논쟁은 갑자기 터진 것이 아니다. 앞선 세 Lesson에서 일어난 일이 차례로 쌓여 더는 미룰 수 없게 된 질문이다.</p>
+
+  <div class="recall-stack">
+    <div class="rs-row">
+      <div class="rs-lesson">LESSON 08</div>
+      <div class="rs-title">고넬료 사건<small>행 10–11장</small></div>
+      <div class="rs-text">이방인에게도 성령이 임함<br>→ 예루살렘 교회가 이를 인정함</div>
+    </div>
+    <div class="rs-row">
+      <div class="rs-lesson">LESSON 09</div>
+      <div class="rs-title">안디옥 교회<small>행 11장</small></div>
+      <div class="rs-text">유대인과 이방인이 함께하는 교회가 성장함<br>→ 바나바와 사울이 함께 가르침</div>
+    </div>
+    <div class="rs-row">
+      <div class="rs-lesson">LESSON 10</div>
+      <div class="rs-title">1차 선교여행<small>행 13–14장</small></div>
+      <div class="rs-text">여러 도시에서 많은 이방인이 예수를 믿음<br>→ 새로운 교회들이 형성되고 장로가 세워짐</div>
+    </div>
+  </div>
+
+  <div class="now-q">
+    <div class="now-q-label">그리고 이제</div>
+    <div class="now-q-text">이방인 신자들은 모세의 율법을<br>어디까지 지켜야 하는가?</div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">핵심 배경</h3>
+  <p class="body-text">예수를 따르는 무리는 유대인 공동체 안에서 시작되었다. 예수도, 사도들도, 처음 신자들도 모두 유대인이었고, 그들은 예수를 믿은 뒤에도 성전에 올라가고 율법을 따라 살았다.</p>
+  <p class="body-text">그런데 유대인이 아닌 사람들이 예수를 믿기 시작했다. 고넬료 한 가정일 때는 예외처럼 보일 수 있었다. 그러나 안디옥에 교회가 서고, 소아시아 여러 도시에 이방인 신자가 늘어나자 질문은 피할 수 없게 되었다. 이 사람들은 어떤 자격으로 하나님의 백성에 속하는가?</p>
+
+  <div class="text-note">
+    <div class="text-note-label">RECALL · L08의 FUTURE FLAG</div>
+    <div class="text-note-body">Lesson 08에서 예루살렘의 할례자들이 베드로를 비판했을 때(11:2–3), 이 교재는 "더 큰 논쟁이 온다"고 표시해 두었다. 그때는 <strong>"이방인도 복음을 받을 수 있는가?"</strong>가 문제였다. 이제는 그다음 질문, <strong>"받았다면 무엇을 더 해야 하는가?"</strong>가 등장한다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 2</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 3: CONCEPT — 할례
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <h2 class="section-heading"><span class="new-concept">NEW CONCEPT</span>할례란 무엇인가?</h2>
+  <p class="lead">예루살렘 회의를 이해하려면, 할례가 당시 유대인들에게 얼마나 무거운 것이었는지를 먼저 알아야 한다.</p>
+
+  <div class="background-box" style="margin-top:0;">
+    <div class="background-box-title">BACKGROUND — 창세기 17장</div>
+    <div class="background-box-body">하나님은 아브라함과 언약을 맺으시고, 그와 그의 집의 모든 남자에게 할례를 행하라고 명하셨다. 할례는 아브라함과 그의 후손에게 주어진 <strong>언약의 표징</strong>이었다. 이후 이스라엘의 남자아이는 태어난 지 여드레 만에 할례를 받았다.</div>
+  </div>
+
+  <div class="chain">
+    <div class="ch">아브라함<small>창 17장</small></div>
+    <div class="ch-arrow">→</div>
+    <div class="ch">하나님의 언약<small>"너와 네 후손"</small></div>
+    <div class="ch-arrow">→</div>
+    <div class="ch">할례<small>몸에 행하는 표</small></div>
+    <div class="ch-arrow">→</div>
+    <div class="ch key">언약의 표징<small style="color:var(--accent);">하나님의 백성에 속함</small></div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">왜 중요한가?</h3>
+  <p class="body-text">당시 유대인들에게 할례는 단순한 문화적 관습이 아니었다. 자신들이 하나님과 언약을 맺은 백성이라는 정체성과 깊이 연결된 행위였다. 창세기 17장은 할례를 받지 않은 남자를 두고 "내 언약을 배반하였음이니라"(17:14)고까지 말한다.</p>
+  <p class="body-text">그러므로 이방인에게 할례를 요구한 사람들의 주장을 이상하거나 악의적인 것으로 그려서는 안 된다. 그들은 성경을 근거로, 자신들이 이해한 언약의 무게를 지키려 하고 있었다. 그들의 눈에는 이렇게 보였을 것이다. 하나님의 백성에 들어오려는 사람이 그 백성의 표를 받는 것은 당연하지 않은가.</p>
+
+  <div class="issue">
+    <div class="issue-label">그렇다면 핵심 쟁점은</div>
+    <div class="issue-text">할례가 구원의 필수 조건인가?</div>
+    <div class="issue-sub">회의가 다룬 것은 "할례가 좋은 것인가 나쁜 것인가"가 아니다.<br>"할례를 받지 않으면 구원받지 못하는가"이다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 3</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 4: CONCEPT — 할례와 모세의 율법
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <h2 class="section-heading">할례와 모세의 율법은 같은 것일까?</h2>
+  <p class="lead">본문에는 '할례'와 '모세의 율법'이 함께 나온다. 서로 깊이 이어져 있지만 같은 말은 아니다.</p>
+
+  <div class="era-line">
+    <div class="era a"><i></i><b>할례</b><span>아브라함 시대에 시작 (창 17장)<br>남자에게 행하는 언약의 표징</span></div>
+    <div class="era"><i></i><b>모세의 율법</b><span>출애굽 이후 시내 산에서 이스라엘에게 주어짐<br>삶 전체에 걸친 명령과 규례</span></div>
+  </div>
+
+  <p class="body-text">할례는 모세보다 훨씬 앞선 아브라함 때에 시작되었다. 그리고 나중에 모세의 율법 안에도 포함되었다(레 12:3). 그래서 15:1은 "<strong>모세의 법대로</strong> 할례를" 받으라고 말한다.</p>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div>
+      <h3 class="section-heading">이스라엘의 언약과 율법 체계</h3>
+      <div class="law-tree">
+        <div class="law-root">모세의 율법이 다루는 것</div>
+        <div class="law-branch">
+          <div class="law-item key">할례 <small>시작은 아브라함 시대</small></div>
+          <div class="law-item">안식일</div>
+          <div class="law-item">음식에 관한 규정</div>
+          <div class="law-item">정결 규정</div>
+          <div class="law-item">절기</div>
+          <div class="law-item">제사</div>
+          <div class="law-item">사회적 · 도덕적 명령</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="background-box" style="margin:0;">
+        <div class="background-box-title">할례는 '입구'였다</div>
+        <div class="background-box-body">이방인이 유대교에 들어올 때 남자는 할례를 받았다. 할례는 여러 규정 가운데 하나이면서, 동시에 율법 아래의 삶 전체로 들어가는 문과 같았다. 그래서 "할례를 받으라"는 요구는 그것 하나로 끝나는 요구가 아니었다. 15:5가 할례에 이어 곧바로 "모세의 율법을 지키라"를 덧붙이는 이유다.</div>
+      </div>
+      <div class="text-note">
+        <div class="text-note-label">RECALL · L08</div>
+        <div class="text-note-body">음식과 정결 규정은 베드로의 환상(10:9–16)에서 이미 한 번 문제가 되었다.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">이번 논쟁의 두 표현</h3>
+  <div class="quote-compare">
+    <div class="qc">
+      <div class="qc-ref">행 15:1 · 안디옥에서</div>
+      <div class="qc-text">"할례를 받지 아니하면 능히 구원을 받지 못하리라."</div>
+      <div class="qc-note">할례를 <strong>구원</strong>과 직접 연결한다.</div>
+    </div>
+    <div class="qc">
+      <div class="qc-ref">행 15:5 · 예루살렘에서</div>
+      <div class="qc-text">"할례를 행하고 모세의 율법을 지키라 명하는 것이 마땅하다."</div>
+      <div class="qc-note">할례에 <strong>율법 전체의 준수</strong>를 더한다. '구원'이라는 말은 나오지 않는다.</div>
+    </div>
+  </div>
+  <p class="body-text" style="font-size:var(--fs-small);color:var(--ink-soft);">두 주장은 서로 이어져 있지만 완전히 같은 문장은 아니다. 이 차이는 7쪽에서 회의가 다룬 두 질문을 나눌 때 다시 쓰인다.</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 4</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 5: SCENE 01 (15:1–2)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">안디옥에서 논쟁이 시작되다</span>
+      <span class="scene-ref">행 15:1–2</span>
+    </div>
+    <div class="scene-body">
+      <p>Lesson 10의 끝에서 바울과 바나바는 선교 보고를 마치고 안디옥에 오래 머물고 있었다. 그때 유대에서 어떤 사람들이 내려와 안디옥의 형제들을 가르치기 시작한다.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"너희가 모세의 법대로 할례를 받지 아니하면 능히 구원을 받지 못하리라"</div>
+    <div class="scripture-ref">사도행전 15:1 — 유대에서 내려온 사람들의 주장</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 62mm;gap:var(--sp-3);margin-top:var(--sp-2);align-items:start;">
+    <div>
+      <p class="body-text">이 말을 듣는 사람들이 누구인지 생각해 보자. 안디옥 교회에는 할례를 받지 않은 이방인 신자가 많았다. 그들은 이미 예수를 믿었고, '그리스도인'이라 불렸으며, 선교사를 파송한 교회의 일원이었다. 그런 그들에게 "너희는 아직 구원받지 못했다"는 말이 전해진 것이다.</p>
+
+      <div class="story-flow" style="margin-top:var(--sp-2);">
+        <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">유대에서 온 사람들이 형제들을 가르침</div></div><div class="flow-step-ref">15:1</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">바울 및 바나바와 그들 사이에 적지 않은 다툼과 변론이 일어남</div></div><div class="flow-step-ref">15:2</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">형제들이 바울과 바나바와 몇 사람을 예루살렘으로 보내기로 함</div><div class="flow-step-desc">이 문제를 사도들과 장로들에게 가져가기 위해</div></div><div class="flow-step-ref">15:2</div></div>
+      </div>
+
+      <div class="background-box" style="margin-top:var(--sp-2);">
+        <div class="background-box-title">안디옥 교회는 왜 스스로 결론 내리지 않았을까?</div>
+        <div class="background-box-body">본문은 이유를 말하지 않는다. 다만 문제를 가져온 사람들이 유대에서 왔고, 이 질문이 안디옥 한 교회의 일이 아니었다는 점은 분명하다. Lesson 09에서 본 대로 안디옥과 예루살렘은 서로 이어진 교회였다.</div>
+      </div>
+    </div>
+
+    <div>
+      <svg class="map-frame" viewBox="268 132 84 134" xmlns="http://www.w3.org/2000/svg">
+        <use href="#basemap"/>
+        <path d="M323.2,145 L319.4,163 L320,180 L318.6,191 L312.6,204 L307,218.5 L303.4,232 L302.4,244 L304,253.6" fill="none" stroke="#b4552d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#mk-acc)"/>
+        <circle cx="323.2" cy="145" r="4.2" fill="#b4552d" opacity=".18"/>
+        <circle cx="323.2" cy="145" r="2.2" fill="#b4552d"/>
+        <circle cx="304.4" cy="255.5" r="2.2" fill="#1e1e1e"/>
+        <g font-family="SCDream,sans-serif" font-size="4.2" font-weight="700" fill="#1e1e1e">
+          <text x="328" y="143" fill="#b4552d">수리아</text>
+          <text x="328" y="148.4" fill="#b4552d">안디옥</text>
+          <text x="309" y="257.4">예루살렘</text>
+          <g font-size="3.6" font-weight="400" fill="#a39d92" letter-spacing=".5">
+            <text x="323" y="209">베니게</text>
+            <text x="309" y="243">사마리아</text>
+            <text x="332" y="176">수리아</text>
+            <text x="322" y="262.6" font-size="3.2">유대</text>
+            <text x="280" y="170" font-size="3.2">구브로</text>
+            <text x="280" y="212" fill="#8aa5b6" letter-spacing="1.6">지중해</text>
+          </g>
+        </g>
+      </svg>
+      <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;line-height:1.5;">수리아 안디옥 → 예루살렘. 일행은 베니게와 사마리아를 지나간다(15:3). 선은 방향을 나타내며 실제 길의 모양은 아니다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 5</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 6: SCENE 02 (15:3–6)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 2</span>
+      <span class="scene-title">예루살렘에서 문제가 다시 제기되다</span>
+      <span class="scene-ref">행 15:3–6</span>
+    </div>
+    <div class="scene-body">
+      <p>일행은 교회의 전송을 받고 남쪽으로 내려간다. 가는 길 자체가 이미 하나의 보고였다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">베니게와 사마리아를 지나며 이방인들이 주께 돌아온 일을 전함</div></div><div class="flow-step-ref">15:3</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">형제들이 다 크게 기뻐함</div></div><div class="flow-step-ref">15:3</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">예루살렘에 이르러 교회와 사도와 장로들에게 영접을 받음</div></div><div class="flow-step-ref">15:4</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">하나님이 자기들과 함께 계셔 행하신 모든 일을 말함</div></div><div class="flow-step-ref">15:4</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">그런데 — 바리새파 중에 어떤 믿는 사람들이 일어나 말함</div></div><div class="flow-step-ref">15:5</div></div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-2);">
+    <div class="scripture-text">"이방인에게 할례를 행하고 모세의 율법을 지키라 명하는 것이 마땅하다"</div>
+    <div class="scripture-ref">사도행전 15:5</div>
+  </div>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">IMPORTANT — 이들은 누구인가?</div>
+      <div class="background-box-body">이 사람들은 밖에서 교회를 공격하던 사람들이 아니다. 본문은 그들을 <strong>"믿는 사람들"</strong>이라고 부른다. 예수를 믿게 된 바리새파 출신 신자들이다. 그러므로 이것은 교회와 바깥 세상의 싸움이 아니라, <strong>교회 안에서 일어난 신학적 논쟁</strong>이다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">바리새파 <span class="recall-badge">RECALL · L04 · L07</span></div>
+      <div class="background-box-body">율법을 엄격하게 지키는 일에 힘쓰던 유대교의 한 분파다. 공회에서 사도들을 변호한 가말리엘이 바리새인이었고(5:34), 바울 자신도 바리새파 출신이다(23:6). 율법의 문제에 가장 민감한 사람들이 이 질문을 꺼낸 것은 자연스러운 일이다.</div>
+    </div>
+  </div>
+
+  <div class="shift">
+    <div class="shift-col">
+      <div class="shift-label">길 위에서 · 15:3</div>
+      <div class="shift-text">이방인의 회심 소식에 형제들이 <strong>크게 기뻐함</strong></div>
+    </div>
+    <div class="shift-mid">↔</div>
+    <div class="shift-col now">
+      <div class="shift-label">예루살렘에서 · 15:5</div>
+      <div class="shift-text">같은 소식 앞에서 <strong>"할례를 행하라"</strong>는 요구가 나옴</div>
+    </div>
+  </div>
+
+  <p class="body-text">같은 보고가 한쪽에서는 기쁨을, 다른 쪽에서는 문제 제기를 불러온다. 그래서 사도와 장로들이 <strong>이 일을 의논하러 모인다</strong>(15:6). 이 모임을 흔히 '예루살렘 회의'라고 부른다.</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 6</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 7: ARGUMENT MAP — 두 질문
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <h2 class="section-heading">논쟁의 핵심은 무엇이었을까?</h2>
+  <p class="lead">회의 장면으로 들어가기 전에, 테이블 위에 올라온 질문을 정리해 두자. 한 덩어리처럼 보이지만 사실은 서로 다른 두 질문이 겹쳐 있다. 이 둘을 나누어 읽는 것이 이번 Lesson 전체의 열쇠다.</p>
+
+  <div class="council-top">예루살렘 회의</div>
+  <div class="two-q">
+    <div class="tq">
+      <div class="tq-num">QUESTION 1 <span class="tq-tag">구원의 조건</span></div>
+      <div class="tq-q">이방인은 어떻게<br>구원받는가?</div>
+      <div class="tq-text">할례와 율법 준수가 있어야 구원받는가?<br>아니면 주 예수의 은혜로, 믿음으로 구원받는가?</div>
+      <div class="tq-where">문제 제기 — 15:1 "…구원을 받지 못하리라"<br>답 — 베드로의 발언 (8쪽)</div>
+    </div>
+    <div class="tq">
+      <div class="tq-num">QUESTION 2 <span class="tq-tag">공동체의 생활</span></div>
+      <div class="tq-q">유대인과 이방인 신자는<br>어떻게 함께 살아갈 것인가?</div>
+      <div class="tq-text">생활 규범과 음식 관습이 서로 다른 사람들이 한 공동체를 이루려면 어떤 지침이 필요한가?</div>
+      <div class="tq-where">배경 — 15:5 "…모세의 율법을 지키라"<br>답 — 야고보의 제안 (11쪽)</div>
+    </div>
+  </div>
+
+  <p class="body-text">첫 번째 질문은 <strong>하나님 앞에서의 문제</strong>다. 한 사람이 무엇으로 구원받느냐를 묻는다. 두 번째 질문은 <strong>사람들 사이의 문제</strong>다. 구원받은 사람들이 한 식탁에 앉고 한 교회로 모이려면 서로를 위해 무엇을 해야 하느냐를 묻는다.</p>
+  <p class="body-text">회의의 결정은 이 두 질문을 모두 다룬다. 그러나 <strong>다른 방식으로</strong> 답한다. 첫 번째에는 분명한 원칙으로, 두 번째에는 몇 가지 실제적인 지침으로 답한다.</p>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">두 질문을 섞으면 생기는 일</div>
+    <div class="background-box-body">두 질문을 하나로 읽으면 회의의 결론이 모순처럼 보인다. "율법의 짐을 지우지 말자고 해 놓고 왜 다시 네 가지를 요구하는가?" 이 물음은 두 질문을 구분하면 풀린다. 12쪽에서 다시 정리한다.</div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">앞으로 읽을 순서 — 세 번의 발언</h3>
+  <div class="triad">
+    <div class="tri"><div class="tri-label">첫 번째 · 15:7–11</div><div class="tri-text">베드로 — 하나님이 하신 일</div></div>
+    <div class="tri-arrow">→</div>
+    <div class="tri"><div class="tri-label">두 번째 · 15:12</div><div class="tri-text">바나바와 바울 — 선교 현장의 증언</div></div>
+    <div class="tri-arrow">→</div>
+    <div class="tri"><div class="tri-label">세 번째 · 15:13–21</div><div class="tri-text">야고보 — 성경의 말씀과 제안</div></div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 7</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 8: SCENE 03 — 베드로 (15:7–11)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <div class="speaker">
+    <span class="speaker-order">첫 번째 발언</span>
+    <span class="speaker-name">베드로</span>
+    <span class="speaker-kind">근거의 종류 — <b>하나님이 하신 일</b></span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">베드로는 무엇을 근거로 말했을까?</span>
+      <span class="scene-ref">행 15:7–11</span>
+    </div>
+    <div class="scene-body">
+      <p>누가는 "많은 변론이 있은 후에"라고만 적는다. 길고 팽팽한 토론이 있었다는 뜻이다. 그 끝에 베드로가 일어난다. 그는 새로운 이론을 내놓지 않고, 모두가 이미 아는 한 사건으로 돌아간다.</p>
+    </div>
+  </div>
+
+  <div class="arg">
+    <div class="arg-row"><div class="arg-label">근거 ①</div><div class="arg-body"><b>하나님이 나를 택하셨다</b>이방인들이 내 입에서 복음의 말씀을 듣고 믿게 하시려고, 오래전에 너희 가운데서 나를 택하셨다. <span class="recall-badge">RECALL · L08 고넬료</span></div><div class="arg-ref">15:7</div></div>
+    <div class="arg-row"><div class="arg-label">근거 ②</div><div class="arg-body"><b>하나님이 이방인에게 성령을 주셨다</b>마음을 아시는 하나님이 "우리에게와 같이" 그들에게도 성령을 주어 증언하셨다.</div><div class="arg-ref">15:8</div></div>
+    <div class="arg-row"><div class="arg-label">근거 ③</div><div class="arg-body"><b>하나님이 차별하지 않으셨다</b>믿음으로 그들의 마음을 깨끗하게 하셨다. 그들이나 우리나 차별하지 않으셨다.</div><div class="arg-ref">15:9</div></div>
+    <div class="arg-row so"><div class="arg-label">그러므로</div><div class="arg-body"><b>멍에를 지우지 말라</b>"어찌하여 하나님을 시험하여 우리 조상과 우리도 능히 메지 못하던 멍에를 제자들의 목에 두려느냐"</div><div class="arg-ref">15:10</div></div>
+    <div class="arg-row concl"><div class="arg-label">결론</div><div class="arg-body"><b>"우리는 그들이 우리와 동일하게 주 예수의 은혜로 구원 받는 줄을 믿노라"</b></div><div class="arg-ref">15:11</div></div>
+  </div>
+
+  <p class="body-text">세 근거의 주어는 모두 <strong>하나님</strong>이다. 베드로의 논리는 "나는 이렇게 생각한다"가 아니라 "하나님이 이미 이렇게 하셨다"이다. 고넬료의 집 사람들은 할례를 받지 않은 채로 성령을 받았다. 하나님이 받으신 사람에게 사람이 조건을 더 붙일 수 있느냐는 것이다.</p>
+
+  <div class="triad">
+    <div class="tri"><div class="tri-label">하나님의 행동</div><div class="tri-text">이방인에게 성령을 주심</div></div>
+    <div class="tri-arrow">→</div>
+    <div class="tri"><div class="tri-label">하나님의 판단</div><div class="tri-text">믿음으로 그들의 마음을 깨끗하게 하심</div></div>
+    <div class="tri-arrow">→</div>
+    <div class="tri end"><div class="tri-label">베드로의 결론</div><div class="tri-text">할례를 구원의 조건으로 강요하지 말라</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">은혜 · 믿음</div>
+      <div class="background-box-body"><strong>은혜</strong> — 하나님이 베푸시는 구원의 은총. 받는 사람이 갚거나 벌어들인 것이 아니다.<br><strong>믿음</strong> — 예수를 믿고 의지하는 것.<br>11절은 순서가 뒤집혀 있다. "그들도 우리처럼"이 아니라 "<strong>우리가 그들과 동일하게</strong>"이다. 유대인도 같은 은혜로 구원받는다는 고백이다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">'멍에'를 읽을 때</div>
+      <div class="background-box-body">베드로는 율법이 나쁘다거나 쓸모없다고 말하지 않는다. 그가 말하는 것은, 율법을 <strong>구원을 얻는 조건</strong>으로 삼았을 때 그것을 다 감당해 낸 사람이 조상 가운데도, 자신들 가운데도 없었다는 사실이다. 이 발언 이후 사도행전은 베드로의 활동을 더 기록하지 않는다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 8</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 9: SCENE 04 — 바나바와 바울 (15:12)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <div class="speaker">
+    <span class="speaker-order">두 번째 발언</span>
+    <span class="speaker-name">바나바와 바울</span>
+    <span class="speaker-kind">근거의 종류 — <b>선교 현장의 증언</b></span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">바나바와 바울은 무엇을 증언했을까?</span>
+      <span class="scene-ref">행 15:12</span>
+    </div>
+    <div class="scene-body">
+      <p>베드로의 말이 끝나자 온 무리가 잠잠해진다. 누가는 이어진 바나바와 바울의 발언을 단 한 절로 요약한다.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"온 무리가 가만히 있어 바나바와 바울이 하나님께서 자기들로 말미암아 이방인 중에서 행하신 표적과 기사에 관하여 말하는 것을 듣더니"</div>
+    <div class="scripture-ref">사도행전 15:12</div>
+  </div>
+
+  <div class="arg">
+    <div class="arg-row"><div class="arg-label">근거</div><div class="arg-body"><b>하나님이 이방인 가운데서 표적과 기사를 행하셨다</b>두 사람은 자신들의 생각을 변론하지 않는다. 선교 현장에서 실제로 일어난 일을 전한다.</div><div class="arg-ref">15:12</div></div>
+    <div class="arg-row so"><div class="arg-label">뜻하는 바</div><div class="arg-body"><b>고넬료의 집은 한 번의 예외가 아니었다</b></div><div class="arg-ref"></div></div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">두 사람이 떠올렸을 장면들 <span class="recall-badge">RECALL · L10</span></h3>
+  <p class="lead" style="margin-bottom:var(--sp-1);">15:12는 그 일들을 다시 열거하지 않는다. 아래는 본문이 아니라 Lesson 10을 따라온 독자를 위한 회상이다.</p>
+
+  <table class="recall-table">
+    <tr><td>구브로 · 바보</td><td>로마 총독 서기오 바울이 믿음</td><td>13:12</td></tr>
+    <tr><td>비시디아 안디옥</td><td>이방인들이 복음을 듣고 기뻐하며 주의 말씀을 찬송함</td><td>13:48</td></tr>
+    <tr><td>이고니온</td><td>유대인과 헬라인의 허다한 무리가 믿음. 표적과 기사가 나타남</td><td>14:1–3</td></tr>
+    <tr><td>루스드라</td><td>나면서 걷지 못하던 사람이 일어나 걸음</td><td>14:8–10</td></tr>
+    <tr><td>더베</td><td>많은 사람이 제자가 됨</td><td>14:21</td></tr>
+  </table>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">중요한 논리</div>
+      <div class="background-box-body">이 문장에서도 일하신 분은 <strong>하나님</strong>이다. "자기들로 말미암아"라는 표현에서 두 사람은 통로일 뿐이다. 베드로의 근거와 두 사람의 근거는 종류가 같다. 둘 다 <strong>하나님이 이미 하신 일</strong>을 가리킨다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">눈여겨볼 점 — 이름의 순서</div>
+      <div class="background-box-body">Lesson 10에서 13:13 이후 본문은 주로 "바울과 바나바"라고 불렀다. 그런데 예루살렘 장면인 15:12와 편지(15:25)에서는 다시 "<strong>바나바와 바울</strong>"이다. 이유는 설명되지 않는다. 다만 바나바는 예루살렘 교회가 오래 알아 온 사람이었다(4:36, 9:27).</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 9</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 10: SCENE 05 — 야고보의 근거 (15:13–18)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <div class="speaker">
+    <span class="speaker-order">세 번째 발언</span>
+    <span class="speaker-name">야고보</span>
+    <span class="speaker-kind">근거의 종류 — <b>성경의 말씀</b></span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 5</span>
+      <span class="scene-title">야고보는 성경에서 근거를 찾다</span>
+      <span class="scene-ref">행 15:13–18</span>
+    </div>
+    <div class="scene-body">
+      <p>두 사람이 말을 마치자 야고보가 입을 연다. "형제들아 내 말을 들으라."</p>
+    </div>
+  </div>
+
+  <div class="text-note" style="margin-top:0;">
+    <div class="text-note-label">어느 야고보인가? — RECALL · L09</div>
+    <div class="text-note-body">요한의 형제 야고보는 이미 헤롯에게 처형되었다(12:2). 이 야고보는 일반적으로 <strong>예수의 형제 야고보</strong>로 이해된다. 베드로가 감옥에서 나와 "야고보와 형제들에게 이 말을 전하라"(12:17)고 했던 바로 그 사람이며, 이 장면에서 예루살렘 교회의 주요 지도자로 등장한다.</div>
+  </div>
+
+  <div class="arg">
+    <div class="arg-row"><div class="arg-label">근거 ①</div><div class="arg-body"><b>베드로의 증언을 받아들임</b>"하나님이 처음으로 이방인 중에서 자기 이름을 위할 백성을 취하시려고 그들을 돌보신 것을 시므온이 말하였으니" — 시므온은 베드로(시몬)의 히브리식 이름이다.</div><div class="arg-ref">15:14</div></div>
+    <div class="arg-row"><div class="arg-label">근거 ②</div><div class="arg-body"><b>선지자들의 말씀이 이와 일치한다</b>아모스 9:11–12를 인용한다. 하나님이 다윗의 무너진 장막을 다시 세우시고, 그 결과 "내 이름으로 일컬음을 받는 모든 이방인들"이 주를 찾게 된다.</div><div class="arg-ref">15:15–18</div></div>
+    <div class="arg-row so"><div class="arg-label">그러므로</div><div class="arg-body"><b>이방인을 받으시는 일은 하나님이 예전부터 말씀하신 일이다</b>지금 일어나는 일은 뜻밖의 사고가 아니라 선지자들의 말씀과 맞아떨어진다.</div><div class="arg-ref">15:15</div></div>
+  </div>
+
+  <p class="body-text">'백성'이라는 말에 주목하자. 구약에서 이 말은 이스라엘을 가리키던 말이다. 야고보는 그 말을 <strong>이방인 가운데서</strong> 취하신 사람들에게 쓴다. 그리고 그들은 "이방인"인 채로 주의 이름으로 일컬어진다. 유대인이 된 뒤에가 아니다.</p>
+
+  <div class="plus-eq">
+    <div class="pe">
+      <div class="pe-label">실제 사건</div>
+      <div class="pe-title">고넬료와 이방인들의 회심</div>
+      <div class="pe-text">베드로 · 바나바 · 바울의 증언</div>
+    </div>
+    <div class="pe-plus">+</div>
+    <div class="pe">
+      <div class="pe-label">성경의 말씀</div>
+      <div class="pe-title">선지자의 예언</div>
+      <div class="pe-text">아모스 9:11–12</div>
+    </div>
+  </div>
+  <div class="pe-join"></div>
+  <div class="pe-result"><b>야고보의 판단 — 이방인에게도 하나님이 길을 여셨다.</b><span>경험만으로도, 성경 구절만으로도 아니었다. 일어난 일과 기록된 말씀이 서로 맞는지를 확인했다.</span></div>
+
+  <div class="text-note">
+    <div class="text-note-label">TEXT NOTE · 아모스 인용</div>
+    <div class="text-note-body">야고보가 인용한 구절은 구약 아모스 9:11–12를 펴서 읽을 때와 표현이 조금 다르다. 히브리어 본문과 당시 널리 쓰이던 그리스어 번역 사이에 차이가 있고, 사도행전의 인용은 그리스어 번역 쪽에 가깝다. 두 본문을 나란히 놓고 읽어도 "이방인들이 하나님의 이름 아래 들어온다"는 방향은 같다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 10</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 11: SCENE 06 — 야고보의 제안 (15:19–21)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 6</span>
+      <span class="scene-title">야고보가 제안한 결론</span>
+      <span class="scene-ref">행 15:19–21</span>
+    </div>
+    <div class="scene-body">
+      <p>근거를 다 말한 야고보는 "그러므로 내 의견에는"이라는 말로 결론을 내놓는다. 그의 제안은 두 부분으로 되어 있고, 각각 7쪽의 두 질문에 대응한다.</p>
+    </div>
+  </div>
+
+  <div class="arg" style="margin-bottom:0;">
+    <div class="arg-row concl" style="margin-top:0;"><div class="arg-label">첫 번째<br>QUESTION 1</div><div class="arg-body"><b>"이방인 중에서 하나님께로 돌아오는 자들을 괴롭게 하지 말고"</b><span style="font-size:var(--fs-small);color:var(--ink-soft);">할례와 율법 준수를 구원의 필수 조건으로 강요하지 말자는 것이다.</span></div><div class="arg-ref">15:19</div></div>
+    <div class="arg-row so" style="border-bottom:none;"><div class="arg-label">두 번째<br>QUESTION 2</div><div class="arg-body"><b>다만 다음 네 가지를 멀리하라고 편지하자</b></div><div class="arg-ref">15:20</div></div>
+  </div>
+
+  <div class="four">
+    <div>우상의 더러운 것</div>
+    <div>음행</div>
+    <div>목매어 죽인 것</div>
+    <div>피</div>
+  </div>
+
+  <div class="background-box" style="margin-top:0;">
+    <div class="background-box-title">네 가지는 무엇을 가리킬까?</div>
+    <div class="background-box-body">
+      <strong>우상의 더러운 것</strong> — 편지에서는 "우상의 제물"(15:29)이라고 바꾸어 적는다. 우상에게 바쳐졌던 음식과 관련된 것으로 이해된다.<br>
+      <strong>음행</strong> — 성적인 부정.<br>
+      <strong>목매어 죽인 것 · 피</strong> — 피를 빼지 않고 잡은 짐승의 고기, 그리고 피를 먹는 일. 구약은 피를 먹는 것을 금했다(창 9:4, 레 17:10–14).
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">왜 하필 이 네 가지였을까?</h3>
+  <p class="body-text">유대인 신자들과 이방인 신자들은 음식과 정결에 관한 생활 관습이 크게 달랐다. 이 지침은 그런 두 무리가 한 공동체로 살아가는 일과 관련이 있다. 다만 네 가지의 정확한 배경과 목적에 대해서는 여러 해석이 있다.</p>
+
+  <ul class="interp">
+    <li><span><b>레위기 17–18장과 연결하는 해석</b> — 이스라엘 가운데 사는 이방 거류민에게도 요구되던 규정들과 내용이 겹친다.</span></li>
+    <li><span><b>우상숭배와의 단절을 강조하는 해석</b> — 네 가지 모두 당시 이교 제의와 그에 딸린 관습에서 흔히 볼 수 있던 것들이다.</span></li>
+    <li><span><b>식탁 교제를 고려한 해석</b> — 유대인 신자들이 이방인 신자들과 함께 먹고 지낼 수 있도록 하는 최소한의 배려다.</span></li>
+  </ul>
+  <p class="body-text" style="font-size:var(--fs-small);color:var(--ink-soft);margin-top:var(--sp-1);">세 해석은 서로 배타적이지 않으며, 이 교재는 어느 하나를 확정된 답으로 제시하지 않는다.</p>
+
+  <div class="text-note">
+    <div class="text-note-label">야고보가 덧붙인 이유 · 15:21</div>
+    <div class="text-note-body">"이는 예로부터 각 성에서 모세를 전하는 자가 있어 안식일마다 회당에서 그 글을 읽음이라." 야고보는 이방인 신자들이 사는 도시마다 모세의 율법을 듣고 지키는 유대인들이 있다는 현실을 염두에 두고 있었다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 11</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 12: VISUAL — 구원의 조건 ≠ 생활 지침
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <h2 class="section-heading">구원의 조건과 생활 지침은 다르다</h2>
+  <div class="neq">
+    <div class="neq-col a">
+      <div class="neq-kind">QUESTION 1</div>
+      <div class="neq-title">구원의 문제</div>
+      <div class="neq-row"><small>질문</small>할례를 받아야 구원받는가?</div>
+      <div class="neq-row"><small>결론</small><b>주 예수의 은혜로 구원받는다.</b><br>이방인에게 할례를 구원의 조건으로 요구하지 않는다.</div>
+      <div class="neq-row"><small>근거</small>하나님이 이방인에게 성령을 주시고, 믿음으로 마음을 깨끗하게 하셨다 (15:8–9)</div>
+      <div class="neq-row"><small>성격</small>원칙. 유대인과 이방인에게 똑같이 적용된다 (15:11)</div>
+    </div>
+    <div class="neq-mid">≠</div>
+    <div class="neq-col b">
+      <div class="neq-kind">QUESTION 2</div>
+      <div class="neq-title">공동체 생활의 문제</div>
+      <div class="neq-row"><small>질문</small>유대인과 이방인 신자들은 어떻게 함께 살아갈 것인가?</div>
+      <div class="neq-row"><small>지침</small><b>네 가지를 멀리하라.</b><br>우상의 제물, 음행, 목매어 죽인 것, 피</div>
+      <div class="neq-row"><small>근거</small>각 성에 모세의 글을 읽는 사람들이 있다 (15:21)</div>
+      <div class="neq-row"><small>성격</small>지침. "스스로 삼가면 잘되리라" (15:29)</div>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">그래서 이렇게 말하지 않는다</h3>
+  <div class="not-say">
+    <div class="ns">
+      <div class="ns-label">오해 ①</div>
+      <div class="ns-wrong">"할례 대신 네 가지 규정을 지켜야 구원받는다."</div>
+      <div class="ns-why">네 가지는 구원의 새 조건이 아니다. 편지는 이것을 지키면 "구원받으리라"가 아니라 "잘되리라"고 말한다.</div>
+    </div>
+    <div class="ns">
+      <div class="ns-label">오해 ②</div>
+      <div class="ns-wrong">"이방인 신자들은 아무런 도덕적 책임도 없다."</div>
+      <div class="ns-why">짐을 지우지 않는다는 말은 아무렇게나 살아도 된다는 뜻이 아니다. 지침에는 우상과 음행을 멀리하라는 요구가 들어 있다.</div>
+    </div>
+    <div class="ns">
+      <div class="ns-label">오해 ③</div>
+      <div class="ns-wrong">"이 회의로 율법 전체가 무의미해졌다."</div>
+      <div class="ns-why">회의가 판단한 것은 율법의 가치가 아니다. 율법 준수가 이방인의 <strong>구원 조건</strong>인지 여부다. 야고보는 오히려 성경에서 근거를 찾았다.</div>
+    </div>
+    <div class="ns">
+      <div class="ns-label">오해 ④</div>
+      <div class="ns-wrong">"유대인 신자들도 이제 유대적 관습을 버려야 했다."</div>
+      <div class="ns-why">회의의 질문은 처음부터 끝까지 <strong>이방인 신자</strong>에게 무엇을 요구할 것인가였다. 유대인 신자들에게 할례나 관습을 버리라고 한 결정은 본문에 없다.</div>
+    </div>
+  </div>
+
+  <div class="issue" style="margin-top:var(--sp-2);padding:var(--sp-2) var(--sp-3);">
+    <div class="issue-sub" style="margin-top:0;color:var(--ink);">이방인은 <strong>유대인이 되지 않고도</strong> 하나님의 백성에 속한다. 그리고 하나님의 백성이 된 사람들은 <strong>서로를 위해</strong> 삼갈 것을 삼간다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 12</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 13: SCENE 07 — 공식 결정 (15:22–29)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 7</span>
+      <span class="scene-title">예루살렘 교회의 공식 결정</span>
+      <span class="scene-ref">행 15:22–29</span>
+    </div>
+    <div class="scene-body">
+      <p>야고보의 제안은 한 사람의 의견으로 남지 않는다. 22절의 주어를 보자. <strong>"사도와 장로와 온 교회가"</strong> 결정한다. 그들은 결정을 글로 적고, 그 글을 전할 사람까지 함께 보낸다.</p>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-2);">함께 보낸 두 사람</h3>
+  <div class="envoys">
+    <div class="envoy"><b>유다</b>바사바라 하는 사람. 형제 중에 인도자.</div>
+    <div class="envoy"><b>실라</b>형제 중에 인도자. <span style="color:var(--accent);font-weight:700;">Lesson 12에서 바울의 새 동역자가 된다.</span></div>
+  </div>
+  <p class="body-text" style="font-size:var(--fs-small);color:var(--ink-soft);">바울과 바나바만 편지를 들고 돌아갔다면, 논쟁의 당사자가 자기에게 유리한 결과를 전하는 모양이 되었을 것이다. 예루살렘 교회는 자기 쪽 지도자 두 사람을 보내어 같은 내용을 "말로"(15:27) 확인하게 한다.</p>
+
+  <div class="letter">
+    <div class="letter-line"><div class="letter-k">보내는 이</div><div class="letter-v">사도와 장로 된 형제들</div><div class="letter-r">15:23</div></div>
+    <div class="letter-line"><div class="letter-k">받는 이</div><div class="letter-v"><strong>안디옥 · 수리아 · 길리기아</strong>에 있는 이방인 형제들</div><div class="letter-r">15:23</div></div>
+    <div class="letter-line"><div class="letter-k">문제의 확인</div><div class="letter-v">우리 가운데서 어떤 사람들이 <strong>우리의 지시도 없이</strong> 나가서 말로 너희를 괴롭게 하고 마음을 혼란하게 했다</div><div class="letter-r">15:24</div></div>
+    <div class="letter-line"><div class="letter-k">사역의 인정</div><div class="letter-v">"사랑하는 바나바와 바울" — 주 예수 그리스도의 이름을 위하여 생명을 아끼지 않는 사람들</div><div class="letter-r">15:25–26</div></div>
+    <div class="letter-line"><div class="letter-k">전달자</div><div class="letter-v">유다와 실라를 보내니 그들도 이 일을 말로 전할 것이다</div><div class="letter-r">15:27</div></div>
+    <div class="letter-line"><div class="letter-k">결정</div><div class="letter-v"><em>"성령과 우리는 이 요긴한 것들 외에는 아무 짐도 너희에게 지우지 아니하는 것이 옳은 줄 알았노니"</em></div><div class="letter-r">15:28</div></div>
+    <div class="letter-line"><div class="letter-k">지침</div><div class="letter-v">우상의 제물과 피와 목매어 죽인 것과 음행을 멀리하라. 스스로 삼가면 잘되리라.</div><div class="letter-r">15:29</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">"성령과 우리는"</div>
+      <div class="background-box-body">회의는 긴 변론과 증언과 성경 검토를 거쳐 결론에 이르렀다. 그런데 편지는 그 결론을 자신들만의 것이라 하지 않는다. 사람들이 충분히 논의한 그 과정을 통해 성령이 인도하셨다고 고백한다. <span class="recall-badge" style="margin-left:0;">RECALL · L10 · 13:2</span></div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">IMPORTANT — 누구의 결정인가</div>
+      <div class="background-box-body">이 결론은 바울 개인의 주장이 관철된 것이 아니다. 본문에서 바울은 증언했을 뿐, 결론을 제안한 사람은 야고보였고 결정한 주체는 사도들과 장로들과 온 교회였다. 편지는 문제를 일으킨 사람들이 <strong>예루살렘 교회의 지시를 받은 적이 없다</strong>는 점도 밝힌다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 13</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 14: SCENE 08 (15:30–35)
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 8</span>
+      <span class="scene-title">안디옥 교회는 어떻게 반응했을까?</span>
+      <span class="scene-ref">행 15:30–35</span>
+    </div>
+    <div class="scene-body">
+      <p>일행은 예루살렘을 떠나 안디옥으로 내려간다. 논쟁이 시작된 바로 그 교회, "너희는 구원받지 못한다"는 말을 들었던 그 사람들에게 답이 도착한다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">안디옥에 내려가 무리를 모음</div></div><div class="flow-step-ref">15:30</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">편지를 전함</div></div><div class="flow-step-ref">15:30</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">읽고 그 위로한 말을 기뻐함</div></div><div class="flow-step-ref">15:31</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">유다와 실라도 선지자라, 여러 말로 형제를 권면하여 굳게 함</div></div><div class="flow-step-ref">15:32</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">얼마 있다가 평안히 가라는 전송을 받고, 자기를 보낸 사람들에게로 돌아감</div></div><div class="flow-step-ref">15:33</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">바울과 바나바는 안디옥에 머물며 많은 사람과 함께 주의 말씀을 가르치고 전함</div></div><div class="flow-step-ref">15:35</div></div>
+  </div>
+
+  <div class="shift">
+    <div class="shift-col">
+      <div class="shift-label">시작 · 15:1–2</div>
+      <div class="shift-text">"구원을 받지 못하리라"<br>→ 적지 않은 <strong>다툼과 변론</strong></div>
+    </div>
+    <div class="shift-mid">→</div>
+    <div class="shift-col now">
+      <div class="shift-label">끝 · 15:31–33</div>
+      <div class="shift-text">"아무 짐도 지우지 아니하는 것이 옳은 줄"<br>→ <strong>기쁨</strong>, 권면, <strong>평안</strong>한 전송</div>
+    </div>
+  </div>
+
+  <p class="body-text">안디옥의 신자들은 편지를 "위로한 말"로 받았다. 네 가지 지침이 들어 있었는데도 그들은 그것을 새로운 짐으로 여기지 않고 기뻐했다. 그리고 이 Lesson은 시작한 곳에서 끝난다. 안디옥에서 문제가 일어났고, 예루살렘에서 논의되었으며, 다시 안디옥에 답이 전해졌다.</p>
+
+  <div class="text-note">
+    <div class="text-note-label">TEXT NOTE · 행 15:34</div>
+    <div class="text-note-body">성경을 펴 보면 33절 다음이 35절이고, 34절 자리에는 "없음"이라고 되어 있을 것이다. "실라는 그들과 함께 유하기를 작정하고"라는 34절은 일부 사본에만 있다. 33절은 두 사람이 돌아갔다고 말하는데, 15:40에서 실라는 다시 안디옥에 있다. 그 사이의 일을 본문은 설명하지 않으므로 이 교재도 채워 넣지 않는다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 14</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 15: ARGUMENT MAP — 논리 구조
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <h2 class="section-heading">예루살렘 회의의 논리 구조</h2>
+  <p class="lead">이번 Lesson 전체를 한 장의 논증 지도로 정리한다. 위에서 아래로, 문제가 결론에 이르는 길을 따라가 보자.</p>
+
+  <div class="am">
+    <div class="am-box problem"><div class="am-kind">문제 · 15:1</div><div class="am-text">이방인도 할례를 받아야 구원받는가?</div></div>
+    <div class="am-down"></div>
+    <div class="am-box"><div class="am-kind">주장 · 15:1, 15:5</div><div class="am-text">일부 유대 출신 신자들 — 할례와 모세의 율법 준수가 필요하다.</div></div>
+    <div class="am-down"></div>
+    <div class="am-three">
+      <div class="am-box"><div class="am-kind">근거 ① · 15:7–11</div><div class="am-text"><b>베드로</b>하나님이 이방인에게도 성령을 주셨다.<small>하나님이 하신 일</small></div></div>
+      <div class="am-box"><div class="am-kind">근거 ② · 15:12</div><div class="am-text"><b>바나바와 바울</b>하나님이 이방인 가운데 표적과 기사를 행하셨다.<small>선교 현장의 증언</small></div></div>
+      <div class="am-box"><div class="am-kind">근거 ③ · 15:13–18</div><div class="am-text"><b>야고보</b>선지자의 말씀도 이방인을 포함하시는 하나님의 뜻과 일치한다.<small>성경의 말씀</small></div></div>
+    </div>
+    <div class="am-bracket"></div>
+    <div class="am-box concl"><div class="am-kind">결론 · 15:19, 15:28</div><div class="am-text">이방인에게 할례를 구원의 조건으로 요구하지 않는다.</div></div>
+    <div class="am-down"></div>
+    <div class="am-two">
+      <div class="am-box soft"><div class="am-kind">QUESTION 1의 답 · 15:11</div><div class="am-text"><b>주 예수의 은혜로 구원받는다.</b></div></div>
+      <div class="am-box"><div class="am-kind">QUESTION 2의 답 · 공동체 지침 · 15:20, 29</div><div class="am-text">우상의 제물, 음행, 목매어 죽인 것, 피를 멀리하라.</div></div>
+    </div>
+    <div class="am-down"></div>
+    <div class="am-box"><div class="am-kind">전달 · 15:22–30</div><div class="am-text">편지를 쓰고, 유다와 실라를 바울과 바나바와 함께 보낸다.</div></div>
+    <div class="am-down"></div>
+    <div class="am-box soft"><div class="am-kind">결과 · 15:31–35</div><div class="am-text"><b>안디옥 교회가 기뻐하고 굳게 된다.</b></div></div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-3);">
+    <div class="background-box-title">이 지도에서 읽어 낼 수 있는 것</div>
+    <div class="background-box-body">세 근거는 서로 다른 자리에서 나왔지만 같은 곳을 가리킨다. 과거의 한 사건, 최근의 여러 현장, 그리고 오래전에 기록된 말씀이다. 회의는 다수결이나 한 사람의 권위로 끝나지 않았다. 충분히 변론하고, 일어난 일을 듣고, 성경과 맞추어 본 다음, 온 교회가 함께 결정했다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 15</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 16: LESSON SUMMARY
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);margin-bottom:var(--sp-2);">
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);">한눈에 보는 LESSON 11</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">사도행전 15:1–35</div>
+  </div>
+
+  <div class="qa">
+    <div><small>핵심 질문</small><b>이방인도 유대인이 되어야 구원받는가?</b></div>
+    <div><small>핵심 결론</small><b>이방인도 주 예수의 은혜로 구원받는다.</b><span>할례와 모세의 율법 준수를 구원의 필수 조건으로 요구하지 않는다.</span></div>
+  </div>
+
+  <div class="summary-grid" style="margin-top:var(--sp-2);">
+
+    <div class="summary-block full">
+      <div class="summary-block-label">논증의 흐름</div>
+      <div class="summary-block-content">
+        안디옥에서 논쟁 → 예루살렘으로 → 바리새파 출신 신자들의 문제 제기 → 많은 변론 → 베드로의 증언 → 바나바와 바울의 증언 → 야고보의 성경 인용과 제안 → 온 교회의 결정 → 편지와 전달자 → <strong>안디옥이 기뻐함</strong>
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">주요 인물</div>
+      <div class="summary-block-content">
+        <strong>베드로</strong> — 고넬료 사건을 근거로 이방인에게도 성령이 주어졌음을 증언<br>
+        <strong>바나바와 바울</strong> — 이방인 선교에서 하나님이 행하신 일을 전함<br>
+        <strong>야고보</strong> — 선지자의 말씀을 근거로 이방인 신자들에게 필요한 지침을 제안<br>
+        <strong>유다와 실라</strong> — 결정을 안디옥에 전달하고 신자들을 권면
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">핵심 개념</div>
+      <div class="summary-block-content">
+        <strong>할례</strong> — 아브라함 언약의 표징<br>
+        <strong>모세의 율법</strong> — 이스라엘에게 주어진 명령과 규례<br>
+        <strong>은혜</strong> — 하나님이 베푸시는 구원의 은총<br>
+        <strong>믿음</strong> — 예수를 믿고 의지하는 것<br>
+        <strong>예루살렘 회의</strong> — 이방인 신자들에게 할례와 율법을 구원의 조건으로 요구해야 하는지를 논의한 회의
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">헷갈리지 말 것</div>
+      <div class="summary-block-content">
+        <strong>구원의 조건 ≠ 생활 지침</strong> — 네 가지 지침은 구원의 새 조건이 아니다.<br>
+        <strong>문제를 제기한 사람들</strong> — 교회 밖의 적대자가 아니라 "믿는 사람들"이다.<br>
+        <strong>야고보</strong> — 요한의 형제(12:2에서 처형)가 아니라 예수의 형제로 이해되는 야고보.<br>
+        <strong>결정의 주체</strong> — 바울 개인이 아니라 사도들과 장로들과 온 교회.
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">기억할 구절</div>
+      <div class="scripture-block" style="margin:0;">
+        <div class="scripture-text">"우리는 그들이 우리와 동일하게 주 예수의 은혜로 구원 받는 줄을 믿노라"</div>
+        <div class="scripture-ref">사도행전 15:11</div>
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        예루살렘의 사도들과 장로들과 온 교회는 하나님이 이방인에게 하신 일과 선지자들의 말씀을 근거로, 이방인도 할례 없이 주 예수의 은혜로 구원받는다는 것을 확인하고 함께 살아가기 위한 몇 가지 지침만을 전했다.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 16</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     PAGE 17: PART 4 복습 + NEXT
+     ════════════════════════════════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 11</span>
+    <span class="page-header-title">이방인도 유대인이 되어야 하는가?</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);">
+    <div style="font-size:var(--fs-caption);font-weight:700;color:var(--accent);letter-spacing:.12em;">PART 4 REVIEW</div>
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);margin-top:.5mm;">이방 선교의 시작 — 두 Lesson을 한 줄로 잇기</div>
+  </div>
+
+  <div class="part-review">
+    <div class="pr-item">
+      <div class="pr-num">LESSON 10</div>
+      <div><div class="pr-title">1차 선교여행</div><div class="pr-text">바울과 바나바가 여러 도시에서 복음을 전함 → 많은 이방인이 믿음 → 새로운 교회가 형성됨</div></div>
+    </div>
+    <div class="pr-item now">
+      <div class="pr-num">LESSON 11</div>
+      <div><div class="pr-title">예루살렘 회의</div><div class="pr-text">이방인 신자들에게 할례와 율법을 요구해야 하는지 논쟁 → 이방인도 예수의 은혜로 구원받는다는 사실을 확인</div></div>
+    </div>
+  </div>
+
+  <p class="body-text">두 Lesson은 한 쌍이다. Lesson 10은 <strong>일어난 일</strong>이고, Lesson 11은 그 일에 대한 <strong>교회의 이해</strong>다. 이방인 신자가 생겨나는 일이 먼저 있었고, 그 뜻을 교회가 함께 따져 확인하는 일이 뒤따랐다.</p>
+
+  <div class="shift" style="margin-top:var(--sp-2);">
+    <div class="shift-col">
+      <div class="shift-label">RECALL · L08 — GOD ACTS FIRST</div>
+      <div class="shift-text">고넬료의 집에서도 순서는 같았다. 하나님이 먼저 성령을 주셨고, 예루살렘 교회가 듣고 인정했다(11:18).</div>
+    </div>
+    <div class="shift-mid">→</div>
+    <div class="shift-col now">
+      <div class="shift-label">LESSON 10 → 11</div>
+      <div class="shift-text">하나님이 이방인들에게 믿음의 문을 여셨고(14:27), 교회가 그 문을 사람이 다시 좁히지 않기로 결정했다(15:28).</div>
+    </div>
+  </div>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">이 결정이 남긴 것</div>
+    <div class="background-box-body">이 회의가 없었다면, 또는 결론이 달랐다면 이후의 이방 선교는 전혀 다른 모습이 되었을 것이다. 이제 바울이 어느 도시에 가든, 이방인 신자들은 유대인이 되지 않고도 교회의 온전한 일원이다. 다음 여행에서 바울 일행은 이 결정을 들고 다니며 여러 성의 교회에 전한다(16:4).</div>
+  </div>
+
+  <div class="next-box">
+    <div class="next-part">NEXT · PART 5 — 복음이 로마 세계로</div>
+    <div class="next-title">LESSON 12 · 바울의 2차 선교여행</div>
+    <div class="next-ref">사도행전 15:36–18:22</div>
+    <div class="next-text">바울은 새로운 동역자들과 함께 다시 선교여행을 시작한다. 이번에는 소아시아를 넘어 마게도냐와 그리스 지역까지 복음이 확산된다. 그런데 출발하기도 전에, Lesson 10에서 버가를 떠났던 마가 요한의 일로 바울과 바나바 사이에 다툼이 일어난다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 11 · 17</span>
+  </div>
+</section>
+
+
+</body>
+</html>
