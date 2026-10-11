@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사도행전 Lesson 15 — 로마 총독과 왕 앞에 선 바울</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    /* ── Lesson 15 전용 스타일 ── */
+
+    .recall-badge { display:inline-flex; align-items:center; padding:.5mm 2mm; background:var(--page-bg); border:1px solid var(--rule); border-radius:3px; font-size:6.5pt; color:var(--ink-faint); font-weight:700; letter-spacing:.05em; vertical-align:middle; margin-left:2mm; }
+    .new-concept { display:inline-block; padding:1.5mm 3mm; background:var(--accent); border-radius:3px; font-size:6.5pt; font-weight:700; color:var(--white); letter-spacing:.08em; margin-right:2mm; vertical-align:middle; }
+    .lead { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.7; margin-bottom:var(--sp-2); }
+    .body-text { font-size:var(--fs-body); color:var(--ink); line-height:1.75; }
+    .body-text + .body-text { margin-top:var(--sp-1); }
+    .text-note { margin:var(--sp-2) 0 0; padding:var(--sp-2) var(--sp-3); border-left:3px solid var(--rule-mid); background:var(--page-bg); border-radius:0 3px 3px 0; }
+    .text-note-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); margin-bottom:1mm; }
+    .text-note-body { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.65; }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-3); align-items:start; }
+    .map-frame { border:1px solid var(--rule); border-radius:4px; background:#e3ecf1; display:block; width:100%; }
+    .map-note { font-size:var(--fs-caption); color:var(--ink-faint); line-height:1.55; margin-top:1mm; }
+
+    /* 일곱 단계 진행 막대 */
+    .stage-bar { display:grid; grid-template-columns:repeat(7,1fr); gap:1mm; margin:0 0 var(--sp-2); }
+    .sg { padding:1.5mm 1.6mm; border:1px solid var(--rule); border-radius:3px; font-size:6.5pt; font-weight:700; color:var(--ink-faint); line-height:1.3; white-space:nowrap; text-align:center; }
+    .sg.on { background:var(--accent); border-color:var(--accent); color:var(--white); }
+    .sg.done { background:var(--accent-pale); border-color:var(--accent-soft); color:var(--accent); }
+
+    /* 법정 머리띠 */
+    .city-head { display:flex; align-items:baseline; gap:3mm; padding:1.6mm 0; border-top:2px solid var(--ink); border-bottom:1px solid var(--rule); margin-bottom:var(--sp-2); }
+    .city-head-num { font-size:var(--fs-caption); font-weight:700; color:var(--accent); letter-spacing:.08em; }
+    .city-head-name { font-size:var(--fs-h2); font-weight:700; color:var(--ink); }
+    .city-head-region { font-size:var(--fs-caption); color:var(--ink-faint); }
+    .city-head-next { margin-left:auto; font-size:var(--fs-caption); color:var(--ink-faint); }
+
+    .shift { display:grid; grid-template-columns:1fr auto 1fr; gap:var(--sp-2); align-items:stretch; margin:var(--sp-2) 0; }
+    .shift-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; background:var(--page-bg); }
+    .shift-col.now { background:var(--accent-pale); border:1.5px solid var(--accent-soft); }
+    .shift-label { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.06em; margin-bottom:1mm; }
+    .shift-col.now .shift-label { color:var(--accent); }
+    .shift-text { font-size:var(--fs-small); color:var(--ink); line-height:1.6; }
+    .shift-mid { display:flex; align-items:center; font-size:13pt; color:var(--accent); }
+
+    /* 세 권력자 */
+    .rulers { display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:var(--sp-1); align-items:stretch; margin:var(--sp-2) 0; }
+    .ruler { padding:var(--sp-2); border:1.5px solid var(--ink); border-radius:4px; }
+    .ruler.king { border-color:var(--accent); background:var(--accent-pale); }
+    .ruler-num { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .ruler-name { font-size:var(--fs-h2); font-weight:700; color:var(--ink); margin:.5mm 0; }
+    .ruler.king .ruler-name { color:var(--accent); }
+    .ruler-role { font-size:var(--fs-caption); font-weight:700; color:var(--ink); }
+    .ruler-text { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.55; margin-top:1mm; }
+    .ruler-arrow { display:flex; align-items:center; color:var(--rule-mid); font-size:11pt; }
+
+    /* 통치 체계 */
+    .tree { margin:var(--sp-2) 0; }
+    .tree-top { width:50mm; margin:0 auto; padding:2mm; text-align:center; background:var(--ink); color:var(--white); font-weight:700; font-size:var(--fs-body); border-radius:4px; }
+    .tree-stem { height:5mm; width:1.5px; background:var(--rule-mid); margin:0 auto; }
+    .tree-bar { height:5mm; margin:0 25%; border:1.5px solid var(--rule-mid); border-bottom:none; }
+    .tree-cols { display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-3); }
+    .tree-col { padding:var(--sp-2) var(--sp-3); border:1px solid var(--rule); border-radius:4px; }
+    .tree-col.king { border:1.5px solid var(--accent); background:var(--accent-pale); }
+    .tree-kind { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .tree-col.king .tree-kind { color:var(--accent); }
+    .tree-name { font-size:var(--fs-body); font-weight:700; color:var(--ink); margin:.5mm 0; }
+    .tree-text { font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.6; }
+
+    /* 헤롯 가계 */
+    .herod-tree { margin:var(--sp-1) 0 0; }
+    .ht-row { display:grid; grid-template-columns:8mm 1fr; align-items:stretch; }
+    .ht-rail { display:flex; flex-direction:column; align-items:center; }
+    .ht-rail i { width:2.6mm; height:2.6mm; border-radius:50%; background:var(--rule-mid); margin-top:1.4mm; flex-shrink:0; }
+    .ht-rail u { flex:1; width:1.5px; background:var(--rule); }
+    .ht-row.now .ht-rail i { background:var(--accent); }
+    .ht-body { padding-bottom:2mm; font-size:var(--fs-caption); color:var(--ink-soft); line-height:1.5; }
+    .ht-body b { font-size:var(--fs-small); color:var(--ink); }
+    .ht-row.now .ht-body b { color:var(--accent); }
+
+    /* 번호 목록 */
+    .num-list { margin:var(--sp-2) 0; counter-reset:n; }
+    .nl { counter-increment:n; display:grid; grid-template-columns:8mm 46mm 1fr 14mm; gap:2mm; align-items:baseline; padding:2.1mm 0; border-bottom:1px solid var(--rule); }
+    .nl::before { content:counter(n); width:5.5mm; height:5.5mm; border-radius:50%; background:var(--ink); color:var(--white); font-size:var(--fs-caption); font-weight:700; display:flex; align-items:center; justify-content:center; align-self:center; }
+    .nl-title { font-size:var(--fs-small); font-weight:700; color:var(--ink); }
+    .nl-text { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.55; }
+    .nl-ref { font-size:var(--fs-caption); color:var(--ink-faint); text-align:right; }
+    .nl.key::before { background:var(--accent); }
+    .nl.key .nl-title { color:var(--accent); }
+
+    /* 고발 vs 변호 표 */
+    .vs-table { width:100%; border-collapse:collapse; margin:var(--sp-2) 0; font-size:var(--fs-small); }
+    .vs-table th { padding:2.2mm 3mm; text-align:left; font-size:var(--fs-body); color:var(--white); width:50%; }
+    .vs-table th:first-child { background:var(--ink); border-radius:4px 0 0 0; }
+    .vs-table th:last-child { background:var(--accent); border-radius:0 4px 0 0; }
+    .vs-table td { padding:2.4mm 3mm; border:1px solid var(--rule); color:var(--ink-soft); line-height:1.55; vertical-align:top; }
+    .vs-table td:last-child { background:var(--accent-pale); color:var(--ink); }
+    .vs-table td small { display:block; color:var(--ink-faint); font-size:var(--fs-caption); }
+
+    /* 표 */
+    .trip-table { width:100%; border-collapse:collapse; font-size:var(--fs-small); margin:var(--sp-2) 0; }
+    .trip-table th { text-align:left; padding:1.8mm 2.5mm; font-size:var(--fs-caption); letter-spacing:.06em; color:var(--white); background:var(--ink); }
+    .trip-table td { padding:1.8mm 2.5mm; border-bottom:1px solid var(--rule); color:var(--ink-soft); line-height:1.45; vertical-align:top; }
+    .trip-table td:first-child { font-weight:700; color:var(--ink); white-space:nowrap; }
+    .trip-table tr.edge td { background:var(--accent-pale); color:var(--ink); }
+    .trip-table tr.edge td:first-child { color:var(--accent); }
+    .trip-table td.ref { color:var(--ink-faint); font-size:var(--fs-caption); white-space:nowrap; }
+
+    /* 원인 사슬 */
+    .chain { display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr; gap:1.2mm; align-items:stretch; margin:var(--sp-2) 0; }
+    .ch { padding:2.4mm 2mm; border:1px solid var(--rule); border-radius:4px; text-align:center; font-size:var(--fs-caption); color:var(--ink-soft); display:flex; flex-direction:column; justify-content:center; gap:.6mm; line-height:1.4; }
+    .ch b { font-size:var(--fs-small); color:var(--ink); }
+    .ch.key { border-color:var(--accent); background:var(--accent-pale); }
+    .ch.key b { color:var(--accent); }
+    .ch-arrow { display:flex; align-items:center; color:var(--accent); font-size:10pt; }
+
+    /* 문답 */
+    .dialog { margin:var(--sp-2) 0; }
+    .dl { display:grid; grid-template-columns:20mm 1fr 12mm; gap:2mm; padding:1.8mm 0; border-bottom:1px dotted var(--rule); align-items:baseline; }
+    .dl-who { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); }
+    .dl-say { font-family:var(--ff-hand); font-size:12.5pt; color:var(--ink); line-height:1.45; }
+    .dl-ref { font-size:var(--fs-caption); color:var(--ink-faint); text-align:right; }
+    .dl.a .dl-who, .dl.a .dl-say { color:var(--accent); }
+
+    .stay { display:grid; grid-template-columns:auto 1fr; gap:var(--sp-3); align-items:center; padding:var(--sp-2) var(--sp-3); border:2px solid var(--accent); border-radius:4px; margin:var(--sp-2) 0; }
+    .stay-num { font-size:24pt; font-weight:700; color:var(--accent); line-height:1; white-space:nowrap; }
+    .stay-text { font-size:var(--fs-small); color:var(--ink); line-height:1.65; }
+
+    .pcn { display:grid; grid-template-columns:1fr auto 1fr auto 1.25fr; gap:var(--sp-1); align-items:stretch; }
+    .pcn-col { padding:var(--sp-2); border:1px solid var(--rule); border-radius:4px; }
+    .pcn-col.cur { border-color:var(--accent); background:var(--accent-pale); }
+    .pcn-col.next { background:var(--ink); border-color:var(--ink); color:var(--white); }
+    .pcn-label { font-size:6.5pt; font-weight:700; letter-spacing:.1em; color:var(--ink-faint); }
+    .pcn-col.cur .pcn-label { color:var(--accent); }
+    .pcn-col.next .pcn-label { color:rgba(255,255,255,.65); }
+    .pcn-title { font-size:var(--fs-small); font-weight:700; margin-top:.5mm; line-height:1.45; }
+    .pcn-text { font-size:var(--fs-caption); margin-top:1mm; line-height:1.55; opacity:.9; }
+    .pcn-arrow { display:flex; align-items:center; color:var(--accent); font-size:11pt; }
+  </style>
+</head>
+<body>
+
+<svg id="map-defs" width="0" height="0" style="position:absolute" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <marker id="mk-acc" markerWidth="4" markerHeight="4" refX="3.2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#b4552d"/></marker>
+    <marker id="mk-ink" markerWidth="4" markerHeight="4" refX="3.2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="#1e1e1e"/></marker>
+    <g id="basemap" fill="#f4f0ea" stroke="#d2cdc5" stroke-width=".45" stroke-linejoin="round">
+      <!-- 아시아(소아시아·수리아·유대)와 아프리카 북안 -->
+      <path d="M181,24.5 L198,31.3 L182,38.8 L160,40.5 L146,40 L134,40.5 L130,47 L126,51.5 L123,56.3 L121.4,63 L139,61.3 L134,67.5 L137,77.5 L135,83.3 L142,89.5 L126,92.5 L132,97.5 L145.2,103.5 L144,112.5 L146,124.3 L160,125 L148,133 L165,130 L172,135 L182,133.8 L186,143.8 L192.8,145 L203,142.5 L208,145 L211.4,135 L214,128 L227.8,130.8 L240,136.5 L246,143.3 L256.6,149.5 L266,146.5 L279,142.5 L292.6,130 L298,131.3 L307.6,135.8 L315.8,130.8 L324,127.5 L323.4,135.5 L315.6,142 L318.6,148.3 L315.6,162 L317.6,177.8 L316.6,189 L310,202.5 L307.4,211 L304,218.3 L300,229.5 L297.8,237.5 L295,248.8 L289,262.5 L264,272.5 L246,268.8 L220,261.3 L198,270 L178,277.5 L144,266.3 L102,260 L80,248.8 L64,245 L52,230 L34,227.5 L12,235 L0,245 L0,290 L360,290 L360,0 L272,0 L246,6.3 L228,22.5 L182,20 Z"/>
+      <!-- 유럽(마게도냐·아가야) -->
+      <path d="M0,53.8 L5,62.5 L15,76.3 L22,91.3 L34.6,93.8 L26,108.8 L33.4,118.8 L33,126.3 L37.6,132 L42,124.5 L49.6,140 L51.4,131.3 L64,139 L58,121.3 L56,111.3 L70,116.3 L64,110 L60,102 L72.6,101.5 L80.6,108.8 L80,96.3 L72,85 L52,77.5 L67,71.3 L58,60 L52,43.8 L59,34.5 L68,43.8 L75,52 L79.6,51.3 L88,46.8 L75,31.3 L88,26.8 L117.4,28.8 L121,32 L134,33.5 L121,47.5 L126,45 L132,39 L142,36.5 L150,25.8 L160,25 L179,24.5 L180,18.8 L160,2.5 L160,0 L0,0 Z"/>
+      <!-- 고린도만 -->
+      <path d="M26,92 L35,92.5 L48,91.3 L59,100 L58,101.8 L46,97.5 L36,95.3 L28,95.5 Z" fill="#e3ecf1" stroke="none"/>
+      <!-- 그레데 · 로도 · 구브로 -->
+      <path d="M71,162.5 L80,162 L102.6,166.5 L126,168.8 L122,175 L95,176.8 L72,169.3 Z"/>
+      <path d="M164,138.8 L155,147.5 L161,152.5 Z"/>
+      <path d="M245.4,172.5 L248,181.3 L259,185.8 L272.6,177.5 L281.6,176 L279,171.8 L291.6,157.8 L266.4,166.5 L258.4,165 L258,170.5 L251,170.8 Z"/>
+    </g>
+  </defs>
+</svg>
+
+
+<!-- ═══════════ PAGE 1: LESSON OPENING ═══════════ -->
+<section class="page">
+
+  <div class="book-band">
+    <span class="book-name-ko">사도행전</span>
+    <span class="book-name-en">ACTS OF THE APOSTLES</span>
+    <span class="book-part">신약 · New Testament</span>
+  </div>
+
+  <div class="opening-title-row">
+    <div class="opening-number-block">
+      <span class="opening-number-label">LESSON</span>
+      <span class="opening-number">15</span>
+    </div>
+    <div class="opening-title-block">
+      <div class="opening-part-label">PART 6 — 로마를 향하여 · 두 번째 Lesson</div>
+      <h1 class="opening-title">로마 총독과 왕 앞에 선 바울</h1>
+      <div class="opening-scripture">사도행전 24:1–26:32</div>
+    </div>
+  </div>
+
+  <div class="lesson-summary-line">
+    가이사랴에 구금된 바울은 유대 지도자들의 고발에 맞서 벨릭스 총독 앞에서 자신을 변호한다. 이후 베스도 총독이 부임하자 바울은 황제에게 상소하고, 아그립바 왕 앞에서도 예수의 부활과 자신의 사명을 증언한다.
+  </div>
+
+  <div class="lesson-meta-grid">
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 인물</div>
+      <div class="lesson-meta-value">바울 · 벨릭스 · 드루실라 · 베스도 · 아그립바 2세 · 버니게 · 더둘로 · 대제사장 아나니아</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">주요 장소</div>
+      <div class="lesson-meta-value">가이사랴 · 예루살렘 · 로마</div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">핵심 키워드</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2mm;margin-top:1.5mm;">
+        <span class="tag">고발</span><span class="tag">변호</span><span class="tag">부활</span><span class="tag">총독</span>
+        <span class="tag">재판</span><span class="tag">황제 상소</span><span class="tag">아그립바</span><span class="tag">로마</span>
+      </div>
+    </div>
+    <div class="lesson-meta-item">
+      <div class="lesson-meta-label">이번 Lesson의 구조</div>
+      <div class="lesson-meta-value" style="font-size:var(--fs-small);line-height:1.7;">고발 → 변호 → 재판 연기 → 총독 교체 → 황제 상소 → 아그립바 앞의 증언 → 로마행 결정</div>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">가이사랴의 법정 — 바울이 차례로 서는 세 사람</h3>
+  <div class="rulers">
+    <div class="ruler">
+      <div class="ruler-num">① 24장</div>
+      <div class="ruler-name">벨릭스</div>
+      <div class="ruler-role">로마 총독</div>
+      <div class="ruler-text">바울의 첫 재판. 판결을 미룬다.</div>
+    </div>
+    <div class="ruler-arrow">→</div>
+    <div class="ruler">
+      <div class="ruler-num">② 25장</div>
+      <div class="ruler-name">베스도</div>
+      <div class="ruler-role">후임 로마 총독</div>
+      <div class="ruler-text">총독 교체와 황제 상소.</div>
+    </div>
+    <div class="ruler-arrow">→</div>
+    <div class="ruler king">
+      <div class="ruler-num">③ 25–26장</div>
+      <div class="ruler-name">아그립바 2세</div>
+      <div class="ruler-role">왕</div>
+      <div class="ruler-text">바울의 신앙과 사명에 관한 증언을 듣는다.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--sp-2);padding:var(--sp-3);background:var(--ink);border-radius:4px;text-align:center;">
+    <div style="font-size:var(--fs-caption);font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,.65);">핵심 질문</div>
+    <div style="font-size:15pt;font-weight:700;color:var(--white);line-height:1.5;margin-top:1mm;">바울은 어떤 이유로 고발당했고,<br>왜 로마 황제에게 상소했는가?</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 1</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 2: RECALL ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <h2 class="section-heading">바울은 왜 가이사랴에 있었을까? <span class="recall-badge">RECALL · L14</span></h2>
+  <p class="lead">Lesson 14의 여섯 단계를 한 번 더 따라가면 이번 Lesson의 출발점에 닿는다.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 70mm;gap:var(--sp-3);align-items:start;">
+    <div class="story-flow">
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">성전에서 고발당하고 군중에게 공격받음</div></div><div class="flow-step-ref">21:27–31</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">로마 천부장이 개입하여 바울을 체포함</div></div><div class="flow-step-ref">21:33</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">군중 앞과 공회 앞에서 변론함</div></div><div class="flow-step-ref">22–23장</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">사십여 명의 살해 음모가 드러남</div></div><div class="flow-step-ref">23:12–16</div></div>
+      <div class="flow-arrow"></div>
+      <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">로마 군대의 호송으로 가이사랴에 이송됨</div></div><div class="flow-step-ref">23:33</div></div>
+    </div>
+    <div>
+      <svg class="map-frame" viewBox="262 204 76 60" xmlns="http://www.w3.org/2000/svg">
+        <use href="#basemap"/>
+        <path d="M304.4,255.5 L298.6,247.5 L298,239.4" fill="none" stroke="#1e1e1e" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#mk-ink)"/>
+        <path d="M295.4,236.6 Q282,228 266,224" fill="none" stroke="#b4552d" stroke-width=".9" stroke-dasharray="2,1.6" marker-end="url(#mk-acc)"/>
+        <circle cx="304.4" cy="255.5" r="1.3" fill="#1e1e1e"/>
+        <circle cx="297.8" cy="237.5" r="3.4" fill="#b4552d" opacity=".2"/><circle cx="297.8" cy="237.5" r="1.8" fill="#b4552d"/>
+        <g font-family="SCDream,sans-serif" font-size="3.6" font-weight="700" fill="#1e1e1e">
+          <text x="307" y="257">예루살렘</text>
+          <text x="301.6" y="236.6" fill="#b4552d">가이사랴</text>
+          <text x="266" y="219.6" fill="#b4552d" font-size="3.2">로마로</text>
+          <text x="266" y="231" font-size="2.6" font-weight="400" fill="#4a4a4a">Lesson 16</text>
+          <text x="270" y="250" font-size="3.2" font-weight="400" fill="#8aa5b6" letter-spacing="1">지중해</text>
+        </g>
+      </svg>
+      <div class="map-note">로마는 이 지도의 서쪽 바깥, 바다 건너에 있다.</div>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">현재 상황</h3>
+  <p class="body-text">바울은 이제 로마 <strong>총독</strong>의 관할 아래 있다. 총독 벨릭스는 "너를 고발하는 사람들이 오거든 네 말을 들으리라"(23:35) 하고 그를 헤롯 궁에 가두어 두었다. 예루살렘에서는 천부장이 진상을 알아보려 했을 뿐이지만, 여기서는 <strong>정식 재판</strong>이 열린다. 그러려면 고발하는 사람들이 직접 와서 혐의를 말해야 한다.</p>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">가이사랴 <span class="recall-badge">RECALL · L08 · L09</span></div>
+      <div class="background-box-body">유대 지역을 다스리는 로마 총독이 머물던 행정 중심지이자 항구다. 고넬료가 살던 곳이고, 헤롯 아그립바 1세가 죽은 곳이다. 이번 Lesson의 사건은 거의 모두 이 도시에서 일어난다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">달라진 것</div>
+      <div class="background-box-body">Lesson 14에서 바울이 말한 상대는 군중과 공회였다. 이제 그는 총독과 왕 앞에서 말한다. 듣는 사람의 지위는 높아지는데, 바울이 하는 이야기의 중심은 바뀌지 않는다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 2</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 3: CHARACTER MAP ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <h2 class="section-heading">바울 앞에 등장하는 세 권력자</h2>
+  <p class="lead">이번 Lesson에서 가장 헷갈리기 쉬운 것이 이 세 사람의 관계다. 본문으로 들어가기 전에 정리해 둔다.</p>
+
+  <div class="tree">
+    <div class="tree-top">로마 황제 (가이사)</div>
+    <div class="tree-stem"></div>
+    <div class="tree-bar"></div>
+    <div class="tree-cols">
+      <div class="tree-col">
+        <div class="tree-kind">황제가 보낸 관리</div>
+        <div class="tree-name">유대 지역의 총독 — ① 벨릭스 → ② 베스도</div>
+        <div class="tree-text">로마에서 파견되어 유대 지역을 직접 다스린다. 재판권을 가진다. 임기가 끝나면 다음 사람으로 <strong>교체</strong>된다. 벨릭스의 후임이 베스도다.</div>
+      </div>
+      <div class="tree-col king">
+        <div class="tree-kind">로마가 세워 준 왕</div>
+        <div class="tree-name">③ 아그립바 2세</div>
+        <div class="tree-text">헤롯 가문의 왕으로, 로마의 지지를 받아 유대 북쪽의 인근 지역을 다스린다. 유대 지역의 총독이 <strong>아니며</strong>, 바울 사건의 재판권도 없다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">IMPORTANT — 아그립바는 세 번째 총독이 아니다</div>
+    <div class="background-box-body">벨릭스 → 베스도는 같은 자리의 전임자와 후임자다. 아그립바 2세는 그 줄에 서 있지 않다. 그는 새 총독 베스도에게 인사하러 온 손님이고, 유대인의 일에 밝은 사람으로서 바울의 말을 들어 준다. 바울 사건을 맡은 재판관은 끝까지 총독이다.</div>
+  </div>
+
+  <div class="two-col" style="margin-top:var(--sp-3);">
+    <div>
+      <h3 class="section-heading">헤롯 가문 <span class="recall-badge">RECALL · L09</span></h3>
+      <div class="herod-tree">
+        <div class="ht-row"><div class="ht-rail"><i></i><u></u></div><div class="ht-body"><b>헤롯 대왕</b><br>예수 탄생 시기의 왕</div></div>
+        <div class="ht-row"><div class="ht-rail"><i></i><u></u></div><div class="ht-body"><b>헤롯 안디바</b> (아들)<br>세례 요한을 죽인 분봉왕</div></div>
+        <div class="ht-row"><div class="ht-rail"><i></i><u></u></div><div class="ht-body"><b>헤롯 아그립바 1세</b> (손자)<br>야고보를 죽이고 베드로를 가둔 왕 · 행 12장</div></div>
+        <div class="ht-row now"><div class="ht-rail"><i></i></div><div class="ht-body"><b>아그립바 2세 · 버니게 · 드루실라</b> (증손)<br>아그립바 1세의 자녀들. 세 사람 모두 이번 Lesson에 나온다</div></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="section-heading">함께 나오는 사람들</h3>
+      <table class="trip-table" style="margin-top:0;">
+        <tbody>
+          <tr><td>드루실라</td><td>벨릭스의 아내. 유대 여자 (24:24)</td></tr>
+          <tr><td>버니게</td><td>아그립바 2세와 함께 온 사람 (25:13). 그의 누이로 알려져 있다</td></tr>
+          <tr><td>더둘로</td><td>고발 측이 데려온 변호사 (24:1)</td></tr>
+          <tr><td>아나니아</td><td>대제사장. Lesson 14의 공회 장면에 나온 사람</td></tr>
+        </tbody>
+      </table>
+      <div class="map-note">본문은 세 남매의 관계를 직접 설명하지 않는다. 가계는 성경 밖 역사 기록에 따른 것이다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 3</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 4: SCENE 01 (24:1–9) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg on">① 고발</div><div class="sg">② 변호</div><div class="sg">③ 연기</div><div class="sg">④ 총독 교체</div><div class="sg">⑤ 황제 상소</div><div class="sg">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">①</span>
+    <span class="city-head-name">벨릭스 앞에서</span>
+    <span class="city-head-region">가이사랴 · 이송된 지 닷새 후 · 1 / 5</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 1</span>
+      <span class="scene-title">바울을 고발하기 위해 사람들이 오다</span>
+      <span class="scene-ref">행 24:1–9</span>
+    </div>
+    <div class="scene-body">
+      <p>닷새 후에 예루살렘에서 고발하는 사람들이 내려온다. 대제사장 아나니아와 몇몇 장로들, 그리고 그들이 데려온 변호사 더둘로다. 더둘로는 총독을 한껏 추켜세우는 말로 시작한 뒤 본론으로 들어간다.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"우리가 보니 이 사람은 전염병 같은 자라 천하에 흩어진 유대인을 다 소요하게 하는 자요 나사렛 이단의 우두머리라 그가 또 성전을 더럽게 하려 하므로 우리가 잡았사오니"</div>
+    <div class="scripture-ref">사도행전 24:5–6 — 더둘로의 고발</div>
+  </div>
+
+  <div class="num-list">
+    <div class="nl key"><div class="nl-title">소요를 일으키는 사람</div><div class="nl-text">천하에 흩어진 유대인을 다 소요하게 한다 — <strong>정치적</strong> 혐의</div><div class="nl-ref">24:5</div></div>
+    <div class="nl"><div class="nl-title">나사렛 이단의 우두머리</div><div class="nl-text">한 종파의 지도자로 규정한다 — <strong>종교적</strong> 혐의</div><div class="nl-ref">24:5</div></div>
+    <div class="nl"><div class="nl-title">성전을 더럽히려 한 사람</div><div class="nl-text">성전과 관련된 범죄를 시도했다 — <strong>성전</strong> 문제</div><div class="nl-ref">24:6</div></div>
+  </div>
+
+  <p class="body-text">세 혐의의 순서가 눈에 띈다. 로마 총독이 가장 신경 쓸 <strong>소요</strong>를 맨 앞에 세웠다. 총독은 유대인들의 교리 다툼에는 관심이 없어도 제국의 질서를 흔드는 사람은 그냥 둘 수 없다. 더둘로는 바울을 종교적으로 틀린 사람이 아니라 <strong>로마에 위험한 사람</strong>으로 그리려 한다.</p>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">IMPORTANT — 이것은 고발 측의 주장이다</div>
+      <div class="background-box-body">세 가지 모두 한쪽의 말이다. 본문은 유대인들이 "이 말이 옳다"고 거들었다고 적을 뿐(24:9), 증거가 제시되었다고는 적지 않는다. 이 교재는 고발 내용과 입증된 사실을 구분한다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">달라진 표현 <span class="recall-badge">RECALL · L14</span></div>
+      <div class="background-box-body">성전에서 무리는 바울이 성전을 "더럽혔다"고 외쳤다(21:28). 법정에서는 "더럽게 <strong>하려</strong> 하므로"가 된다. 드로비모 이야기는 나오지 않는다. '나사렛 이단'은 예수를 따르는 사람들을 가리키는 또 하나의 이름이다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 4</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 5: SCENE 02 (24:10–16) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg on">② 변호</div><div class="sg">③ 연기</div><div class="sg">④ 총독 교체</div><div class="sg">⑤ 황제 상소</div><div class="sg">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">①</span>
+    <span class="city-head-name">벨릭스 앞에서</span>
+    <span class="city-head-region">2 / 5</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 2</span>
+      <span class="scene-title">바울은 무엇이라고 변호했을까?</span>
+      <span class="scene-ref">행 24:10–16</span>
+    </div>
+    <div class="scene-body">
+      <p>총독이 머리로 표시하여 말하라 하자 바울이 입을 연다. 그의 변호는 둘로 나뉜다. 앞부분은 <strong>부인</strong>이고 뒷부분은 <strong>고백</strong>이다.</p>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-2);">부인 — "나는 그런 일을 하지 않았다"</h3>
+  <div class="num-list">
+    <div class="nl"><div class="nl-title">오래되지 않았다</div><div class="nl-text">예루살렘에 예배하러 올라간 지 열이틀밖에 안 되었다</div><div class="nl-ref">24:11</div></div>
+    <div class="nl"><div class="nl-title">소동을 일으키지 않았다</div><div class="nl-text">성전에서 누구와 변론하거나 회당이나 시중에서 무리를 소동하게 하는 것을 그들이 보지 못했다</div><div class="nl-ref">24:12</div></div>
+    <div class="nl key"><div class="nl-title">증명할 수 없다</div><div class="nl-text">고발하는 모든 일에 대하여 그들이 내세울 것이 없다</div><div class="nl-ref">24:13</div></div>
+  </div>
+
+  <h3 class="section-heading">고백 — "그러나 이것은 인정한다"</h3>
+  <div class="num-list" style="counter-reset:n 3;">
+    <div class="nl"><div class="nl-title">조상의 하나님을 섬긴다</div><div class="nl-text">그들이 이단이라 하는 <strong>도</strong>를 따라 조상의 하나님을 섬긴다</div><div class="nl-ref">24:14</div></div>
+    <div class="nl"><div class="nl-title">율법과 선지자를 믿는다</div><div class="nl-text">율법과 선지자들의 글에 기록된 것을 다 믿는다</div><div class="nl-ref">24:14</div></div>
+    <div class="nl key"><div class="nl-title">부활을 소망한다</div><div class="nl-text">"그들이 기다리는 바 … 소망을 나도 가졌으니 곧 <strong>의인과 악인의 부활</strong>이 있으리라"</div><div class="nl-ref">24:15</div></div>
+  </div>
+
+  <p class="body-text">바울은 소요라는 정치적 혐의는 단호히 부인한다. 반면 '이단'이라는 말에는 다르게 답한다. 그 도를 따르는 것은 맞다. 그러나 그것은 이스라엘의 성경에서 떨어져 나온 새 종교가 아니다. 같은 하나님을 섬기고, 같은 성경을 믿으며, 고발하는 사람들 자신이 기다리는 바로 그 소망을 품는다는 것이다.</p>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">핵심 — 변호이면서 증언</div>
+    <div class="background-box-body">바울의 말은 "나는 무죄다"에서 끝나지 않는다. 무엇을 믿는지를 총독 앞에서 밝힌다. 법정은 그에게 변호의 자리이자 증언의 자리다. "로마에서도 증언하여야 하리라"(23:11)는 말씀은 로마에 닿기 전부터 이미 이루어지고 있다. <span class="recall-badge" style="margin-left:0;">RECALL · L07 · '그 도'</span></div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 5</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 6: SCENE 03 (24:17–21) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg on">② 변호</div><div class="sg">③ 연기</div><div class="sg">④ 총독 교체</div><div class="sg">⑤ 황제 상소</div><div class="sg">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">①</span>
+    <span class="city-head-name">벨릭스 앞에서</span>
+    <span class="city-head-region">3 / 5</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 3</span>
+      <span class="scene-title">바울이 예루살렘에 간 이유</span>
+      <span class="scene-ref">행 24:17–21</span>
+    </div>
+    <div class="scene-body">
+      <p>이어서 바울은 자신이 왜 예루살렘에 갔고 성전에서 무엇을 하고 있었는지 설명한다. 성전을 더럽히려 했다는 셋째 혐의에 대한 답이다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">여러 해 만에 예루살렘에 왔다</div></div><div class="flow-step-ref">24:17</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">내 민족을 구제할 것과 제물을 가지고 왔다</div></div><div class="flow-step-ref">24:17</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">드리는 중에 결례를 행하였고, 모임도 소동도 없이 성전에 있었다</div></div><div class="flow-step-ref">24:18</div></div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">바울이 짚은 두 가지 빈자리</h3>
+  <div class="two-col">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">① 처음 문제 삼은 사람들이 없다 · 24:18–19</div>
+      <div class="background-box-body">성전에서 바울을 붙잡고 소리친 것은 <strong>아시아에서 온 유대인들</strong>이었다. "그들이 만일 나를 반대할 사건이 있으면 마땅히 당신 앞에 와서 고발하였을 것이요." 정작 그 일을 본 사람들은 법정에 나오지 않았다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">② 공회도 잘못을 찾지 못했다 · 24:20</div>
+      <div class="background-box-body">지금 와 있는 사람들은 바울이 공회 앞에 섰을 때 그 자리에 있었다. "무슨 옳지 않은 것을 보았는가 말하라 하소서." <span class="recall-badge" style="margin-left:0;">L14</span></div>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">바울의 핵심 주장 — 되풀이되는 한마디, 부활</h3>
+  <table class="trip-table">
+    <thead><tr><th>자리</th><th>바울의 말</th><th></th></tr></thead>
+    <tbody>
+      <tr><td>공회 앞</td><td>"죽은 자의 소망 곧 부활로 말미암아 내가 심문을 받노라"</td><td class="ref">23:6 · L14</td></tr>
+      <tr class="edge"><td>벨릭스 앞</td><td>"죽은 자의 부활에 대하여 … 심문을 받는다"</td><td class="ref">24:21</td></tr>
+      <tr><td>아그립바 앞</td><td>"하나님이 죽은 사람을 살리심을 어찌하여 못 믿을 것으로 여기나이까"</td><td class="ref">26:8 · 15쪽</td></tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 6</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 7: ARGUMENT MAP ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg on">② 변호</div><div class="sg">③ 연기</div><div class="sg">④ 총독 교체</div><div class="sg">⑤ 황제 상소</div><div class="sg">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <h2 class="section-heading">고발과 변호를 비교하다</h2>
+  <p class="lead">4쪽의 고발과 5–6쪽의 변호를 한 표에 나란히 놓는다. 왼쪽은 모두 증거가 제시되지 않은 '주장'이다.</p>
+
+  <table class="vs-table">
+    <thead><tr><th>고발 측 주장 · 더둘로</th><th>바울의 변호</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>천하의 유대인들 사이에 <strong>소요</strong>를 일으킨다<small>24:5</small></td>
+        <td>누구와 변론하거나 무리를 소동하게 한 일이 없다. 올라간 지 열이틀밖에 안 되었다<small>24:11–12</small></td>
+      </tr>
+      <tr>
+        <td><strong>나사렛 이단</strong>의 우두머리다<small>24:5</small></td>
+        <td>그 도를 따라 조상의 하나님을 섬기고, 율법과 선지자를 다 믿으며, 부활을 소망한다<small>24:14–15</small></td>
+      </tr>
+      <tr>
+        <td><strong>성전</strong>을 더럽히려 했다<small>24:6</small></td>
+        <td>구제할 것과 제물을 가지고 와서 결례를 행하는 중이었다. 모임도 소동도 없었다<small>24:17–18</small></td>
+      </tr>
+      <tr>
+        <td>유대인들이 "이 말이 옳다"고 거듦<small>24:9</small></td>
+        <td>그들은 내세울 증거가 없다. 처음 문제 삼은 아시아의 유대인들은 이 자리에 없다<small>24:13, 19</small></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">실제 법적 혐의와 종교적 논쟁은 어떻게 구분되는가?</h3>
+
+  <div class="shift">
+    <div class="shift-col">
+      <div class="shift-label">고발 측이 하려는 일</div>
+      <div class="shift-text">바울의 활동을 <strong>로마 당국이 개입해야 할 문제</strong>로 보이게 한다. 그래서 '소요'를 앞세운다.</div>
+    </div>
+    <div class="shift-mid">↔</div>
+    <div class="shift-col now">
+      <div class="shift-label">바울이 하려는 일</div>
+      <div class="shift-text">소요는 사실이 아님을 밝히고, 진짜 쟁점이 <strong>신앙과 부활의 문제</strong>임을 드러낸다.</div>
+    </div>
+  </div>
+
+  <p class="body-text">로마 법정은 범죄를 다루는 곳이다. 한 민족 안의 교리 문제는 로마 재판관이 판단할 일이 아니었다. 그러므로 사건이 "소요"로 보이면 바울이 위험하고, "유대인들 사이의 종교 문제"로 보이면 고발이 힘을 잃는다. 바울이 부활을 말하는 것은 화제를 돌리려는 것이 아니라, 그것이 실제로 다툼의 한가운데 있었기 때문이다.</p>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">로마 관리들은 어느 쪽으로 보았나 <span class="recall-badge">RECALL · L12 · L14</span></div>
+    <div class="background-box-body">지금까지의 관리들은 한결같이 뒤쪽으로 보았다. 고린도의 갈리오는 "언어와 명칭과 너희 법에 관한 것"(18:15)이라 했고, 천부장 루시아는 "그들의 율법 문제에 관한 것뿐"(23:29)이라고 썼다. 이번 Lesson의 베스도도 같은 말을 한다(13쪽).</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 7</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 8: SCENE 04 (24:22–23) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg done">② 변호</div><div class="sg on">③ 연기</div><div class="sg">④ 총독 교체</div><div class="sg">⑤ 황제 상소</div><div class="sg">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">①</span>
+    <span class="city-head-name">벨릭스 앞에서</span>
+    <span class="city-head-region">4 / 5</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 4</span>
+      <span class="scene-title">벨릭스는 왜 판결을 미루었을까?</span>
+      <span class="scene-ref">행 24:22–23</span>
+    </div>
+    <div class="scene-body">
+      <p>양쪽의 말을 다 들었다. 고발 측은 증거를 대지 못했다. 이제 판결이 나올 차례다. 그런데 벨릭스는 유죄도 무죄도 말하지 않는다.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"벨릭스가 이 도에 관한 것을 더 자세히 아는 고로 연기하여 이르되 천부장 루시아가 내려오거든 너희 일을 처결하리라 하고"</div>
+    <div class="scripture-ref">사도행전 24:22</div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">벨릭스는 이 도에 관하여 꽤 자세히 알고 있었다</div></div><div class="flow-step-ref">24:22</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">천부장 루시아가 내려오면 처결하겠다며 재판을 연기함</div></div><div class="flow-step-ref">24:22</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">백부장에게 바울을 지키게 하되 자유를 주게 함</div></div><div class="flow-step-ref">24:23</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">친구들이 그를 돌보는 것을 금하지 말라 함</div></div><div class="flow-step-ref">24:23</div></div>
+  </div>
+
+  <div class="two-col" style="margin-top:var(--sp-3);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">구금의 모습</div>
+      <div class="background-box-body">바울은 풀려나지 않는다. 그러나 쇠사슬에 묶여 깊은 옥에 갇힌 것도 아니다. 백부장의 감시 아래 있으면서 얼마간의 자유가 있었고, 친구들이 드나들며 필요한 것을 챙겨 줄 수 있었다. 죄수라기보다 판결을 기다리는 사람의 대우다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">IMPORTANT — 루시아는 왔을까?</div>
+      <div class="background-box-body">벨릭스가 루시아를 기다리겠다고 <strong>말한</strong> 것은 기록되어 있다. 그러나 루시아가 실제로 내려와 증언했는지는 이어지는 본문에 나오지 않는다. 그의 편지(23:26–30)는 이미 총독의 손에 있었고, 거기에는 "결박할 사유가 없다"고 적혀 있었다.</div>
+    </div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">22절은 벨릭스가 사정을 몰라서 미룬 것이 아님을 알려 준다. 그는 "이 도"가 무엇인지 알았다. 알면서도 판결하지 않은 까닭을 본문은 다음 장면에서 두 가지로 밝힌다. 그때까지 이 연기는 며칠짜리로 보인다. 실제로는 훨씬 길어진다.</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 8</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 9: SCENE 05 (24:24–27) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg done">② 변호</div><div class="sg on">③ 연기</div><div class="sg">④ 총독 교체</div><div class="sg">⑤ 황제 상소</div><div class="sg">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">①</span>
+    <span class="city-head-name">벨릭스 앞에서</span>
+    <span class="city-head-region">5 / 5</span>
+    <span class="city-head-next">다음 → 베스도</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 5</span>
+      <span class="scene-title">벨릭스와 드루실라가 바울의 말을 듣다</span>
+      <span class="scene-ref">행 24:24–27</span>
+    </div>
+    <div class="scene-body">
+      <p>며칠 후 벨릭스가 아내 드루실라와 함께 와서 바울을 부른다. 드루실라는 유대 여자이고, 3쪽의 가계도에 나온 아그립바 1세의 딸이다. 이번에는 재판이 아니다. 두 사람은 "그리스도 예수 믿는 도"를 들으려 한다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">바울이 의와 절제와 장차 오는 심판을 강론함</div></div><div class="flow-step-ref">24:25</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">벨릭스가 두려워하여 "지금은 가라 내가 틈이 있으면 너를 부르리라" 함</div></div><div class="flow-step-ref">24:25</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">동시에 바울에게서 돈을 받을까 바라, 더 자주 불러 이야기함</div></div><div class="flow-step-ref">24:26</div></div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">바울은 듣는 사람의 지위에 맞추어 말을 고르지 않았다. 재판권을 쥔 사람 앞에서 <strong>의</strong>와 <strong>절제</strong>와 <strong>심판</strong>을 말한다. 자기를 재판할 사람에게, 그도 재판받을 날이 있음을 말한 것이다. 벨릭스는 그 말에 두려워했다. 그러나 두려움은 거기서 멈춘다. 그는 "지금은 가라"고 말한다.</p>
+
+  <div class="stay">
+    <div class="stay-num">이태</div>
+    <div class="stay-text">두 해가 지난 뒤 보르기오 베스도가 벨릭스의 소임을 이어받는다. 벨릭스는 "유대인의 마음을 얻고자 하여" 바울을 가두어 둔 채로 떠난다(24:27). 증거 없는 고발 하나가 두 해의 구금이 되었다.</div>
+  </div>
+
+  <div class="chain">
+    <div class="ch"><b>바울의 증언</b>의 · 절제 · 심판</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>두려움</b>"지금은 가라"</div>
+    <div class="ch-arrow">+</div>
+    <div class="ch"><b>뇌물 기대 · 정치적 계산</b>돈을 바람 · 유대인의 환심</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch key"><b>재판 지연</b>두 해</div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">IMPORTANT — 본문이 말하는 데까지만</div>
+    <div class="background-box-body">벨릭스가 바울의 말을 듣고 믿었다는 기록은 없다. 본문이 적는 것은 그가 <strong>두려워했다</strong>는 것, <strong>돈을 바랐다</strong>는 것, 그리고 <strong>유대인의 마음을 얻고자</strong> 했다는 것이다. 자주 불러 이야기를 나누었지만 끝내 판결하지 않았다. 이 두 해 동안 바울이 무엇을 했는지도 사도행전은 적지 않는다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 9</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 10: TRANSITION (25:1–5) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg done">② 변호</div><div class="sg done">③ 연기</div><div class="sg on">④ 총독 교체</div><div class="sg">⑤ 황제 상소</div><div class="sg">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">②</span>
+    <span class="city-head-name">베스도 앞에서</span>
+    <span class="city-head-region">예루살렘 → 가이사랴 · 두 해 뒤 · 1 / 3</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">TRANSITION</span>
+      <span class="scene-title">총독이 바뀌다</span>
+      <span class="scene-ref">행 25:1–5</span>
+    </div>
+    <div class="scene-body">
+      <p>새 총독 <strong>베스도</strong>는 부임한 지 사흘 만에 가이사랴에서 예루살렘으로 올라간다. 자기가 다스릴 지역의 지도자들을 만나기 위해서다. 그 자리에서 대제사장들과 유대인 중 높은 사람들이 가장 먼저 꺼낸 것은 두 해 묵은 바울의 일이었다.</p>
+    </div>
+  </div>
+
+  <div class="shift">
+    <div class="shift-col">
+      <div class="shift-label">겉으로 한 요청 · 25:3</div>
+      <div class="shift-text">베스도의 호의로 바울을 <strong>예루살렘으로 옮겨</strong> 달라</div>
+    </div>
+    <div class="shift-mid">→</div>
+    <div class="shift-col now">
+      <div class="shift-label">숨은 뜻 · 25:3</div>
+      <div class="shift-text">"이는 길에 <strong>매복</strong>하였다가 그를 죽이고자 함이더라"</div>
+    </div>
+  </div>
+
+  <h3 class="section-heading">베스도의 결정 (25:4–5)</h3>
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">바울은 가이사랴에 구류되어 있다</div></div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">나도 멀지 않아 그곳으로 떠날 것이다</div></div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">"너희 중 유력한 자들은 나와 함께 내려가서 … 옳지 아니한 일이 있거든 고발하라"</div></div></div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">베스도가 음모를 알았다는 말은 없다. 그는 절차대로 답했을 뿐이다. 재판은 죄수가 있는 곳, 총독의 법정에서 한다. 그 평범한 대답이 바울의 목숨을 지킨다.</p>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">두 번째 매복 <span class="recall-badge">RECALL · L14</span></div>
+      <div class="background-box-body">사십여 명이 맹세했던 때의 계획도 같았다. 심문을 핑계로 바울을 <strong>이동시키고</strong>, 그 길에서 죽이는 것(23:15). 두 해가 지났는데도 계획은 그대로다. 그때는 조카의 귀가, 이번에는 새 총독의 원칙이 그것을 막는다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">두 해가 바꾸지 못한 것</div>
+      <div class="background-box-body">벨릭스는 시간을 끌면 일이 가라앉으리라 여겼을 수 있다. 그러나 고발하는 쪽의 뜻은 조금도 누그러지지 않았다. 총독이 바뀌자마자 첫 만남에서 이 일을 꺼낸다. 바울의 사건은 새 총독에게 넘겨진 첫 숙제가 된다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 10</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 11: SCENE 06 (25:6–8) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg done">② 변호</div><div class="sg done">③ 연기</div><div class="sg on">④ 총독 교체</div><div class="sg">⑤ 황제 상소</div><div class="sg">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">②</span>
+    <span class="city-head-name">베스도 앞에서</span>
+    <span class="city-head-region">가이사랴 · 2 / 3</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 6</span>
+      <span class="scene-title">베스도 앞에서 다시 재판받다</span>
+      <span class="scene-ref">행 25:6–8</span>
+    </div>
+    <div class="scene-body">
+      <p>베스도는 예루살렘에서 여드레나 열흘쯤 지낸 뒤 가이사랴로 내려온다. 그리고 바로 이튿날 재판 자리에 앉는다. 두 해를 끈 전임자와 달리 일을 미루지 않는다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">베스도가 재판 자리에 앉아 바울을 데려오라 명함</div></div><div class="flow-step-ref">25:6</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">예루살렘에서 내려온 유대인들이 둘러서서 여러 가지 중대한 사건으로 고발함</div></div><div class="flow-step-ref">25:7</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">그러나 능히 증거를 대지 못함</div></div><div class="flow-step-ref">25:7</div></div>
+  </div>
+
+  <div class="key-verse-box" style="margin-top:var(--sp-2);">
+    <div class="key-verse-label">바울의 변호</div>
+    <div class="key-verse-text" style="font-size:15pt;line-height:1.5;">"유대인의 율법이나 성전이나 가이사에게나<br>내가 도무지 죄를 범하지 아니하였노라"</div>
+    <div class="key-verse-ref">사도행전 25:8</div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">한 문장에 담긴 세 가지 쟁점</h3>
+  <table class="trip-table">
+    <thead><tr><th>쟁점</th><th>고발의 내용</th><th>더둘로의 고발 (24장)과 견주면</th></tr></thead>
+    <tbody>
+      <tr><td>유대인의 율법</td><td>율법을 거슬러 가르친다</td><td>"나사렛 이단의 우두머리"</td></tr>
+      <tr><td>성전</td><td>성전을 더럽혔다</td><td>"성전을 더럽게 하려 하므로"</td></tr>
+      <tr class="edge"><td>가이사</td><td>로마 황제와 제국의 질서를 거슬렀다</td><td>"유대인을 다 소요하게 하는 자"</td></tr>
+    </tbody>
+  </table>
+
+  <p class="body-text">고발의 내용도, 증거가 없는 것도 두 해 전과 같았다. 바울은 세 쟁점을 한 줄에 놓고 모두 부인한다. 셋째가 중요하다. <strong>'가이사'</strong>는 로마 황제를 가리키는 칭호다. 로마 총독의 법정에서 무게를 가지는 혐의는 결국 이것 하나였다(17:7 참고).</p>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 11</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 12: SCENE 07 (25:9–12) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg done">② 변호</div><div class="sg done">③ 연기</div><div class="sg done">④ 총독 교체</div><div class="sg on">⑤ 황제 상소</div><div class="sg">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">②</span>
+    <span class="city-head-name">베스도 앞에서</span>
+    <span class="city-head-region">가이사랴 · 3 / 3</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 7</span>
+      <span class="scene-title">바울이 황제에게 상소하다</span>
+      <span class="scene-ref">행 25:9–12</span>
+    </div>
+    <div class="scene-body">
+      <p>증거가 없으니 풀어 주면 될 일이다. 그런데 베스도는 다른 말을 꺼낸다. 누가는 그 까닭을 벨릭스 때와 똑같은 말로 적는다. "유대인의 마음을 얻고자 하여."</p>
+    </div>
+  </div>
+
+  <div class="dialog">
+    <div class="dl a"><div class="dl-who">베스도</div><div class="dl-say">"네가 예루살렘에 올라가서 이 사건에 대하여 내 앞에서 심문을 받으려느냐"</div><div class="dl-ref">25:9</div></div>
+    <div class="dl"><div class="dl-who">바울</div><div class="dl-say">"내가 가이사의 재판 자리 앞에 섰으니 마땅히 거기서 심문을 받을 것이라 … 만일 이 사람들이 나를 고발하는 것이 다 사실이 아니면 아무도 나를 그들에게 내줄 수 없나이다 내가 가이사께 상소하노라"</div><div class="dl-ref">25:10–11</div></div>
+    <div class="dl a"><div class="dl-who">베스도</div><div class="dl-say">"네가 가이사에게 상소하였으니 가이사에게 갈 것이라"</div><div class="dl-ref">25:12</div></div>
+  </div>
+
+  <h3 class="section-heading">바울의 대답을 풀어 읽기</h3>
+  <div class="num-list">
+    <div class="nl"><div class="nl-title">지금 선 자리</div><div class="nl-text">나는 이미 가이사의 재판 자리, 곧 로마의 법정에 서 있다</div><div class="nl-ref">25:10</div></div>
+    <div class="nl"><div class="nl-title">무죄</div><div class="nl-text">유대인들에게 불의를 행한 일이 없고, 당신도 그것을 잘 안다</div><div class="nl-ref">25:10</div></div>
+    <div class="nl"><div class="nl-title">죽음을 피하려는 것이 아니다</div><div class="nl-text">죽을죄를 지었으면 죽기를 사양하지 않겠다</div><div class="nl-ref">25:11</div></div>
+    <div class="nl"><div class="nl-title">넘겨줄 수 없다</div><div class="nl-text">고발이 사실이 아니면 아무도 나를 그들에게 내줄 수 없다</div><div class="nl-ref">25:11</div></div>
+    <div class="nl key"><div class="nl-title">상소</div><div class="nl-text"><strong>"내가 가이사께 상소하노라"</strong></div><div class="nl-ref">25:11</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">왜 상소했을까?</div>
+      <div class="background-box-body">예루살렘에 가는 것이 무엇을 뜻하는지 바울은 알았다. 그 길에서 두 번이나 매복이 준비되었다. 그리고 지금 눈앞의 총독은 죄가 없는 줄 알면서도 고발하는 쪽의 환심을 사려 한다. 벨릭스 밑에서 두 해를 보낸 뒤다. 가이사랴에서는 공정한 판결을 기대하기 어려웠다. 바울에게 남은 길은 이 사건을 총독의 손에서 꺼내는 것이었다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title"><span class="new-concept">NEW CONCEPT</span>황제 상소</div>
+      <div class="background-box-body">로마 시민이 지방 관리의 법정에서 황제의 판단을 요청할 수 있었던 절차다. 시민이 아니었다면 쓸 수 없는 길이다. <span class="recall-badge" style="margin-left:0;">L12 · L14</span><br>고대 로마의 실제 제도는 시기와 상황에 따라 복잡했다. 오늘날 판결에 불복하여 상급 법원에 가는 항소와 같은 것으로 이해해서는 안 된다. 여기서는 아직 판결조차 나지 않았다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 12</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 13: SCENE 08 (25:13–22) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg done">② 변호</div><div class="sg done">③ 연기</div><div class="sg done">④ 총독 교체</div><div class="sg done">⑤ 황제 상소</div><div class="sg on">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">③</span>
+    <span class="city-head-name">아그립바 앞에서</span>
+    <span class="city-head-region">가이사랴 · 수일 후 · 1 / 6</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 8</span>
+      <span class="scene-title">아그립바 왕이 등장하다</span>
+      <span class="scene-ref">행 25:13–22</span>
+    </div>
+    <div class="scene-body">
+      <p>바울의 로마행은 정해졌다. 그런데 누가는 한 장면을 더 길게 적는다. 수일 후 아그립바 왕과 버니게가 새 총독에게 문안하러 오고, 베스도가 바울의 일을 왕에게 꺼낸다.</p>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-2);">베스도가 왕에게 한 설명 (25:14–21)</h3>
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">유대 지도자들이 정죄를 청했으나, 피고가 변명할 기회를 얻기 전에 내주는 것은 로마 사람의 법이 아니라고 답했다</div></div><div class="flow-step-ref">25:15–16</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">고발하는 사람들이 내가 짐작하던 악행의 혐의는 하나도 제시하지 않았다</div></div><div class="flow-step-ref">25:18</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">어떻게 심리할지 몰라 예루살렘에서 심문받겠느냐 물었더니 황제의 판결을 받겠다고 호소했다</div></div><div class="flow-step-ref">25:20–21</div></div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-2);">
+    <div class="scripture-text">"오직 자기들의 종교와 또는 예수라 하는 이가 죽은 것을 살아 있다고 바울이 주장하는 그 일에 관한 문제로 고발하는 것뿐이라"</div>
+    <div class="scripture-ref">사도행전 25:19 — 베스도가 이해한 사건의 핵심</div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-1);">베스도가 바울의 신앙을 다 이해했다고 볼 근거는 없다. 그런데 이 로마 총독의 요약은 뜻밖에 정확하다. 이 사건은 범죄가 아니라 <strong>한 사람이 죽었는가 살아 있는가</strong>에 관한 다툼이다.</p>
+
+  <div class="dialog">
+    <div class="dl a"><div class="dl-who">아그립바</div><div class="dl-say">"나도 이 사람의 말을 듣고자 하노라"</div><div class="dl-ref">25:22</div></div>
+    <div class="dl"><div class="dl-who">베스도</div><div class="dl-say">"내일 들으시리이다"</div><div class="dl-ref">25:22</div></div>
+  </div>
+
+  <div class="background-box" style="margin-top:0;">
+    <div class="background-box-title">IMPORTANT — 이 자리의 성격</div>
+    <div class="background-box-body">아그립바는 바울의 사건을 이해하려고 말을 <strong>들어 보는</strong> 사람이다. 베스도를 대신해 새 재판을 여는 것이 아니다. 사건은 이미 황제에게 가기로 되어 있다. 다음 날의 자리는 재판이 아니라 청문에 가깝다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 13</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 14: SCENE 09 (25:23–27) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg done">② 변호</div><div class="sg done">③ 연기</div><div class="sg done">④ 총독 교체</div><div class="sg done">⑤ 황제 상소</div><div class="sg on">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">③</span>
+    <span class="city-head-name">아그립바 앞에서</span>
+    <span class="city-head-region">이튿날 · 접견 장소 · 2 / 6</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 9</span>
+      <span class="scene-title">아그립바 앞에 선 바울</span>
+      <span class="scene-ref">행 25:23–27</span>
+    </div>
+    <div class="scene-body">
+      <p>이튿날 아그립바와 버니게가 "크게 위엄을 갖추고" 와서 접견 장소에 들어온다. 사도행전에서 가장 화려한 청중이 모인 자리다.</p>
+    </div>
+  </div>
+
+  <div class="shift">
+    <div class="shift-col">
+      <div class="shift-label">들어오는 사람들 · 25:23</div>
+      <div class="shift-text">아그립바 왕 · 버니게 · 총독 베스도 · 천부장들 · 시중의 높은 사람들 — <strong>크게 위엄을 갖추고</strong></div>
+    </div>
+    <div class="shift-mid">↔</div>
+    <div class="shift-col now">
+      <div class="shift-label">끌려 나오는 사람 · 25:23</div>
+      <div class="shift-text">두 해 넘게 갇혀 있던 죄수 한 사람 — <strong>결박된 채로</strong> (26:29)</div>
+    </div>
+  </div>
+
+  <h3 class="section-heading">베스도가 모인 사람들에게 한 말 (25:24–27)</h3>
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">유대의 모든 무리가 이 사람을 살려 두지 못할 사람이라고 외쳤다</div></div><div class="flow-step-ref">25:24</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">"내가 살피건대 죽일 죄를 범한 일이 없더이다"</div></div><div class="flow-step-ref">25:25</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">그가 황제에게 상소했으므로 보내기로 했다. 그런데 황제께 아뢸 확실한 사실이 없다</div></div><div class="flow-step-ref">25:25–26</div></div>
+  </div>
+
+  <div class="scripture-block" style="margin-top:var(--sp-2);">
+    <div class="scripture-text">"그 죄목도 밝히지 아니하고 죄수를 보내는 것이 무리한 일인 줄 아나이다"</div>
+    <div class="scripture-ref">사도행전 25:27 — 베스도의 난처함</div>
+  </div>
+
+  <div class="chain">
+    <div class="ch"><b>바울</b>황제에게 상소함</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>베스도</b>보낼 죄목을 정리해야 함</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch key"><b>아그립바</b>바울의 진술을 들음</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>황제에게 보낼 글</b>사건의 내용</div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">베스도의 난처함이 말해 주는 것</div>
+    <div class="background-box-body">총독은 죄수를 보내면서 무슨 죄로 보내는지 적어야 하는데, 적을 죄목이 없다. 이것이 바울 사건의 실상이다. 두 총독이 재판했지만 법으로 다룰 혐의를 찾지 못했다. 베스도는 유대인의 일에 밝은 아그립바의 도움을 기대한다. 그래서 이 자리에서는 고발하는 사람이 아무도 말하지 않는다. 말하는 사람은 바울 하나다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 14</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 15: SCENE 10 (26:1–11) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg done">② 변호</div><div class="sg done">③ 연기</div><div class="sg done">④ 총독 교체</div><div class="sg done">⑤ 황제 상소</div><div class="sg on">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">③</span>
+    <span class="city-head-name">아그립바 앞에서</span>
+    <span class="city-head-region">바울의 증언 ① · 3 / 6</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 10</span>
+      <span class="scene-title">바울은 자신의 과거를 다시 설명하다</span>
+      <span class="scene-ref">행 26:1–11</span>
+    </div>
+    <div class="scene-body">
+      <p>아그립바가 말한다. "너를 위하여 말하기를 네게 허락하노라." 바울은 먼저 이 자리를 다행으로 여긴다고 말한다. 왕이 "유대인의 모든 풍속과 문제"를 아는 사람이기 때문이다.</p>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-2);">바울이 소개한 자신</h3>
+  <div class="num-list">
+    <div class="nl"><div class="nl-title">유대인으로 살아온 삶</div><div class="nl-text">젊었을 때부터 내 민족과 예루살렘에서 어떻게 살았는지 유대인이 다 안다</div><div class="nl-ref">26:4</div></div>
+    <div class="nl"><div class="nl-title">바리새인</div><div class="nl-text">우리 종교의 가장 엄한 파를 따라 바리새인의 생활을 했다</div><div class="nl-ref">26:5</div></div>
+    <div class="nl key"><div class="nl-title">조상에게 주신 약속</div><div class="nl-text">지금 심문받는 것은 하나님이 우리 조상에게 약속하신 것을 바라는 까닭이다</div><div class="nl-ref">26:6</div></div>
+    <div class="nl key"><div class="nl-title">부활의 소망</div><div class="nl-text">"당신들은 하나님이 죽은 사람을 살리심을 어찌하여 못 믿을 것으로 여기나이까"</div><div class="nl-ref">26:8</div></div>
+  </div>
+
+  <h3 class="section-heading">그리고 과거의 행동 (26:9–11)</h3>
+  <div class="story-flow">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">나사렛 예수의 이름을 대적하여 많은 일을 행하여야 할 줄로 생각함</div></div><div class="flow-step-ref">26:9</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">많은 성도를 옥에 가두고, 그들을 죽일 때에 찬성 투표를 함</div></div><div class="flow-step-ref">26:10</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">모든 회당에서 형벌하고, 외국 성에까지 가서 박해함</div></div><div class="flow-step-ref">26:11</div></div>
+  </div>
+
+  <div class="two-col" style="margin-top:var(--sp-2);">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">핵심 — 낯선 사상이 아니다</div>
+      <div class="background-box-body">바울이 가장 힘주어 말하는 것은 이것이다. 자신의 신앙은 어느 날 생긴 새 사상이 아니라 <strong>이스라엘이 받은 약속</strong>과 <strong>부활의 소망</strong>에 이어져 있다. 온 이스라엘이 바라는 바로 그것 때문에 고발당한다는 것이 그가 보는 이 사건의 모순이다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">세 번째로 듣는 이야기 <span class="recall-badge">RECALL · L07 · L14</span></div>
+      <div class="background-box-body"><strong>9장</strong> — 누가의 서술<br><strong>22장</strong> — 예루살렘 군중 앞에서<br><strong>26장</strong> — 아그립바 앞에서<br>"찬성 투표를 하였고"라는 말은 여기에만 나온다.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 15</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 16: SCENE 11 (26:12–18) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg done">② 변호</div><div class="sg done">③ 연기</div><div class="sg done">④ 총독 교체</div><div class="sg done">⑤ 황제 상소</div><div class="sg on">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">③</span>
+    <span class="city-head-name">아그립바 앞에서</span>
+    <span class="city-head-region">바울의 증언 ② · 4 / 6</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 11</span>
+      <span class="scene-title">다메섹에서 예수를 만난 경험</span>
+      <span class="scene-ref">행 26:12–18</span>
+    </div>
+    <div class="scene-body">
+      <p>바울은 세 번째로 그날의 일을 말한다.</p>
+    </div>
+  </div>
+
+  <div class="story-flow" style="margin-top:var(--sp-2);">
+    <div class="flow-step"><div class="flow-step-content"><div class="flow-step-title">대제사장들의 위임을 받고 다메섹으로 가던 길, 정오에 해보다 더 밝은 빛이 비춤 — 모두 땅에 엎드러짐</div></div><div class="flow-step-ref">26:12–14</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">"사울아 사울아 네가 어찌하여 나를 박해하느냐" — "나는 네가 박해하는 예수라"</div></div><div class="flow-step-ref">26:14–15</div></div>
+    <div class="flow-arrow"></div>
+    <div class="flow-step key-step"><div class="flow-step-content"><div class="flow-step-title">"일어나 너의 발로 서라 … 너로 종과 증인을 삼으려 함이니"</div></div><div class="flow-step-ref">26:16</div></div>
+  </div>
+
+  <div class="chain">
+    <div class="ch"><b>맡기신 사명 — 눈을 뜨게 함</b>26:17–18</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>어둠에서 빛으로</b></div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>사탄의 권세에서 하나님께로</b></div>
+    <div class="ch-arrow">→</div>
+    <div class="ch key"><b>죄 사함과 기업</b>나를 믿어 거룩하게 된 무리 가운데서</div>
+  </div>
+
+  <h3 class="section-heading">세 번의 회심 기록 나란히 읽기 <span class="recall-badge">RECALL · L07 · L14</span></h3>
+  <table class="trip-table">
+    <thead><tr><th></th><th>9장</th><th>22장</th><th>26장</th></tr></thead>
+    <tbody>
+      <tr><td>말하는 이 → 듣는 이</td><td>누가 → 독자</td><td>바울 → 유대인 무리</td><td>바울 → 왕과 총독</td></tr>
+      <tr><td>눈이 멂 · 아나니아</td><td>자세히 나옴</td><td>나옴</td><td>언급 없음</td></tr>
+      <tr class="edge"><td>사명</td><td>아나니아에게 들려주심</td><td>아나니아의 입으로 전해짐</td><td><strong>예수의 말씀으로 직접, 길게</strong></td></tr>
+      <tr><td>강조점</td><td>일어난 사건</td><td>유대인으로서의 연속성</td><td>이방인에게 보내신 사명</td></tr>
+    </tbody>
+  </table>
+
+  <div class="background-box">
+    <div class="background-box-title">IMPORTANT — 세 기록의 대사를 하나로 이어 붙이지 않는다</div>
+    <div class="background-box-body">세 기록은 같은 사건을 전하지만 강조점과 세부가 다르다. 26장의 바울은 눈이 먼 일도 아나니아도 말하지 않고, 사명을 예수께 직접 들은 말씀으로 길게 전한다. 왕 앞에서 밝혀야 했던 것은 "왜 이방인에게 갔는가"였기 때문이다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 16</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 17: SCENE 12 (26:19–23) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg done">② 변호</div><div class="sg done">③ 연기</div><div class="sg done">④ 총독 교체</div><div class="sg done">⑤ 황제 상소</div><div class="sg on">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">③</span>
+    <span class="city-head-name">아그립바 앞에서</span>
+    <span class="city-head-region">바울의 증언 ③ · 5 / 6</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 12</span>
+      <span class="scene-title">바울이 자신의 사명을 설명하다</span>
+      <span class="scene-ref">행 26:19–23</span>
+    </div>
+    <div class="scene-body">
+      <p>과거와 만남을 말한 바울은 이제 그 뒤의 삶을 말한다.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <div class="scripture-text">"아그립바 왕이여 그러므로 하늘에서 보이신 것을 내가 거스르지 아니하고"</div>
+    <div class="scripture-ref">사도행전 26:19</div>
+  </div>
+
+  <div class="chain" style="margin-top:var(--sp-2);">
+    <div class="ch"><b>다메섹</b>L07</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>예루살렘</b>L07</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>유대 온 땅</b></div>
+    <div class="ch-arrow">→</div>
+    <div class="ch key"><b>이방인에게까지</b>L10 · L12 · L13</div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <h3 class="section-heading">전한 내용 (26:20)</h3>
+      <div class="num-list">
+        <div class="nl" style="grid-template-columns:8mm 1fr;"><div class="nl-title">회개하라</div></div>
+        <div class="nl" style="grid-template-columns:8mm 1fr;"><div class="nl-title">하나님께로 돌아오라</div></div>
+        <div class="nl" style="grid-template-columns:8mm 1fr;"><div class="nl-title">회개에 합당한 일을 하라</div></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="section-heading">그 결과 (26:21–22)</h3>
+      <p class="body-text" style="font-size:var(--fs-small);">"이 일로 유대인들이 성전에서 나를 잡아 죽이고자 하였으나 하나님의 도우심을 받아 내가 오늘까지 서서 높고 낮은 사람 앞에서 증언하는 것은 …"</p>
+    </div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-2);">핵심 주장 — "선지자들과 모세가 반드시 되리라고 말한 것밖에 없으니" (26:22–23)</h3>
+
+  <div class="num-list">
+    <div class="nl"><div class="nl-title">고난</div><div class="nl-text">그리스도가 고난을 받으실 것</div><div class="nl-ref">26:23</div></div>
+    <div class="nl key"><div class="nl-title">부활</div><div class="nl-text">죽은 자 가운데서 먼저 다시 살아나실 것</div><div class="nl-ref">26:23</div></div>
+    <div class="nl"><div class="nl-title">빛</div><div class="nl-text">이스라엘과 이방인들에게 빛을 전하실 것</div><div class="nl-ref">26:23</div></div>
+  </div>
+
+  <div class="background-box">
+    <div class="background-box-title">이 한 문장이 세 고발에 답한다 <span class="recall-badge">RECALL · L10</span></div>
+    <div class="background-box-body"><strong>율법</strong>을 거슬렀다는 고발에는 "모세가 말한 것밖에 없다"로, <strong>이단</strong>이라는 고발에는 "선지자들이 말한 것"으로, <strong>이방인</strong>에게 갔다는 분노에는 "그 빛이 이방인들에게도"로 답한다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 17</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 18: SCENE 13 (26:24–29) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg done">② 변호</div><div class="sg done">③ 연기</div><div class="sg done">④ 총독 교체</div><div class="sg done">⑤ 황제 상소</div><div class="sg on">⑥ 왕 앞의 증언</div><div class="sg">⑦ 로마행</div>
+  </div>
+
+  <div class="city-head">
+    <span class="city-head-num">③</span>
+    <span class="city-head-name">아그립바 앞에서</span>
+    <span class="city-head-region">6 / 6</span>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 13</span>
+      <span class="scene-title">베스도와 아그립바의 반응</span>
+      <span class="scene-ref">행 26:24–29</span>
+    </div>
+    <div class="scene-body">
+      <p>바울이 "죽은 자 가운데서 다시 살아나사"까지 말했을 때, 듣고 있던 총독이 참지 못하고 큰 소리로 끼어든다.</p>
+    </div>
+  </div>
+
+  <div class="dialog">
+    <div class="dl a"><div class="dl-who">베스도</div><div class="dl-say">"바울아 네가 미쳤도다 네 많은 학문이 너를 미치게 한다"</div><div class="dl-ref">26:24</div></div>
+    <div class="dl"><div class="dl-who">바울</div><div class="dl-say">"베스도 각하여 내가 미친 것이 아니요 참되고 온전한 말을 하나이다 … 이 일은 한쪽 구석에서 행한 것이 아니니이다"</div><div class="dl-ref">26:25–26</div></div>
+    <div class="dl"><div class="dl-who">바울</div><div class="dl-say">"아그립바 왕이여 선지자를 믿으시나이까 믿으시는 줄 아나이다"</div><div class="dl-ref">26:27</div></div>
+    <div class="dl a"><div class="dl-who">아그립바</div><div class="dl-say">"네가 적은 말로 나를 권하여 그리스도인이 되게 하려 하는도다"</div><div class="dl-ref">26:28</div></div>
+    <div class="dl"><div class="dl-who">바울</div><div class="dl-say">"말이 적으나 많으나 당신뿐 아니라 오늘 내 말을 듣는 모든 사람도 다 이렇게 결박된 것 외에는 나와 같이 되기를 하나님께 원하나이다"</div><div class="dl-ref">26:29</div></div>
+  </div>
+
+  <div class="two-col">
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">두 사람의 서로 다른 반응</div>
+      <div class="background-box-body"><strong>베스도</strong>는 로마 사람이다. 죽은 사람이 살아났다는 말은 그에게 배운 사람의 헛소리로 들린다. 그가 바울의 말을 다 이해했다고 볼 수는 없다.<br><strong>아그립바</strong>는 다르다. 그는 선지자의 글을 안다. 그래서 바울의 물음은 그를 곤란하게 한다. 믿는다고 하면 바울의 말을 받아들여야 하고, 안 믿는다고 하면 유대인의 왕으로서 할 말이 아니다. 그는 답하지 않고 물음을 비켜 간다.</div>
+    </div>
+    <div class="background-box" style="margin:0;">
+      <div class="background-box-title">IMPORTANT — 아그립바의 대답</div>
+      <div class="background-box-body">아그립바가 믿게 되었다는 기록은 없다. "거의 믿을 뻔했다"고 단정할 수도 없다. 이 대답은 번역과 해석이 나뉘는 표현이다. 진지한 말로도, 가볍게 받아넘기는 말로도 읽힌다. 이 교재는 그의 속마음을 정하지 않는다.<br>눈여겨볼 것은 낱말 하나다. <strong>'그리스도인'</strong>. 안디옥에서 처음 불린 그 이름(11:26)이 사도행전에서 두 번째이자 마지막으로, 왕의 입에서 나온다. <span class="recall-badge" style="margin-left:0;">L09</span></div>
+    </div>
+  </div>
+
+  <p class="body-text" style="margin-top:var(--sp-2);">바울의 마지막 말에서 자리가 뒤바뀐다. 처음에 이 자리는 왕이 죄수의 말을 들어 주는 자리였다. 이제는 죄수가 왕과 총독과 모든 사람을 향해 "나와 같이 되기를" 바란다고 말한다. 가진 것이 없는 사람이 다 가진 사람들에게 자기처럼 되라고 한다. 단 하나, <strong>이 결박만 빼고.</strong></p>
+
+  <div class="text-note">
+    <div class="text-note-label">RECALL · L07 — 오래전의 말씀</div>
+    <div class="text-note-body">다메섹에서 주께서 아나니아에게 사울을 두고 하신 말씀이다. "이 사람은 내 이름을 <strong>이방인과 임금들과</strong> 이스라엘 자손들에게 전하기 위하여 택한 나의 그릇이라"(9:15). 총독 두 사람과 왕 한 사람 앞에 선 이번 Lesson에서 그 말씀이 그대로 이루어진다.</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 18</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 19: SCENE 14 (26:30–32) ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div class="stage-bar">
+    <div class="sg done">① 고발</div><div class="sg done">② 변호</div><div class="sg done">③ 연기</div><div class="sg done">④ 총독 교체</div><div class="sg done">⑤ 황제 상소</div><div class="sg done">⑥ 왕 앞의 증언</div><div class="sg on">⑦ 로마행</div>
+  </div>
+
+  <div class="scene">
+    <div class="scene-head">
+      <span class="scene-num">SCENE 14</span>
+      <span class="scene-title">그들은 바울을 어떻게 판단했을까?</span>
+      <span class="scene-ref">행 26:30–32</span>
+    </div>
+    <div class="scene-body">
+      <p>왕과 총독과 버니게, 그리고 함께 앉았던 사람들이 다 일어난다. 그들은 물러가서 서로 말한다. 바울이 없는 자리에서 나온 말이다.</p>
+    </div>
+  </div>
+
+  <div class="key-verse-box">
+    <div class="key-verse-label">그들의 판단</div>
+    <div class="key-verse-text" style="font-size:17pt;">"이 사람은 사형이나 결박을 당할 만한 행위가 없다"</div>
+    <div class="key-verse-ref">사도행전 26:31</div>
+  </div>
+
+  <h3 class="section-heading" style="margin-top:var(--sp-3);">쌓여 온 판단들 <span class="recall-badge">RECALL · L12 · L13 · L14</span></h3>
+  <table class="trip-table">
+    <thead><tr><th>누가</th><th>어디서</th><th>무엇이라 했나</th><th></th></tr></thead>
+    <tbody>
+      <tr><td>총독 갈리오</td><td>고린도</td><td>범죄가 아니라 "너희 법에 관한 것" — 고발을 받지 않음</td><td class="ref">18:14–15</td></tr>
+      <tr><td>천부장 루시아</td><td>예루살렘</td><td>"죽이거나 결박할 사유가 없음"</td><td class="ref">23:29</td></tr>
+      <tr><td>총독 베스도</td><td>가이사랴</td><td>"죽일 죄를 범한 일이 없더이다"</td><td class="ref">25:25</td></tr>
+      <tr class="edge"><td>아그립바 왕과 일동</td><td>가이사랴</td><td>"사형이나 결박을 당할 만한 행위가 없다"</td><td class="ref">26:31</td></tr>
+    </tbody>
+  </table>
+
+  <p class="body-text">사건을 들여다본 관리들은 한결같이 처벌할 죄를 찾지 못했다. 그런데도 바울은 풀려나지 않는다. 아그립바는 베스도에게 말한다. <strong>"이 사람이 만일 가이사에게 상소하지 아니하였더라면 석방될 수 있을 뻔하였다"</strong>(26:32).</p>
+
+  <div class="background-box" style="margin-top:var(--sp-2);">
+    <div class="background-box-title">상소는 실수였을까?</div>
+    <div class="background-box-body">아그립바의 말만 들으면 그렇게 보인다. 그러나 바울이 상소한 순간, 총독은 그를 매복이 기다리는 예루살렘으로 보내려 했다. 그때 석방은 눈앞에 있지 않았다. 그리고 독자는 한 가지를 더 안다. "로마에서도 증언하여야 하리라"(23:11). 사람들의 계산과 지연을 지나, 바울의 길은 주께서 말씀하신 곳을 향한다.</div>
+  </div>
+
+  <div class="chain" style="grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr;margin-top:var(--sp-2);">
+    <div class="ch"><b>예루살렘에서 체포</b>L14</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>가이사랴에서 재판</b>벨릭스 · 베스도</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>황제 상소</b>25:11</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch"><b>아그립바 앞에서 증언</b>26장</div>
+    <div class="ch-arrow">→</div>
+    <div class="ch key"><b>로마행</b>L16</div>
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 19</span>
+  </div>
+</section>
+
+
+<!-- ═══════════ PAGE 20: LESSON SUMMARY ═══════════ -->
+<section class="page">
+
+  <div class="page-header">
+    <span class="page-header-lesson">LESSON 15</span>
+    <span class="page-header-title">로마 총독과 왕 앞에 선 바울</span>
+  </div>
+
+  <div style="padding-bottom:var(--sp-2);border-bottom:2px solid var(--accent);margin-bottom:var(--sp-2);">
+    <div style="font-size:var(--fs-h2);font-weight:700;color:var(--ink);">한눈에 보는 LESSON 15</div>
+    <div style="font-size:var(--fs-caption);color:var(--ink-faint);margin-top:1mm;">사도행전 24:1–26:32</div>
+  </div>
+
+  <table class="trip-table" style="margin-top:0;">
+    <thead><tr><th>인물</th><th>지위</th><th>바울과의 주요 사건</th><th>결과</th></tr></thead>
+    <tbody>
+      <tr><td>① 벨릭스</td><td>로마 총독</td><td>고발과 변호를 들음. 드루실라와 함께 도를 들음</td><td>판결을 미루고 두 해 동안 구금</td></tr>
+      <tr><td>② 베스도</td><td>후임 로마 총독</td><td>다시 재판하고 황제 상소를 받음</td><td>로마로 보내기로 결정</td></tr>
+      <tr class="edge"><td>③ 아그립바 2세</td><td>왕</td><td>바울의 신앙과 사명에 관한 증언을 들음</td><td>사형이나 결박당할 행위가 없다고 판단</td></tr>
+    </tbody>
+  </table>
+
+  <div class="summary-grid">
+
+    <div class="summary-block full">
+      <div class="summary-block-label">전체 사건 흐름</div>
+      <div class="summary-block-content">
+        벨릭스 앞에서 고발당함 → 바울이 변호함 → 벨릭스가 판결을 미룸 → <strong>두 해가 지남</strong> → 베스도 부임 → 다시 재판받음 → <strong>황제에게 상소</strong> → 아그립바 앞에서 증언 → 로마로 갈 준비
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">핵심 개념</div>
+      <div class="summary-block-content">
+        <strong>고발</strong> — 상대방이 법을 어겼다고 주장하는 것<br>
+        <strong>변호</strong> — 고발에 대해 자신의 입장과 근거를 설명하는 것<br>
+        <strong>총독</strong> — 로마 제국의 지방 통치자<br>
+        <strong>황제 상소</strong> — 황제의 판단을 요청하는 법적 절차<br>
+        <strong>부활</strong> — 바울의 변호와 복음 선포에 반복되는 핵심 주제
+      </div>
+    </div>
+
+    <div class="summary-block">
+      <div class="summary-block-label">헷갈리지 말 것</div>
+      <div class="summary-block-content">
+        <strong>아그립바 2세</strong> — 베스도의 후임 총독이 아니다. 왕이다<br>
+        <strong>더둘로의 세 혐의</strong> — 주장일 뿐 증거는 제시되지 않았다<br>
+        <strong>벨릭스 · 아그립바</strong> — 믿었다는 기록은 없다<br>
+        <strong>황제 상소</strong> — 오늘날의 항소와 같지 않다
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">핵심 질문에 대한 답</div>
+      <div class="summary-block-content">
+        바울은 소요와 이단과 성전 모독의 혐의로 고발당했으나 증거는 없었고, 그는 다툼의 중심이 부활의 소망임을 밝혔다. 벨릭스는 판결을 두 해 미루었고, 베스도는 유대인의 환심을 사려고 그를 예루살렘으로 보내려 했다. 그래서 바울은 황제에게 상소했다.
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이 레슨을 한 문장으로 말하면?</div>
+      <div class="one-line-box">
+        증거 없는 고발과 총독들의 계산 때문에 두 해를 갇혀 있던 바울은 황제에게 상소하여 로마로 가게 되었고, 그 과정에서 총독과 왕 앞에서 예수의 부활을 증언했다.
+      </div>
+    </div>
+
+    <div class="summary-block full">
+      <div class="summary-block-label">이야기 연결</div>
+      <div class="pcn">
+        <div class="pcn-col">
+          <div class="pcn-label">PREVIOUS · LESSON 14</div>
+          <div class="pcn-title">예루살렘에서 체포 → 살해 음모 → 가이사랴 이송</div>
+        </div>
+        <div class="pcn-arrow">→</div>
+        <div class="pcn-col cur">
+          <div class="pcn-label">CURRENT · LESSON 15</div>
+          <div class="pcn-title">벨릭스와 베스도 앞에서 재판 → 황제 상소 → 아그립바 앞에서 증언</div>
+        </div>
+        <div class="pcn-arrow">→</div>
+        <div class="pcn-col next">
+          <div class="pcn-label">NEXT · LESSON 16 · 행 27:1–28:16</div>
+          <div class="pcn-title">로마로 향하는 항해</div>
+          <div class="pcn-text">로마로 가는 배가 큰 폭풍을 만나 파선한다. 바울과 일행이 어떻게 살아남아 로마에 도착하는지 살펴본다.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>사도행전 (Acts of the Apostles)</span>
+    <span>LESSON 15 · 20</span>
+  </div>
+</section>
+
+
+</body>
+</html>

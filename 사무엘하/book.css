@@ -290,3 +290,58 @@
 .swatch.neutral { background:repeating-linear-gradient(0deg,#e6e2da 0 1.4px,#a8a297 1.4px 1.9px); }
 .poem-col .chain li { font-weight:400; }
 .poem-col .chain li:last-child { font-weight:700; }
+
+/* ================================================================
+   LESSON 04에서 추가한 공통 컴포넌트
+   ================================================================ */
+.camps > .realm:last-child { border-left:none; border-right:4px solid var(--accent); padding:var(--sp-2) var(--sp-3) var(--sp-2) var(--sp-2); }
+.camps > .realm.saul:last-child { border-right-color:var(--saul); }
+.realm.plain { border-left-color:var(--ink); background:#f7f6f4; }
+.realm.plain .realm-name { color:var(--ink); }
+.realm-sub { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); margin:-.5mm 0 1mm; }
+
+/* ── 주의 상자 (피해야 할 해석) ── */
+.caution { margin-top:var(--sp-3); border:1.5px solid var(--ink); border-radius:4px; overflow:hidden; }
+.caution-head { padding:1.6mm var(--sp-3); background:var(--ink); color:var(--white); font-size:var(--fs-small); font-weight:700; }
+.caution-head b { font-size:6.5pt; letter-spacing:.14em; margin-right:3mm; opacity:.7; }
+.caution-body { padding:var(--sp-2) var(--sp-3); }
+.caution-lead { font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); letter-spacing:.04em; margin-bottom:1mm; }
+.caution ul { list-style:none; padding:0; }
+.caution li { position:relative; padding:.8mm 0 .8mm 5mm; font-size:var(--fs-small); color:var(--ink); line-height:1.55; }
+.caution li::before { content:"✕"; position:absolute; left:0; color:var(--ink-faint); font-weight:700; }
+.caution p { margin-top:1.5mm; padding-top:1.5mm; border-top:1px solid var(--rule); font-size:var(--fs-small); color:var(--ink); line-height:1.6; }
+.caution p b { color:var(--accent); }
+
+/* 대조 세 줄 */
+.vs-list { border-top:2px solid var(--ink); }
+.vs-item { display:grid; grid-template-columns:34mm 1fr 9mm 1fr; align-items:center; gap:2mm; padding:2.4mm 0; border-bottom:1px solid var(--rule); font-size:var(--fs-small); line-height:1.5; }
+.vs-item > b { font-size:var(--fs-caption); color:var(--ink-faint); letter-spacing:.03em; }
+.vs-item > span { padding:1.8mm 3mm; border:1px solid var(--rule-mid); border-radius:4px; text-align:center; font-weight:700; color:var(--ink); word-break:keep-all; }
+.vs-item > span.on { border:1.5px solid var(--accent); background:var(--accent-pale); color:var(--accent); }
+.vs-item > i { font-style:normal; text-align:center; font-size:var(--fs-caption); font-weight:700; color:var(--ink-faint); }
+.stack { border-top:2px solid var(--ink); }
+.stack-row { display:grid; grid-template-columns:44mm 1fr; gap:var(--sp-2); padding:2.2mm 0; border-bottom:1px solid var(--rule); }
+.stack-row b { font-size:var(--fs-small); color:var(--ink); line-height:1.45; }
+.stack-row b small { display:block; font-weight:400; font-size:var(--fs-caption); color:var(--ink-faint); }
+.stack-row span { font-size:var(--fs-small); color:var(--ink-soft); line-height:1.6; }
+.stack-row.now b { color:var(--accent); }
+.stack-row.now { background:var(--accent-pale); }
+
+/* ================================================================
+   LESSON 05에서 추가
+   ================================================================ */
+/* 쪽 맨 위에 오는 요소는 위 여백을 두지 않는다 */
+.page-header + .section-heading.sub, .page-header + .figure, .page-header + .caution,
+.page-header + .scene, .page-header + .next-box, .page-header + .note { margin-top:0; }
+.scene + .section-heading.sub { margin-top:calc(-1 * var(--sp-2)); }
+.body-text + .scene, .figure + .scene, .caution + .scene, .concepts + .scene, .background-box + .scene { margin-top:var(--sp-4); }
+.body-text + .caution, .figure + .caution { margin-top:var(--sp-3); }
+.concepts + .figure { margin-top:var(--sp-4); }
+
+/* 역사 / 해석 구분 표시 */
+.kind { display:inline-block; margin-right:2mm; padding:.3mm 1.6mm; font-size:6.5pt; font-weight:700; letter-spacing:.06em; border-radius:2px; vertical-align:middle; }
+.kind.hist { background:var(--ink); color:var(--white); }
+.kind.read { border:1px solid var(--accent); color:var(--accent); }
+.kind.text { border:1px solid var(--ink); color:var(--ink); }
+.hebrew { font-family:"SBL Hebrew","Ezra SIL","David","Times New Roman",serif; font-weight:400; }
+.three-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-2); }
