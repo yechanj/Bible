@@ -22,11 +22,12 @@
 │   └── ...
 ├── (추후 다른 책)/
 │   └── ...
-└── index.html              (추후: 전체 교재 목차)
+└── index.html              ← 전체 교재 목차 (GitHub Pages 첫 화면)
 ```
 
 각 레슨 HTML은 CSS를 `../shared/styles.css`로 참조한다.
 CSS는 폰트를 `../SCDream5.otf` 형태로 참조한다.
+레슨을 새로 만들면 루트 `index.html` 목차에도 한 줄(번호 · 제목 · 장절)을 추가한다.
 
 ---
 
@@ -454,5 +455,4 @@ Omyu 폰트, 테라코타 좌측 선.
 ## 추후 추가 예정
 
 - `사도행전/index.html` — 사도행전 17개 레슨 목차
-- `index.html` — 전체 교재 목차 (사도행전 외 다른 책 추가 시)
 - 각 레슨 뒤 문제 영역 (CHECK → PRACTICE → LESSON TEST)
